@@ -100,27 +100,24 @@
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="container wrap">
-      <div class="brand">
-        <!-- Put your logo file in the same folder as index.html -->
-        <img src="bharat-warriors-logo.png" alt="Bharat Warriors logo">
-        <div>
-          <div class="title">Bharat Warriors</div>
-          <div class="tag">We play as ONE.</div>
-        </div>
-      </div>
-      <nav class="menu">
-        <a href="#about">About</a>
-        <a href="#fixtures">Fixtures</a>
-        <a href="#squad">Squad</a>
-        <a href="#sponsors">Sponsors</a>
-        <a href="#contact">Contact</a>
-        <a href="#join" class="btn alt" style="border-color:var(--line)">Join</a>
-      </nav>
+  <nav class="menu">
+  <a href="#about">About</a>
+
+  <div class="dropdown">
+    <a>Leagues ▾</a>
+    <div class="dropdown-menu">
+      <a href="#fixtures" onclick="filterLeague('ALL')">All</a>
+      <a href="#fixtures" onclick="filterLeague('DFCL')">DFCL</a>
+      <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
     </div>
   </div>
+
+  <a href="#fixtures">Fixtures</a>
+  <a href="#squad">Squad</a>
+  <a href="#sponsors">Sponsors</a>
+  <a href="#contact">Contact</a>
+  <a href="#join" class="btn alt" style="border-color:var(--line)">Join</a>
+</nav>
 
   <!-- HERO -->
   <header class="hero">
