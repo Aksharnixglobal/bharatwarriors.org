@@ -38,13 +38,42 @@
     .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(8px);background:rgba(0,0,0,.45);border-bottom:1px solid var(--line)}
     .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
     .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:44px;height:44px;border-radius:50%;object-fit:contain;background:#fff;border:2px solid rgba(255,255,255,.18)}
+    .brand img{
+      width:70px;   /* bigger BW logo */
+      height:70px;
+      border-radius:50%;
+      object-fit:contain;
+      background:#fff;
+      border:2px solid rgba(255,255,255,.18)
+    }
     .brand .title{font-weight:800;letter-spacing:.2px}
     .brand .tag{font-size:12px;color:#d6deee;margin-top:-2px}
     .menu{display:none;gap:8px}
     .menu a{padding:8px 12px;border-radius:10px;border:1px solid transparent}
     .menu a:hover{border-color:var(--line);background:rgba(255,255,255,.06)}
     @media(min-width:900px){.menu{display:flex}}
+
+    /* Dropdown */
+    .dropdown { position: relative; }
+    .dropdown > a, .dropdown > button {
+      padding:8px 12px;border-radius:10px;border:1px solid transparent;
+      cursor:pointer;background:transparent;color:inherit;font:inherit
+    }
+    .dropdown:hover > a, .dropdown:hover > button {
+      border-color:var(--line); background:rgba(255,255,255,.06);
+    }
+    .dropdown-menu{
+      position:absolute; top:110%; left:0; min-width:160px;
+      background:rgba(0,0,0,.88); border:1px solid var(--line); border-radius:12px;
+      display:none; padding:6px;
+    }
+    .dropdown:hover .dropdown-menu{ display:block; }
+    .dropdown-menu a{
+      display:block; padding:10px 12px; border-radius:10px;
+    }
+    .dropdown-menu a:hover{ background:rgba(255,255,255,.06); }
+    .filter-chip{margin-left:10px;padding:6px 10px;border:1px solid var(--line);
+      border-radius:999px;background:rgba(255,255,255,.06);font-size:12px}
 
     /* HERO */
     .hero{padding:48px 0 84px}
@@ -90,6 +119,18 @@
     .sponsors{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     @media(min-width:700px){.sponsors{grid-template-columns:repeat(3,1fr)}}
     .sponsor{padding:16px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+    .sponsor img {
+      max-height: 80px;   /* equal height for all logos */
+      width: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+    .sponsor img:hover {
+      filter: grayscale(0%);
+    }
 
     /* Contact */
     .form{display:grid;gap:12px;grid-template-columns:1fr}
@@ -100,24 +141,34 @@
   </style>
 </head>
 <body>
-  <nav class="menu">
-  <a href="#about">About</a>
-
-  <div class="dropdown">
-    <a>Leagues ▾</a>
-    <div class="dropdown-menu">
-      <a href="#fixtures" onclick="filterLeague('ALL')">All</a>
-      <a href="#fixtures" onclick="filterLeague('DFCL')">DFCL</a>
-      <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container wrap">
+      <div class="brand">
+        <img src="bharat-warriors-logo.png" alt="Bharat Warriors logo">
+        <div>
+          <div class="title">Bharat Warriors</div>
+          <div class="tag">We play as ONE.</div>
+        </div>
+      </div>
+      <nav class="menu">
+        <a href="#about">About</a>
+        <div class="dropdown">
+          <a>Leagues ▾</a>
+          <div class="dropdown-menu">
+            <a href="#fixtures" onclick="filterLeague('ALL')">All</a>
+            <a href="#fixtures" onclick="filterLeague('DFCL')">DFCL</a>
+            <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
+          </div>
+        </div>
+        <a href="#fixtures">Fixtures</a>
+        <a href="#squad">Squad</a>
+        <a href="#sponsors">Sponsors</a>
+        <a href="#contact">Contact</a>
+        <a href="#join" class="btn alt" style="border-color:var(--line)">Join</a>
+      </nav>
     </div>
   </div>
-
-  <a href="#fixtures">Fixtures</a>
-  <a href="#squad">Squad</a>
-  <a href="#sponsors">Sponsors</a>
-  <a href="#contact">Contact</a>
-  <a href="#join" class="btn alt" style="border-color:var(--line)">Join</a>
-</nav>
 
   <!-- HERO -->
   <header class="hero">
@@ -131,22 +182,7 @@
           <a class="btn" href="#achievements">🏆 See Achievements</a>
           <a class="btn alt" href="#fixtures">📅 Upcoming Matches</a>
         </div>
-
-        <!-- Next Fixture (updated) -->
-        <div class="card shadow" style="margin-top:22px;padding:16px 18px;max-width:540px">
-          <div style="font-weight:800;margin-bottom:6px">
-            Next Fixture <span class="chip" style="margin-left:8px;border-color:rgba(255,255,255,.22)">LECA Fall 2025</span>
-          </div>
-          <div style="display:grid;gap:6px;color:#eaf2ff">
-            <div>🛡️ Vs <strong>Highland Boyz</strong></div>
-            <div>📆 Sat, Sep 13, 2025 • 11:30 AM</div>
-            <div>📍 Brentwood, TX</div>
-            <div style="margin-top:8px"><a class="btn" href="#fixtures" style="background:var(--green)">View full schedule</a></div>
-          </div>
-        </div>
       </div>
-
-      <!-- Decorative panel (no photos) -->
       <div class="panel card shadow">
         <div class="stickers">
           <span class="sticker">DFCL</span>
@@ -158,126 +194,30 @@
     </div>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2>About the Club</h2>
-      <p class="sub">Bharat Warriors is a player-led cricket club competing across DFCL, LECA and local tournaments. We focus on discipline, inclusivity and giving back to the community.</p>
-      <div class="grid" style="margin-top:22px;grid-template-columns:repeat(1,1fr);gap:18px">
-        <div class="card" style="padding:18px">
-          <strong>Community</strong>
-          <p style="color:#eaf2ff">Open trials, training nets, and mentorship for new players.</p>
-        </div>
-        <div class="card" style="padding:18px">
-          <strong>Performance</strong>
-          <p style="color:#eaf2ff">Clear roles, data-driven selections, and fitness culture.</p>
-        </div>
-        <div class="card" style="padding:18px">
-          <strong>Legacy</strong>
-          <p style="color:#eaf2ff">Compete hard, win fair, and celebrate together.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- FIXTURES -->
   <section id="fixtures" class="section">
     <div class="container">
       <h2>Fixtures & Results</h2>
-      <p class="sub">Search by opponent, ground, or date. We list DFCL/LECA in dedicated columns, plus umpire crews.</p>
       <div class="toolbar">
-        <input id="search" class="input" type="search" placeholder="Search fixtures… (e.g., Knights, DFCL, Hackberry)" oninput="filterFixtures()"/>
+        <input id="search" class="input" type="search" placeholder="Search fixtures…" oninput="filterFixtures()"/>
         <span class="badge">Time zone: America/Chicago</span>
       </div>
       <div class="card" style="overflow:auto">
         <table id="fxTable">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Opponent</th>
-              <th>Ground</th>
-              <th>DFCL</th>
-              <th>LECA</th>
-              <th>Result</th>
-              <th>Umpires</th>
+              <th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th>
             </tr>
           </thead>
           <tbody>
-            <!-- Past Games -->
-            <tr>
-              <td>Aug 17, 2025 – 11:00 AM</td>
-              <td>ELXR Indi Blue 🆚 Bharat Warriors</td>
-              <td>Hackberry, TX</td>
-              <td></td>
-              <td>LECA</td>
-              <td>Forfeit Win</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>Aug 23, 2025 – 11:00 AM</td>
-              <td>Bullets 🆚 Bharat Warriors</td>
-              <td>Frisco, TX</td>
-              <td>DFCL</td>
-              <td></td>
-              <td>W by 24 runs</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>Aug 31, 2025 – 11:00 AM</td>
-              <td>Sharks 🆚 Bharat Warriors</td>
-              <td>Plano, TX</td>
-              <td>DFCL</td>
-              <td></td>
-              <td>L by 3 wickets</td>
-              <td>—</td>
-            </tr>
-
-            <!-- Upcoming Games -->
-            <tr>
-              <td>Sep 07, 2025 – 11:00 AM</td>
-              <td>Texas Knights 🆚 Bharat Warriors</td>
-              <td>Hackberry, TX</td>
-              <td></td>
-              <td>LECA</td>
-              <td>—</td>
-              <td>—</td>
-            </tr>
-            <tr>
-              <td>Sep 13, 2025 – 11:30 AM</td>
-              <td>Highland Boyz 🆚 Bharat Warriors</td>
-              <td>Brentwood, TX</td>
-              <td></td>
-              <td>LECA</td>
-              <td>—</td>
-              <td>DXN United</td>
-            </tr>
-            <tr>
-              <td>Sep 28, 2025 – 3:30 PM</td>
-              <td>The Topdogs 🆚 Bharat Warriors</td>
-              <td>Brentwood, TX</td>
-              <td></td>
-              <td>LECA</td>
-              <td>—</td>
-              <td>Legacy Lonestars</td>
-            </tr>
-            <tr>
-              <td>Oct 05, 2025 – 11:30 AM</td>
-              <td>Singhams India 101 🆚 Bharat Warriors</td>
-              <td>Hackberry, TX</td>
-              <td></td>
-              <td>LECA</td>
-              <td>—</td>
-              <td>Slayers</td>
-            </tr>
-            <tr>
-              <td>Oct 11, 2025 – 11:30 AM</td>
-              <td>Raging Bulls 🆚 Bharat Warriors</td>
-              <td>Hackberry, TX</td>
-              <td></td>
-              <td>LECA</td>
-              <td>—</td>
-              <td>Copart Wrecking Crew</td>
-            </tr>
+            <tr data-league="LECA"><td>Aug 17, 2025</td><td>ELXR Indi Blue 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>Forfeit Win</td><td>—</td></tr>
+            <tr data-league="DFCL"><td>Aug 23, 2025</td><td>Bullets 🆚 BW</td><td>Frisco</td><td>DFCL</td><td></td><td>W by 24 runs</td><td>—</td></tr>
+            <tr data-league="DFCL"><td>Aug 31, 2025</td><td>Sharks 🆚 BW</td><td>Plano</td><td>DFCL</td><td></td><td>L by 3 wkts</td><td>—</td></tr>
+            <tr data-league="LECA"><td>Sep 07, 2025</td><td>Texas Knights 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>—</td><td>—</td></tr>
+            <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td>LECA</td><td>—</td><td>DXN United</td></tr>
+            <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td>LECA</td><td>—</td><td>Legacy Lonestars</td></tr>
+            <tr data-league="LECA"><td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>—</td><td>Slayers</td></tr>
+            <tr data-league="LECA"><td>Oct 11, 2025</td><td>Raging Bulls 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>—</td><td>Copart Wrecking Crew</td></tr>
           </tbody>
         </table>
       </div>
@@ -288,19 +228,10 @@
   <section id="squad" class="section">
     <div class="container">
       <h2>Squad</h2>
-      <p class="sub">Update roles and tags as needed. Tip: keep 11 starters and rest as reserves on game day.</p>
       <div class="grid squad" style="margin-top:18px">
-        <div class="card player"><h3>P. Patel</h3><small>Captain • Batter</small><div style="margin-top:8px"><span class="chip">Lead</span><span class="chip">Top-order</span></div></div>
-        <div class="card player"><h3>Varun</h3><small>Vice Captain • Bat/WK</small><div style="margin-top:8px"><span class="chip">WK</span><span class="chip">Finisher</span></div></div>
-        <div class="card player"><h3>Raj</h3><small>All-rounder</small><div style="margin-top:8px"><span class="chip">Medium</span><span class="chip">Anchor</span></div></div>
-        <div class="card player"><h3>Darshan</h3><small>Wicket-Keeper</small><div style="margin-top:8px"><span class="chip">WK</span><span class="chip">Finisher</span></div></div>
-        <div class="card player"><h3>Ajay</h3><small>Bowler</small><div style="margin-top:8px"><span class="chip">Pace</span></div></div>
-        <div class="card player"><h3>Krunal</h3><small>Bowler</small><div style="margin-top:8px"><span class="chip">Spin</span></div></div>
-        <div class="card player"><h3>Chintan</h3><small>Batter</small><div style="margin-top:8px"><span class="chip">Top-order</span></div></div>
-        <div class="card player"><h3>Vadik</h3><small>All-rounder</small><div style="margin-top:8px"><span class="chip">Spin</span><span class="chip">Lower-order</span></div></div>
-        <div class="card player"><h3>Bhavesh J</h3><small>All-rounder</small><div style="margin-top:8px"><span class="chip">Medium</span></div></div>
-        <div class="card player"><h3>Charles</h3><small>Batter</small><div style="margin-top:8px"><span class="chip">Anchor</span></div></div>
-        <div class="card player"><h3>Gaurav</h3><small>Bowler</small><div style="margin-top:8px"><span class="chip">Pace</span></div></div>
+        <div class="card player"><h3>P. Patel</h3><small>Captain</small></div>
+        <div class="card player"><h3>Varun</h3><small>Vice Captain</small></div>
+        <div class="card player"><h3>Raj</h3><small>All-rounder</small></div>
       </div>
     </div>
   </section>
@@ -309,69 +240,37 @@
   <section id="sponsors" class="section">
     <div class="container">
       <h2>Sponsors</h2>
-      <p class="sub">Thank you to our partners for powering the Bharat Warriors journey.</p>
       <div class="sponsors" style="margin-top:18px">
-        <div class="sponsor">Infinity Legacy Group</div>
-        <div class="sponsor">Pizza Twist</div>
-        <div class="sponsor">AksharNix Global</div>
+        <div class="sponsor"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
+        <div class="sponsor"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
+        <div class="sponsor">
+          <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer">
+            <img src="aksharnix-global-logo.png" alt="AksharNix Global">
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT / JOIN -->
+  <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="container">
       <h2>Contact</h2>
-      <p class="sub">For friendlies, sponsorships, or trials, reach out. You can also email <a href="mailto:aksharnixglobal@gmail.com">aksharnixglobal@gmail.com</a>.</p>
-    <form class="form card" style="padding:16px" onsubmit="sendMail(event)">
+      <form class="form card" style="padding:16px" onsubmit="sendMail(event)">
         <input id="name" required placeholder="Your name" />
         <input id="email" type="email" required placeholder="Your email" />
-        <input id="phone" placeholder="Phone (optional)" />
-        <textarea id="msg" required placeholder="How can we help?"></textarea>
+        <textarea id="msg" required placeholder="Your message"></textarea>
         <div><button class="btn" type="submit">Send</button></div>
       </form>
-
-      <div id="join" style="margin-top:26px" class="card">
-        <div style="padding:18px">
-          <strong>Want to join the club?</strong>
-          <p style="color:#eaf2ff;margin:6px 0 0">Open trials monthly. Share your role, experience, and availability.</p>
-        </div>
-      </div>
     </div>
   </section>
 
   <footer>
     <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between">
       <div>© <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas</div>
-      <div style="display:flex;gap:12px;color:#eaf2ff"><a href="#">Instagram</a>·<a href="#">YouTube</a>·<a href="#">Facebook</a></div>
     </div>
   </footer>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Fixtures filter
-    function filterFixtures(){
-      const q = document.getElementById('search').value.trim().toLowerCase();
-      document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-        tr.style.display = tr.textContent.toLowerCase().includes(q) ? '' : 'none';
-      });
-    }
-    window.filterFixtures = filterFixtures;
-
-    // Contact form (mailto)
-    function sendMail(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const msg = document.getElementById('msg').value.trim();
-      const subject = encodeURIComponent('BW Club Inquiry from '+name);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${msg}`);
-      window.location.href = `mailto:aksharnixglobal@gmail.com?subject=${subject}&body=${body}`;
-    }
-    window.sendMail = sendMail;
-  </script>
-</body>
-</html>
+    let current
