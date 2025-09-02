@@ -39,7 +39,7 @@
     .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
     .brand{display:flex;align-items:center;gap:12px}
     .brand img{
-      width:70px;   /* bigger BW logo */
+      width:70px;
       height:70px;
       border-radius:50%;
       object-fit:contain;
@@ -55,13 +55,8 @@
 
     /* Dropdown */
     .dropdown { position: relative; }
-    .dropdown > a, .dropdown > button {
-      padding:8px 12px;border-radius:10px;border:1px solid transparent;
-      cursor:pointer;background:transparent;color:inherit;font:inherit
-    }
-    .dropdown:hover > a, .dropdown:hover > button {
-      border-color:var(--line); background:rgba(255,255,255,.06);
-    }
+    .dropdown > a {padding:8px 12px;border-radius:10px;cursor:pointer}
+    .dropdown:hover > a {border-color:var(--line); background:rgba(255,255,255,.06);}
     .dropdown-menu{
       position:absolute; top:110%; left:0; min-width:160px;
       background:rgba(0,0,0,.88); border:1px solid var(--line); border-radius:12px;
@@ -85,19 +80,6 @@
     p.lead{color:#e8edf7;opacity:.95}
     .hero .cta{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px}
 
-    /* Decorative hero panel */
-    .panel{height:420px;border-radius:18px;border:1px solid var(--line);background:
-      conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,.07), rgba(255,255,255,.02) 30%, rgba(255,255,255,.07) 60%, rgba(255,255,255,.02) 90%)}
-    .panel .stickers{display:flex;gap:8px;padding:14px}
-    .sticker{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid var(--line);font-size:12px}
-    .panel .lines{height:100%;background:
-      radial-gradient(600px 220px at 20% 30%, rgba(15,169,104,.15), transparent 60%),
-      radial-gradient(600px 220px at 80% 70%, rgba(255,106,0,.15), transparent 60%)}
-
-    /* Sections */
-    .section{padding:64px 0;border-top:1px solid var(--line)}
-    .section .sub{color:var(--muted);opacity:.9;max-width:800px}
-
     /* Fixtures */
     .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0 18px}
     .input{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;min-width:240px}
@@ -107,20 +89,12 @@
     tbody tr:hover{background:rgba(255,255,255,.03)}
     .badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);font-size:12px}
 
-    /* Squad */
-    .squad{grid-template-columns:repeat(1,1fr)}
-    @media(min-width:700px){.squad{grid-template-columns:repeat(2,1fr)}}
-    @media(min-width:1000px){.squad{grid-template-columns:repeat(3,1fr)}}
-    .player{padding:18px}
-    .player h3{margin:0 0 6px}
-    .player small{color:var(--muted);opacity:.9}
-
     /* Sponsors */
     .sponsors{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
     @media(min-width:700px){.sponsors{grid-template-columns:repeat(3,1fr)}}
     .sponsor{padding:16px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
     .sponsor img {
-      max-height: 80px;   /* equal height for all logos */
+      max-height: 80px;
       width: auto;
       object-fit: contain;
       display: block;
@@ -128,16 +102,9 @@
       filter: grayscale(100%);
       transition: filter 0.3s ease;
     }
-    .sponsor img:hover {
-      filter: grayscale(0%);
-    }
+    .sponsor img:hover { filter: grayscale(0%); }
 
-    /* Contact */
-    .form{display:grid;gap:12px;grid-template-columns:1fr}
-    @media(min-width:900px){.form{grid-template-columns:1fr 1fr}}
-    .form input,.form textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff}
-    .form textarea{min-height:120px;grid-column:1/-1}
-    footer{padding:30px 0;border-top:1px solid var(--line);color:var(--muted)}
+    footer{padding:30px 0;border-top:1px solid var(--line);color:#cfe0ff;text-align:center;font-size:14px}
   </style>
 </head>
 <body>
@@ -165,7 +132,6 @@
         <a href="#squad">Squad</a>
         <a href="#sponsors">Sponsors</a>
         <a href="#contact">Contact</a>
-        <a href="#join" class="btn alt" style="border-color:var(--line)">Join</a>
       </nav>
     </div>
   </div>
@@ -175,21 +141,10 @@
     <div class="container grid">
       <div>
         <h1>Bharat <span style="color:var(--saffron)">Warriors</span> Cricket Club</h1>
-        <p class="lead" style="margin-top:12px;max-width:640px">
-          Community-first cricket in DFW. Training. Fixtures. Trophies. Memories. <strong>Har Har Mahadev.</strong>
-        </p>
+        <p class="lead">Community-first cricket in DFW. Training. Fixtures. Trophies. Memories. <strong>Har Har Mahadev.</strong></p>
         <div class="cta">
-          <a class="btn" href="#achievements">🏆 See Achievements</a>
-          <a class="btn alt" href="#fixtures">📅 Upcoming Matches</a>
+          <a class="btn" href="#fixtures">📅 Upcoming Matches</a>
         </div>
-      </div>
-      <div class="panel card shadow">
-        <div class="stickers">
-          <span class="sticker">DFCL</span>
-          <span class="sticker">LECA</span>
-          <span class="sticker">Spirit • Discipline</span>
-        </div>
-        <div class="lines"></div>
       </div>
     </div>
   </header>
@@ -200,7 +155,6 @@
       <h2>Fixtures & Results</h2>
       <div class="toolbar">
         <input id="search" class="input" type="search" placeholder="Search fixtures…" oninput="filterFixtures()"/>
-        <span class="badge">Time zone: America/Chicago</span>
       </div>
       <div class="card" style="overflow:auto">
         <table id="fxTable">
@@ -215,23 +169,8 @@
             <tr data-league="DFCL"><td>Aug 31, 2025</td><td>Sharks 🆚 BW</td><td>Plano</td><td>DFCL</td><td></td><td>L by 3 wkts</td><td>—</td></tr>
             <tr data-league="LECA"><td>Sep 07, 2025</td><td>Texas Knights 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>—</td><td>—</td></tr>
             <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td>LECA</td><td>—</td><td>DXN United</td></tr>
-            <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td>LECA</td><td>—</td><td>Legacy Lonestars</td></tr>
-            <tr data-league="LECA"><td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>—</td><td>Slayers</td></tr>
-            <tr data-league="LECA"><td>Oct 11, 2025</td><td>Raging Bulls 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>—</td><td>Copart Wrecking Crew</td></tr>
           </tbody>
         </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- SQUAD -->
-  <section id="squad" class="section">
-    <div class="container">
-      <h2>Squad</h2>
-      <div class="grid squad" style="margin-top:18px">
-        <div class="card player"><h3>P. Patel</h3><small>Captain</small></div>
-        <div class="card player"><h3>Varun</h3><small>Vice Captain</small></div>
-        <div class="card player"><h3>Raj</h3><small>All-rounder</small></div>
       </div>
     </div>
   </section>
@@ -240,7 +179,7 @@
   <section id="sponsors" class="section">
     <div class="container">
       <h2>Sponsors</h2>
-      <div class="sponsors" style="margin-top:18px">
+      <div class="sponsors">
         <div class="sponsor"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
         <div class="sponsor"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
         <div class="sponsor">
@@ -265,12 +204,37 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="container" style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between">
-      <div>© <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas</div>
-    </div>
+    © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
+    <br>
+    Site created by 
+    <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:600;">
+      AksharNix Global
+    </a>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    let current
+    let currentLeague = 'ALL';
+    function filterFixtures(){
+      const q = (document.getElementById('search')?.value || '').trim().toLowerCase();
+      document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
+        const matchesText = tr.textContent.toLowerCase().includes(q);
+        const matchesLeague = (currentLeague === 'ALL') || (tr.dataset.league === currentLeague);
+        tr.style.display = (matchesText && matchesLeague) ? '' : 'none';
+      });
+    }
+    function filterLeague(lg){ currentLeague = lg; filterFixtures(); }
+    function sendMail(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('msg').value.trim();
+      const subject = encodeURIComponent('BW Club Inquiry from '+name);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+      window.location.href = `mailto:aksharnixglobal@gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
