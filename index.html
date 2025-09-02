@@ -121,12 +121,14 @@
       <a href="#fixtures">Schedule</a>
 
       <div class="dropdown" id="dd-sponsors">
-        <button onclick="toggleDD('dd-sponsors')">Sponsors ▾</button>
-        <div class="dropdown-menu">
-          <a href="#sponsors">All Sponsors</a>
-          <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
-        </div>
-      </div>
+  <button onclick="toggleDD('dd-sponsors')">Sponsors ▾</button>
+  <div class="dropdown-menu">
+    <a href="#sponsors">All Sponsors</a>
+    <a href="#sponsor-infinity" onclick="toggleDD('dd-sponsors')">Infinity Legacy Group</a>
+    <a href="#sponsor-aksharnix" onclick="toggleDD('dd-sponsors')">AksharNix Global</a>
+    <a href="#sponsor-pizza" onclick="toggleDD('dd-sponsors')">Pizza Twist</a>
+  </div>
+</div>
 
       <a href="#contact">Contact</a>
     </nav>
@@ -201,12 +203,21 @@
   <div class="container">
     <h2>Sponsors</h2>
     <div class="sponsor-row">
-      <div class="sponsor"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
-      <div class="sponsor"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
-      <div class="sponsor"><a href="https://aksharnixglobal.com/" target="_blank" rel="noopener"><img src="aksharnix-global-logo.png" alt="AksharNix Global"></a></div>
+      <div id="sponsor-infinity" class="sponsor">
+        <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
+      </div>
+      <div id="sponsor-aksharnix" class="sponsor">
+        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
+          <img src="aksharnix-global-logo.png" alt="AksharNix Global">
+        </a>
+      </div>
+      <div id="sponsor-pizza" class="sponsor">
+        <img src="pizza-twist-logo.png" alt="Pizza Twist">
+      </div>
     </div>
   </div>
 </section>
+
 
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="section">
