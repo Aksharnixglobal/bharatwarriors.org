@@ -84,10 +84,43 @@
   .league-leca{background:rgba(15,169,104,.12);color:#0fa968}
 
   /* Sponsors */
-  .sponsor-row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-  .sponsor{padding:10px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e5eaf3;border-radius:14px}
-  .sponsor img{max-height:80px;width:auto;filter:grayscale(100%);transition:.2s}
-  .sponsor img:hover{filter:grayscale(0%)}
+  /* Sponsors */
+.sponsor-row{
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+}
+@media (min-width: 900px){
+  /* force 3 equal columns on desktop */
+  .sponsor-row{
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+.sponsor{
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #e5eaf3;
+  border-radius: 14px;
+  height: 120px;
+  transition: background .2s, box-shadow .2s;
+}
+.sponsor:hover{
+  background: #f8fbff;
+  box-shadow: 0 6px 14px rgba(20,60,120,.1);
+}
+.sponsor img{
+  max-height: 80px;
+  width: auto;
+  object-fit: contain;
+  transition: transform .2s;
+}
+.sponsor img:hover{
+  transform: translateY(-2px) scale(1.04);
+}
+
 
   /* Footer */
   footer{padding:26px 0;border-top:1px solid #e5eaf3;text-align:center;background:#fff;color:#444}
