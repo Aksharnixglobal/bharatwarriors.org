@@ -75,11 +75,11 @@
   /* ===== Sponsors ===== */
   .sponsor-row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
   @media (min-width:900px){.sponsor-row{grid-template-columns:repeat(3,1fr)}}
-  .sponsor{padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e5eaf3;border-radius:14px;height:120px;transition:background .2s,box-shadow .2s}
+  .sponsor{padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e5eaf3;border-radius:14px;height:140px;transition:background .2s,box-shadow .2s}
   .sponsor:hover{background:#f8fbff;box-shadow:0 6px 14px rgba(20,60,120,.1)}
-  /* Rectangular logo frame */
-  .logo-frame{width:180px;height:60px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3;margin:0 auto}
-  .logo-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+  /* Larger rectangular frame */
+  .logo-frame{width:240px;height:90px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3;margin:0 auto}
+  .logo-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transform:scale(var(--scale,1.2));transform-origin:center}
 
   /* ===== Footer ===== */
   footer{padding:26px 0;border-top:1px solid #e5eaf3;text-align:center;background:#fff;color:#444}
@@ -169,7 +169,7 @@
     <h2>Sponsors</h2>
     <div class="sponsor-row">
       <div id="sponsor-infinity" class="sponsor">
-        <div class="logo-frame">
+        <div class="logo-frame" style="--scale:1.4">
           <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
         </div>
       </div>
@@ -181,7 +181,7 @@
         </a>
       </div>
       <div id="sponsor-pizza" class="sponsor">
-        <div class="logo-frame">
+        <div class="logo-frame" style="--scale:1.4">
           <img src="pizza-twist-logo.png" alt="Pizza Twist">
         </div>
       </div>
