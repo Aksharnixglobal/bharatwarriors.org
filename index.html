@@ -75,11 +75,34 @@
   /* ===== Sponsors ===== */
   .sponsor-row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
   @media (min-width:900px){.sponsor-row{grid-template-columns:repeat(3,1fr)}}
-  .sponsor{padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e5eaf3;border-radius:14px;height:140px;transition:background .2s,box-shadow .2s}
+  .sponsor{padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border:1px solid #e5eaf3;border-radius:14px;height:170px;transition:background .2s,box-shadow .2s}
   .sponsor:hover{background:#f8fbff;box-shadow:0 6px 14px rgba(20,60,120,.1)}
-  /* Larger rectangular frame */
-  .logo-frame{width:240px;height:90px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3;margin:0 auto}
-  .logo-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;transform:scale(var(--scale,1.2));transform-origin:center}
+
+  /* uniform rectangular frame (balanced size) */
+  .logo-frame{
+    width:200px;
+    height:70px;
+    border-radius:8px;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    box-shadow:inset 0 0 0 1px #e5eaf3;
+    margin:0 auto;
+  }
+  .logo-frame img{
+    max-width:100%;
+    max-height:100%;
+    width:auto;height:auto;
+    object-fit:contain;
+    display:block;
+  }
+
+  .sponsor .visit{
+    margin-top:10px;
+    font-size:13px;
+    color:var(--blue-2);
+    font-weight:700;
+  }
 
   /* ===== Footer ===== */
   footer{padding:26px 0;border-top:1px solid #e5eaf3;text-align:center;background:#fff;color:#444}
@@ -115,7 +138,7 @@
           <a href="#sponsors">All Sponsors</a>
           <a href="#sponsor-infinity" onclick="toggleDD('dd-sponsors')">Infinity Legacy Group</a>
           <a href="#sponsor-aksharnix" onclick="toggleDD('dd-sponsors')">AksharNix Global</a>
-          <a href="#sponsor-pizza" onclick="toggleDD('dd-sponsors')">Pizza Twist</a>
+          <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">Pizza Twist</a>
         </div>
       </div>
       <a href="#contact">Contact</a>
@@ -140,8 +163,22 @@
 <!-- ===== ABOUT ===== -->
 <section id="about" class="section">
   <div class="container">
-    <h2>About</h2>
-    <p class="sub">Bharat Warriors is a player-led cricket club competing across DFCL, LECA and local tournaments. We focus on discipline, inclusivity and giving back to the community.</p>
+    <h2>Bharat Warriors Cricket Team 🏏</h2>
+    <p>
+      The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. Representing strength, unity, and pride, we bring energy and determination to every match we play.
+    </p>
+    <p>
+      Our squad is made up of talented players who excel in batting, bowling, and fielding, but what makes us stand out is the bond we share as a team. We believe in playing hard, playing fair, and always respecting the game.
+    </p>
+    <p>
+      For us, cricket is more than just a sport – it’s about discipline, dedication, and community. With every season, we aim to grow stronger, inspire others, and showcase the true spirit of the Bharat Warriors.
+    </p>
+
+    <h3>⚡ Motto</h3>
+    <p style="font-weight:700; font-size:18px; color:#0f59c7; margin-top:8px;">
+      Play Hard. Play Fair. Play as Warriors.<br>
+      <span style="color:#ff5722;">Har Har Mahadev 🕉🕉🕉🕉🕉</span>
+    </p>
   </div>
 </section>
 
@@ -169,10 +206,11 @@
     <h2>Sponsors</h2>
     <div class="sponsor-row">
       <div id="sponsor-infinity" class="sponsor">
-        <div class="logo-frame" style="--scale:1.4">
-          <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
+        <div class="logo-frame">
+          <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group" style="transform:scale(1.2)">
         </div>
       </div>
+
       <div id="sponsor-aksharnix" class="sponsor">
         <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
@@ -180,10 +218,12 @@
           </div>
         </a>
       </div>
+
       <div id="sponsor-pizza" class="sponsor">
-        <div class="logo-frame" style="--scale:1.4">
-          <img src="pizza-twist-logo.png" alt="Pizza Twist">
+        <div class="logo-frame">
+          <img src="pizza-twist-logo.png" alt="Pizza Twist" style="transform:scale(1.2)">
         </div>
+        <a class="visit" href="https://www.pizzatwist.com/" target="_blank" rel="noopener">Visit Site</a>
       </div>
     </div>
   </div>
@@ -210,6 +250,7 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
   function toggleDD(id){
     const dd=document.getElementById(id);
     const open=dd.classList.contains('open');
@@ -220,14 +261,15 @@
     const open=document.querySelector('.dropdown.open');
     if(open && !open.contains(e.target)) open.classList.remove('open');
   });
+
   function filterLeague(lg){
-    currentLeague=lg;
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const matchesLeague=(lg==='ALL')||(tr.dataset.league===lg);
-      tr.style.display=matchesLeague?'':'none';
+      const ok=(lg==='ALL')||(tr.dataset.league===lg);
+      tr.style.display=ok?'':'none';
     });
     document.getElementById('fixtures').scrollIntoView({behavior:'smooth'});
   }
+
   function sendMail(e){
     e.preventDefault();
     const name=document.getElementById('name').value.trim();
