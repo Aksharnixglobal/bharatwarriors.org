@@ -6,8 +6,6 @@
 <title>Bharat Warriors Cricket Club</title>
 <meta name="description" content="Official website of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, contact." />
 <link rel="icon" href="favicon.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -20,11 +18,11 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
-  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f7f9ff}
+  body{font-family:"Montserrat",sans-serif;color:var(--ink);background:#f7f9ff}
   a{text-decoration:none}
 
-  /* ===== NAV BAR (deep-blue with pill buttons) ===== */
-  .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--blue-2),var(--blue));border-bottom:1px solid rgba(255,255,255,.08)}
+  /* ===== NAV BAR ===== */
+  .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--blue-2),var(--blue))}
   .nav .wrap{max-width:1200px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:72px;height:72px;border-radius:50%;background:#fff;border:2px solid rgba(255,255,255,.25);object-fit:contain}
@@ -36,29 +34,20 @@
   .menu .active{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.34)}
   .dropdown{position:relative}
   .dropdown>button{cursor:pointer}
-  .dropdown-menu{position:absolute;top:110%;right:0;min-width:160px;background:#1f2f60;border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:8px;display:none;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+  .dropdown-menu{position:absolute;top:110%;right:0;min-width:180px;background:#1f2f60;border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:8px;display:none;box-shadow:0 14px 30px rgba(0,0,0,.35)}
   .dropdown.open .dropdown-menu{display:block}
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px;color:#e8efff}
   .dropdown-menu a:hover{background:rgba(255,255,255,.10)}
   @media (max-width:860px){.menu{gap:10px;flex-wrap:wrap}.menu a,.dropdown>button{padding:10px 14px}}
 
-  /* ===== Compact HERO ===== */
-  .hero{
-    padding:28px 0 36px;
-    background:linear-gradient(180deg,#f4f7ff 0%, #ffffff 100%);
-    border-bottom:1px solid #e8eef7;
-  }
+  /* ===== HERO ===== */
+  .hero{padding:28px 0 36px;background:linear-gradient(180deg,#f4f7ff 0%, #ffffff 100%);border-bottom:1px solid #e8eef7}
   .hero .container{max-width:980px;margin:0 auto;text-align:center}
   .hero h1{margin:0 0 8px;font-size:40px;line-height:1.18;font-weight:800;letter-spacing:.2px;color:#0f1b3a}
-  .hero h1 .accent{
-    background:linear-gradient(90deg,#2f6be8,#0f59c7);
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
+  .hero h1 .accent{background:linear-gradient(90deg,#2f6be8,#0f59c7);-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero .lead{margin:0 auto 16px;max-width:760px;color:#4d5a77}
   .ribbon{margin:12px auto 0;display:inline-flex;gap:10px}
   .ribbon span{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#2b3854;font-weight:700}
-
-  /* Match tile */
   .match-tile{margin:20px auto 0;max-width:720px;padding:14px 16px;border-radius:14px;border:1px solid #e7edf6;background:#fff;box-shadow:0 6px 18px rgba(13,33,83,.06)}
   .match-tile .meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;justify-content:center}
   .chip{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#f6f9ff;color:#2e3b58;font-size:13px}
@@ -75,7 +64,7 @@
   .card{background:#fff;border:1px solid #e5eaf3;border-radius:18px;box-shadow:0 10px 26px rgba(15,47,107,.06)}
   .sub{color:#555}
 
-  /* Fixtures */
+  /* ===== Fixtures ===== */
   table{width:100%;border-collapse:collapse}
   th,td{padding:14px 12px;border-bottom:1px solid #e5eaf3;text-align:left}
   th{background:#eef3ff;font-weight:800}
@@ -83,52 +72,16 @@
   .league-dfcl{background:rgba(11,92,168,.1);color:#0b5ca8}
   .league-leca{background:rgba(15,169,104,.12);color:#0fa968}
 
-  /* Sponsors */
-  /* Sponsors */
-.sponsor-row{
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-}
-@media (min-width: 900px){
-  /* force 3 equal columns on desktop */
-  .sponsor-row{
-    grid-template-columns: repeat(3,1fr);
-  }
-}
-.sponsor{
-  padding: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #fff;
-  border: 1px solid #e5eaf3;
-  border-radius: 14px;
-  height: 120px;
-  transition: background .2s, box-shadow .2s;
-}
-.sponsor:hover{
-  background: #f8fbff;
-  box-shadow: 0 6px 14px rgba(20,60,120,.1);
-}
-.sponsor img {
-  max-width: 160px;   /* consistent width */
-  max-height: 60px;   /* consistent height */
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  background: #fff;
-  padding: 4px 10px;  /* adds white margin inside to balance square logos */
-  border-radius: 6px;
-}
-}
-.sponsor img:hover{
-  transform: translateY(-2px) scale(1.04);
-}
+  /* ===== Sponsors ===== */
+  .sponsor-row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+  @media (min-width:900px){.sponsor-row{grid-template-columns:repeat(3,1fr)}}
+  .sponsor{padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e5eaf3;border-radius:14px;height:120px;transition:background .2s,box-shadow .2s}
+  .sponsor:hover{background:#f8fbff;box-shadow:0 6px 14px rgba(20,60,120,.1)}
+  /* Rectangular logo frame */
+  .logo-frame{width:180px;height:60px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3;margin:0 auto}
+  .logo-frame img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
 
-
-  /* Footer */
+  /* ===== Footer ===== */
   footer{padding:26px 0;border-top:1px solid #e5eaf3;text-align:center;background:#fff;color:#444}
   footer a{color:#0f59c7;font-weight:700}
 </style>
@@ -147,7 +100,6 @@
     </div>
     <nav class="menu">
       <a href="#about" class="active">About</a>
-
       <div class="dropdown" id="dd-leagues">
         <button onclick="toggleDD('dd-leagues')">Leagues ▾</button>
         <div class="dropdown-menu">
@@ -156,55 +108,31 @@
           <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
         </div>
       </div>
-
       <a href="#fixtures">Schedule</a>
-
       <div class="dropdown" id="dd-sponsors">
-  <button onclick="toggleDD('dd-sponsors')">Sponsors ▾</button>
-  <div class="dropdown-menu">
-    <a href="#sponsors">All Sponsors</a>
-    <a href="#sponsor-infinity" onclick="toggleDD('dd-sponsors')">Infinity Legacy Group</a>
-    <a href="#sponsor-aksharnix" onclick="toggleDD('dd-sponsors')">AksharNix Global</a>
-    <a href="#sponsor-pizza" onclick="toggleDD('dd-sponsors')">Pizza Twist</a>
-  </div>
-</div>
-
+        <button onclick="toggleDD('dd-sponsors')">Sponsors ▾</button>
+        <div class="dropdown-menu">
+          <a href="#sponsors">All Sponsors</a>
+          <a href="#sponsor-infinity" onclick="toggleDD('dd-sponsors')">Infinity Legacy Group</a>
+          <a href="#sponsor-aksharnix" onclick="toggleDD('dd-sponsors')">AksharNix Global</a>
+          <a href="#sponsor-pizza" onclick="toggleDD('dd-sponsors')">Pizza Twist</a>
+        </div>
+      </div>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </div>
 
-<!-- ===== HERO (compact) ===== -->
+<!-- ===== HERO ===== -->
 <header class="hero">
   <div class="container">
     <h1>Bharat <span class="accent">Warriors</span> Cricket Club</h1>
-    <p class="lead">
-      Community-first cricket in DFW. Training. Fixtures. Trophies. Memories.
-      <strong>Har Har Mahadev.</strong>
-    </p>
-
-    <div class="ribbon">
-      <span>Discipline</span>
-      <span>Teamwork</span>
-      <span>Respect</span>
-    </div>
-
+    <p class="lead">Community-first cricket in DFW. Training. Fixtures. Trophies. Memories. <strong>Har Har Mahadev.</strong></p>
+    <div class="ribbon"><span>Discipline</span><span>Teamwork</span><span>Respect</span></div>
     <div class="match-tile">
-      <div class="meta">
-        <span class="chip">LECA</span>
-        <span class="chip">Sat • Sep 13 • 11:30 AM</span>
-      </div>
-
-      <div class="teams">
-        <div class="team">Highland Boyz</div>
-        <div class="vs">vs</div>
-        <div class="team bw">Bharat Warriors</div>
-      </div>
-
-      <div class="actions">
-        <span class="chip">Brentwood, TX</span>
-        <a class="btn" href="#fixtures">View schedule</a>
-      </div>
+      <div class="meta"><span class="chip">LECA</span><span class="chip">Sat • Sep 13 • 11:30 AM</span></div>
+      <div class="teams"><div class="team">Highland Boyz</div><div class="vs">vs</div><div class="team bw">Bharat Warriors</div></div>
+      <div class="actions"><span class="chip">Brentwood, TX</span><a class="btn" href="#fixtures">View schedule</a></div>
     </div>
   </div>
 </header>
@@ -223,9 +151,7 @@
     <h2>Fixtures</h2>
     <div class="card" style="overflow:auto">
       <table id="fxTable">
-        <thead>
-          <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
-        </thead>
+        <thead><tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr></thead>
         <tbody>
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
@@ -243,20 +169,25 @@
     <h2>Sponsors</h2>
     <div class="sponsor-row">
       <div id="sponsor-infinity" class="sponsor">
-        <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
+        <div class="logo-frame">
+          <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
+        </div>
       </div>
       <div id="sponsor-aksharnix" class="sponsor">
         <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
-          <img src="aksharnix-global-logo.png" alt="AksharNix Global">
+          <div class="logo-frame">
+            <img src="aksharnix-global-logo.png" alt="AksharNix Global">
+          </div>
         </a>
       </div>
       <div id="sponsor-pizza" class="sponsor">
-        <img src="pizza-twist-logo.png" alt="Pizza Twist">
+        <div class="logo-frame">
+          <img src="pizza-twist-logo.png" alt="Pizza Twist">
+        </div>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="section">
@@ -274,15 +205,11 @@
 <!-- ===== FOOTER ===== -->
 <footer>
   © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
-  <br>
-  Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
+  <br>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
 </footer>
 
 <script>
-  // year
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // dropdowns
   function toggleDD(id){
     const dd=document.getElementById(id);
     const open=dd.classList.contains('open');
@@ -293,20 +220,14 @@
     const open=document.querySelector('.dropdown.open');
     if(open && !open.contains(e.target)) open.classList.remove('open');
   });
-
-  // league filter (kept simple)
-  let currentLeague='ALL';
   function filterLeague(lg){
     currentLeague=lg;
-    const q='';
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const matchesLeague=(currentLeague==='ALL')||(tr.dataset.league===currentLeague);
+      const matchesLeague=(lg==='ALL')||(tr.dataset.league===lg);
       tr.style.display=matchesLeague?'':'none';
     });
     document.getElementById('fixtures').scrollIntoView({behavior:'smooth'});
   }
-
-  // contact mailto
   function sendMail(e){
     e.preventDefault();
     const name=document.getElementById('name').value.trim();
