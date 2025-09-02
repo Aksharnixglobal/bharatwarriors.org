@@ -111,11 +111,13 @@
   background: #f8fbff;
   box-shadow: 0 6px 14px rgba(20,60,120,.1);
 }
-.sponsor img{
-  max-height: 80px;
+.sponsor img {
+  max-height: 70px;   /* same vertical size for all */
+  max-width: 160px;   /* also control width so wide logos don't dominate */
   width: auto;
+  height: auto;
   object-fit: contain;
-  transition: transform .2s;
+  display: block;
 }
 .sponsor img:hover{
   transform: translateY(-2px) scale(1.04);
