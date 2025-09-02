@@ -13,7 +13,6 @@
 <style>
   :root{
     --ink:#0b1230;
-    --ink-2:#cfe0ff;
     --line:#e5eaf3;
     --blue:#1e356f;
     --blue-2:#233c86;
@@ -21,11 +20,11 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
-  body{font-family:"Montserrat",sans-serif;color:var(--ink);background:#f7f9ff}
+  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f7f9ff}
   a{text-decoration:none}
 
-  /* NAV BAR */
-  .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--blue-2),var(--blue))}
+  /* ===== NAV BAR (deep-blue with pill buttons) ===== */
+  .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--blue-2),var(--blue));border-bottom:1px solid rgba(255,255,255,.08)}
   .nav .wrap{max-width:1200px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:72px;height:72px;border-radius:50%;background:#fff;border:2px solid rgba(255,255,255,.25);object-fit:contain}
@@ -41,33 +40,46 @@
   .dropdown.open .dropdown-menu{display:block}
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px;color:#e8efff}
   .dropdown-menu a:hover{background:rgba(255,255,255,.10)}
+  @media (max-width:860px){.menu{gap:10px;flex-wrap:wrap}.menu a,.dropdown>button{padding:10px 14px}}
 
-  /* HERO */
-  .hero{padding:44px 0}
-  h1{font-size:60px;margin:0;color:#0b1230}
-  h1 span{color:var(--blue-2)}
-  p.lead{color:#444}
-  .ribbon{margin:18px 0;display:flex;gap:10px;flex-wrap:wrap}
-  .ribbon span{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:700;color:#333}
+  /* ===== Compact HERO ===== */
+  .hero{
+    padding:28px 0 36px;
+    background:linear-gradient(180deg,#f4f7ff 0%, #ffffff 100%);
+    border-bottom:1px solid #e8eef7;
+  }
+  .hero .container{max-width:980px;margin:0 auto;text-align:center}
+  .hero h1{margin:0 0 8px;font-size:40px;line-height:1.18;font-weight:800;letter-spacing:.2px;color:#0f1b3a}
+  .hero h1 .accent{
+    background:linear-gradient(90deg,#2f6be8,#0f59c7);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero .lead{margin:0 auto 16px;max-width:760px;color:#4d5a77}
+  .ribbon{margin:12px auto 0;display:inline-flex;gap:10px}
+  .ribbon span{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#2b3854;font-weight:700}
 
-  .match-tile{margin-top:16px;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 8px 20px rgba(15,47,107,.06);max-width:560px}
-  .match-tile .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-  .chip{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#f9fbff;color:#333;font-size:13px}
-  .teams{display:grid;grid-template-columns:auto 50px auto;align-items:center;gap:10px;margin:2px 0 8px}
-  .teams .team{font-size:20px;font-weight:800}
-  .teams .bw{color:var(--blue-2)}
-  .teams .vs{justify-self:center;font-weight:800;color:#999}
-  .btn{display:inline-flex;padding:10px 16px;border-radius:9999px;background:linear-gradient(180deg,#2f7de5,#1362cc);color:#fff;font-weight:700}
+  /* Match tile */
+  .match-tile{margin:20px auto 0;max-width:720px;padding:14px 16px;border-radius:14px;border:1px solid #e7edf6;background:#fff;box-shadow:0 6px 18px rgba(13,33,83,.06)}
+  .match-tile .meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px;justify-content:center}
+  .chip{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#f6f9ff;color:#2e3b58;font-size:13px}
+  .teams{display:grid;grid-template-columns:1fr 48px 1fr;align-items:center;gap:10px;margin:2px 0 10px}
+  .teams .team{font-size:18px;font-weight:800}
+  .teams .bw{color:#0f59c7}
+  .teams .vs{justify-self:center;font-weight:800;color:#9aa6bf}
+  .actions{display:flex;gap:10px;justify-content:center;align-items:center}
+  .btn{display:inline-flex;padding:10px 18px;border-radius:9999px;background:linear-gradient(180deg,#2f7de5,#1362cc);color:#fff;font-weight:700}
 
-  /* Sections */
+  /* ===== Sections ===== */
   .section{padding:56px 0;background:#f7f9ff;border-top:1px solid #e5eaf3}
+  .container{max-width:1200px;margin:0 auto;padding:0 22px}
+  .card{background:#fff;border:1px solid #e5eaf3;border-radius:18px;box-shadow:0 10px 26px rgba(15,47,107,.06)}
   .sub{color:#555}
 
   /* Fixtures */
   table{width:100%;border-collapse:collapse}
   th,td{padding:14px 12px;border-bottom:1px solid #e5eaf3;text-align:left}
   th{background:#eef3ff;font-weight:800}
-  .badge{padding:6px 10px;border-radius:999px;font-size:12px}
+  .badge{padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid #e5eaf3;background:#fff}
   .league-dfcl{background:rgba(11,92,168,.1);color:#0b5ca8}
   .league-leca{background:rgba(15,169,104,.12);color:#0fa968}
 
@@ -77,13 +89,14 @@
   .sponsor img{max-height:80px;width:auto;filter:grayscale(100%);transition:.2s}
   .sponsor img:hover{filter:grayscale(0%)}
 
+  /* Footer */
   footer{padding:26px 0;border-top:1px solid #e5eaf3;text-align:center;background:#fff;color:#444}
-  footer a{color:var(--blue-2);font-weight:700}
+  footer a{color:#0f59c7;font-weight:700}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ===== NAV ===== -->
 <div class="nav">
   <div class="wrap">
     <div class="brand">
@@ -95,6 +108,7 @@
     </div>
     <nav class="menu">
       <a href="#about" class="active">About</a>
+
       <div class="dropdown" id="dd-leagues">
         <button onclick="toggleDD('dd-leagues')">Leagues ▾</button>
         <div class="dropdown-menu">
@@ -103,35 +117,58 @@
           <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
         </div>
       </div>
+
       <a href="#fixtures">Schedule</a>
+
       <div class="dropdown" id="dd-sponsors">
         <button onclick="toggleDD('dd-sponsors')">Sponsors ▾</button>
         <div class="dropdown-menu">
           <a href="#sponsors">All Sponsors</a>
-          <a href="https://aksharnixglobal.com/" target="_blank">AksharNix Global</a>
+          <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
         </div>
       </div>
+
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- ===== HERO (compact) ===== -->
 <header class="hero">
   <div class="container">
-    <h1>Bharat <span>Warriors</span> Cricket Club</h1>
-    <p class="lead">Community-first cricket in DFW. Training. Fixtures. Trophies. Memories. <strong>Har Har Mahadev.</strong></p>
-    <div class="ribbon"><span>Discipline</span><span>Teamwork</span><span>Respect</span></div>
+    <h1>Bharat <span class="accent">Warriors</span> Cricket Club</h1>
+    <p class="lead">
+      Community-first cricket in DFW. Training. Fixtures. Trophies. Memories.
+      <strong>Har Har Mahadev.</strong>
+    </p>
+
+    <div class="ribbon">
+      <span>Discipline</span>
+      <span>Teamwork</span>
+      <span>Respect</span>
+    </div>
 
     <div class="match-tile">
-      <div class="meta"><span class="chip">LECA</span><span class="chip">Sat • Sep 13 • 11:30 AM</span></div>
-      <div class="teams"><div class="team">Highland Boyz</div><div class="vs">vs</div><div class="team bw">Bharat Warriors</div></div>
-      <div class="meta"><span class="chip">Brentwood, TX</span><a class="btn" href="#fixtures">View schedule</a></div>
+      <div class="meta">
+        <span class="chip">LECA</span>
+        <span class="chip">Sat • Sep 13 • 11:30 AM</span>
+      </div>
+
+      <div class="teams">
+        <div class="team">Highland Boyz</div>
+        <div class="vs">vs</div>
+        <div class="team bw">Bharat Warriors</div>
+      </div>
+
+      <div class="actions">
+        <span class="chip">Brentwood, TX</span>
+        <a class="btn" href="#fixtures">View schedule</a>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- ABOUT -->
+<!-- ===== ABOUT ===== -->
 <section id="about" class="section">
   <div class="container">
     <h2>About</h2>
@@ -139,36 +176,39 @@
   </div>
 </section>
 
-<!-- FIXTURES -->
+<!-- ===== FIXTURES ===== -->
 <section id="fixtures" class="section">
   <div class="container">
     <h2>Fixtures</h2>
     <div class="card" style="overflow:auto">
       <table id="fxTable">
-        <thead><tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr></thead>
+        <thead>
+          <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
+        </thead>
         <tbody>
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
           <tr data-league="LECA"><td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td><td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Slayers</td></tr>
+          <tr data-league="LECA"><td>Oct 11, 2025</td><td>Raging Bulls 🆚 BW</td><td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Copart Wrecking Crew</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- SPONSORS -->
+<!-- ===== SPONSORS ===== -->
 <section id="sponsors" class="section">
   <div class="container">
     <h2>Sponsors</h2>
     <div class="sponsor-row">
       <div class="sponsor"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
       <div class="sponsor"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
-      <div class="sponsor"><a href="https://aksharnixglobal.com/" target="_blank"><img src="aksharnix-global-logo.png" alt="AksharNix Global"></a></div>
+      <div class="sponsor"><a href="https://aksharnixglobal.com/" target="_blank" rel="noopener"><img src="aksharnix-global-logo.png" alt="AksharNix Global"></a></div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ===== CONTACT ===== -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
@@ -181,14 +221,18 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer>
-  © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas<br>
-  Site created by <a href="https://aksharnixglobal.com/" target="_blank">AksharNix Global</a>
+  © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
+  <br>
+  Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
 </footer>
 
 <script>
+  // year
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // dropdowns
   function toggleDD(id){
     const dd=document.getElementById(id);
     const open=dd.classList.contains('open');
@@ -199,12 +243,28 @@
     const open=document.querySelector('.dropdown.open');
     if(open && !open.contains(e.target)) open.classList.remove('open');
   });
+
+  // league filter (kept simple)
+  let currentLeague='ALL';
+  function filterLeague(lg){
+    currentLeague=lg;
+    const q='';
+    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
+      const matchesLeague=(currentLeague==='ALL')||(tr.dataset.league===currentLeague);
+      tr.style.display=matchesLeague?'':'none';
+    });
+    document.getElementById('fixtures').scrollIntoView({behavior:'smooth'});
+  }
+
+  // contact mailto
   function sendMail(e){
     e.preventDefault();
-    const name=document.getElementById('name').value;
-    const email=document.getElementById('email').value;
-    const msg=document.getElementById('msg').value;
-    window.location.href=`mailto:aksharnixglobal@gmail.com?subject=BW Inquiry from ${encodeURIComponent(name)}&body=Email:${encodeURIComponent(email)}%0D%0A%0D%0A${encodeURIComponent(msg)}`;
+    const name=document.getElementById('name').value.trim();
+    const email=document.getElementById('email').value.trim();
+    const msg=document.getElementById('msg').value.trim();
+    const subject=encodeURIComponent('BW Club Inquiry from '+name);
+    const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+    window.location.href=`mailto:aksharnixglobal@gmail.com?subject=${subject}&body=${body}`;
   }
 </script>
 </body>
