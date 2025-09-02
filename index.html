@@ -112,12 +112,16 @@
   box-shadow: 0 6px 14px rgba(20,60,120,.1);
 }
 .sponsor img {
-  max-height: 70px;   /* same vertical size for all */
-  max-width: 160px;   /* also control width so wide logos don't dominate */
+  max-width: 160px;   /* consistent width */
+  max-height: 60px;   /* consistent height */
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
+  background: #fff;
+  padding: 4px 10px;  /* adds white margin inside to balance square logos */
+  border-radius: 6px;
+}
 }
 .sponsor img:hover{
   transform: translateY(-2px) scale(1.04);
