@@ -1,240 +1,456 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bharat Warriors Cricket Club</title>
-  <meta name="description" content="Official website of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, contact." />
-  <link rel="icon" href="favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bharat Warriors Cricket Club</title>
+<meta name="description" content="Official website of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, contact." />
+<link rel="icon" href="favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --saffron:#ff6a00;
-      --blue:#0b5ca8;
-      --green:#0fa968;
-      --line:rgba(255,255,255,.14);
-      --card:rgba(255,255,255,.06);
-      --muted:#cfe0ff;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%}
-    body{
-      font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      color:#fff;
-      background: radial-gradient(1100px 520px at 18% -10%, var(--blue) 0%, #071e37 40%, #041423 100%);
-    }
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 22px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:16px;border:1px solid var(--line);background:var(--saffron);color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.25)}
-    .btn.alt{background:transparent}
-    .chip{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);font-size:12px;margin-right:6px}
-    .card{background:var(--card);border:1px solid var(--line);border-radius:18px}
-    .shadow{box-shadow:0 10px 30px rgba(0,0,0,.3)}
+<style>
+  :root{
+    --ink:#0a1220;             /* main text */
+    --ink-2:#324053;           /* secondary text */
+    --paper:#f7f9ff;           /* page bg */
+    --card:#ffffff;            /* cards/nav bg */
+    --line:#e3e8f2;            /* borders */
+    --saffron:#ff6a00;         /* 🇮🇳 accent */
+    --green:#0fa968;           /* 🇮🇳 accent */
+    --blue:#0b5ca8;            /* team blue */
+    --highlight:#eaf2ff;       /* soft blue tint */
+  }
 
-    /* NAV */
-    .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(160%) blur(8px);background:rgba(0,0,0,.45);border-bottom:1px solid var(--line)}
-    .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{
-      width:70px;
-      height:70px;
-      border-radius:50%;
-      object-fit:contain;
-      background:#fff;
-      border:2px solid rgba(255,255,255,.18)
-    }
-    .brand .title{font-weight:800;letter-spacing:.2px}
-    .brand .tag{font-size:12px;color:#d6deee;margin-top:-2px}
-    .menu{display:none;gap:8px}
-    .menu a{padding:8px 12px;border-radius:10px;border:1px solid transparent}
-    .menu a:hover{border-color:var(--line);background:rgba(255,255,255,.06)}
-    @media(min-width:900px){.menu{display:flex}}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 500px at 20% -10%, #ffffff 0%, #f4f7ff 40%, #eef3ff 100%);
+  }
+  a{color:inherit;text-decoration:none}
 
-    /* Dropdown */
-    .dropdown { position: relative; }
-    .dropdown > a {padding:8px 12px;border-radius:10px;cursor:pointer}
-    .dropdown:hover > a {border-color:var(--line); background:rgba(255,255,255,.06);}
-    .dropdown-menu{
-      position:absolute; top:110%; left:0; min-width:160px;
-      background:rgba(0,0,0,.88); border:1px solid var(--line); border-radius:12px;
-      display:none; padding:6px;
-    }
-    .dropdown:hover .dropdown-menu{ display:block; }
-    .dropdown-menu a{
-      display:block; padding:10px 12px; border-radius:10px;
-    }
-    .dropdown-menu a:hover{ background:rgba(255,255,255,.06); }
-    .filter-chip{margin-left:10px;padding:6px 10px;border:1px solid var(--line);
-      border-radius:999px;background:rgba(255,255,255,.06);font-size:12px}
+  /* Top tricolor bar */
+  .tricolor{
+    height:4px; display:flex; width:100%;
+    background: linear-gradient(90deg,var(--saffron) 0 33%, #ffffff 33% 66%, var(--green) 66% 100%);
+  }
 
-    /* HERO */
-    .hero{padding:48px 0 84px}
-    .grid{display:grid;gap:24px}
-    @media(min-width:900px){.hero .grid{grid-template-columns:1.2fr .8fr}}
-    h1{font-size:46px;line-height:1.05;margin:0}
-    @media(min-width:900px){h1{font-size:66px}}
-    h2{font-size:32px;margin:0 0 6px;color:var(--saffron)}
-    p.lead{color:#e8edf7;opacity:.95}
-    .hero .cta{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px}
+  /* NAV */
+  .nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--card);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:saturate(140%) blur(6px);
+  }
+  .nav .wrap{
+    max-width:1200px;margin:0 auto;padding:10px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{
+    width:70px;height:70px;border-radius:50%;
+    object-fit:contain;background:#fff;border:2px solid #d9e2f1;
+    box-shadow:0 2px 6px rgba(15,44,100,.08);
+  }
+  .brand .title{font-weight:800;letter-spacing:.2px;color:var(--blue)}
+  .brand .tag{font-size:12px;color:var(--ink-2);margin-top:-2px}
 
-    /* Fixtures */
-    .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0 18px}
-    .input{padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:#fff;min-width:240px}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
-    th{color:var(--muted);font-weight:700}
-    tbody tr:hover{background:rgba(255,255,255,.03)}
-    .badge{display:inline-block;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);font-size:12px}
+  .menu{display:none;gap:6px;align-items:center}
+  .menu a, .dropdown > a{
+    padding:10px 12px;border-radius:10px;border:1px solid transparent;color:var(--ink-2);
+  }
+  .menu a:hover, .dropdown:hover > a{
+    border-color:var(--line); background:#f6f9ff; color:var(--ink);
+  }
+  @media(min-width:900px){.menu{display:flex}}
 
-    /* Sponsors */
-    .sponsors{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    @media(min-width:700px){.sponsors{grid-template-columns:repeat(3,1fr)}}
-    .sponsor{padding:16px;display:flex;align-items:center;justify-content:center;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
-    .sponsor img {
-      max-height: 80px;
-      width: auto;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto;
-      filter: grayscale(100%);
-      transition: filter 0.3s ease;
-    }
-    .sponsor img:hover { filter: grayscale(0%); }
+  /* Dropdown */
+  .dropdown{position:relative}
+  .dropdown-menu{
+    position:absolute; top:110%; left:0; min-width:160px;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 10px 30px rgba(14,56,120,.08);
+    display:none; padding:6px;
+  }
+  .dropdown:hover .dropdown-menu{display:block}
+  .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
+  .dropdown-menu a:hover{background:#f3f7ff;color:var(--ink)}
 
-    footer{padding:30px 0;border-top:1px solid var(--line);color:#cfe0ff;text-align:center;font-size:14px}
-  </style>
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:12px 18px;
+    border-radius:14px;border:1px solid #d7e6ff;background:linear-gradient(180deg,#2f7de5,#1362cc);
+    color:#fff;font-weight:800;box-shadow:0 10px 20px rgba(19,98,204,.18);
+  }
+  .btn.alt{
+    background:#fff;color:var(--blue);border:1px solid #cfe0ff;font-weight:700;
+  }
+
+  .container{max-width:1200px;margin:0 auto;padding:0 22px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    box-shadow:0 10px 26px rgba(15,47,107,.06);
+  }
+
+  /* HERO */
+  .hero{padding:42px 0 60px}
+  .grid{display:grid;gap:24px}
+  @media(min-width:900px){.hero .grid{grid-template-columns:1.1fr .9fr}}
+
+  h1{font-size:48px;line-height:1.06;margin:0;color:var(--ink)}
+  @media(min-width:900px){h1{font-size:66px}}
+  h1 span{color:var(--blue)}
+  h2{font-size:30px;margin:0 0 6px;color:var(--ink);letter-spacing:.2px}
+  p.lead{color:var(--ink-2);opacity:.95}
+
+  /* Decorative cricket seam panel (no photos) */
+  .panel{height:440px;border-radius:18px;border:1px solid var(--line);overflow:hidden}
+  .panel .top{
+    height:70%; background:
+      radial-gradient(700px 240px at 10% 20%, #fff 0%, #f6fbff 40%, #eaf4ff 100%);
+    position:relative;
+  }
+  .seam{
+    position:absolute; inset:auto 10% -20px 10%; height:8px; background:var(--saffron);
+    border-radius:999px; box-shadow:0 6px 16px rgba(255,106,0,.25);
+  }
+  .stamps{
+    display:flex; gap:8px; padding:12px;
+  }
+  .sticker{
+    padding:6px 10px;border-radius:999px;border:1px solid var(--line);
+    background:#fff;color:var(--ink-2);font-size:12px
+  }
+  .panel .bottom{
+    height:30%; background:linear-gradient(0deg,#eafff1,#f7fff9);
+    border-top:1px solid var(--line);
+  }
+
+  /* SECTION */
+  .section{padding:56px 0;border-top:1px solid var(--line);background:var(--paper)}
+  .sub{color:var(--ink-2)}
+
+  /* Fixtures */
+  .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0 18px}
+  .input{
+    padding:12px 14px;border-radius:12px;border:1px solid var(--line);
+    background:#fff;color:var(--ink);min-width:240px
+  }
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
+  th{color:var(--ink);font-weight:800;background:#f4f8ff}
+  tbody tr:hover{background:#fffdf6}
+  .badge{
+    display:inline-block;padding:6px 10px;border:1px solid var(--line);
+    border-radius:999px;background:#fff;color:var(--ink-2);font-size:12px
+  }
+
+  /* Squad (kept simple) */
+  .squad{display:grid;gap:16px;grid-template-columns:repeat(1,1fr)}
+  @media(min-width:700px){.squad{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1000px){.squad{grid-template-columns:repeat(3,1fr)}}
+  .player{padding:16px}
+  .player h3{margin:0 0 6px;color:var(--ink)}
+  .player small{color:var(--ink-2)}
+
+  /* Sponsors */
+  .sponsors{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(min-width:700px){.sponsors{grid-template-columns:repeat(3,1fr)}}
+  .sponsor{
+    padding:16px;display:flex;align-items:center;justify-content:center;
+    border-radius:14px;border:1px solid var(--line);background:#fff
+  }
+  .sponsor img{
+    max-height:80px;width:auto;object-fit:contain;display:block;margin:0 auto;
+    filter:grayscale(100%);transition:filter .25s ease, transform .2s ease;
+  }
+  .sponsor img:hover{filter:grayscale(0%); transform:translateY(-2px)}
+
+  /* Footer */
+  footer{
+    padding:26px 0;border-top:1px solid var(--line);
+    color:var(--ink-2); text-align:center; font-size:14px; background:#fff;
+  }
+  .credit a{color:var(--blue);font-weight:700}
+</style>
 </head>
 <body>
-  <!-- NAV -->
-  <div class="nav">
-    <div class="container wrap">
-      <div class="brand">
-        <img src="bharat-warriors-logo.png" alt="Bharat Warriors logo">
-        <div>
-          <div class="title">Bharat Warriors</div>
-          <div class="tag">We play as ONE.</div>
+
+<!-- Tricolor accent -->
+<div class="tricolor"></div>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <img src="bharat-warriors-logo.png" alt="Bharat Warriors logo">
+      <div>
+        <div class="title">Bharat Warriors</div>
+        <div class="tag">We play as ONE.</div>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a href="#about">About</a>
+
+      <div class="dropdown">
+        <a>Leagues ▾</a>
+        <div class="dropdown-menu">
+          <a href="#fixtures" onclick="filterLeague('ALL')">All</a>
+          <a href="#fixtures" onclick="filterLeague('DFCL')">DFCL</a>
+          <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
         </div>
       </div>
-      <nav class="menu">
-        <a href="#about">About</a>
-        <div class="dropdown">
-          <a>Leagues ▾</a>
-          <div class="dropdown-menu">
-            <a href="#fixtures" onclick="filterLeague('ALL')">All</a>
-            <a href="#fixtures" onclick="filterLeague('DFCL')">DFCL</a>
-            <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
+
+      <a href="#fixtures">Fixtures</a>
+      <a href="#squad">Squad</a>
+      <a href="#sponsors">Sponsors</a>
+      <a href="#contact">Contact</a>
+      <a class="btn alt" href="#join">Join</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container grid">
+    <div>
+      <h1>Bharat <span>Warriors</span> Cricket Club</h1>
+      <p class="lead" style="max-width:640px">
+        Community-first cricket in DFW. Training. Fixtures. Trophies. Memories. <strong>Har Har Mahadev.</strong>
+      </p>
+
+      <!-- Next Fixture (kept compact; update as needed) -->
+      <div class="card" style="margin-top:18px;padding:16px 18px;max-width:560px">
+        <div style="font-weight:800;color:var(--ink)">Next Fixture
+          <span style="margin-left:8px" class="badge">LECA Fall 2025</span>
+        </div>
+        <div style="display:grid;gap:6px;color:var(--ink-2);margin-top:6px">
+          <div>🛡️ Vs <strong>Highland Boyz</strong></div>
+          <div>📆 Sat, Sep 13, 2025 • 11:30 AM</div>
+          <div>📍 Brentwood, TX</div>
+          <div style="margin-top:8px">
+            <a class="btn" href="#fixtures">📅 View full schedule</a>
           </div>
         </div>
-        <a href="#fixtures">Fixtures</a>
-        <a href="#squad">Squad</a>
-        <a href="#sponsors">Sponsors</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      </div>
+    </div>
+
+    <!-- Decorative cricket panel -->
+    <div class="panel card">
+      <div class="top">
+        <div class="stamps">
+          <span class="sticker">DFCL</span>
+          <span class="sticker">LECA</span>
+          <span class="sticker">Spirit • Discipline</span>
+        </div>
+        <div class="seam"></div>
+      </div>
+      <div class="bottom"></div>
     </div>
   </div>
+</header>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="container grid">
-      <div>
-        <h1>Bharat <span style="color:var(--saffron)">Warriors</span> Cricket Club</h1>
-        <p class="lead">Community-first cricket in DFW. Training. Fixtures. Trophies. Memories. <strong>Har Har Mahadev.</strong></p>
-        <div class="cta">
-          <a class="btn" href="#fixtures">📅 Upcoming Matches</a>
-        </div>
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <h2>About the Club</h2>
+    <p class="sub">Bharat Warriors is a player-led cricket club competing across DFCL, LECA and local tournaments. We focus on discipline, inclusivity and giving back to the community.</p>
+    <div class="grid" style="margin-top:18px;grid-template-columns:repeat(3,1fr)">
+      <div class="card" style="padding:16px 18px">
+        <strong style="color:var(--blue)">Community</strong>
+        <p class="sub">Open trials, training nets, and mentorship for new players.</p>
+      </div>
+      <div class="card" style="padding:16px 18px">
+        <strong style="color:var(--saffron)">Performance</strong>
+        <p class="sub">Clear roles, data-driven selections, and fitness culture.</p>
+      </div>
+      <div class="card" style="padding:16px 18px">
+        <strong style="color:var(--green)">Legacy</strong>
+        <p class="sub">Compete hard, win fair, and celebrate together.</p>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- FIXTURES -->
-  <section id="fixtures" class="section">
-    <div class="container">
-      <h2>Fixtures & Results</h2>
-      <div class="toolbar">
-        <input id="search" class="input" type="search" placeholder="Search fixtures…" oninput="filterFixtures()"/>
-      </div>
-      <div class="card" style="overflow:auto">
-        <table id="fxTable">
-          <thead>
-            <tr>
-              <th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-league="LECA"><td>Aug 17, 2025</td><td>ELXR Indi Blue 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>Forfeit Win</td><td>—</td></tr>
-            <tr data-league="DFCL"><td>Aug 23, 2025</td><td>Bullets 🆚 BW</td><td>Frisco</td><td>DFCL</td><td></td><td>W by 24 runs</td><td>—</td></tr>
-            <tr data-league="DFCL"><td>Aug 31, 2025</td><td>Sharks 🆚 BW</td><td>Plano</td><td>DFCL</td><td></td><td>L by 3 wkts</td><td>—</td></tr>
-            <tr data-league="LECA"><td>Sep 07, 2025</td><td>Texas Knights 🆚 BW</td><td>Hackberry</td><td></td><td>LECA</td><td>—</td><td>—</td></tr>
-            <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td>LECA</td><td>—</td><td>DXN United</td></tr>
-          </tbody>
-        </table>
+<!-- FIXTURES -->
+<section id="fixtures" class="section">
+  <div class="container">
+    <h2>Fixtures & Results</h2>
+    <p class="sub">Use the Leagues dropdown to view DFCL or LECA only. Type in the search box to filter by opponent, ground, or date.</p>
+    <div class="toolbar">
+      <input id="search" class="input" type="search" placeholder="Search fixtures… (e.g., Knights, Hackberry)" oninput="filterFixtures()"/>
+      <span class="badge">Time zone: America/Chicago</span>
+    </div>
+
+    <div class="card" style="overflow:auto">
+      <table id="fxTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Opponent</th>
+            <th>Ground</th>
+            <th>DFCL</th>
+            <th>LECA</th>
+            <th>Result</th>
+            <th>Umpires</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Past -->
+          <tr data-league="LECA">
+            <td>Aug 17, 2025 – 11:00 AM</td>
+            <td>ELXR Indi Blue 🆚 Bharat Warriors</td>
+            <td>Hackberry, TX</td>
+            <td></td><td>LECA</td><td>Forfeit Win</td><td>—</td>
+          </tr>
+          <tr data-league="DFCL">
+            <td>Aug 23, 2025 – 11:00 AM</td>
+            <td>Bullets 🆚 Bharat Warriors</td>
+            <td>Frisco, TX</td>
+            <td>DFCL</td><td></td><td>W by 24 runs</td><td>—</td>
+          </tr>
+          <tr data-league="DFCL">
+            <td>Aug 31, 2025 – 11:00 AM</td>
+            <td>Sharks 🆚 Bharat Warriors</td>
+            <td>Plano, TX</td>
+            <td>DFCL</td><td></td><td>L by 3 wkts</td><td>—</td>
+          </tr>
+
+          <!-- Upcoming -->
+          <tr data-league="LECA">
+            <td>Sep 07, 2025 – 11:00 AM</td>
+            <td>Texas Knights 🆚 Bharat Warriors</td>
+            <td>Hackberry, TX</td>
+            <td></td><td>LECA</td><td>—</td><td>—</td>
+          </tr>
+          <tr data-league="LECA">
+            <td>Sep 13, 2025 – 11:30 AM</td>
+            <td>Highland Boyz 🆚 Bharat Warriors</td>
+            <td>Brentwood, TX</td>
+            <td></td><td>LECA</td><td>—</td><td>DXN United</td>
+          </tr>
+          <tr data-league="LECA">
+            <td>Sep 28, 2025 – 3:30 PM</td>
+            <td>The Topdogs 🆚 Bharat Warriors</td>
+            <td>Brentwood, TX</td>
+            <td></td><td>LECA</td><td>—</td><td>Legacy Lonestars</td>
+          </tr>
+          <tr data-league="LECA">
+            <td>Oct 05, 2025 – 11:30 AM</td>
+            <td>Singhams India 101 🆚 Bharat Warriors</td>
+            <td>Hackberry, TX</td>
+            <td></td><td>LECA</td><td>—</td><td>Slayers</td>
+          </tr>
+          <tr data-league="LECA">
+            <td>Oct 11, 2025 – 11:30 AM</td>
+            <td>Raging Bulls 🆚 Bharat Warriors</td>
+            <td>Hackberry, TX</td>
+            <td></td><td>LECA</td><td>—</td><td>Copart Wrecking Crew</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SQUAD -->
+<section id="squad" class="section">
+  <div class="container">
+    <h2>Squad</h2>
+    <div class="squad">
+      <div class="card player"><h3>P. Patel</h3><small>Captain • Batter</small></div>
+      <div class="card player"><h3>Varun</h3><small>Vice Captain • Bat/WK</small></div>
+      <div class="card player"><h3>Raj</h3><small>All-rounder</small></div>
+      <div class="card player"><h3>Darshan</h3><small>Wicket-Keeper</small></div>
+      <div class="card player"><h3>Ajay</h3><small>Bowler • Pace</small></div>
+      <div class="card player"><h3>Krunal</h3><small>Bowler • Spin</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sponsors" class="section">
+  <div class="container">
+    <h2>Sponsors</h2>
+    <p class="sub">Thank you to our partners for powering the Bharat Warriors journey.</p>
+    <div class="sponsors" style="margin-top:12px">
+      <div class="sponsor"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
+      <div class="sponsor"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
+      <div class="sponsor">
+        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer">
+          <img src="aksharnix-global-logo.png" alt="AksharNix Global">
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SPONSORS -->
-  <section id="sponsors" class="section">
-    <div class="container">
-      <h2>Sponsors</h2>
-      <div class="sponsors">
-        <div class="sponsor"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
-        <div class="sponsor"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
-        <div class="sponsor">
-          <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer">
-            <img src="aksharnix-global-logo.png" alt="AksharNix Global">
-          </a>
-        </div>
-      </div>
+<!-- CONTACT / JOIN -->
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Contact</h2>
+    <p class="sub">For friendlies, sponsorships, or trials, reach out. You can also email <a href="mailto:aksharnixglobal@gmail.com">aksharnixglobal@gmail.com</a>.</p>
+    <form class="card" style="padding:16px;display:grid;gap:12px;grid-template-columns:1fr 1fr" onsubmit="sendMail(event)">
+      <input id="name" required placeholder="Your name" />
+      <input id="email" type="email" required placeholder="Your email" />
+      <input id="phone" placeholder="Phone (optional)" />
+      <textarea id="msg" required placeholder="How can we help?" style="grid-column:1/-1;min-height:120px"></textarea>
+      <div><button class="btn" type="submit">Send</button></div>
+    </form>
+
+    <div id="join" class="card" style="margin-top:18px;padding:16px 18px">
+      <strong>Want to join the club?</strong>
+      <p class="sub" style="margin:6px 0 0">Open trials monthly. Share your role, experience, and availability.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2>Contact</h2>
-      <form class="form card" style="padding:16px" onsubmit="sendMail(event)">
-        <input id="name" required placeholder="Your name" />
-        <input id="email" type="email" required placeholder="Your email" />
-        <textarea id="msg" required placeholder="Your message"></textarea>
-        <div><button class="btn" type="submit">Send</button></div>
-      </form>
-    </div>
-  </section>
+<!-- FOOTER -->
+<footer>
+  © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
+  <br>
+  <span class="credit">Site created by
+    <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer">AksharNix Global</a>
+  </span>
+</footer>
 
-  <!-- FOOTER -->
-  <footer>
-    © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
-    <br>
-    Site created by 
-    <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer" style="color:#fff;font-weight:600;">
-      AksharNix Global
-    </a>
-  </footer>
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    let currentLeague = 'ALL';
-    function filterFixtures(){
-      const q = (document.getElementById('search')?.value || '').trim().toLowerCase();
-      document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-        const matchesText = tr.textContent.toLowerCase().includes(q);
-        const matchesLeague = (currentLeague === 'ALL') || (tr.dataset.league === currentLeague);
-        tr.style.display = (matchesText && matchesLeague) ? '' : 'none';
-      });
-    }
-    function filterLeague(lg){ currentLeague = lg; filterFixtures(); }
-    function sendMail(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('msg').value.trim();
-      const subject = encodeURIComponent('BW Club Inquiry from '+name);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
-      window.location.href = `mailto:aksharnixglobal@gmail.com?subject=${subject}&body=${body}`;
-    }
-  </script>
+  // League filter + search
+  let currentLeague = 'ALL'; // 'ALL' | 'DFCL' | 'LECA'
+
+  function filterFixtures(){
+    const q = (document.getElementById('search')?.value || '').trim().toLowerCase();
+    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
+      const matchesText = tr.textContent.toLowerCase().includes(q);
+      const matchesLeague = (currentLeague === 'ALL') || (tr.dataset.league === currentLeague);
+      tr.style.display = (matchesText && matchesLeague) ? '' : 'none';
+    });
+  }
+  function filterLeague(lg){
+    currentLeague = lg; filterFixtures();
+    const fx = document.getElementById('fixtures');
+    if (fx) fx.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  document.addEventListener('DOMContentLoaded', filterFixtures);
+
+  // Contact form (mailto)
+  function sendMail(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = (document.getElementById('phone')?.value || '').trim();
+    const msg = document.getElementById('msg').value.trim();
+    const subject = encodeURIComponent('BW Club Inquiry from '+name);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${msg}`);
+    window.location.href = `mailto:aksharnixglobal@gmail.com?subject=${subject}&body=${body}`;
+  }
+</script>
 </body>
 </html>
