@@ -9,17 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
-  /* ===== Bharat Warriors palette ===== */
   :root{
     --ink:#0b1220; --muted:#4c5d7a; --line:#e7eef9;
     --navy-900:#0a1024; --navy-800:#0e1f3a;
-    --blue-brand:#0f66d2;    /* AksharNix blue */
-    --saffron:#ff7a00;       /* tricolor saffron */
-    --green-brand:#138a36;   /* tricolor green  */
-    --gold:#f2c14e;          /* Infinity gold   */
+    --blue-brand:#0f66d2; --saffron:#ff7a00; --green-brand:#138a36; --gold:#f2c14e;
     --paper:#f8fbff;
   }
-
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   html,body{margin:0;height:100%}
@@ -28,7 +23,7 @@
   .container{max-width:1200px;margin:0 auto;padding:0 22px}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(15,47,107,.08)}
 
-  /* ===== NAV ===== */
+  /* NAV */
   .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--navy-900),var(--navy-800));border-bottom:1px solid rgba(255,255,255,.12)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 22px}
   .brand{display:flex;align-items:center;gap:12px}
@@ -54,40 +49,30 @@
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* ===== HERO — visible TRI-COLOR diagonal bands ===== */
+  /* HERO — bold tricolor */
   .hero{
     position:relative; overflow:hidden; padding:90px 0 108px;
     background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
     border-bottom:1px solid var(--line);
   }
-  /* Main tricolor stripe (clearly visible) */
   .hero .tri{
-    position:absolute; inset:-15% -10% -15% -10%;
-    transform:rotate(-14deg);
+    position:absolute; inset:-15% -10% -15% -10%; transform:rotate(-14deg);
     background:linear-gradient(90deg, var(--saffron) 0 33%, #ffffff 33% 66%, var(--green-brand) 66% 100%);
-    opacity:.55; /* increase/decrease if you want stronger/weaker */
-    filter:saturate(120%);
-    pointer-events:none;
+    opacity:.55; filter:saturate(120%); pointer-events:none;
   }
-  /* Soft moving highlight across the tricolor */
   .hero .tri::after{
     content:""; position:absolute; inset:-20%;
     background:linear-gradient(90deg, transparent 0 40%, rgba(255,255,255,.35) 50%, transparent 60%);
-    animation:sweep 8s linear infinite;
-    mix-blend-mode:overlay;
+    animation:sweep 8s linear infinite; mix-blend-mode:overlay;
   }
   @keyframes sweep{0%{transform:translateX(-40%)}100%{transform:translateX(40%)}}
-
-  /* light texture so it doesn’t feel flat */
   .hero::after{
     content:""; position:absolute; inset:0;
     background:
       linear-gradient(135deg, rgba(0,0,0,.06) 0 1px, transparent 1px 24px),
       linear-gradient(45deg, rgba(0,0,0,.05) 0 1px, transparent 1px 24px);
-    background-size:24px 24px, 24px 24px;
-    mix-blend-mode:overlay; opacity:.18; pointer-events:none;
+    background-size:24px 24px, 24px 24px; mix-blend-mode:overlay; opacity:.18; pointer-events:none;
   }
-
   .hero .container{position:relative;text-align:center}
   h1{margin:0 0 10px;font-size:52px;line-height:1.06;font-weight:900;color:#0f1b3a;text-shadow:0 1px 0 rgba(255,255,255,.6)}
   h1 .accent{background:linear-gradient(90deg,var(--blue-brand),#0b5ac1);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -101,7 +86,7 @@
     background:linear-gradient(180deg,var(--saffron),#e56500);border:1px solid #ffd3b0;box-shadow:0 8px 20px rgba(229,101,0,.35);
   }
 
-  /* ===== Sections ===== */
+  /* Sections */
   .section{padding:64px 0;background:var(--paper);border-top:1px solid var(--line)}
   .section h2{margin:0 0 14px;font-size:30px;font-weight:800;color:#0f1b3a}
   .section h2::after{
@@ -111,7 +96,7 @@
   }
   .sub{color:var(--muted)}
 
-  /* ===== Fixtures ===== */
+  /* Fixtures */
   table{width:100%;border-collapse:collapse}
   th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
   th{background:linear-gradient(180deg,#f2f7ff,#e9f1ff);color:#0f1b3a;font-weight:900}
@@ -119,28 +104,30 @@
   .league-dfcl{background:rgba(15,102,210,.12);color:var(--blue-brand)}
   .league-leca{background:rgba(19,138,54,.14);color:var(--green-brand)}
 
-  /* ===== Sponsors ===== */
+  /* Sponsors (3 across on desktop) */
   .sponsor-row{display:grid;gap:18px;grid-auto-rows:1fr}
   @media (min-width:900px){.sponsor-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media (min-width:600px) and (max-width:899px){.sponsor-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (max-width:599px){.sponsor-row{grid-template-columns:1fr}}
-
   .sponsor{
     padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:#fff;border:1px solid var(--line);border-radius:16px;height:180px;
     box-shadow:0 10px 24px rgba(15,47,107,.08);transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease;
   }
   .sponsor:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(15,47,107,.14);border-color:#d6e3ff}
-
   .logo-frame{
     width:240px;height:80px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;
     overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3
   }
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-  /* ===== Footer ===== */
+  /* Footer */
   footer{padding:28px 0;text-align:center;background:#fff;color:#334062;border-top:1px solid var(--line)}
   footer a{color:var(--blue-brand);font-weight:700}
+
+  /* Contact email style */
+  .contact-email{margin:6px 0 16px;font-weight:700;color:#0f1b3a}
+  .contact-email a{color:var(--blue-brand);text-decoration:underline;font-weight:800}
 </style>
 </head>
 <body>
@@ -185,7 +172,7 @@
   </div>
 </div>
 
-<!-- HERO with visible TRI-COLOR -->
+<!-- HERO -->
 <header class="hero">
   <div class="tri"></div>
   <div class="container">
@@ -270,15 +257,30 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT (emails to bharatwarriors2024@gmail.com via FormSubmit) -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
-    <form class="card" style="padding:16px;display:grid;gap:12px" onsubmit="sendMail(event)">
-      <input id="name" required placeholder="Your name" />
-      <input id="email" type="email" required placeholder="Your email" />
-      <textarea id="msg" required placeholder="Your message"></textarea>
+    <p class="contact-email">📧 Email:
+      <a href="mailto:bharatwarriors2024@gmail.com">bharatwarriors2024@gmail.com</a>
+    </p>
+
+    <form id="contact-form"
+          action="https://formsubmit.co/bharatwarriors2024@gmail.com"
+          method="POST"
+          class="card" style="padding:16px;display:grid;gap:12px">
+      <input name="name" required placeholder="Your name" />
+      <input name="email" type="email" required placeholder="Your email" />
+      <textarea name="message" required placeholder="Your message"></textarea>
+
+      <!-- Optional extras -->
+      <input type="hidden" name="_subject"  value="BW Club Inquiry" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text"   name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="_captcha" value="false" />
+
       <div><button class="btn" type="submit">Send</button></div>
+      <p id="form-status" class="sub" style="margin:6px 0 0"></p>
     </form>
   </div>
 </section>
@@ -287,6 +289,7 @@
 <footer>
   © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
   <br>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
+  <br><a href="mailto:bharatwarriors2024@gmail.com">bharatwarriors2024@gmail.com</a>
 </footer>
 
 <script>
@@ -314,16 +317,31 @@
     document.getElementById('fixtures').scrollIntoView({behavior:'smooth'});
   }
 
-  // contact mailto
-  function sendMail(e){
+  // AJAX submit to FormSubmit (stay on page and show message)
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name=document.getElementById('name').value.trim();
-    const email=document.getElementById('email').value.trim();
-    const msg=document.getElementById('msg').value.trim();
-    const subject=encodeURIComponent('BW Club Inquiry from '+name);
-    const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
-    window.location.href=`mailto:aksharnixglobal@gmail.com?subject=${subject}&body=${body}`;
-  }
+    status.textContent = 'Sending...';
+    try {
+      const resp = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (resp.ok) {
+        status.textContent = 'Thanks! We will reply soon.';
+        form.reset();
+      } else {
+        const data = await resp.json().catch(()=> ({}));
+        status.textContent = data.errors
+          ? data.errors.map(err=>err.message).join(', ')
+          : 'Oops, something went wrong.';
+      }
+    } catch(err){
+      status.textContent = 'Network error. Please try again.';
+    }
+  });
 </script>
 </body>
 </html>
