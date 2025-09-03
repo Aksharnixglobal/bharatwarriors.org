@@ -7,26 +7,49 @@
 <meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+
 <style>
+  /* ===== Bharat Warriors palette (from logos) =====
+     Navy base, AksharNix blue, Saffron, India Green, Infinity Gold
+  */
   :root{
-    --ink:#0b1230; --muted:#5c6a85; --line:#e6ecf6;
-    --blue-900:#0f2a6b; --blue-700:#1a43a2; --blue-600:#1757d1; --blue-500:#2f7de5;
-    --saffron:#ff7b1a; --green:#1dbf82; --sun:#ffc83d; --paper:#f7f9ff;
+    --ink:#0b1220;
+    --muted:#4c5d7a;
+    --line:#e7eef9;
+
+    --navy-900:#0a1024;
+    --navy-800:#0e1f3a;
+
+    --blue-brand:#0f66d2;     /* AksharNix blue */
+    --saffron:#ff7a00;        /* BW saffron */
+    --green-brand:#138a36;    /* India green */
+    --gold:#f2c14e;           /* Infinity gold */
+
+    --paper:#f8fbff;          /* page background */
   }
+
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   html,body{margin:0;height:100%}
-  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f7f9ff}
+  body{
+    font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+  }
   a{text-decoration:none;color:inherit}
   .container{max-width:1200px;margin:0 auto;padding:0 22px}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(15,47,107,.08)}
 
   /* ===== NAV ===== */
-  .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--blue-900),var(--blue-700));border-bottom:1px solid rgba(255,255,255,.12)}
+  .nav{
+    position:sticky;top:0;z-index:60;
+    background:linear-gradient(180deg,var(--navy-900),var(--navy-800));
+    border-bottom:1px solid rgba(255,255,255,.12)
+  }
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 22px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:90px;height:90px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 6px 14px rgba(0,0,0,.18)}
-  .brand .title{font-weight:800;letter-spacing:.3px;color:var(--sun)}
+  .brand .title{font-weight:800;letter-spacing:.3px;color:var(--gold)}
   .brand .tag{font-size:12px;color:#e6eeff;opacity:.95}
   .menu{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
   .menu a,.dropdown>button{
@@ -40,7 +63,7 @@
   .menu .active{background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.18))}
   .dropdown{position:relative}
   .dropdown-menu{
-    position:absolute;top:110%;right:0;min-width:200px;background:#162d67;
+    position:absolute;top:110%;right:0;min-width:200px;background:#0f244a;
     color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;display:none;
     box-shadow:0 18px 36px rgba(0,0,0,.35);
   }
@@ -48,11 +71,11 @@
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* ===== HERO: animated "aurora" (no photos) ===== */
+  /* ===== HERO: animated aurora with BW palette ===== */
   .hero{
     position:relative;padding:90px 0 108px;overflow:hidden;color:#0f1b3a;
-    background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #f2f7ff 45%, #eaf2ff 100%);
-    border-bottom:1px solid #e6ecf6;
+    background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
+    border-bottom:1px solid var(--line);
   }
   .hero::after{ /* subtle texture */
     content:""; position:absolute; inset:0;
@@ -60,21 +83,21 @@
       linear-gradient(135deg, rgba(0,0,0,.06) 0 1px, transparent 1px 24px),
       linear-gradient(45deg, rgba(0,0,0,.05) 0 1px, transparent 1px 24px);
     background-size:24px 24px, 24px 24px;
-    mix-blend-mode:overlay; opacity:.25; pointer-events:none;
+    mix-blend-mode:overlay; opacity:.22; pointer-events:none;
   }
-  .aurora{position:absolute; inset:-25%; filter:blur(42px); opacity:.85; pointer-events:none; transform:translateZ(0)}
+  .aurora{position:absolute; inset:-25%; filter:blur(42px); opacity:.9; pointer-events:none; transform:translateZ(0)}
   .blob{
     position:absolute; width:46vmax; height:46vmax; border-radius:50%;
-    mix-blend-mode:screen; opacity:.85;
-    background: radial-gradient(closest-side, rgba(255,123,26,.55), rgba(255,123,26,0) 70%);
+    mix-blend-mode:screen;
+    background: radial-gradient(closest-side, rgba(255,122,0,.55), rgba(255,122,0,0) 70%);  /* saffron */
     animation: float1 18s ease-in-out infinite alternate;
   }
   .blob.b2{
-    background: radial-gradient(closest-side, rgba(29,191,130,.55), rgba(29,191,130,0) 70%);
+    background: radial-gradient(closest-side, rgba(19,138,54,.50), rgba(19,138,54,0) 70%);  /* green */
     width:42vmax; height:42vmax; animation: float2 22s ease-in-out infinite alternate;
   }
   .blob.b3{
-    background: radial-gradient(closest-side, rgba(47,125,229,.45), rgba(47,125,229,0) 70%);
+    background: radial-gradient(closest-side, rgba(15,102,210,.45), rgba(15,102,210,0) 70%); /* blue */
     width:50vmax; height:50vmax; animation: float3 24s ease-in-out infinite alternate;
   }
   @keyframes float1{0%{transform:translate(-20%, -8%) rotate(0)}100%{transform:translate(10%, 12%) rotate(8deg)}}
@@ -83,29 +106,49 @@
 
   .hero .container{text-align:center; position:relative}
   h1{margin:0 0 10px;font-size:52px;line-height:1.06;font-weight:900}
-  h1 .accent{background:linear-gradient(90deg,var(--blue-600),#0f59c7);-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1 .accent{
+    background:linear-gradient(90deg,var(--blue-brand),#0b5ac1);
+    -webkit-background-clip:text;background-clip:text;color:transparent
+  }
   .lead{color:#2b3f66;max-width:780px;margin:0 auto 18px}
   .ribbon{display:inline-flex;gap:10px;flex-wrap:wrap}
-  .ribbon span{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#1f325d;font-weight:900}
-  .match-tile{margin:24px auto 0;max-width:820px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(13,33,83,.10)}
+  .ribbon span{
+    padding:9px 13px;border-radius:999px;border:1px solid var(--line);
+    background:#fff;color:#1f325d;font-weight:900
+  }
+  .match-tile{
+    margin:24px auto 0;max-width:820px;padding:18px 20px;border:1px solid var(--line);
+    border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(13,33,83,.10)
+  }
   .actions{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:8px}
   .btn{
-    display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:900;color:#fff;
-    background:linear-gradient(180deg,var(--blue-500),#1362cc);border:1px solid #cfe0ff;box-shadow:0 8px 20px rgba(19,98,204,.35);
+    display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:900;color:#fff;
+    background:linear-gradient(180deg,var(--saffron),#e56500);
+    border:1px solid #ffd3b0;
+    box-shadow:0 8px 20px rgba(229,101,0,.35);
   }
+  .btn:hover{filter:saturate(110%) brightness(1.02)}
 
   /* ===== Sections ===== */
   .section{padding:64px 0;background:var(--paper);border-top:1px solid var(--line)}
   .section h2{margin:0 0 14px;font-size:30px;font-weight:800;color:#0f1b3a}
+  .section h2::after{
+    content:"";display:block;height:4px;width:110%;
+    background:linear-gradient(90deg,var(--saffron),var(--blue-brand),var(--green-brand));
+    border-radius:999px;margin-top:6px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+  }
   .sub{color:var(--muted)}
 
-  /* ===== Fixtures with DFCL/LECA columns ===== */
+  /* ===== Fixtures ===== */
   table{width:100%;border-collapse:collapse}
   th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
-  th{background:linear-gradient(180deg,#eff5ff,#e8f0ff);color:#0f1b3a;font-weight:900}
+  th{
+    background:linear-gradient(180deg,#f2f7ff,#e9f1ff);
+    color:#0f1b3a;font-weight:900
+  }
   .badge{padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
-  .league-dfcl{background:rgba(23,87,209,.10);color:#1757d1}
-  .league-leca{background:rgba(29,191,130,.14);color:#129a6a}
+  .league-dfcl{background:rgba(15,102,210,.12);color:var(--blue-brand)}
+  .league-leca{background:rgba(19,138,54,.14);color:var(--green-brand)}
 
   /* ===== Sponsors ===== */
   .sponsor-row{
@@ -129,21 +172,25 @@
   .sponsor{
     padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:#fff;border:1px solid var(--line);border-radius:16px;height:180px;
-    box-shadow:0 10px 24px rgba(15,47,107,.08);transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow:0 10px 24px rgba(15,47,107,.08);
+    transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .sponsor:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(15,47,107,.14);border-color:#d6e3ff}
+  .sponsor:hover{
+    transform:translateY(-2px);
+    box-shadow:0 16px 36px rgba(15,47,107,.14);
+    border-color:#d6e3ff
+  }
 
   .logo-frame{
-    width:240px;         /* larger and consistent */
-    height:80px;
-    border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;
-    overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3
+    width:240px;height:80px;border-radius:10px;background:#fff;
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    box-shadow:inset 0 0 0 1px #e5eaf3
   }
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
   /* ===== Footer ===== */
   footer{padding:28px 0;text-align:center;background:#fff;color:#334062;border-top:1px solid var(--line)}
-  footer a{color:#1a43a2;font-weight:700}
+  footer a{color:var(--blue-brand);font-weight:700}
 </style>
 </head>
 <body>
@@ -188,7 +235,7 @@
   </div>
 </div>
 
-<!-- HERO with Animated Aurora -->
+<!-- HERO -->
 <header class="hero">
   <div class="aurora">
     <div class="blob b1" style="left:-6%; top:-8%"></div>
@@ -215,11 +262,11 @@
     <h2>About</h2>
     <p>The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. Representing strength, unity, and pride, we bring energy and determination to every match we play.</p>
     <p>Our squad is made up of talented players who excel in batting, bowling, and fielding, but what makes us stand out is the bond we share as a team. We believe in playing hard, playing fair, and always respecting the game.</p>
-    <p>⚡ Motto: <strong>Play Hard. Play Fair. Play as Warriors.</strong><br>Har Har Mahadev 🕉🕉🕉🕉🕉</p>
+    <p>⚡ Motto: <strong>Play Hard. Play Fair. Play as Warriors.</strong><br>Har Har Mahadev 🕉</p>
   </div>
 </section>
 
-<!-- FIXTURES (DFCL + LECA columns) -->
+<!-- FIXTURES -->
 <section id="fixtures" class="section">
   <div class="container">
     <h2>Fixtures</h2>
