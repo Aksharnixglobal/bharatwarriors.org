@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bharat Warriors Cricket Club</title>
-<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, contact." />
+<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, sponsors, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
@@ -181,9 +181,9 @@
     <div class="ribbon"><span>🏏 Discipline</span><span>🛡️ Unity</span><span>⚡ Energy</span></div>
 
     <div class="match-tile">
-      <!-- These two lines will be auto-updated by JS from the fixtures table -->
-      <p><strong>Next Match:</strong> Knight Riders 🆚 Bharat Warriors</p>
-      <p>📍 Hackberry • Sat, Sep 6, 2025 — <em>Time: TBD</em></p>
+      <!-- Defaults (will auto-update from fixtures) -->
+      <p><strong>Next Match:</strong> Bharat Warriors 🆚 Dallas Renegades</p>
+      <p>📍 Irving Polo Cricket Ground • Sat, Sep 6, 2025 — <em>7:30 AM</em></p>
       <div class="actions"><a class="btn" href="#fixtures">View full schedule</a></div>
     </div>
   </div>
@@ -211,7 +211,18 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
         </thead>
         <tbody>
-          <!-- NEW upcoming game -->
+          <!-- NEW DFCL game -->
+          <tr data-league="DFCL" data-time="7:30 AM">
+            <td>Sep 6, 2025</td>
+            <td>Bharat Warriors 🆚 Dallas Renegades</td>
+            <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
+            <td><span class="badge league-dfcl">DFCL</span></td>
+            <td></td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+
+          <!-- LECA game on same day -->
           <tr data-league="LECA">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
@@ -222,7 +233,6 @@
             <td>D District Chargers</td>
           </tr>
 
-          <!-- Existing schedule -->
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
           <tr data-league="LECA"><td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td><td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Slayers</td></tr>
@@ -270,7 +280,7 @@
   </div>
 </section>
 
-<!-- CONTACT (emails go to bharatwarriors2024@gmail.com via FormSubmit) -->
+<!-- CONTACT (FormSubmit -> bharatwarriors2024@gmail.com) -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
@@ -363,35 +373,52 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
     }
   });
 
-  // Hero "Next Match" auto-updates from the first future row in the fixtures table
+  // --- Next Match auto-update (considers date + optional data-time like "7:30 AM") ---
+  function parse12hTime(str){
+    if(!str) return null;
+    const m = str.trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/i);
+    if(!m) return null;
+    let h   = parseInt(m[1],10);
+    let min = parseInt(m[2] || '0', 10);
+    const ap = m[3].toUpperCase();
+    if (ap === 'PM' && h < 12) h += 12;
+    if (ap === 'AM' && h === 12) h = 0;
+    return {h, min};
+  }
+
   function updateNextMatchFromTable(){
     const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'));
-    const today = new Date(new Date().toDateString()); // midnight today
-    let next = null;
+    const now  = new Date();
+    let next   = null;
 
     for (const r of rows){
-      const dateStr = (r.cells[0]?.textContent || '').trim(); // "Sep 6, 2025"
+      const dateStr = (r.cells[0]?.textContent || '').trim(); // e.g. "Sep 6, 2025"
       const d = new Date(dateStr);
       if (isNaN(d)) continue;
-      if (d >= today) {
-        if (!next || d < next.date) {
-          next = {
-            date: d,
-            opponents: (r.cells[1]?.textContent || '').trim().replace('BW','Bharat Warriors'),
-            ground: (r.cells[2]?.textContent || '').trim()
-          };
-        }
+
+      const timeStr = r.getAttribute('data-time') || '';
+      const t = parse12hTime(timeStr);
+      if (t) { d.setHours(t.h, t.min, 0, 0); } else { d.setHours(12, 0, 0, 0); } // noon if no time
+
+      if (d >= now && (!next || d < next.date)){
+        next = {
+          date: d,
+          time: timeStr || 'TBD',
+          opponents: (r.cells[1]?.textContent || '').trim().replace('BW','Bharat Warriors'),
+          ground:    (r.cells[2]?.textContent || '').trim()
+        };
       }
     }
 
     if (next){
-      const options = { weekday:'short', month:'short', day:'numeric', year:'numeric' };
-      const dateText = next.date.toLocaleDateString(undefined, options);
+      const dateText = next.date.toLocaleDateString(undefined, {
+        weekday:'short', month:'short', day:'numeric', year:'numeric'
+      });
       const tile = document.querySelector('.match-tile');
       if (tile){
         const ps = tile.querySelectorAll('p');
         if (ps[0]) ps[0].innerHTML = `<strong>Next Match:</strong> ${next.opponents}`;
-        if (ps[1]) ps[1].innerHTML = `📍 ${next.ground} • ${dateText} — <em>Time: TBD</em>`;
+        if (ps[1]) ps[1].innerHTML = `📍 ${next.ground} • ${dateText} — <em>${next.time}</em>`;
       }
     }
   }
