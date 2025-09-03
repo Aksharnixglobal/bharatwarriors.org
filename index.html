@@ -7,7 +7,6 @@
 <meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
-
 <style>
   :root{
     --ink:#0b1230; --muted:#5c6a85; --line:#e6ecf6;
@@ -15,6 +14,7 @@
     --saffron:#ff7b1a; --green:#1dbf82; --sun:#ffc83d; --paper:#f7f9ff;
   }
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   html,body{margin:0;height:100%}
   body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f7f9ff}
   a{text-decoration:none;color:inherit}
@@ -25,7 +25,7 @@
   .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--blue-900),var(--blue-700));border-bottom:1px solid rgba(255,255,255,.12)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 22px}
   .brand{display:flex;align-items:center;gap:12px}
-  .brand img{width:80px;height:80px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+  .brand img{width:90px;height:90px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 6px 14px rgba(0,0,0,.18)}
   .brand .title{font-weight:800;letter-spacing:.3px;color:var(--sun)}
   .brand .tag{font-size:12px;color:#e6eeff;opacity:.95}
   .menu{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
@@ -48,22 +48,40 @@
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* ===== HERO (no photos — abstract tricolor stripes) ===== */
+  /* ===== HERO: animated "aurora" (no photos) ===== */
   .hero{
-    position:relative;padding:80px 0 96px;overflow:hidden;color:#0f1b3a;
-    background:
-      radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #f2f7ff 55%, #eaf2ff 100%);
+    position:relative;padding:90px 0 108px;overflow:hidden;color:#0f1b3a;
+    background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #f2f7ff 45%, #eaf2ff 100%);
+    border-bottom:1px solid #e6ecf6;
   }
-  /* subtle diagonal tricolor ribbons */
-  .hero::before, .hero::after{
-    content:""; position:absolute; inset:-20%; transform:rotate(-12deg);
+  .hero::after{ /* subtle texture */
+    content:""; position:absolute; inset:0;
     background:
-      linear-gradient(135deg, rgba(255,123,26,.14) 0 33%, rgba(255,255,255,.0) 33% 66%, rgba(29,191,130,.14) 66% 100%);
-    filter:saturate(120%);
-    pointer-events:none;
+      linear-gradient(135deg, rgba(0,0,0,.06) 0 1px, transparent 1px 24px),
+      linear-gradient(45deg, rgba(0,0,0,.05) 0 1px, transparent 1px 24px);
+    background-size:24px 24px, 24px 24px;
+    mix-blend-mode:overlay; opacity:.25; pointer-events:none;
   }
-  .hero::after{transform:rotate(-18deg) translateY(-6%); opacity:.6}
-  .hero .container{text-align:center}
+  .aurora{position:absolute; inset:-25%; filter:blur(42px); opacity:.85; pointer-events:none; transform:translateZ(0)}
+  .blob{
+    position:absolute; width:46vmax; height:46vmax; border-radius:50%;
+    mix-blend-mode:screen; opacity:.85;
+    background: radial-gradient(closest-side, rgba(255,123,26,.55), rgba(255,123,26,0) 70%);
+    animation: float1 18s ease-in-out infinite alternate;
+  }
+  .blob.b2{
+    background: radial-gradient(closest-side, rgba(29,191,130,.55), rgba(29,191,130,0) 70%);
+    width:42vmax; height:42vmax; animation: float2 22s ease-in-out infinite alternate;
+  }
+  .blob.b3{
+    background: radial-gradient(closest-side, rgba(47,125,229,.45), rgba(47,125,229,0) 70%);
+    width:50vmax; height:50vmax; animation: float3 24s ease-in-out infinite alternate;
+  }
+  @keyframes float1{0%{transform:translate(-20%, -8%) rotate(0)}100%{transform:translate(10%, 12%) rotate(8deg)}}
+  @keyframes float2{0%{transform:translate(55%, -18%) rotate(-6deg)}100%{transform:translate(20%, 18%) rotate(4deg)}}
+  @keyframes float3{0%{transform:translate(-10%, 35%) rotate(10deg)}100%{transform:translate(25%, 10%) rotate(-6deg)}}
+
+  .hero .container{text-align:center; position:relative}
   h1{margin:0 0 10px;font-size:52px;line-height:1.06;font-weight:900}
   h1 .accent{background:linear-gradient(90deg,var(--blue-600),#0f59c7);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{color:#2b3f66;max-width:780px;margin:0 auto 18px}
@@ -89,16 +107,36 @@
   .league-dfcl{background:rgba(23,87,209,.10);color:#1757d1}
   .league-leca{background:rgba(29,191,130,.14);color:#129a6a}
 
-  /* ===== Sponsors (logos clickable only here) ===== */
-  .sponsor-row{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  /* ===== Sponsors ===== */
+  .sponsor-row{
+    display:grid;
+    gap:18px;
+    grid-auto-rows:1fr;           /* equal tile height */
+  }
+  /* ≥900px: exactly 3 per row (one line) */
+  @media (min-width:900px){
+    .sponsor-row{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+  }
+  /* 600–899px: two per row */
+  @media (min-width:600px) and (max-width:899px){
+    .sponsor-row{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  }
+  /* <600px: one per row */
+  @media (max-width:599px){
+    .sponsor-row{ grid-template-columns:1fr; }
+  }
+
   .sponsor{
     padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;
     background:#fff;border:1px solid var(--line);border-radius:16px;height:180px;
     box-shadow:0 10px 24px rgba(15,47,107,.08);transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease;
   }
   .sponsor:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(15,47,107,.14);border-color:#d6e3ff}
+
   .logo-frame{
-    width:200px;height:70px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;
+    width:240px;         /* larger and consistent */
+    height:80px;
+    border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;
     overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3
   }
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
@@ -150,8 +188,14 @@
   </div>
 </div>
 
-<!-- HERO (no photos) -->
+<!-- HERO with Animated Aurora -->
 <header class="hero">
+  <div class="aurora">
+    <div class="blob b1" style="left:-6%; top:-8%"></div>
+    <div class="blob b2" style="right:-10%; top:-14%"></div>
+    <div class="blob b3" style="left:-12%; bottom:-10%"></div>
+  </div>
+
   <div class="container">
     <h1>Bharat <span class="accent">Warriors</span> Cricket Club</h1>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
@@ -171,7 +215,7 @@
     <h2>About</h2>
     <p>The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. Representing strength, unity, and pride, we bring energy and determination to every match we play.</p>
     <p>Our squad is made up of talented players who excel in batting, bowling, and fielding, but what makes us stand out is the bond we share as a team. We believe in playing hard, playing fair, and always respecting the game.</p>
-    <p>⚡ Motto: <strong>Play Hard. Play Fair. Play as Warriors.</strong><br>Har Har Mahadev 🕉🕉🕉🕉🕉</p>
+    <p>⚡ Motto: <strong>Play Hard. Play Fair. Play as Warriors.</strong><br>Har Har Mahadev 🕉</p>
   </div>
 </section>
 
@@ -198,19 +242,22 @@
 </section>
 
 <!-- SPONSORS -->
-<!-- Infinity (1st) -->
-<div id="sponsor-infinity" class="sponsor">
-  <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Infinity Legacy Group on Instagram">
-    <div class="logo-frame">
-      <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
-    </div>
-  </a>
-</div>
+<section id="sponsors" class="section">
+  <div class="container">
+    <h2>Sponsors</h2>
+    <div class="sponsor-row">
+      <!-- Infinity (Instagram) -->
+      <div id="sponsor-infinity" class="sponsor">
+        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Infinity Legacy Group on Instagram">
+          <div class="logo-frame">
+            <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
+          </div>
+        </a>
+      </div>
 
-      <!-- AksharNix (2nd) -->
+      <!-- AksharNix -->
       <div id="sponsor-aksharnix" class="sponsor">
         <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
@@ -219,7 +266,7 @@
         </a>
       </div>
 
-      <!-- Pizza Twist (3rd) -->
+      <!-- Pizza Twist -->
       <div id="sponsor-pizza" class="sponsor">
         <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
