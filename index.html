@@ -49,7 +49,7 @@
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* HERO — visible TRI-COLOR */
+  /* HERO — visible TRI-COLOR background */
   .hero{
     position:relative; overflow:hidden; padding:90px 0 108px;
     background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
@@ -80,7 +80,10 @@
   .ribbon{display:inline-flex;gap:10px;flex-wrap:wrap}
   .ribbon span{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#1f325d;font-weight:900}
   .match-tile{margin:24px auto 0;max-width:820px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(13,33,83,.10)}
-  .actions{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:8px}
+  .next-list{display:grid;gap:10px;margin:8px 0 0}
+  .next-item{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fbfdff}
+  .next-item .lg{font-weight:900;margin-right:6px}
+  .actions{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:10px}
   .btn{
     display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:900;color:#fff;
     background:linear-gradient(180deg,var(--saffron),#e56500);border:1px solid #ffd3b0;box-shadow:0 8px 20px rgba(229,101,0,.35);
@@ -181,9 +184,11 @@
     <div class="ribbon"><span>🏏 Discipline</span><span>🛡️ Unity</span><span>⚡ Energy</span></div>
 
     <div class="match-tile">
-      <!-- Defaults (will auto-update from fixtures) -->
-      <p><strong>Next Match:</strong> Bharat Warriors 🆚 Dallas Renegades</p>
-      <p>📍 Irving Polo Cricket Ground • Sat, Sep 6, 2025 — <em>7:30 AM</em></p>
+      <p style="font-weight:800;margin:0 0 6px">Next Matches</p>
+      <!-- JS will fill this list with 1..n games for the nearest date -->
+      <div id="next-matches" class="next-list">
+        <div class="next-item">Loading upcoming matches…</div>
+      </div>
       <div class="actions"><a class="btn" href="#fixtures">View full schedule</a></div>
     </div>
   </div>
@@ -211,7 +216,7 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
         </thead>
         <tbody>
-          <!-- NEW DFCL game -->
+          <!-- DFCL game (with time) -->
           <tr data-league="DFCL" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
@@ -222,7 +227,7 @@
             <td>—</td>
           </tr>
 
-          <!-- LECA game on same day -->
+          <!-- LECA game (same day, no time) -->
           <tr data-league="LECA">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
@@ -373,7 +378,7 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
     }
   });
 
-  // --- Next Match auto-update (considers date + optional data-time like "7:30 AM") ---
+  // --- Next Matches: show ALL matches on the nearest upcoming date ---
   function parse12hTime(str){
     if(!str) return null;
     const m = str.trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/i);
@@ -386,10 +391,16 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
     return {h, min};
   }
 
-  function updateNextMatchFromTable(){
+  function sameDay(a,b){
+    return a.getFullYear()===b.getFullYear()
+        && a.getMonth()===b.getMonth()
+        && a.getDate()===b.getDate();
+  }
+
+  function updateNextMatches(){
     const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'));
     const now  = new Date();
-    let next   = null;
+    const items = [];
 
     for (const r of rows){
       const dateStr = (r.cells[0]?.textContent || '').trim(); // e.g. "Sep 6, 2025"
@@ -398,31 +409,52 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
 
       const timeStr = r.getAttribute('data-time') || '';
       const t = parse12hTime(timeStr);
-      if (t) { d.setHours(t.h, t.min, 0, 0); } else { d.setHours(12, 0, 0, 0); } // noon if no time
+      const dWithTime = new Date(d);
+      if (t) { dWithTime.setHours(t.h, t.min, 0, 0); } else { dWithTime.setHours(12, 0, 0, 0); } // noon if no time
 
-      if (d >= now && (!next || d < next.date)){
-        next = {
-          date: d,
+      if (dWithTime >= now){
+        items.push({
+          date: d, dateTime: dWithTime,
           time: timeStr || 'TBD',
           opponents: (r.cells[1]?.textContent || '').trim().replace('BW','Bharat Warriors'),
-          ground:    (r.cells[2]?.textContent || '').trim()
-        };
+          ground:    (r.cells[2]?.textContent || '').trim(),
+          league:    (r.getAttribute('data-league') || '').toUpperCase()
+        });
       }
     }
 
-    if (next){
-      const dateText = next.date.toLocaleDateString(undefined, {
-        weekday:'short', month:'short', day:'numeric', year:'numeric'
-      });
-      const tile = document.querySelector('.match-tile');
-      if (tile){
-        const ps = tile.querySelectorAll('p');
-        if (ps[0]) ps[0].innerHTML = `<strong>Next Match:</strong> ${next.opponents}`;
-        if (ps[1]) ps[1].innerHTML = `📍 ${next.ground} • ${dateText} — <em>${next.time}</em>`;
-      }
-    }
+    if (!items.length) return;
+
+    // Find nearest date (by day)
+    items.sort((a,b)=>a.dateTime-b.dateTime);
+    const firstDate = items[0].date;
+    const todays = items.filter(i => sameDay(i.date, firstDate));
+
+    // Sort today's by time (TBD last)
+    todays.sort((a,b)=>{
+      const ta = a.time==='TBD' ? 99*60 : (parse12hTime(a.time).h*60 + parse12hTime(a.time).min);
+      const tb = b.time==='TBD' ? 99*60 : (parse12hTime(b.time).h*60 + parse12hTime(b.time).min);
+      return ta - tb;
+    });
+
+    const list = document.getElementById('next-matches');
+    list.innerHTML = ''; // clear placeholder
+
+    const dateLabel = firstDate.toLocaleDateString(undefined,
+      { weekday:'short', month:'short', day:'numeric', year:'numeric' });
+
+    todays.forEach(m => {
+      const div = document.createElement('div');
+      div.className = 'next-item';
+      div.innerHTML =
+        `<span class="lg">${m.league}</span> ${m.opponents}
+         — <em>${m.time}</em><br>
+         📍 ${m.ground} • ${dateLabel}`;
+      list.appendChild(div);
+    });
   }
-  document.addEventListener('DOMContentLoaded', updateNextMatchFromTable);
+
+  document.addEventListener('DOMContentLoaded', updateNextMatches);
 </script>
 </body>
 </html>
