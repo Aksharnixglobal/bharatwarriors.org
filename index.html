@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bharat Warriors Cricket Club</title>
-<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, sponsors, contact." />
+<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, sponsors, donations, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
@@ -13,6 +13,7 @@
     --ink:#0b1220; --muted:#4c5d7a; --line:#e7eef9;
     --navy-900:#0a1024; --navy-800:#0e1f3a;
     --blue-brand:#0f66d2; --saffron:#ff7a00; --green-brand:#138a36; --gold:#f2c14e;
+    --chakra:#0a5aad;   /* Ashoka chakra navy */
     --paper:#f8fbff;
   }
   *{box-sizing:border-box}
@@ -49,16 +50,17 @@
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* HERO — visible TRI-COLOR background */
+  /* HERO — tricolor with Ashoka Chakra */
   .hero{
     position:relative; overflow:hidden; padding:90px 0 108px;
     background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
     border-bottom:1px solid var(--line);
   }
+  /* Tricolor stripe (behind chakra and text) */
   .hero .tri{
     position:absolute; inset:-15% -10% -15% -10%; transform:rotate(-14deg);
     background:linear-gradient(90deg, var(--saffron) 0 33%, #ffffff 33% 66%, var(--green-brand) 66% 100%);
-    opacity:.55; filter:saturate(120%); pointer-events:none;
+    opacity:.55; filter:saturate(120%); pointer-events:none; z-index:0;
   }
   .hero .tri::after{
     content:""; position:absolute; inset:-20%;
@@ -66,6 +68,16 @@
     animation:sweep 8s linear infinite; mix-blend-mode:overlay;
   }
   @keyframes sweep{0%{transform:translateX(-40%)}100%{transform:translateX(40%)}}
+
+  /* Ashoka Chakra (centered on flag) */
+  .chakra{
+    position:absolute; left:50%; top:56%;
+    transform:translate(-50%,-50%);
+    width:180px; height:180px;
+    z-index:1; pointer-events:none;
+    filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));
+  }
+  /* Subtle pattern overlay */
   .hero::after{
     content:""; position:absolute; inset:0;
     background:
@@ -73,7 +85,8 @@
       linear-gradient(45deg, rgba(0,0,0,.05) 0 1px, transparent 1px 24px);
     background-size:24px 24px, 24px 24px; mix-blend-mode:overlay; opacity:.18; pointer-events:none;
   }
-  .hero .container{position:relative;text-align:center}
+
+  .hero .container{position:relative;text-align:center; z-index:2}
   h1{margin:0 0 10px;font-size:52px;line-height:1.06;font-weight:900;color:#0f1b3a;text-shadow:0 1px 0 rgba(255,255,255,.6)}
   h1 .accent{background:linear-gradient(90deg,var(--blue-brand),#0b5ac1);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{color:#243a62;max-width:780px;margin:0 auto 18px;text-shadow:0 1px 0 rgba(255,255,255,.4)}
@@ -124,13 +137,22 @@
   }
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
+  /* Donations (Zelle only) */
+  .don-wrapper{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  .don-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 10px 24px rgba(15,47,107,.08)}
+  .don-card h3{margin:0 0 8px}
+  .code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
+  .qr-wrap{display:flex;justify-content:center;align-items:center}
+  .qr{max-width:260px;width:100%;height:auto;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+  .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef7ff;border:1px solid var(--line);font-weight:800}
+
   /* Footer */
   footer{padding:28px 0;text-align:center;background:#fff;color:#334062;border-top:1px solid var(--line)}
-  footer a{color:var(--blue-brand);font-weight:700}
+  footer a{color:#0f66d2;font-weight:700}
 
   /* Contact email style */
   .contact-email{margin:6px 0 16px;font-weight:700;color:#0f1b3a}
-  .contact-email a{color:var(--blue-brand);text-decoration:underline;font-weight:800}
+  .contact-email a{color:#0f66d2;text-decoration:underline;font-weight:800}
 </style>
 </head>
 <body>
@@ -170,6 +192,7 @@
         </div>
       </div>
 
+      <a href="#donate">Donations</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -178,6 +201,46 @@
 <!-- HERO -->
 <header class="hero">
   <div class="tri"></div>
+
+  <!-- Ashoka Chakra SVG (centered) -->
+  <svg class="chakra" viewBox="0 0 100 100" aria-hidden="true">
+    <!-- outer ring -->
+    <circle cx="50" cy="50" r="46" fill="none" stroke="var(--chakra)" stroke-width="4"/>
+    <!-- spokes -->
+    <defs>
+      <line id="spoke" x1="50" y1="50" x2="50" y2="8" stroke="var(--chakra)" stroke-width="3" stroke-linecap="round"/>
+    </defs>
+    <!-- 24 uses rotated by 15 degrees -->
+    <g>
+      <use href="#spoke" transform="rotate(0 50 50)"/>
+      <use href="#spoke" transform="rotate(15 50 50)"/>
+      <use href="#spoke" transform="rotate(30 50 50)"/>
+      <use href="#spoke" transform="rotate(45 50 50)"/>
+      <use href="#spoke" transform="rotate(60 50 50)"/>
+      <use href="#spoke" transform="rotate(75 50 50)"/>
+      <use href="#spoke" transform="rotate(90 50 50)"/>
+      <use href="#spoke" transform="rotate(105 50 50)"/>
+      <use href="#spoke" transform="rotate(120 50 50)"/>
+      <use href="#spoke" transform="rotate(135 50 50)"/>
+      <use href="#spoke" transform="rotate(150 50 50)"/>
+      <use href="#spoke" transform="rotate(165 50 50)"/>
+      <use href="#spoke" transform="rotate(180 50 50)"/>
+      <use href="#spoke" transform="rotate(195 50 50)"/>
+      <use href="#spoke" transform="rotate(210 50 50)"/>
+      <use href="#spoke" transform="rotate(225 50 50)"/>
+      <use href="#spoke" transform="rotate(240 50 50)"/>
+      <use href="#spoke" transform="rotate(255 50 50)"/>
+      <use href="#spoke" transform="rotate(270 50 50)"/>
+      <use href="#spoke" transform="rotate(285 50 50)"/>
+      <use href="#spoke" transform="rotate(300 50 50)"/>
+      <use href="#spoke" transform="rotate(315 50 50)"/>
+      <use href="#spoke" transform="rotate(330 50 50)"/>
+      <use href="#spoke" transform="rotate(345 50 50)"/>
+    </g>
+    <!-- hub -->
+    <circle cx="50" cy="50" r="5" fill="var(--chakra)"/>
+  </svg>
+
   <div class="container">
     <h1>Bharat <span class="accent">Warriors</span> Cricket Club</h1>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
@@ -185,7 +248,6 @@
 
     <div class="match-tile">
       <p style="font-weight:800;margin:0 0 6px">Next Matches</p>
-      <!-- JS will fill this list with 1..n games for the nearest date -->
       <div id="next-matches" class="next-list">
         <div class="next-item">Loading upcoming matches…</div>
       </div>
@@ -253,18 +315,13 @@
   <div class="container">
     <h2>Sponsors</h2>
     <div class="sponsor-row">
-      <!-- Infinity (Instagram) -->
       <div id="sponsor-infinity" class="sponsor">
-        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6"
-           target="_blank" rel="noopener noreferrer"
-           aria-label="Infinity Legacy Group on Instagram">
+        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener noreferrer" aria-label="Infinity Legacy Group on Instagram">
           <div class="logo-frame">
             <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
           </div>
         </a>
       </div>
-
-      <!-- AksharNix -->
       <div id="sponsor-aksharnix" class="sponsor">
         <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
@@ -272,8 +329,6 @@
           </div>
         </a>
       </div>
-
-      <!-- Pizza Twist -->
       <div id="sponsor-pizza" class="sponsor">
         <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
@@ -285,7 +340,31 @@
   </div>
 </section>
 
-<!-- CONTACT (FormSubmit -> bharatwarriors2024@gmail.com) -->
+<!-- DONATIONS (Zelle only) -->
+<section id="donate" class="section">
+  <div class="container">
+    <h2>Donations</h2>
+    <p class="sub">We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
+
+    <div class="don-wrapper">
+      <div class="don-card">
+        <h3>Zelle <span class="pill">Preferred</span></h3>
+        <p>Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
+        <p>Send to email:</p>
+        <p class="code" id="zelle-email">patelpratik59@gmail.com</p>
+        <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
+
+        <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
+        <p class="sub" style="margin:0 0 8px">Or scan this QR in your banking app:</p>
+        <div class="qr-wrap">
+          <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code for PRATIKKUMAR PATEL (patelpratik59@gmail.com)">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
@@ -351,7 +430,7 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
     document.getElementById('fixtures').scrollIntoView({behavior:'smooth'});
   }
 
-  // Contact: capture exact URL + submit via fetch so page doesn't leave
+  // Contact form submit (stay on page)
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   form.addEventListener('submit', async (e) => {
@@ -364,21 +443,25 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       });
-      if (resp.ok) {
-        status.textContent = 'Thanks! We will reply soon.';
-        form.reset();
-      } else {
+      if (resp.ok) { status.textContent = 'Thanks! We will reply soon.'; form.reset(); }
+      else {
         const data = await resp.json().catch(()=> ({}));
-        status.textContent = data.errors
-          ? data.errors.map(err=>err.message).join(', ')
-          : 'Oops, something went wrong.';
+        status.textContent = data.errors ? data.errors.map(err=>err.message).join(', ') : 'Oops, something went wrong.';
       }
-    } catch(err){
-      status.textContent = 'Network error. Please try again.';
-    }
+    } catch(err){ status.textContent = 'Network error. Please try again.'; }
   });
 
-  // --- Next Matches: show ALL matches on the nearest upcoming date ---
+  // Donations: copy Zelle email
+  function copyZelle(btn){
+    const text = document.getElementById('zelle-email').textContent.trim();
+    navigator.clipboard.writeText(text).then(()=>{
+      const old = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(()=> btn.textContent = old, 1400);
+    });
+  }
+
+  // Next Matches: show all matches on the nearest upcoming date
   function parse12hTime(str){
     if(!str) return null;
     const m = str.trim().match(/^(\d{1,2})(?::(\d{2}))?\s*(AM|PM)$/i);
@@ -390,27 +473,25 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
     if (ap === 'AM' && h === 12) h = 0;
     return {h, min};
   }
-
   function sameDay(a,b){
     return a.getFullYear()===b.getFullYear()
         && a.getMonth()===b.getMonth()
         && a.getDate()===b.getDate();
   }
-
   function updateNextMatches(){
     const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'));
     const now  = new Date();
     const items = [];
 
     for (const r of rows){
-      const dateStr = (r.cells[0]?.textContent || '').trim(); // e.g. "Sep 6, 2025"
+      const dateStr = (r.cells[0]?.textContent || '').trim();
       const d = new Date(dateStr);
       if (isNaN(d)) continue;
 
       const timeStr = r.getAttribute('data-time') || '';
       const t = parse12hTime(timeStr);
       const dWithTime = new Date(d);
-      if (t) { dWithTime.setHours(t.h, t.min, 0, 0); } else { dWithTime.setHours(12, 0, 0, 0); } // noon if no time
+      if (t) { dWithTime.setHours(t.h, t.min, 0, 0); } else { dWithTime.setHours(12, 0, 0, 0); }
 
       if (dWithTime >= now){
         items.push({
@@ -425,12 +506,10 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
 
     if (!items.length) return;
 
-    // Find nearest date (by day)
     items.sort((a,b)=>a.dateTime-b.dateTime);
     const firstDate = items[0].date;
     const todays = items.filter(i => sameDay(i.date, firstDate));
 
-    // Sort today's by time (TBD last)
     todays.sort((a,b)=>{
       const ta = a.time==='TBD' ? 99*60 : (parse12hTime(a.time).h*60 + parse12hTime(a.time).min);
       const tb = b.time==='TBD' ? 99*60 : (parse12hTime(b.time).h*60 + parse12hTime(b.time).min);
@@ -438,11 +517,8 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
     });
 
     const list = document.getElementById('next-matches');
-    list.innerHTML = ''; // clear placeholder
-
-    const dateLabel = firstDate.toLocaleDateString(undefined,
-      { weekday:'short', month:'short', day:'numeric', year:'numeric' });
-
+    list.innerHTML = '';
+    const dateLabel = firstDate.toLocaleDateString(undefined,{ weekday:'short', month:'short', day:'numeric', year:'numeric' });
     todays.forEach(m => {
       const div = document.createElement('div');
       div.className = 'next-item';
@@ -453,7 +529,6 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
       list.appendChild(div);
     });
   }
-
   document.addEventListener('DOMContentLoaded', updateNextMatches);
 </script>
 </body>
