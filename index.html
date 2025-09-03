@@ -10,73 +10,102 @@
 
 <style>
   :root{
-    --ink:#0b1230;
-    --muted:#5c6a85;
-    --line:#e6ecf6;
-    --blue-900:#0f2a6b;
-    --blue-700:#1a43a2;
-    --blue-600:#1757d1;
-    --blue-500:#2f7de5;
-    --saffron:#ff7b1a;
-    --green:#1dbf82;
-    --pitch:#d8e7cf;
-    --sun:#ffc83d;
-    --paper:#f7f9ff;
+    --ink:#0b1230; --muted:#5c6a85; --line:#e6ecf6;
+    --blue-900:#0f2a6b; --blue-700:#1a43a2; --blue-600:#1757d1; --blue-500:#2f7de5;
+    --saffron:#ff7b1a; --green:#1dbf82; --sun:#ffc83d; --paper:#f7f9ff;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
-  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:radial-gradient(900px 500px at 20% -10%, #fff 0%, #f4f8ff 55%, #eef4ff 100%)}
+  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f7f9ff}
   a{text-decoration:none;color:inherit}
   .container{max-width:1200px;margin:0 auto;padding:0 22px}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(15,47,107,.08)}
 
-  /* NAV */
+  /* ===== NAV ===== */
   .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--blue-900),var(--blue-700));border-bottom:1px solid rgba(255,255,255,.12)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 22px}
   .brand{display:flex;align-items:center;gap:12px}
-  .brand img{width:72px;height:72px;border-radius:50%;background:#fff;object-fit:contain}
-  .brand .title{font-weight:800;color:var(--sun)}
-  .brand .tag{font-size:12px;color:#e6eeff;opacity:.9}
+  .brand img{width:80px;height:80px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 6px 14px rgba(0,0,0,.18)}
+  .brand .title{font-weight:800;letter-spacing:.3px;color:var(--sun)}
+  .brand .tag{font-size:12px;color:#e6eeff;opacity:.95}
   .menu{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-  .menu a,.dropdown>button{cursor:pointer;padding:10px 18px;color:#fff;font-weight:700;border-radius:999px;background:rgba(255,255,255,.1)}
+  .menu a,.dropdown>button{
+    cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+    padding:10px 18px;color:#eef4ff;font-weight:800;border-radius:999px;
+    background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.06));
+    border:1px solid rgba(255,255,255,.22);
+    transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.10))}
+  .menu .active{background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.18))}
   .dropdown{position:relative}
-  .dropdown-menu{position:absolute;top:110%;right:0;min-width:180px;background:#162d67;border-radius:14px;padding:8px;display:none}
+  .dropdown-menu{
+    position:absolute;top:110%;right:0;min-width:200px;background:#162d67;
+    color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:8px;display:none;
+    box-shadow:0 18px 36px rgba(0,0,0,.35);
+  }
   .dropdown.open .dropdown-menu{display:block}
-  .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px;color:#fff}
-  .dropdown-menu a:hover{background:rgba(255,255,255,.2)}
+  .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
+  .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* HERO */
-  .hero{padding:42px 0 54px;background:radial-gradient(800px 380px at 15% -5%, #ffffff 0%, #f2f7ff 55%, #ebf3ff 100%)}
+  /* ===== HERO (no photos — abstract tricolor stripes) ===== */
+  .hero{
+    position:relative;padding:80px 0 96px;overflow:hidden;color:#0f1b3a;
+    background:
+      radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #f2f7ff 55%, #eaf2ff 100%);
+  }
+  /* subtle diagonal tricolor ribbons */
+  .hero::before, .hero::after{
+    content:""; position:absolute; inset:-20%; transform:rotate(-12deg);
+    background:
+      linear-gradient(135deg, rgba(255,123,26,.14) 0 33%, rgba(255,255,255,.0) 33% 66%, rgba(29,191,130,.14) 66% 100%);
+    filter:saturate(120%);
+    pointer-events:none;
+  }
+  .hero::after{transform:rotate(-18deg) translateY(-6%); opacity:.6}
   .hero .container{text-align:center}
-  h1{margin:0 0 10px;font-size:48px;font-weight:900;color:#0f1b3a}
+  h1{margin:0 0 10px;font-size:52px;line-height:1.06;font-weight:900}
   h1 .accent{background:linear-gradient(90deg,var(--blue-600),#0f59c7);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{color:#2b3f66;max-width:780px;margin:0 auto 18px}
   .ribbon{display:inline-flex;gap:10px;flex-wrap:wrap}
-  .ribbon span{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#1f325d;font-weight:700}
-  .match-tile{margin:22px auto 0;max-width:760px;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:#fff}
+  .ribbon span{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#1f325d;font-weight:900}
+  .match-tile{margin:24px auto 0;max-width:820px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 16px 40px rgba(13,33,83,.10)}
+  .actions{display:flex;gap:10px;justify-content:center;align-items:center;margin-top:8px}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:900;color:#fff;
+    background:linear-gradient(180deg,var(--blue-500),#1362cc);border:1px solid #cfe0ff;box-shadow:0 8px 20px rgba(19,98,204,.35);
+  }
 
-  /* Sections */
-  .section{padding:60px 0;background:var(--paper);border-top:1px solid var(--line)}
-  .section h2{margin:0 0 14px;font-size:28px;font-weight:800;color:#0f1b3a}
+  /* ===== Sections ===== */
+  .section{padding:64px 0;background:var(--paper);border-top:1px solid var(--line)}
+  .section h2{margin:0 0 14px;font-size:30px;font-weight:800;color:#0f1b3a}
   .sub{color:var(--muted)}
 
-  /* Fixtures */
+  /* ===== Fixtures with DFCL/LECA columns ===== */
   table{width:100%;border-collapse:collapse}
   th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
-  th{background:#eef3ff;font-weight:800}
+  th{background:linear-gradient(180deg,#eff5ff,#e8f0ff);color:#0f1b3a;font-weight:900}
   .badge{padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
-  .league-dfcl{background:rgba(23,87,209,.1);color:#1757d1}
+  .league-dfcl{background:rgba(23,87,209,.10);color:#1757d1}
   .league-leca{background:rgba(29,191,130,.14);color:#129a6a}
 
-  /* Sponsors */
+  /* ===== Sponsors (logos clickable only here) ===== */
   .sponsor-row{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-  .sponsor{padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:16px;height:180px}
-  .logo-frame{width:200px;height:70px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
+  .sponsor{
+    padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:#fff;border:1px solid var(--line);border-radius:16px;height:180px;
+    box-shadow:0 10px 24px rgba(15,47,107,.08);transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .sponsor:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(15,47,107,.14);border-color:#d6e3ff}
+  .logo-frame{
+    width:200px;height:70px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3
+  }
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-  /* Footer */
+  /* ===== Footer ===== */
   footer{padding:28px 0;text-align:center;background:#fff;color:#334062;border-top:1px solid var(--line)}
-  footer a{color:var(--blue-700);font-weight:700}
+  footer a{color:#1a43a2;font-weight:700}
 </style>
 </head>
 <body>
@@ -91,8 +120,10 @@
         <div class="tag">We play as ONE.</div>
       </div>
     </div>
+
     <nav class="menu">
       <a href="#about" class="active">About</a>
+
       <div class="dropdown" id="dd-leagues">
         <button onclick="toggleDD('dd-leagues')">Leagues ▾</button>
         <div class="dropdown-menu">
@@ -101,7 +132,9 @@
           <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
         </div>
       </div>
+
       <a href="#fixtures">Schedule</a>
+
       <div class="dropdown" id="dd-sponsors">
         <button onclick="toggleDD('dd-sponsors')">Sponsors ▾</button>
         <div class="dropdown-menu">
@@ -111,20 +144,23 @@
           <a href="#sponsor-pizza">Pizza Twist</a>
         </div>
       </div>
+
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO (no photos) -->
 <header class="hero">
   <div class="container">
     <h1>Bharat <span class="accent">Warriors</span> Cricket Club</h1>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
     <div class="ribbon"><span>🏏 Discipline</span><span>🛡️ Unity</span><span>⚡ Energy</span></div>
+
     <div class="match-tile">
       <p><strong>Next Match:</strong> Highland Boyz 🆚 Bharat Warriors</p>
       <p>📍 Brentwood • Sat, Sep 13, 2025 – 11:30 AM</p>
+      <div class="actions"><a class="btn" href="#fixtures">View full schedule</a></div>
     </div>
   </div>
 </header>
@@ -139,13 +175,17 @@
   </div>
 </section>
 
-<!-- FIXTURES -->
+<!-- FIXTURES (DFCL + LECA columns) -->
 <section id="fixtures" class="section">
   <div class="container">
     <h2>Fixtures</h2>
+    <p class="sub">Filter by league from the navbar dropdown.</p>
+
     <div class="card" style="overflow:auto">
       <table id="fxTable">
-        <thead><tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr></thead>
+        <thead>
+          <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
+        </thead>
         <tbody>
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
@@ -162,7 +202,7 @@
   <div class="container">
     <h2>Sponsors</h2>
     <div class="sponsor-row">
-      <!-- Infinity -->
+      <!-- Infinity (1st) -->
       <div id="sponsor-infinity" class="sponsor">
         <a href="https://www.infinitylegacygroup.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
@@ -170,7 +210,8 @@
           </div>
         </a>
       </div>
-      <!-- AksharNix -->
+
+      <!-- AksharNix (2nd) -->
       <div id="sponsor-aksharnix" class="sponsor">
         <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
@@ -178,7 +219,8 @@
           </div>
         </a>
       </div>
-      <!-- Pizza Twist -->
+
+      <!-- Pizza Twist (3rd) -->
       <div id="sponsor-pizza" class="sponsor">
         <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
           <div class="logo-frame">
@@ -210,8 +252,10 @@
 </footer>
 
 <script>
+  // year
   document.getElementById('year').textContent = new Date().getFullYear();
 
+  // dropdowns
   function toggleDD(id){
     const dd=document.getElementById(id);
     const open=dd.classList.contains('open');
@@ -223,6 +267,7 @@
     if(open && !open.contains(e.target)) open.classList.remove('open');
   });
 
+  // fixtures filter
   function filterLeague(lg){
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
       const ok=(lg==='ALL')||(tr.dataset.league===lg);
@@ -231,6 +276,7 @@
     document.getElementById('fixtures').scrollIntoView({behavior:'smooth'});
   }
 
+  // contact mailto
   function sendMail(e){
     e.preventDefault();
     const name=document.getElementById('name').value.trim();
