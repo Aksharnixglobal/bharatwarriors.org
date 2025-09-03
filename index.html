@@ -49,7 +49,7 @@
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* HERO — bold tricolor */
+  /* HERO — visible TRI-COLOR */
   .hero{
     position:relative; overflow:hidden; padding:90px 0 108px;
     background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
@@ -104,7 +104,7 @@
   .league-dfcl{background:rgba(15,102,210,.12);color:var(--blue-brand)}
   .league-leca{background:rgba(19,138,54,.14);color:var(--green-brand)}
 
-  /* Sponsors (3 across on desktop) */
+  /* Sponsors */
   .sponsor-row{display:grid;gap:18px;grid-auto-rows:1fr}
   @media (min-width:900px){.sponsor-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media (min-width:600px) and (max-width:899px){.sponsor-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -181,8 +181,9 @@
     <div class="ribbon"><span>🏏 Discipline</span><span>🛡️ Unity</span><span>⚡ Energy</span></div>
 
     <div class="match-tile">
-      <p><strong>Next Match:</strong> Highland Boyz 🆚 Bharat Warriors</p>
-      <p>📍 Brentwood • Sat, Sep 13, 2025 – 11:30 AM</p>
+      <!-- These two lines will be auto-updated by JS from the fixtures table -->
+      <p><strong>Next Match:</strong> Knight Riders 🆚 Bharat Warriors</p>
+      <p>📍 Hackberry • Sat, Sep 6, 2025 — <em>Time: TBD</em></p>
       <div class="actions"><a class="btn" href="#fixtures">View full schedule</a></div>
     </div>
   </div>
@@ -210,6 +211,18 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
         </thead>
         <tbody>
+          <!-- NEW upcoming game -->
+          <tr data-league="LECA">
+            <td>Sep 6, 2025</td>
+            <td>Knight Riders 🆚 BW</td>
+            <td>Hackberry</td>
+            <td></td>
+            <td><span class="badge league-leca">LECA • Div A</span></td>
+            <td>TBD</td>
+            <td>D District Chargers</td>
+          </tr>
+
+          <!-- Existing schedule -->
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
           <tr data-league="LECA"><td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td><td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Slayers</td></tr>
@@ -257,7 +270,7 @@
   </div>
 </section>
 
-<!-- CONTACT (emails to bharatwarriors2024@gmail.com via FormSubmit) -->
+<!-- CONTACT (emails go to bharatwarriors2024@gmail.com via FormSubmit) -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
@@ -269,15 +282,21 @@
           action="https://formsubmit.co/bharatwarriors2024@gmail.com"
           method="POST"
           class="card" style="padding:16px;display:grid;gap:12px">
+
       <input name="name" required placeholder="Your name" />
-      <input name="email" type="email" required placeholder="Your email" />
+      <input name="_replyto" type="email" required placeholder="Your email" />
+      <input name="phone" type="tel" placeholder="Phone (optional)" />
       <textarea name="message" required placeholder="Your message"></textarea>
 
-      <!-- Optional extras -->
-      <input type="hidden" name="_subject"  value="BW Club Inquiry" />
+      <input type="hidden" name="_subject"  value="Bharat Warriors — New Contact Message" />
       <input type="hidden" name="_template" value="table" />
-      <input type="text"   name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_captcha"  value="false" />
+      <input type="hidden" name="submitted_from" id="submitted_from" />
+      <input type="hidden" name="_autoresponse"
+             value="Jai Shri Ram!
+Thanks for contacting Bharat Warriors. We’ll get back to you soon.
+— BW Team" />
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
       <div><button class="btn" type="submit">Send</button></div>
       <p id="form-status" class="sub" style="margin:6px 0 0"></p>
@@ -317,11 +336,12 @@
     document.getElementById('fixtures').scrollIntoView({behavior:'smooth'});
   }
 
-  // AJAX submit to FormSubmit (stay on page and show message)
+  // Contact: capture exact URL + submit via fetch so page doesn't leave
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    document.getElementById('submitted_from').value = window.location.href;
     status.textContent = 'Sending...';
     try {
       const resp = await fetch(form.action, {
@@ -342,6 +362,40 @@
       status.textContent = 'Network error. Please try again.';
     }
   });
+
+  // Hero "Next Match" auto-updates from the first future row in the fixtures table
+  function updateNextMatchFromTable(){
+    const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'));
+    const today = new Date(new Date().toDateString()); // midnight today
+    let next = null;
+
+    for (const r of rows){
+      const dateStr = (r.cells[0]?.textContent || '').trim(); // "Sep 6, 2025"
+      const d = new Date(dateStr);
+      if (isNaN(d)) continue;
+      if (d >= today) {
+        if (!next || d < next.date) {
+          next = {
+            date: d,
+            opponents: (r.cells[1]?.textContent || '').trim().replace('BW','Bharat Warriors'),
+            ground: (r.cells[2]?.textContent || '').trim()
+          };
+        }
+      }
+    }
+
+    if (next){
+      const options = { weekday:'short', month:'short', day:'numeric', year:'numeric' };
+      const dateText = next.date.toLocaleDateString(undefined, options);
+      const tile = document.querySelector('.match-tile');
+      if (tile){
+        const ps = tile.querySelectorAll('p');
+        if (ps[0]) ps[0].innerHTML = `<strong>Next Match:</strong> ${next.opponents}`;
+        if (ps[1]) ps[1].innerHTML = `📍 ${next.ground} • ${dateText} — <em>Time: TBD</em>`;
+      }
+    }
+  }
+  document.addEventListener('DOMContentLoaded', updateNextMatchFromTable);
 </script>
 </body>
 </html>
