@@ -55,6 +55,7 @@
     position:relative; overflow:hidden; padding:90px 0 108px;
     background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
     border-bottom:1px solid var(--line);
+    z-index:0; /* create stacking context */
   }
   /* Tricolor stripe (behind chakra and text) */
   .hero .tri{
@@ -74,19 +75,19 @@
     position:absolute; left:50%; top:56%;
     transform:translate(-50%,-50%);
     width:180px; height:180px;
-    z-index:1; pointer-events:none;
+    z-index:2; pointer-events:none;
     filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));
   }
-  /* Subtle pattern overlay */
+  /* Subtle pattern overlay — explicitly behind chakra/text */
   .hero::after{
-    content:""; position:absolute; inset:0;
+    content:""; position:absolute; inset:0; z-index:0;
     background:
       linear-gradient(135deg, rgba(0,0,0,.06) 0 1px, transparent 1px 24px),
       linear-gradient(45deg, rgba(0,0,0,.05) 0 1px, transparent 1px 24px);
     background-size:24px 24px, 24px 24px; mix-blend-mode:overlay; opacity:.18; pointer-events:none;
   }
 
-  .hero .container{position:relative;text-align:center; z-index:2}
+  .hero .container{position:relative;text-align:center; z-index:3}
   h1{margin:0 0 10px;font-size:52px;line-height:1.06;font-weight:900;color:#0f1b3a;text-shadow:0 1px 0 rgba(255,255,255,.6)}
   h1 .accent{background:linear-gradient(90deg,var(--blue-brand),#0b5ac1);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{color:#243a62;max-width:780px;margin:0 auto 18px;text-shadow:0 1px 0 rgba(255,255,255,.4)}
@@ -206,36 +207,36 @@
   <svg class="chakra" viewBox="0 0 100 100" aria-hidden="true">
     <!-- outer ring -->
     <circle cx="50" cy="50" r="46" fill="none" stroke="var(--chakra)" stroke-width="4"/>
-    <!-- spokes -->
+    <!-- spoke definition -->
     <defs>
       <line id="spoke" x1="50" y1="50" x2="50" y2="8" stroke="var(--chakra)" stroke-width="3" stroke-linecap="round"/>
     </defs>
-    <!-- 24 uses rotated by 15 degrees -->
+    <!-- 24 spokes (with Safari fallback using xlink:href) -->
     <g>
-      <use href="#spoke" transform="rotate(0 50 50)"/>
-      <use href="#spoke" transform="rotate(15 50 50)"/>
-      <use href="#spoke" transform="rotate(30 50 50)"/>
-      <use href="#spoke" transform="rotate(45 50 50)"/>
-      <use href="#spoke" transform="rotate(60 50 50)"/>
-      <use href="#spoke" transform="rotate(75 50 50)"/>
-      <use href="#spoke" transform="rotate(90 50 50)"/>
-      <use href="#spoke" transform="rotate(105 50 50)"/>
-      <use href="#spoke" transform="rotate(120 50 50)"/>
-      <use href="#spoke" transform="rotate(135 50 50)"/>
-      <use href="#spoke" transform="rotate(150 50 50)"/>
-      <use href="#spoke" transform="rotate(165 50 50)"/>
-      <use href="#spoke" transform="rotate(180 50 50)"/>
-      <use href="#spoke" transform="rotate(195 50 50)"/>
-      <use href="#spoke" transform="rotate(210 50 50)"/>
-      <use href="#spoke" transform="rotate(225 50 50)"/>
-      <use href="#spoke" transform="rotate(240 50 50)"/>
-      <use href="#spoke" transform="rotate(255 50 50)"/>
-      <use href="#spoke" transform="rotate(270 50 50)"/>
-      <use href="#spoke" transform="rotate(285 50 50)"/>
-      <use href="#spoke" transform="rotate(300 50 50)"/>
-      <use href="#spoke" transform="rotate(315 50 50)"/>
-      <use href="#spoke" transform="rotate(330 50 50)"/>
-      <use href="#spoke" transform="rotate(345 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(0 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(15 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(30 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(45 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(60 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(75 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(90 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(105 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(120 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(135 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(150 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(165 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(180 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(195 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(210 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(225 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(240 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(255 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(270 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(285 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(300 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(315 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(330 50 50)"/>
+      <use href="#spoke" xlink:href="#spoke" transform="rotate(345 50 50)"/>
     </g>
     <!-- hub -->
     <circle cx="50" cy="50" r="5" fill="var(--chakra)"/>
