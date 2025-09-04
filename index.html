@@ -24,7 +24,7 @@
   .container{max-width:1200px;margin:0 auto;padding:0 22px}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(15,47,107,.08)}
 
-  /* ===== NAV (theme + tricolor underline) ===== */
+  /* ===== NAV ===== */
   .nav{
     position:sticky; top:0; z-index:60;
     background:linear-gradient(180deg,var(--navy-900) 0%, var(--navy-800) 100%);
@@ -32,16 +32,11 @@
     backdrop-filter:none;
   }
   .nav::after{
-    content:"";
-    position:absolute; left:0; right:0; bottom:0; height:4px;
+    content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
     background:linear-gradient(90deg, var(--saffron) 0 33%, #fff 33% 66%, var(--green-brand) 66% 100%);
-    opacity:.95;
-    z-index:0;                 /* keep underline behind dropdown */
+    opacity:.95; z-index:0;
   }
-  .nav .wrap{                 /* nav content on top of underline */
-    position:relative; z-index:2;
-    display:flex; align-items:center; justify-content:space-between; padding:12px 22px;
-  }
+  .nav .wrap{ position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; padding:12px 22px; }
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:90px;height:90px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 6px 14px rgba(0,0,0,.18)}
   .brand .title{font-weight:800;letter-spacing:.3px;color:var(--gold)}
@@ -72,18 +67,32 @@
     background:#0f244a; color:#fff; border:1px solid rgba(255,255,255,.2);
     border-radius:14px; padding:8px; display:none;
     box-shadow:0 18px 36px rgba(0,0,0,.35);
-    z-index:5;                 /* dropdown above underline & nav */
+    z-index:5;
   }
   .dropdown.open .dropdown-menu{display:block}
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  /* ===== HERO — tricolor + Ashoka Chakra ===== */
+  /* Social icons in navbar */
+  .social{display:flex;gap:10px;align-items:center;margin-left:8px}
+  .social a{
+    width:38px;height:38px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08));
+    border:1px solid rgba(255,255,255,.25);
+    transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
+  }
+  .social a:hover{
+    transform:translateY(-1px);
+    background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.14));
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+  }
+  .social svg{width:20px;height:20px;fill:#ffffff}
+
+  /* ===== HERO ===== */
   .hero{
     position:relative; overflow:hidden; padding:90px 0 108px;
     background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
-    border-bottom:1px solid var(--line);
-    z-index:0;
+    border-bottom:1px solid var(--line); z-index:0;
   }
   .hero .tri{
     position:absolute; inset:-15% -10% -15% -10%; transform:rotate(-14deg);
@@ -97,14 +106,12 @@
   }
   @keyframes sweep{0%{transform:translateX(-40%)}100%{transform:translateX(40%)}}
 
-  .chakra{                 /* Chakra sits above stripes */
-    position:absolute; left:50%; top:56%;
-    transform:translate(-50%,-50%);
-    width:180px; height:180px;
-    z-index:2; pointer-events:none;
+  .chakra{
+    position:absolute; left:50%; top:56%; transform:translate(-50%,-50%);
+    width:180px; height:180px; z-index:2; pointer-events:none;
     filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));
   }
-  .hero::after{           /* subtle pattern behind everything */
+  .hero::after{
     content:""; position:absolute; inset:0; z-index:0;
     background:
       linear-gradient(135deg, rgba(0,0,0,.06) 0 1px, transparent 1px 24px),
@@ -176,6 +183,13 @@
   /* ===== Footer ===== */
   footer{padding:28px 0;text-align:center;background:#fff;color:#334062;border-top:1px solid var(--line)}
   footer a{color:#0f66d2;font-weight:700}
+  .foot-social{display:flex;gap:12px;justify-content:center;margin:8px 0 0}
+  .foot-social a{
+    width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;
+    background:#0f2a57;color:#fff;border:1px solid #d9e5ff;
+  }
+  .foot-social a:hover{filter:saturate(115%);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+  .foot-social svg{width:22px;height:22px;fill:#fff}
 
   /* Contact email style */
   .contact-email{margin:6px 0 16px;font-weight:700;color:#0f1b3a}
@@ -221,6 +235,16 @@
 
       <a href="#donate">Donations</a>
       <a href="#contact">Contact</a>
+
+      <!-- Social icons (right side) -->
+      <div class="social">
+        <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Bharat Warriors on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.75-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"/></svg>
+        </a>
+        <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="Bharat Warriors on YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2 32 32 0 0 0 0 12a32 32 0 0 0 .5 5.8 3.1 3.1 0 0 0 2.2 2.2c2.1.5 9.3.5 9.3.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2A32 32 0 0 0 24 12a32 32 0 0 0-.5-5.8zM9.8 15.5V8.5l6.2 3.5z"/></svg>
+        </a>
+      </div>
     </nav>
   </div>
 </div>
@@ -232,34 +256,20 @@
   <!-- Ashoka Chakra -->
   <svg class="chakra" viewBox="0 0 100 100" aria-hidden="true">
     <circle cx="50" cy="50" r="46" fill="none" stroke="var(--chakra)" stroke-width="4"/>
-    <defs>
-      <line id="spoke" x1="50" y1="50" x2="50" y2="8" stroke="var(--chakra)" stroke-width="3" stroke-linecap="round"/>
-    </defs>
+    <defs><line id="spoke" x1="50" y1="50" x2="50" y2="8" stroke="var(--chakra)" stroke-width="3" stroke-linecap="round"/></defs>
     <g>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(0 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(15 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(30 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(45 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(60 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(75 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(90 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(105 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(120 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(135 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(150 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(165 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(180 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(195 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(210 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(225 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(240 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(255 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(270 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(285 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(300 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(315 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(330 50 50)"/>
-      <use href="#spoke" xlink:href="#spoke" transform="rotate(345 50 50)"/>
+      <use href="#spoke" transform="rotate(0 50 50)"/><use href="#spoke" transform="rotate(15 50 50)"/>
+      <use href="#spoke" transform="rotate(30 50 50)"/><use href="#spoke" transform="rotate(45 50 50)"/>
+      <use href="#spoke" transform="rotate(60 50 50)"/><use href="#spoke" transform="rotate(75 50 50)"/>
+      <use href="#spoke" transform="rotate(90 50 50)"/><use href="#spoke" transform="rotate(105 50 50)"/>
+      <use href="#spoke" transform="rotate(120 50 50)"/><use href="#spoke" transform="rotate(135 50 50)"/>
+      <use href="#spoke" transform="rotate(150 50 50)"/><use href="#spoke" transform="rotate(165 50 50)"/>
+      <use href="#spoke" transform="rotate(180 50 50)"/><use href="#spoke" transform="rotate(195 50 50)"/>
+      <use href="#spoke" transform="rotate(210 50 50)"/><use href="#spoke" transform="rotate(225 50 50)"/>
+      <use href="#spoke" transform="rotate(240 50 50)"/><use href="#spoke" transform="rotate(255 50 50)"/>
+      <use href="#spoke" transform="rotate(270 50 50)"/><use href="#spoke" transform="rotate(285 50 50)"/>
+      <use href="#spoke" transform="rotate(300 50 50)"/><use href="#spoke" transform="rotate(315 50 50)"/>
+      <use href="#spoke" transform="rotate(330 50 50)"/><use href="#spoke" transform="rotate(345 50 50)"/>
     </g>
     <circle cx="50" cy="50" r="5" fill="var(--chakra)"/>
   </svg>
@@ -301,7 +311,6 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
         </thead>
         <tbody>
-          <!-- DFCL game (with time) -->
           <tr data-league="DFCL" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
@@ -311,18 +320,15 @@
             <td>—</td>
             <td>—</td>
           </tr>
-
-          <!-- LECA game (same day, no time) -->
           <tr data-league="LECA">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
             <td>Hackberry</td>
             <td></td>
-            <td><span class="badge league-leca">LECA </span></td>
+            <td><span class="badge league-leca">LECA • Div A</span></td>
             <td>TBD</td>
             <td>D District Chargers</td>
           </tr>
-
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
           <tr data-league="LECA"><td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td><td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Slayers</td></tr>
@@ -363,7 +369,7 @@
   </div>
 </section>
 
-<!-- ===== DONATIONS (Zelle) ===== -->
+<!-- ===== DONATIONS ===== -->
 <section id="donate" class="section">
   <div class="container">
     <h2>Donations</h2>
@@ -423,8 +429,21 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
 
 <!-- ===== FOOTER ===== -->
 <footer>
-  © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
-  <br>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
+  <div>© <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas</div>
+  <div>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a></div>
+
+  <div class="foot-social" aria-label="Follow Bharat Warriors">
+    <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zm5.75-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25z"/></svg>
+    </a>
+    <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2 32 32 0 0 0 0 12a32 32 0 0 0 .5 5.8 3.1 3.1 0 0 0 2.2 2.2c2.1.5 9.3.5 9.3.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2A32 32 0 0 0 24 12a32 32 0 0 0-.5-5.8zM9.8 15.5V8.5l6.2 3.5z"/></svg>
+    </a>
+  </div>
+
+  <div style="margin-top:8px">
+    <a href="mailto:bharatwarriors2024@gmail.com">bharatwarriors2024@gmail.com</a>
+  </div>
 </footer>
 
 <script>
