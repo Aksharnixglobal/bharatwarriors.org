@@ -11,7 +11,7 @@
 <style>
   :root{
     --ink:#0b1220; --muted:#4c5d7a; --line:#e7eef9;
-    --navy-900:#0a1024; --navy-800:#0e1f3a;
+    --navy-900:#081b3a; --navy-800:#0b2a55;
     --blue-brand:#0f66d2; --saffron:#ff7a00; --green-brand:#138a36; --gold:#f2c14e;
     --chakra:#0a5aad;   /* Ashoka chakra navy */
     --paper:#f8fbff;
@@ -24,8 +24,19 @@
   .container{max-width:1200px;margin:0 auto;padding:0 22px}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px rgba(15,47,107,.08)}
 
-  /* NAV */
-  .nav{position:sticky;top:0;z-index:60;background:linear-gradient(180deg,var(--navy-900),var(--navy-800));border-bottom:1px solid rgba(255,255,255,.12)}
+  /* NAV (updated to match theme + tricolor underline) */
+  .nav{
+    position:sticky; top:0; z-index:60;
+    background:linear-gradient(180deg,var(--navy-900) 0%, var(--navy-800) 100%);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    backdrop-filter:none;
+  }
+  .nav::after{
+    content:"";
+    position:absolute; left:0; right:0; bottom:0; height:4px;
+    background:linear-gradient(90deg, var(--saffron) 0 33%, #fff 33% 66%, var(--green-brand) 66% 100%);
+    opacity:.95;
+  }
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 22px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:90px;height:90px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 6px 14px rgba(0,0,0,.18)}
@@ -39,8 +50,16 @@
     border:1px solid rgba(255,255,255,.22);
     transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
   }
-  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.10))}
-  .menu .active{background:linear-gradient(180deg,rgba(255,255,255,.34),rgba(255,255,255,.18))}
+  .menu a:hover,.dropdown>button:hover{
+    transform:translateY(-1px);
+    background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.10));
+    box-shadow:0 10px 22px rgba(255,122,0,.18);
+  }
+  .menu .active{
+    background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.14));
+    border-color:rgba(255,255,255,.35);
+    box-shadow:0 6px 18px rgba(15,102,210,.25);
+  }
   .dropdown{position:relative}
   .dropdown-menu{
     position:absolute;top:110%;right:0;min-width:200px;background:#0f244a;color:#fff;
@@ -55,9 +74,8 @@
     position:relative; overflow:hidden; padding:90px 0 108px;
     background: radial-gradient(1200px 500px at 10% -10%, #ffffff 0%, #eef5ff 45%, #eaf2ff 100%);
     border-bottom:1px solid var(--line);
-    z-index:0; /* create stacking context */
+    z-index:0;
   }
-  /* Tricolor stripe (behind chakra and text) */
   .hero .tri{
     position:absolute; inset:-15% -10% -15% -10%; transform:rotate(-14deg);
     background:linear-gradient(90deg, var(--saffron) 0 33%, #ffffff 33% 66%, var(--green-brand) 66% 100%);
@@ -70,7 +88,7 @@
   }
   @keyframes sweep{0%{transform:translateX(-40%)}100%{transform:translateX(40%)}}
 
-  /* Ashoka Chakra (centered on flag) */
+  /* Ashoka Chakra (centered) */
   .chakra{
     position:absolute; left:50%; top:56%;
     transform:translate(-50%,-50%);
@@ -78,7 +96,6 @@
     z-index:2; pointer-events:none;
     filter:drop-shadow(0 1px 0 rgba(255,255,255,.7));
   }
-  /* Subtle pattern overlay — explicitly behind chakra/text */
   .hero::after{
     content:""; position:absolute; inset:0; z-index:0;
     background:
@@ -203,15 +220,12 @@
 <header class="hero">
   <div class="tri"></div>
 
-  <!-- Ashoka Chakra SVG (centered) -->
+  <!-- Ashoka Chakra SVG -->
   <svg class="chakra" viewBox="0 0 100 100" aria-hidden="true">
-    <!-- outer ring -->
     <circle cx="50" cy="50" r="46" fill="none" stroke="var(--chakra)" stroke-width="4"/>
-    <!-- spoke definition -->
     <defs>
       <line id="spoke" x1="50" y1="50" x2="50" y2="8" stroke="var(--chakra)" stroke-width="3" stroke-linecap="round"/>
     </defs>
-    <!-- 24 spokes (with Safari fallback using xlink:href) -->
     <g>
       <use href="#spoke" xlink:href="#spoke" transform="rotate(0 50 50)"/>
       <use href="#spoke" xlink:href="#spoke" transform="rotate(15 50 50)"/>
@@ -238,7 +252,6 @@
       <use href="#spoke" xlink:href="#spoke" transform="rotate(330 50 50)"/>
       <use href="#spoke" xlink:href="#spoke" transform="rotate(345 50 50)"/>
     </g>
-    <!-- hub -->
     <circle cx="50" cy="50" r="5" fill="var(--chakra)"/>
   </svg>
 
@@ -403,6 +416,7 @@ Thanks for contacting Bharat Warriors. We’ll get back to you soon.
 <footer>
   © <span id="year"></span> Bharat Warriors Cricket Club • DFW, Texas
   <br>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
+  <br><a href="mailto:bharatwarriors2024@gmail.com">bharatwarriors2024@gmail.com</a>
 </footer>
 
 <script>
