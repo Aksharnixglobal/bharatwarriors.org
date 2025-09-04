@@ -22,11 +22,12 @@
   .container{max-width:1160px;margin:0 auto;padding:0 18px}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
-  /* ============ NAV (with overlap fix) ============ */
+  /* ===== NAV (drop-down padding + anchor offset protection) ===== */
   .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
        border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
        padding-bottom:0; transition:padding-bottom .15s ease;}
-  .nav.dd-open{padding-bottom:210px;}
+  /* while any dropdown is open, add space below so it doesn't overlap page */
+  .nav.dd-open{padding-bottom:220px;}
   .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
@@ -39,16 +40,21 @@
   .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18);box-shadow:0 8px 18px rgba(0,0,0,.25)}
   .menu .active{background:rgba(255,255,255,.22)}
   .dropdown{position:relative}
-  .dropdown-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:200px; background:#0f2548; color:#fff;
+  .dropdown-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:220px; background:#0f2548; color:#fff;
     border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)}
   .dropdown.open .dropdown-menu{display:block}
-  .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px}
+  .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px;white-space:nowrap}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
   .social{display:flex;gap:8px;margin-left:6px}
   .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
   .social svg{width:18px;height:18px;fill:#fff}
 
-  /* ============ HERO with Tricolor + Chakra ============ */
+  /* ===== ensure anchor scroll stops below sticky header ===== */
+  .section{padding:46px 0; scroll-margin-top:130px;}
+  /* The hero sits under nav, no need for scroll offset */
+  .hero{scroll-margin-top:0}
+
+  /* ===== HERO with tricolor + chakra ===== */
   .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
   .hero.flag::before{
     content:""; position:absolute; inset:0;
@@ -59,7 +65,6 @@
     content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
     width:min(48vw,380px); height:min(48vw,380px);
     background-repeat:no-repeat; background-position:center; background-size:contain; opacity:.28; pointer-events:none;
-    /* Inline SVG Ashoka Chakra (24 spokes) */
     background-image:url("data:image/svg+xml;utf8,\
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>\
 <defs><g id='sp'><line x1='100' y1='100' x2='100' y2='16' stroke='%230a5aad' stroke-width='6'/></g></defs>\
@@ -92,12 +97,11 @@
   .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
   .lg{font-weight:900;color:#0f66d2;margin-right:6px}
 
-  /* ============ SECTION ============ */
-  .section{padding:46px 0}
+  /* ===== section headings ===== */
   .section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
   .sub{color:var(--muted);font-size:14px}
 
-  /* ============ FIXTURES ============ */
+  /* ===== fixtures ===== */
   table{width:100%;border-collapse:collapse}
   th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
   th{background:#f0f6ff;color:#0e1d39;font-weight:900}
@@ -105,7 +109,7 @@
   .league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
   .league-leca{background:rgba(24,160,106,.14);color:#159765}
 
-  /* ============ SQUADS (compact) ============ */
+  /* ===== squads compact ===== */
   .squads-two{display:grid;gap:14px;grid-template-columns:1fr}
   @media (min-width:980px){.squads-two{grid-template-columns:1fr 1fr}}
   .squad-card{padding:14px}
@@ -122,7 +126,7 @@
   .VC{background:rgba(18,98,214,.15);color:#1262d6;border-color:#d5e5ff}
   .WK{background:rgba(24,160,106,.16);color:#159765;border-color:#d6f0e5}
 
-  /* ============ SPONSORS ============ */
+  /* ===== sponsors ===== */
   .s-row{display:grid;gap:12px;grid-auto-rows:1fr}
   @media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -130,13 +134,15 @@
   .logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-  /* ============ DONATIONS ============ */
-  .don{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  /* ===== donations (compact) ===== */
+  .don-card{padding:14px}
+  .don-grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
   .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
-  .qr{max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+  .qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
 
-  /* ============ FOOTER ============ */
+  /* ===== footer ===== */
   footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
   footer a{color:var(--blue);font-weight:800}
   .foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
@@ -146,7 +152,6 @@
 </head>
 <body>
 
-<!-- ================= NAV ================= -->
 <header class="nav">
   <div class="wrap container">
     <div class="brand">
@@ -197,7 +202,6 @@
   </div>
 </header>
 
-<!-- ================= HERO (TRICOLOR + CHAKRA) ================= -->
 <section class="hero flag">
   <div class="wrap container">
     <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
@@ -217,7 +221,6 @@
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
 <section id="about" class="section">
   <div class="container">
     <h2>About</h2>
@@ -228,7 +231,6 @@
   </div>
 </section>
 
-<!-- ================= FIXTURES ================= -->
 <section id="fixtures" class="section">
   <div class="container">
     <h2>Fixtures</h2>
@@ -246,7 +248,7 @@
             <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>—</td>
           </tr>
-          <!-- LECA list -->
+          <!-- LECA -->
           <tr data-league="LECA"><td>Sep 6, 2025</td><td>Knight Riders 🆚 BW</td><td>Hackberry</td><td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>TBD</td><td>D District Chargers</td></tr>
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
@@ -258,20 +260,16 @@
   </div>
 </section>
 
-<!-- ================= SQUAD (COMPACT TWO-COLUMN) ================= -->
 <section id="squads" class="section">
   <div class="container">
     <h2>Squad</h2>
-
     <div class="squads-two">
-      <!-- DFCL -->
       <div class="card squad-card">
         <div class="squad-head">
           <h3 class="squad-title">DFCL XI</h3>
           <div class="squad-meta">vs Dallas Renegades • Sat, Sep 6 • 7:30 AM</div>
         </div>
         <div class="venue">Irving Polo Cricket Ground, 5992 Riverside Dr, Irving, TX 75039</div>
-
         <div class="s-grid">
           <div class="player"><div class="name">Abhijeet</div></div>
           <div class="player"><div class="name">Ajay</div></div>
@@ -288,14 +286,12 @@
         </div>
       </div>
 
-      <!-- LECA -->
       <div class="card squad-card">
         <div class="squad-head">
           <h3 class="squad-title">LECA XI</h3>
           <div class="squad-meta">Next LECA matchday squad</div>
         </div>
         <div class="venue">To be announced closer to kickoff.</div>
-
         <div class="s-grid">
           <div class="player"><div class="name">TBD 1</div></div>
           <div class="player"><div class="name">TBD 2</div></div>
@@ -314,7 +310,6 @@
   </div>
 </section>
 
-<!-- ================= SPONSORS ================= -->
 <section id="sponsors" class="section">
   <div class="container">
     <h2>Sponsors</h2>
@@ -338,27 +333,34 @@
   </div>
 </section>
 
-<!-- ================= DONATIONS ================= -->
 <section id="donate" class="section">
   <div class="container">
     <h2>Donations</h2>
     <p class="sub">We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
-    <div class="don">
-      <div class="card" style="padding:14px">
-        <h3 style="margin:0 0 6px;font-size:18px">Zelle</h3>
-        <p style="margin:0 0 6px">Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
-        <p style="margin:0 0 6px">Send to:</p>
-        <p class="code" id="zelle-email">patelpratik59@gmail.com</p>
-        <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
-        <hr style="border:none;border-top:1px solid var(--line);margin:12px 0">
-        <p class="sub" style="margin:0 0 8px">Or scan this QR in your banking app:</p>
-        <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code">
+
+    <div class="card don-card">
+      <div class="don-grid">
+        <!-- left: details -->
+        <div>
+          <h3 style="margin:0 0 6px;font-size:18px">Zelle</h3>
+          <p style="margin:0 0 6px">Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
+          <p style="margin:0 0 10px">Send to:</p>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <span class="code" id="zelle-email">patelpratik59@gmail.com</span>
+            <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
+          </div>
+        </div>
+
+        <!-- right: QR -->
+        <div>
+          <p class="sub" style="margin:0 0 8px">Scan this QR in your banking app:</p>
+          <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
@@ -400,18 +402,19 @@
 </footer>
 
 <script>
-  // Toggle dropdown & nav padding
   function toggleDD(id){
+    // close others
     document.querySelectorAll('.dropdown').forEach(d=>{
       if(d.id !== id) d.classList.remove('open');
     });
     const me = document.getElementById(id);
     me.classList.toggle('open');
+    // add/remove spacer padding under nav while open
     const nav = document.querySelector('.nav');
     const anyOpen = !!document.querySelector('.dropdown.open');
     if (anyOpen) nav.classList.add('dd-open'); else nav.classList.remove('dd-open');
   }
-  // close menus & remove padding when clicking outside
+  // close when clicking outside
   window.addEventListener('click', e=>{
     if(!e.target.closest('.dropdown')){
       document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
