@@ -12,80 +12,81 @@
   :root{
     --navy:#0c1e37; --navy-2:#132b4f;
     --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
-    --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6;
+    --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   html,body{margin:0}
-  body{
-    font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink); background:var(--bg);
-  }
+  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
   a{color:inherit;text-decoration:none}
-
   .container{max-width:1160px;margin:0 auto;padding:0 18px}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
   /* ============ NAV (with overlap fix) ============ */
-  .nav{
-    position:sticky; top:0; z-index:80;
-    background:linear-gradient(180deg,var(--navy),var(--navy-2));
-    border-bottom:1px solid rgba(255,255,255,.08);
-    box-shadow:0 8px 22px rgba(10,28,60,.22);
-    padding-bottom:0;                          /* default tight */
-    transition:padding-bottom .15s ease;
-  }
-  /* Add space below nav only when any dropdown is open */
-  .nav.dd-open{
-    padding-bottom:210px;                      /* enough room for menu items */
-  }
-
+  .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
+       border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
+       padding-bottom:0; transition:padding-bottom .15s ease;}
+  .nav.dd-open{padding-bottom:210px;}
   .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
   .brand .t{font-weight:800;letter-spacing:.3px;color:#ffe39a}
   .brand .s{font-size:11px;color:#e7f0ff;opacity:.95}
-
   .menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
-  .menu a,.dropdown>button{
-    cursor:pointer; display:inline-flex; align-items:center; gap:7px;
-    height:38px; padding:0 14px;
-    color:#eef4ff; font-weight:800; letter-spacing:.2px;
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.18);
-    border-radius:12px;
-    transition:transform .08s ease, background .2s ease, box-shadow .2s ease;
-  }
-  .menu a:hover,.dropdown>button:hover{
-    transform:translateY(-1px);
-    background:rgba(255,255,255,.18);
-    box-shadow:0 8px 18px rgba(0,0,0,.25);
-  }
+  .menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;
+    color:#eef4ff;font-weight:800;letter-spacing:.2px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+    border-radius:12px;transition:transform .08s ease, background .2s ease, box-shadow .2s ease}
+  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18);box-shadow:0 8px 18px rgba(0,0,0,.25)}
   .menu .active{background:rgba(255,255,255,.22)}
   .dropdown{position:relative}
-  .dropdown-menu{
-    position:absolute; top:calc(100% + 8px);   /* drop a bit below the bar */
-    right:0; min-width:200px;
-    background:#0f2548; color:#fff; border:1px solid rgba(255,255,255,.18);
-    border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)
-  }
+  .dropdown-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:200px; background:#0f2548; color:#fff;
+    border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)}
   .dropdown.open .dropdown-menu{display:block}
   .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-
   .social{display:flex;gap:8px;margin-left:6px}
   .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
   .social svg{width:18px;height:18px;fill:#fff}
 
-  /* ============ HERO ============ */
-  .hero{background:var(--paper);border-bottom:1px solid var(--line)}
+  /* ============ HERO with Tricolor + Chakra ============ */
+  .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+  .hero.flag::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,var(--saffron) 0 33.333%, #ffffff 33.333% 66.666%, var(--green) 66.666% 100%);
+    opacity:.18; pointer-events:none;
+  }
+  .hero.flag::after{
+    content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:min(48vw,380px); height:min(48vw,380px);
+    background-repeat:no-repeat; background-position:center; background-size:contain; opacity:.28; pointer-events:none;
+    /* Inline SVG Ashoka Chakra (24 spokes) */
+    background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>\
+<defs><g id='sp'><line x1='100' y1='100' x2='100' y2='16' stroke='%230a5aad' stroke-width='6'/></g></defs>\
+<g>\
+<use href='%23sp'/><use href='%23sp' transform='rotate(15 100 100)'/>\
+<use href='%23sp' transform='rotate(30 100 100)'/><use href='%23sp' transform='rotate(45 100 100)'/>\
+<use href='%23sp' transform='rotate(60 100 100)'/><use href='%23sp' transform='rotate(75 100 100)'/>\
+<use href='%23sp' transform='rotate(90 100 100)'/><use href='%23sp' transform='rotate(105 100 100)'/>\
+<use href='%23sp' transform='rotate(120 100 100)'/><use href='%23sp' transform='rotate(135 100 100)'/>\
+<use href='%23sp' transform='rotate(150 100 100)'/><use href='%23sp' transform='rotate(165 100 100)'/>\
+<use href='%23sp' transform='rotate(180 100 100)'/><use href='%23sp' transform='rotate(195 100 100)'/>\
+<use href='%23sp' transform='rotate(210 100 100)'/><use href='%23sp' transform='rotate(225 100 100)'/>\
+<use href='%23sp' transform='rotate(240 100 100)'/><use href='%23sp' transform='rotate(255 100 100)'/>\
+<use href='%23sp' transform='rotate(270 100 100)'/><use href='%23sp' transform='rotate(285 100 100)'/>\
+<use href='%23sp' transform='rotate(300 100 100)'/><use href='%23sp' transform='rotate(315 100 100)'/>\
+<use href='%23sp' transform='rotate(330 100 100)'/><use href='%23sp' transform='rotate(345 100 100)'/>\
+</g>\
+<circle cx='100' cy='100' r='8' fill='%230a5aad'/>\
+<circle cx='100' cy='100' r='92' fill='none' stroke='%230a5aad' stroke-width='6'/>\
+</svg>");
+  }
   .hero .wrap{padding:40px 0 34px}
   .h-title{margin:0 0 8px;font-size:38px;line-height:1.07;font-weight:900;color:#0e1d39}
   .h-title .accent{background:linear-gradient(90deg,var(--blue),#0c56c1);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{color:#31476b;max-width:740px;margin:0 0 8px}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
   .chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
-
   .next{margin:18px 0 0;padding:14px 14px}
   .next-list{display:grid;gap:8px;margin-top:6px}
   .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
@@ -133,7 +134,6 @@
   .don{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
-
   .qr{max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
 
   /* ============ FOOTER ============ */
@@ -197,8 +197,8 @@
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
+<!-- ================= HERO (TRICOLOR + CHAKRA) ================= -->
+<section class="hero flag">
   <div class="wrap container">
     <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
@@ -402,22 +402,15 @@
 <script>
   // Toggle dropdown & nav padding
   function toggleDD(id){
-    // close others
     document.querySelectorAll('.dropdown').forEach(d=>{
       if(d.id !== id) d.classList.remove('open');
     });
-
-    // toggle the clicked one
     const me = document.getElementById(id);
     me.classList.toggle('open');
-
-    // nav padding while any menu open
     const nav = document.querySelector('.nav');
     const anyOpen = !!document.querySelector('.dropdown.open');
-    if (anyOpen) nav.classList.add('dd-open');
-    else nav.classList.remove('dd-open');
+    if (anyOpen) nav.classList.add('dd-open'); else nav.classList.remove('dd-open');
   }
-
   // close menus & remove padding when clicking outside
   window.addEventListener('click', e=>{
     if(!e.target.closest('.dropdown')){
