@@ -10,101 +10,52 @@
 
 <style>
   :root{
-    /* Palette tuned to your logo */
-    --navy:#0b1f3a;
-    --navy-2:#0f2a57;
-    --ink:#112043;
-    --muted:#5a6b86;
-    --line:#e7edf5;
-    --bg:#f6f8fc;
-    --surface:#ffffff;
-    --saffron:#ff7a00;
-    --green:#149c62;
-    --blue:#0f66d2;
+    --navy:#0b1f3a; --navy-2:#0f2a57;
+    --ink:#112043; --muted:#5a6b86; --line:#e7edf5; --bg:#f6f8fc; --surface:#fff;
+    --saffron:#ff7a00; --green:#149c62; --blue:#0f66d2;
   }
-
-  /* Base */
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   html,body{margin:0}
-  body{
-    font-family:"Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-    color:var(--ink);
-    background:var(--bg);
-  }
+  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
   a{color:inherit;text-decoration:none}
   .container{max-width:1160px;margin:0 auto;padding:0 20px}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 16px rgba(17,32,67,.05)}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:11px 18px;border-radius:999px;font-weight:800;color:#fff;
-    background:linear-gradient(180deg,var(--saffron),#e06500);
-    border:1px solid #ffd4b0;box-shadow:0 8px 18px rgba(224,101,0,.25);
-  }
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e06500);border:1px solid #ffd4b0;box-shadow:0 8px 18px rgba(224,101,0,.25)}
 
-  /* Header / Nav */
-  .nav{
-    position:sticky;top:0;z-index:50;
-    background:var(--navy);
-    border-bottom:1px solid rgba(255,255,255,.06);
-  }
-  .nav .wrap{
-    display:flex;align-items:center;gap:14px;
-    padding:10px 20px;
-  }
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav .wrap{display:flex;align-items:center;gap:14px;padding:10px 20px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:78px;height:78px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 4px 10px rgba(0,0,0,.16)}
   .brand .t{font-weight:800;letter-spacing:.3px;color:#ffd487}
   .brand .s{font-size:12px;color:#dfe7ff;opacity:.95}
-
   .menu{display:flex;gap:10px;align-items:center;margin-left:auto;flex-wrap:wrap}
-  .menu a,.dropdown>button{
-    cursor:pointer;
-    display:inline-flex;align-items:center;gap:8px;
-    padding:9px 16px;border-radius:999px;font-weight:800;
-    color:#eef3ff;background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.22);
-    transition:transform .08s ease, background .2s ease;
-  }
+  .menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-weight:800;color:#eef3ff;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);transition:transform .08s,background .2s}
   .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18)}
   .menu .active{background:rgba(255,255,255,.22)}
-
   .dropdown{position:relative}
-  .dropdown-menu{
-    position:absolute;top:110%;right:0;min-width:200px;
-    background:var(--navy-2);color:#fff;border:1px solid rgba(255,255,255,.18);
-    border-radius:12px;padding:8px;display:none;box-shadow:0 18px 32px rgba(0,0,0,.35)
-  }
+  .dropdown-menu{position:absolute;top:110%;right:0;min-width:200px;background:var(--navy-2);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:8px;display:none;box-shadow:0 18px 32px rgba(0,0,0,.35)}
   .dropdown.open .dropdown-menu{display:block}
   .dropdown-menu a{display:block;padding:10px 12px;border-radius:8px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-
-  /* Social icons */
   .social{display:flex;gap:8px;margin-left:6px}
-  .social a{
-    width:36px;height:36px;border-radius:999px;display:flex;align-items:center;justify-content:center;
-    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22)
-  }
+  .social a{width:36px;height:36px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22)}
   .social svg{width:19px;height:19px;fill:#fff}
 
-  /* Hero */
+  /* HERO */
   .hero{background:var(--surface);border-bottom:1px solid var(--line)}
   .hero .wrap{padding:56px 0}
   .h-title{margin:0 0 10px;font-size:42px;line-height:1.06;font-weight:900;color:#0f1b3a}
-  .h-title .accent{
-    background:linear-gradient(90deg,var(--blue),#0b5ac1);
-    -webkit-background-clip:text;background-clip:text;color:transparent
-  }
+  .h-title .accent{background:linear-gradient(90deg,var(--blue),#0b5ac1);-webkit-background-clip:text;background-clip:text;color:transparent}
   .lead{color:#2b3f66;max-width:740px;margin:0 0 12px}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
   .chip{padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#22365e;font-weight:800}
-
   .next{margin:18px 0 0;padding:16px 18px}
   .next-list{display:grid;gap:10px;margin-top:6px}
   .next-item{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fbfdff}
   .lg{font-weight:900;color:#0f66d2;margin-right:6px}
 
-  /* Sections */
   .section{padding:54px 0}
   .section h2{margin:0 0 10px;font-size:28px;font-weight:800;color:#0f1b3a}
   .sub{color:var(--muted)}
@@ -125,8 +76,13 @@
   .logo-frame{width:220px;height:70px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-  /* Squad */
-  .squad{padding:16px}
+  /* SQUADS: two-column layout */
+  .squads-two{display:grid;gap:16px;grid-template-columns:1fr;align-items:start}
+  @media (min-width:980px){.squads-two{grid-template-columns:1fr 1fr}}
+  .squad-card{padding:16px}
+  .squad-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px}
+  .squad-title{margin:0;font-size:22px;font-weight:900}
+  .squad-meta{color:var(--muted);font-size:13px}
   .s-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
   .player{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
   .name{font-weight:900;color:#0f1b3a}
@@ -151,7 +107,7 @@
 </head>
 <body>
 
-<!-- Header -->
+<!-- NAV -->
 <header class="nav">
   <div class="wrap container">
     <div class="brand">
@@ -164,7 +120,6 @@
 
     <nav class="menu">
       <a href="#about" class="active">About</a>
-
       <div class="dropdown" id="dd-lg">
         <button onclick="toggleDD('dd-lg')">Leagues ▾</button>
         <div class="dropdown-menu">
@@ -173,10 +128,8 @@
           <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
         </div>
       </div>
-
       <a href="#fixtures">Schedule</a>
-      <a href="#squad">Squad</a>
-
+      <a href="#squads">Squad</a>
       <div class="dropdown" id="dd-sp">
         <button onclick="toggleDD('dd-sp')">Sponsors ▾</button>
         <div class="dropdown-menu">
@@ -186,7 +139,6 @@
           <a href="#sponsor-pizza">Pizza Twist</a>
         </div>
       </div>
-
       <a href="#donate">Donations</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -202,14 +154,14 @@
   </div>
 </header>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
   <div class="wrap container">
     <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
-    <p class="lead">Community-first cricket in DFW. Training. Fixtures. Trophies. Memories. <strong>Har Har Mahadev 🕉</strong></p>
+    <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
     <div class="chips">
       <span class="chip">🏏 Discipline</span>
-      <span class="chip">🤝 Teamwork</span>
+      <span class="chip">🤝 Unity</span>
       <span class="chip">⚡ Energy</span>
     </div>
 
@@ -221,7 +173,7 @@
   </div>
 </section>
 
-<!-- About -->
+<!-- ABOUT -->
 <section id="about" class="section">
   <div class="container">
     <h2>About</h2>
@@ -230,7 +182,7 @@
   </div>
 </section>
 
-<!-- Fixtures -->
+<!-- FIXTURES -->
 <section id="fixtures" class="section">
   <div class="container">
     <h2>Fixtures</h2>
@@ -241,7 +193,7 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
         </thead>
         <tbody>
-          <!-- DFCL (with time for hero) -->
+          <!-- DFCL with time for hero -->
           <tr data-league="DFCL" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
@@ -261,35 +213,64 @@
   </div>
 </section>
 
-<!-- Squad (DFCL) -->
-<section id="squad" class="section">
+<!-- SQUADS (two columns) -->
+<section id="squads" class="section">
   <div class="container">
-    <h2>DFCL Squad • Bharat Warriors vs Dallas Renegades</h2>
-    <p class="sub">
-      <strong>Date:</strong> Sat, Sep 6 &nbsp;•&nbsp; <strong>Reporting:</strong> 6:45 AM &nbsp;•&nbsp;
-      <strong>Toss:</strong> 7:15 AM &nbsp;•&nbsp; <strong>Game:</strong> 7:30 AM &nbsp;•&nbsp;
-      <strong>Address:</strong> 5992 Riverside Dr, Irving, TX 75039
-    </p>
-    <div class="card squad">
-      <div class="s-grid">
-        <div class="player"><div class="name">Abhijeet</div></div>
-        <div class="player"><div class="name">Ajay</div></div>
-        <div class="player"><div class="name">Ali</div></div>
-        <div class="player"><div class="name">Anandbhai</div><div class="roles"><span class="tag WK">WK</span></div></div>
-        <div class="player"><div class="name">Darsh</div></div>
-        <div class="player"><div class="name">Ganga</div></div>
-        <div class="player"><div class="name">Mihirbhai</div></div>
-        <div class="player"><div class="name">Nirmit</div></div>
-        <div class="player"><div class="name">Patrick</div><div class="roles"><span class="tag C">C</span></div></div>
-        <div class="player"><div class="name">Prabesh</div></div>
-        <div class="player"><div class="name">Raj</div><div class="roles"><span class="tag VC">VC</span></div></div>
-        <div class="player"><div class="name">Tarun</div></div>
+    <h2>Squad</h2>
+
+    <div class="squads-two">
+      <!-- LEFT: DFCL -->
+      <div class="card squad-card">
+        <div class="squad-head">
+          <h3 class="squad-title">DFCL XI</h3>
+          <div class="squad-meta">vs Dallas Renegades • Sat, Sep 6 • 7:30 AM</div>
+        </div>
+        <p class="sub" style="margin-top:-4px">Irving Polo Cricket Ground, 5992 Riverside Dr, Irving, TX 75039</p>
+        <div class="s-grid" style="margin-top:12px">
+          <div class="player"><div class="name">Abhijeet</div></div>
+          <div class="player"><div class="name">Ajay</div></div>
+          <div class="player"><div class="name">Ali</div></div>
+          <div class="player"><div class="name">Anandbhai</div><div class="roles"><span class="tag WK">WK</span></div></div>
+          <div class="player"><div class="name">Darsh</div></div>
+          <div class="player"><div class="name">Ganga</div></div>
+          <div class="player"><div class="name">Mihirbhai</div></div>
+          <div class="player"><div class="name">Nirmit</div></div>
+          <div class="player"><div class="name">Patrick</div><div class="roles"><span class="tag C">C</span></div></div>
+          <div class="player"><div class="name">Prabesh</div></div>
+          <div class="player"><div class="name">Raj</div><div class="roles"><span class="tag VC">VC</span></div></div>
+          <div class="player"><div class="name">Tarun</div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: LECA -->
+      <div class="card squad-card">
+        <div class="squad-head">
+          <h3 class="squad-title">LECA XI</h3>
+          <div class="squad-meta">Next LECA matchday squad</div>
+        </div>
+        <!-- If you have the final XI, replace the note + list below -->
+        <p class="sub" style="margin:6px 0 12px">Final squad will be announced closer to kickoff.</p>
+
+        <div class="s-grid">
+          <!-- Placeholder names (remove when you have the final XI) -->
+          <div class="player"><div class="name">TBD 1</div></div>
+          <div class="player"><div class="name">TBD 2</div></div>
+          <div class="player"><div class="name">TBD 3</div></div>
+          <div class="player"><div class="name">TBD 4</div></div>
+          <div class="player"><div class="name">TBD 5</div></div>
+          <div class="player"><div class="name">TBD 6</div></div>
+          <div class="player"><div class="name">TBD 7</div></div>
+          <div class="player"><div class="name">TBD 8</div></div>
+          <div class="player"><div class="name">TBD 9</div></div>
+          <div class="player"><div class="name">TBD 10</div></div>
+          <div class="player"><div class="name">TBD 11</div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Sponsors -->
+<!-- SPONSORS -->
 <section id="sponsors" class="section">
   <div class="container">
     <h2>Sponsors</h2>
@@ -313,7 +294,7 @@
   </div>
 </section>
 
-<!-- Donations -->
+<!-- DONATIONS -->
 <section id="donate" class="section">
   <div class="container">
     <h2>Donations</h2>
@@ -333,7 +314,7 @@
   </div>
 </section>
 
-<!-- Contact -->
+<!-- CONTACT -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
@@ -360,7 +341,6 @@
   </div>
 </section>
 
-<!-- Footer -->
 <footer>
   <div class="container">
     <div>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a></div>
@@ -376,42 +356,36 @@
 </footer>
 
 <script>
-  /* Dropdowns */
   function toggleDD(id){
-    document.querySelectorAll('.dropdown').forEach(d => { if(d.id!==id) d.classList.remove('open'); });
+    document.querySelectorAll('.dropdown').forEach(d=>{if(d.id!==id)d.classList.remove('open')});
     document.getElementById(id).classList.toggle('open');
   }
-  window.addEventListener('click', e => {
-    if (!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
+  window.addEventListener('click',e=>{
+    if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
   });
 
-  /* League filter */
   function filterLeague(lg){
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      tr.style.display = (lg==='ALL' || tr.dataset.league===lg) ? '' : 'none';
+      tr.style.display = (lg==='ALL'||tr.dataset.league===lg)?'':'none';
     });
   }
 
-  /* Next matches pulled from table (first 3 rows) */
   function renderNextMatches(){
-    const rows = [...document.querySelectorAll('#fxTable tbody tr')];
-    const items = rows.slice(0,3).map(tr=>{
-      const date = tr.children[0].textContent.trim();
-      const opp  = tr.children[1].textContent.trim();
-      const grd  = tr.children[2].textContent.trim();
-      const lg   = tr.dataset.league || '';
-      const time = tr.dataset.time ? ' • '+tr.dataset.time : '';
-      return `<div class="next-item"><span class="lg">${lg}</span> ${date}${time} – ${opp}<br><small>${grd}</small></div>`;
+    const rows=[...document.querySelectorAll('#fxTable tbody tr')];
+    const items=rows.slice(0,3).map(tr=>{
+      const d=tr.children[0].textContent.trim();
+      const opp=tr.children[1].textContent.trim();
+      const grd=tr.children[2].textContent.trim();
+      const lg=tr.dataset.league||'';
+      const t=tr.dataset.time?' • '+tr.dataset.time:'';
+      return `<div class="next-item"><span class="lg">${lg}</span> ${d}${t} – ${opp}<br><small>${grd}</small></div>`;
     }).join('');
-    document.getElementById('next-matches').innerHTML = items || '<div class="next-item">No upcoming matches.</div>';
+    document.getElementById('next-matches').innerHTML=items||'<div class="next-item">No upcoming matches.</div>';
   }
 
-  /* Zelle copy */
   function copyZelle(btn){
-    const t = document.getElementById('zelle-email').textContent.trim();
-    navigator.clipboard.writeText(t).then(()=>{
-      btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy email',1200);
-    });
+    const t=document.getElementById('zelle-email').textContent.trim();
+    navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
   }
 
   document.addEventListener('DOMContentLoaded',renderNextMatches);
