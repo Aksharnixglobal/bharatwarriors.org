@@ -4,110 +4,141 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bharat Warriors Cricket Club</title>
-<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, donations, contact." />
+<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, squads, sponsors, donations, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --navy:#0b1f3a; --navy-2:#0f2a57;
-    --ink:#112043; --muted:#5a6b86; --line:#e7edf5; --bg:#f6f8fc; --surface:#fff;
-    --saffron:#ff7a00; --green:#149c62; --blue:#0f66d2;
+    --navy:#0c1e37; --navy-2:#132b4f;
+    --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
+    --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   html,body{margin:0}
-  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  body{
+    font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:var(--bg);
+  }
   a{color:inherit;text-decoration:none}
-  .container{max-width:1160px;margin:0 auto;padding:0 20px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 16px rgba(17,32,67,.05)}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e06500);border:1px solid #ffd4b0;box-shadow:0 8px 18px rgba(224,101,0,.25)}
 
-  /* NAV */
-  .nav{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.06)}
-  .nav .wrap{display:flex;align-items:center;gap:14px;padding:10px 20px}
+  .container{max-width:1160px;margin:0 auto;padding:0 18px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
+
+  /* ============ NAV ============ */
+  .nav{
+    position:sticky; top:0; z-index:80;
+    background:linear-gradient(180deg,var(--navy),var(--navy-2));
+    border-bottom:1px solid rgba(255,255,255,.08);
+    box-shadow:0 8px 22px rgba(10,28,60,.22);
+  }
+  .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
   .brand{display:flex;align-items:center;gap:12px}
-  .brand img{width:78px;height:78px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 4px 10px rgba(0,0,0,.16)}
-  .brand .t{font-weight:800;letter-spacing:.3px;color:#ffd487}
-  .brand .s{font-size:12px;color:#dfe7ff;opacity:.95}
-  .menu{display:flex;gap:10px;align-items:center;margin-left:auto;flex-wrap:wrap}
-  .menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-weight:800;color:#eef3ff;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);transition:transform .08s,background .2s}
-  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18)}
+  .brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+  .brand .t{font-weight:800;letter-spacing:.3px;color:#ffe39a}
+  .brand .s{font-size:11px;color:#e7f0ff;opacity:.95}
+
+  .menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
+  .menu a,.dropdown>button{
+    cursor:pointer; display:inline-flex; align-items:center; gap:7px;
+    height:38px; padding:0 14px;
+    color:#eef4ff; font-weight:800; letter-spacing:.2px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:12px;
+    transition:transform .08s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .menu a:hover,.dropdown>button:hover{
+    transform:translateY(-1px);
+    background:rgba(255,255,255,.18);
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
+  }
   .menu .active{background:rgba(255,255,255,.22)}
   .dropdown{position:relative}
-  .dropdown-menu{position:absolute;top:110%;right:0;min-width:200px;background:var(--navy-2);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:8px;display:none;box-shadow:0 18px 32px rgba(0,0,0,.35)}
+  .dropdown-menu{
+    position:absolute; top:110%; right:0; min-width:200px;
+    background:#0f2548; color:#fff; border:1px solid rgba(255,255,255,.18);
+    border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)
+  }
   .dropdown.open .dropdown-menu{display:block}
-  .dropdown-menu a{display:block;padding:10px 12px;border-radius:8px}
+  .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-  .social{display:flex;gap:8px;margin-left:6px}
-  .social a{width:36px;height:36px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22)}
-  .social svg{width:19px;height:19px;fill:#fff}
 
-  /* HERO */
-  .hero{background:var(--surface);border-bottom:1px solid var(--line)}
-  .hero .wrap{padding:56px 0}
-  .h-title{margin:0 0 10px;font-size:42px;line-height:1.06;font-weight:900;color:#0f1b3a}
-  .h-title .accent{background:linear-gradient(90deg,var(--blue),#0b5ac1);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .lead{color:#2b3f66;max-width:740px;margin:0 0 12px}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
-  .chip{padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#22365e;font-weight:800}
-  .next{margin:18px 0 0;padding:16px 18px}
-  .next-list{display:grid;gap:10px;margin-top:6px}
-  .next-item{padding:10px;border:1px solid var(--line);border-radius:12px;background:#fbfdff}
+  .social{display:flex;gap:8px;margin-left:6px}
+  .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
+  .social svg{width:18px;height:18px;fill:#fff}
+
+  /* ============ HERO ============ */
+  .hero{background:var(--paper);border-bottom:1px solid var(--line)}
+  .hero .wrap{padding:40px 0 34px}
+  .h-title{margin:0 0 8px;font-size:38px;line-height:1.07;font-weight:900;color:#0e1d39}
+  .h-title .accent{background:linear-gradient(90deg,var(--blue),#0c56c1);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:#31476b;max-width:740px;margin:0 0 8px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+  .chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
+
+  .next{margin:18px 0 0;padding:14px 14px}
+  .next-list{display:grid;gap:8px;margin-top:6px}
+  .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
   .lg{font-weight:900;color:#0f66d2;margin-right:6px}
 
-  .section{padding:54px 0}
-  .section h2{margin:0 0 10px;font-size:28px;font-weight:800;color:#0f1b3a}
-  .sub{color:var(--muted)}
+  /* ============ SECTION ============ */
+  .section{padding:46px 0}
+  .section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
+  .sub{color:var(--muted);font-size:14px}
 
-  /* Fixtures */
+  /* ============ FIXTURES ============ */
   table{width:100%;border-collapse:collapse}
   th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
-  th{background:#f2f7ff;color:#0f1b3a;font-weight:900}
+  th{background:#f0f6ff;color:#0e1d39;font-weight:900}
   .badge{padding:5px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
-  .league-dfcl{background:rgba(15,102,210,.12);color:#0f66d2}
-  .league-leca{background:rgba(20,156,98,.12);color:#149c62}
+  .league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
+  .league-leca{background:rgba(24,160,106,.14);color:#159765}
 
-  /* Sponsors */
-  .s-row{display:grid;gap:14px;grid-auto-rows:1fr}
+  /* ============ SQUADS (compact) ============ */
+  .squads-two{display:grid;gap:14px;grid-template-columns:1fr}
+  @media (min-width:980px){.squads-two{grid-template-columns:1fr 1fr}}
+  .squad-card{padding:14px}
+  .squad-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:6px}
+  .squad-title{margin:0;font-size:18px;font-weight:900;color:#0e1d39}
+  .squad-meta{color:var(--muted);font-size:12px}
+  .venue{margin:-2px 0 8px;color:#496184;font-size:13px}
+  .s-grid{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+  .player{border:1px solid var(--line);border-radius:10px;padding:10px 11px;background:#fff}
+  .name{font-weight:800;font-size:14px;color:#0e1d39}
+  .roles{display:flex;gap:6px;margin-top:6px}
+  .tag{font-size:11px;padding:4px 7px;border-radius:999px;border:1px solid var(--line);background:#f7fbff;font-weight:800}
+  .C{background:rgba(255,122,26,.16);color:#a34b00;border-color:#ffd3b0}
+  .VC{background:rgba(18,98,214,.15);color:#1262d6;border-color:#d5e5ff}
+  .WK{background:rgba(24,160,106,.16);color:#159765;border-color:#d6f0e5}
+
+  /* ============ SPONSORS ============ */
+  .s-row{display:grid;gap:12px;grid-auto-rows:1fr}
   @media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  .sponsor{height:160px;display:flex;align-items:center;justify-content:center}
-  .logo-frame{width:220px;height:70px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
+  .sponsor{height:150px;display:flex;align-items:center;justify-content:center}
+  .logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-  /* SQUADS: two-column layout */
-  .squads-two{display:grid;gap:16px;grid-template-columns:1fr;align-items:start}
-  @media (min-width:980px){.squads-two{grid-template-columns:1fr 1fr}}
-  .squad-card{padding:16px}
-  .squad-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px}
-  .squad-title{margin:0;font-size:22px;font-weight:900}
-  .squad-meta{color:var(--muted);font-size:13px}
-  .s-grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-  .player{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff}
-  .name{font-weight:900;color:#0f1b3a}
-  .roles{display:flex;gap:8px;margin-top:8px}
-  .tag{font-size:12px;padding:5px 8px;border-radius:999px;border:1px solid var(--line);background:#f8fbff;font-weight:800}
-  .C{background:rgba(255,122,0,.14);color:#a34b00;border-color:#ffd5b0}
-  .VC{background:rgba(15,102,210,.14);color:#0f66d2;border-color:#cfe0ff}
-  .WK{background:rgba(20,156,98,.16);color:#149c62;border-color:#cfeedd}
-
-  /* Donations */
+  /* ============ DONATIONS ============ */
   .don{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
-  .qr{max-width:240px;width:100%;height:auto;border-radius:10px;box-shadow:0 8px 18px rgba(0,0,0,.08)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
 
-  /* Footer */
-  footer{padding:22px 0;text-align:center;background:#fff;color:#344267;border-top:1px solid var(--line)}
+  .qr{max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+
+  /* ============ FOOTER ============ */
+  footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
   footer a{color:var(--blue);font-weight:800}
-  .foot-social{display:flex;gap:12px;justify-content:center;margin-top:8px}
-  .foot-social a{width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
-  .foot-social svg{width:22px;height:22px;fill:#fff}
+  .foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
+  .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
+  .foot-social svg{width:20px;height:20px;fill:#fff}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ================= NAV ================= -->
 <header class="nav">
   <div class="wrap container">
     <div class="brand">
@@ -120,6 +151,7 @@
 
     <nav class="menu">
       <a href="#about" class="active">About</a>
+
       <div class="dropdown" id="dd-lg">
         <button onclick="toggleDD('dd-lg')">Leagues ▾</button>
         <div class="dropdown-menu">
@@ -128,8 +160,10 @@
           <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
         </div>
       </div>
+
       <a href="#fixtures">Schedule</a>
       <a href="#squads">Squad</a>
+
       <div class="dropdown" id="dd-sp">
         <button onclick="toggleDD('dd-sp')">Sponsors ▾</button>
         <div class="dropdown-menu">
@@ -139,6 +173,7 @@
           <a href="#sponsor-pizza">Pizza Twist</a>
         </div>
       </div>
+
       <a href="#donate">Donations</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -154,11 +189,12 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div class="wrap container">
     <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
+
     <div class="chips">
       <span class="chip">🏏 Discipline</span>
       <span class="chip">🤝 Unity</span>
@@ -173,16 +209,18 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ================= ABOUT ================= -->
 <section id="about" class="section">
   <div class="container">
     <h2>About</h2>
-    <p>The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. We play hard, play fair, and always respect the game.</p>
-    <p><strong>Motto:</strong> Play Hard. Play Fair. Play as Warriors. — Har Har Mahadev 🕉</p>
+    <p class="sub" style="font-size:15px">
+      The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. We play hard, play fair, and always respect the game.
+      <br><strong>Motto:</strong> Play Hard. Play Fair. Play as Warriors. — Har Har Mahadev 🕉
+    </p>
   </div>
 </section>
 
-<!-- FIXTURES -->
+<!-- ================= FIXTURES ================= -->
 <section id="fixtures" class="section">
   <div class="container">
     <h2>Fixtures</h2>
@@ -193,15 +231,14 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
         </thead>
         <tbody>
-          <!-- DFCL with time for hero -->
+          <!-- DFCL -->
           <tr data-league="DFCL" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
             <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>—</td>
           </tr>
-
-          <!-- LECA -->
+          <!-- LECA list -->
           <tr data-league="LECA"><td>Sep 6, 2025</td><td>Knight Riders 🆚 BW</td><td>Hackberry</td><td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>TBD</td><td>D District Chargers</td></tr>
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
@@ -213,20 +250,21 @@
   </div>
 </section>
 
-<!-- SQUADS (two columns) -->
+<!-- ================= SQUAD (COMPACT TWO-COLUMN) ================= -->
 <section id="squads" class="section">
   <div class="container">
     <h2>Squad</h2>
 
     <div class="squads-two">
-      <!-- LEFT: DFCL -->
+      <!-- DFCL -->
       <div class="card squad-card">
         <div class="squad-head">
           <h3 class="squad-title">DFCL XI</h3>
           <div class="squad-meta">vs Dallas Renegades • Sat, Sep 6 • 7:30 AM</div>
         </div>
-        <p class="sub" style="margin-top:-4px">Irving Polo Cricket Ground, 5992 Riverside Dr, Irving, TX 75039</p>
-        <div class="s-grid" style="margin-top:12px">
+        <div class="venue">Irving Polo Cricket Ground, 5992 Riverside Dr, Irving, TX 75039</div>
+
+        <div class="s-grid">
           <div class="player"><div class="name">Abhijeet</div></div>
           <div class="player"><div class="name">Ajay</div></div>
           <div class="player"><div class="name">Ali</div></div>
@@ -242,17 +280,15 @@
         </div>
       </div>
 
-      <!-- RIGHT: LECA -->
+      <!-- LECA -->
       <div class="card squad-card">
         <div class="squad-head">
           <h3 class="squad-title">LECA XI</h3>
           <div class="squad-meta">Next LECA matchday squad</div>
         </div>
-        <!-- If you have the final XI, replace the note + list below -->
-        <p class="sub" style="margin:6px 0 12px">Final squad will be announced closer to kickoff.</p>
+        <div class="venue">To be announced closer to kickoff.</div>
 
         <div class="s-grid">
-          <!-- Placeholder names (remove when you have the final XI) -->
           <div class="player"><div class="name">TBD 1</div></div>
           <div class="player"><div class="name">TBD 2</div></div>
           <div class="player"><div class="name">TBD 3</div></div>
@@ -270,7 +306,7 @@
   </div>
 </section>
 
-<!-- SPONSORS -->
+<!-- ================= SPONSORS ================= -->
 <section id="sponsors" class="section">
   <div class="container">
     <h2>Sponsors</h2>
@@ -294,19 +330,19 @@
   </div>
 </section>
 
-<!-- DONATIONS -->
+<!-- ================= DONATIONS ================= -->
 <section id="donate" class="section">
   <div class="container">
     <h2>Donations</h2>
     <p class="sub">We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
     <div class="don">
-      <div class="card" style="padding:16px">
-        <h3 style="margin:0 0 8px">Zelle</h3>
-        <p>Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
-        <p>Send to:</p>
+      <div class="card" style="padding:14px">
+        <h3 style="margin:0 0 6px;font-size:18px">Zelle</h3>
+        <p style="margin:0 0 6px">Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
+        <p style="margin:0 0 6px">Send to:</p>
         <p class="code" id="zelle-email">patelpratik59@gmail.com</p>
         <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
-        <hr style="border:none;border-top:1px solid var(--line);margin:14px 0">
+        <hr style="border:none;border-top:1px solid var(--line);margin:12px 0">
         <p class="sub" style="margin:0 0 8px">Or scan this QR in your banking app:</p>
         <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code">
       </div>
@@ -314,17 +350,17 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="section">
   <div class="container">
     <h2>Contact</h2>
     <p class="sub">For general inquiries:</p>
-    <div class="card" style="padding:16px;max-width:720px">
+    <div class="card" style="padding:14px;max-width:720px">
       <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="BW Club Inquiry" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_captcha" value="false" />
-        <div style="display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
           <label> Name
             <input name="name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
           </label>
@@ -332,10 +368,10 @@
             <input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
           </label>
         </div>
-        <label style="display:block;margin-top:12px"> Message
+        <label style="display:block;margin-top:10px"> Message
           <textarea name="message" rows="4" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px"></textarea>
         </label>
-        <button class="btn" type="submit" style="margin-top:12px">Send</button>
+        <button class="btn" type="submit" style="margin-top:10px">Send</button>
       </form>
     </div>
   </div>
