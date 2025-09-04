@@ -26,13 +26,20 @@
   .container{max-width:1160px;margin:0 auto;padding:0 18px}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
-  /* ============ NAV ============ */
+  /* ============ NAV (with overlap fix) ============ */
   .nav{
     position:sticky; top:0; z-index:80;
     background:linear-gradient(180deg,var(--navy),var(--navy-2));
     border-bottom:1px solid rgba(255,255,255,.08);
     box-shadow:0 8px 22px rgba(10,28,60,.22);
+    padding-bottom:0;                          /* default tight */
+    transition:padding-bottom .15s ease;
   }
+  /* Add space below nav only when any dropdown is open */
+  .nav.dd-open{
+    padding-bottom:210px;                      /* enough room for menu items */
+  }
+
   .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
   .brand{display:flex;align-items:center;gap:12px}
   .brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
@@ -57,7 +64,8 @@
   .menu .active{background:rgba(255,255,255,.22)}
   .dropdown{position:relative}
   .dropdown-menu{
-    position:absolute; top:110%; right:0; min-width:200px;
+    position:absolute; top:calc(100% + 8px);   /* drop a bit below the bar */
+    right:0; min-width:200px;
     background:#0f2548; color:#fff; border:1px solid rgba(255,255,255,.18);
     border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)
   }
@@ -392,12 +400,30 @@
 </footer>
 
 <script>
+  // Toggle dropdown & nav padding
   function toggleDD(id){
-    document.querySelectorAll('.dropdown').forEach(d=>{if(d.id!==id)d.classList.remove('open')});
-    document.getElementById(id).classList.toggle('open');
+    // close others
+    document.querySelectorAll('.dropdown').forEach(d=>{
+      if(d.id !== id) d.classList.remove('open');
+    });
+
+    // toggle the clicked one
+    const me = document.getElementById(id);
+    me.classList.toggle('open');
+
+    // nav padding while any menu open
+    const nav = document.querySelector('.nav');
+    const anyOpen = !!document.querySelector('.dropdown.open');
+    if (anyOpen) nav.classList.add('dd-open');
+    else nav.classList.remove('dd-open');
   }
-  window.addEventListener('click',e=>{
-    if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
+
+  // close menus & remove padding when clicking outside
+  window.addEventListener('click', e=>{
+    if(!e.target.closest('.dropdown')){
+      document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
+      document.querySelector('.nav')?.classList.remove('dd-open');
+    }
   });
 
   function filterLeague(lg){
