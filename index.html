@@ -104,6 +104,8 @@
   .badge{padding:5px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
   .league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
   .league-leca{background:rgba(24,160,106,.14);color:#159765}
+  .result-win{color:#18a06a;font-weight:800}
+  .result-loss{color:#d64545;font-weight:800}
 
   /* ===== GALLERY ===== */
   .gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -138,7 +140,7 @@
   .qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
 
   footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
-  footer a{color:var(--blue);font-weight:800}
+  footer a{color:#1262d6;font-weight:800}
   .foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
   .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
   .foot-social svg{width:20px;height:20px;fill:#fff}
@@ -235,17 +237,22 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Umpires</th></tr>
         </thead>
         <tbody>
+          <!-- DFCL -->
           <tr data-league="DFCL" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
             <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>—</td>
           </tr>
+          <!-- LECA 09/06/2025 RESULT UPDATED -->
           <tr data-league="LECA" data-time="3:30 PM">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
             <td>7200 Sung Harbor Cir, Hackberry, TX 75036</td>
-            <td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>TBD</td><td>D District Chargers</td>
+            <td></td>
+            <td><span class="badge league-leca">LECA • Div A</span></td>
+            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td>
+            <td>D District Chargers</td>
           </tr>
           <tr data-league="LECA"><td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>DXN United</td></tr>
           <tr data-league="LECA"><td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td><td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>Legacy Lonestars</td></tr>
@@ -264,42 +271,20 @@
     <p class="sub">Click any photo to view large.</p>
 
     <div class="gallery-grid" id="galleryGrid">
-      <!-- Replace file names with your actual images under /gallery -->
-      <div class="gallery-item" data-img="gallery/party-01.jpg" data-cap="Arrival & Registrations">
-        <span class="ph" style="background-image:url('gallery/party-01.jpg')"></span><span class="cap">Arrival & Registrations</span>
+      <!-- Only the 3 items you requested -->
+      <div class="gallery-item" data-img="gallery/awards.jpg" data-cap="Awards & Recognition">
+        <span class="ph" style="background-image:url('gallery/awards.jpg')"></span>
+        <span class="cap">Awards & Recognition</span>
       </div>
-      <div class="gallery-item" data-img="gallery/party-02.jpg" data-cap="Opening Ceremony">
-        <span class="ph" style="background-image:url('gallery/party-02.jpg')"></span><span class="cap">Opening Ceremony</span>
+
+      <div class="gallery-item" data-img="gallery/sponsors.jpg" data-cap="Sponsors & Partners">
+        <span class="ph" style="background-image:url('gallery/sponsors.jpg')"></span>
+        <span class="cap">Sponsors & Partners</span>
       </div>
-      <div class="gallery-item" data-img="gallery/party-03.jpg" data-cap="Team Introductions">
-        <span class="ph" style="background-image:url('gallery/party-03.jpg')"></span><span class="cap">Team Introductions</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-04.jpg" data-cap="Awards & Recognition">
-        <span class="ph" style="background-image:url('gallery/party-04.jpg')"></span><span class="cap">Awards & Recognition</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-05.jpg" data-cap="Family & Kids">
-        <span class="ph" style="background-image:url('gallery/party-05.jpg')"></span><span class="cap">Family & Kids</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-06.jpg" data-cap="Dinner Time">
-        <span class="ph" style="background-image:url('gallery/party-06.jpg')"></span><span class="cap">Dinner Time</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-07.jpg" data-cap="Games & Fun">
-        <span class="ph" style="background-image:url('gallery/party-07.jpg')"></span><span class="cap">Games & Fun</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-08.jpg" data-cap="Dance Floor">
-        <span class="ph" style="background-image:url('gallery/party-08.jpg')"></span><span class="cap">Dance Floor</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-09.jpg" data-cap="Raffle Winners">
-        <span class="ph" style="background-image:url('gallery/party-09.jpg')"></span><span class="cap">Raffle Winners</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-10.jpg" data-cap="BW Crew">
-        <span class="ph" style="background-image:url('gallery/party-10.jpg')"></span><span class="cap">BW Crew</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-11.jpg" data-cap="Sponsors & Partners">
-        <span class="ph" style="background-image:url('gallery/party-11.jpg')"></span><span class="cap">Sponsors & Partners</span>
-      </div>
-      <div class="gallery-item" data-img="gallery/party-12.jpg" data-cap="Closing Group Photo">
-        <span class="ph" style="background-image:url('gallery/party-12.jpg')"></span><span class="cap">Closing Group Photo</span>
+
+      <div class="gallery-item" data-img="gallery/team-introductions.jpg" data-cap="Team Introductions">
+        <span class="ph" style="background-image:url('gallery/team-introductions.jpg')"></span>
+        <span class="cap">Team Introductions</span>
       </div>
     </div>
   </div>
@@ -404,7 +389,6 @@
 </div>
 
 <script>
-  // dropdowns + header spacer
   function toggleDD(id){
     document.querySelectorAll('.dropdown').forEach(d=>{
       if(d.id !== id) d.classList.remove('open');
@@ -422,14 +406,12 @@
     }
   });
 
-  // league filter
   function filterLeague(lg){
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
       tr.style.display = (lg==='ALL'||tr.dataset.league===lg)?'':'none';
     });
   }
 
-  // render next matches (top hero)
   function renderNextMatches(){
     const rows=[...document.querySelectorAll('#fxTable tbody tr')];
     const items=rows.slice(0,3).map(tr=>{
@@ -443,7 +425,6 @@
     document.getElementById('next-matches').innerHTML=items||'<div class="next-item">No upcoming matches.</div>';
   }
 
-  // donations copy
   function copyZelle(btn){
     const t=document.getElementById('zelle-email').textContent.trim();
     navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
