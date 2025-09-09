@@ -241,16 +241,16 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
         </thead>
         <tbody>
-          <!-- DFCL (past/earlier) -->
-          <tr data-league="DFCL" data-time="7:30 AM">
+          <!-- DFCL (past) -->
+          <tr data-league="DFCL" data-date="2025-09-06" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
             <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
 
-          <!-- LECA RESULT -->
-          <tr data-league="LECA" data-time="3:30–7:00 PM">
+          <!-- LECA RESULT (past) -->
+          <tr data-league="LECA" data-date="2025-09-06" data-time="3:30–7:00 PM">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
             <td>7200 Sung Harbor Cir, Hackberry, TX 75036</td>
@@ -260,8 +260,8 @@
             <td>3:30–7:00 PM</td>
           </tr>
 
-          <!-- NEW DFCL: Joyful XI vs BW -->
-          <tr data-league="DFCL" data-time="7:30 AM">
+          <!-- NEW DFCL: future -->
+          <tr data-league="DFCL" data-date="2025-09-13" data-time="7:30 AM">
             <td>Sep 13, 2025</td>
             <td>Joyful XI 🆚 Bharat Warriors</td>
             <td>Irving Polo</td>
@@ -269,15 +269,15 @@
           </tr>
 
           <!-- LECA upcoming -->
-          <tr data-league="LECA" data-time="11:30 AM">
+          <tr data-league="LECA" data-date="2025-09-13" data-time="11:30 AM">
             <td>Sep 13, 2025</td>
             <td>Highland Boyz 🆚 BW</td>
             <td>Brentwood</td>
             <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
 
-          <!-- NEW DFCL: Dallas Renegades vs BW -->
-          <tr data-league="DFCL" data-time="7:00 PM">
+          <!-- NEW DFCL: future -->
+          <tr data-league="DFCL" data-date="2025-09-15" data-time="7:00 PM">
             <td>Sep 15, 2025</td>
             <td>Dallas Renegades 🆚 Bharat Warriors</td>
             <td>Sandy Lake ground</td>
@@ -285,21 +285,21 @@
           </tr>
 
           <!-- Remaining LECA -->
-          <tr data-league="LECA" data-time="3:30 PM">
+          <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
             <td>Sep 28, 2025</td>
             <td>The Topdogs 🆚 BW</td>
             <td>Brentwood</td>
             <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
           </tr>
 
-          <tr data-league="LECA" data-time="11:30 AM">
+          <tr data-league="LECA" data-date="2025-10-05" data-time="11:30 AM">
             <td>Oct 05, 2025</td>
             <td>Singhams India 101 🆚 BW</td>
             <td>Hackberry</td>
             <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
 
-          <tr data-league="LECA" data-time="11:30 AM">
+          <tr data-league="LECA" data-date="2025-10-11" data-time="11:30 AM">
             <td>Oct 11, 2025</td>
             <td>Raging Bulls 🆚 BW</td>
             <td>Hackberry</td>
@@ -455,23 +455,34 @@
   // SVG we’ll reuse for times
   const clockSvg = `<svg class="i i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
 
+  // NEW: show only future fixtures (based on data-date), sorted asc
   function renderNextMatches(){
-    const rows=[...document.querySelectorAll('#fxTable tbody tr')]
-      .filter(tr => tr.style.display !== 'none'); // respect league filter
+    const allRows=[...document.querySelectorAll('#fxTable tbody tr')]
+      .filter(tr => tr.style.display !== 'none');
 
-    const items=rows.slice(0,3).map(tr=>{
-      const d=tr.children[0].textContent.trim();
-      const opp=tr.children[1].textContent.trim();
-      const grd=tr.children[2].textContent.trim();
-      const lg=tr.dataset.league||'';
-      const time = tr.dataset.time ? 
-        ` <span class="time">${clockSvg} ${tr.dataset.time}</span>` : '';
-      return `<div class="next-item"><span class="lg">${lg}</span> ${d}${time} – ${opp}<br><small>${grd}</small></div>`;
-    }).join('');
-    document.getElementById('next-matches').innerHTML=items||'<div class="next-item">No upcoming matches.</div>';
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    const upcoming = allRows
+      .map(tr => ({ tr, date: new Date(tr.dataset.date || '2100-01-01') }))
+      .filter(o => !isNaN(o.date) && o.date >= today)
+      .sort((a,b)=>a.date - b.date)
+      .slice(0,3)
+      .map(o=>{
+        const tr=o.tr;
+        const d=tr.children[0].textContent.trim();
+        const opp=tr.children[1].textContent.trim();
+        const grd=tr.children[2].textContent.trim();
+        const lg=tr.dataset.league||'';
+        const time = tr.dataset.time ? ` <span class="time">${clockSvg} ${tr.dataset.time}</span>` : '';
+        return `<div class="next-item"><span class="lg">${lg}</span> ${d}${time} – ${opp}<br><small>${grd}</small></div>`;
+      });
+
+    document.getElementById('next-matches').innerHTML =
+      upcoming.join('') || '<div class="next-item">No upcoming matches.</div>';
   }
 
-  // Add a clock in the Fixtures “Time” column automatically
+  // Decorate time column with clock icon
   function decorateTimes(){
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
       const td = tr.children[6]; // 7th column = Time
