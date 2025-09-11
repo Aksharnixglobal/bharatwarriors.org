@@ -4,111 +4,69 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bharat Warriors Cricket Club</title>
-<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, squad, sponsors, donations, gallery and contact." />
+<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, sponsors, donations, gallery and contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0b1220;
-    --muted:#4c5d7a;
-    --line:#e7eef9;
-
-    --navy-900:#0b2047;
-    --navy-800:#0d2a5e;
-
-    --blue-brand:#1362cc;
-    --saffron:#ff7b1a;
-    --green:#1dbf82;
-    --chakra:#0a5aad;
-
+    --ink:#0b1220; --muted:#4c5d7a; --line:#e7eef9;
+    --navy-900:#0b2047; --navy-800:#0d2a5e;
+    --blue-brand:#1362cc; --saffron:#ff7b1a; --green:#1dbf82; --chakra:#0a5aad;
     --paper:#f8fbff;
-    --sun:#ffc83d;
   }
   *{box-sizing:border-box}
   html,body{margin:0}
-  body{
-    font-family:"Montserrat",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);
-    background:var(--paper);
-  }
+  body{font-family:"Montserrat",system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper)}
   a{text-decoration:none;color:inherit}
-
   .container{max-width:1200px;margin:0 auto;padding:0 22px}
   .card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 34px rgba(15,47,107,.08)}
   .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:800}
 
-  /* ===== NAV ===== */
-  .nav{
-    position:sticky;top:0;z-index:1000;
-    background:linear-gradient(180deg,var(--navy-900),var(--navy-800));
-    border-bottom:1px solid rgba(255,255,255,.14);
-    box-shadow:0 10px 28px rgba(10,30,80,.25);
-  }
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:1000;background:linear-gradient(180deg,var(--navy-900),var(--navy-800));
+       border-bottom:1px solid rgba(255,255,255,.14);box-shadow:0 10px 28px rgba(10,30,80,.25)}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 22px}
   .brand{display:flex;align-items:center;gap:14px}
   .brand img{width:76px;height:76px;border-radius:50%;object-fit:contain;background:#fff;border:2px solid rgba(255,255,255,.35);box-shadow:0 6px 18px rgba(0,0,0,.18)}
   .brand h1{margin:0;font-size:22px;color:#fff;font-weight:800;letter-spacing:.2px}
   .brand small{display:block;color:#e6eeff;opacity:.95;font-size:12px}
-
   .menu{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-  .menu a,.dropdown>button{
-    cursor:pointer;
-    display:inline-flex;align-items:center;gap:8px;
-    padding:12px 20px;
-    color:#eef4ff;font-weight:800;letter-spacing:.2px;
-    background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08));
-    border:1px solid rgba(255,255,255,.28);
-    border-radius:999px;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 5px 16px rgba(0,0,0,.2);
-    transition:transform .08s ease, box-shadow .2s ease, background .2s ease;
-  }
-  .menu a:hover,.dropdown>button:hover{
-    transform:translateY(-1px);
-    background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.12));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 9px 24px rgba(0,0,0,.28);
-  }
+  .menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:12px 20px;color:#eef4ff;font-weight:800;
+    background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.28);
+    border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 5px 16px rgba(0,0,0,.2);transition:transform .08s,box-shadow .2s,background .2s}
+  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);
+    background:linear-gradient(180deg,rgba(255,255,255,.26),rgba(255,255,255,.12));box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 9px 24px rgba(0,0,0,.28)}
   .dropdown{position:relative}
-  .dropdown-menu{
-    position:absolute; top:110%; right:0; min-width:220px;
-    background:#162d67; color:#fff; border:1px solid rgba(255,255,255,.3);
-    border-radius:14px; padding:8px; display:none;
-    box-shadow:0 18px 36px rgba(0,0,0,.35);
-    z-index:9999;
-  }
+  .dropdown-menu{position:absolute;top:110%;right:0;min-width:220px;background:#162d67;color:#fff;border:1px solid rgba(255,255,255,.3);
+    border-radius:14px;padding:8px;display:none;box-shadow:0 18px 36px rgba(0,0,0,.35);z-index:9999}
   .dropdown.open .dropdown-menu{display:block}
   .dropdown-menu a{display:block;padding:12px 14px;border-radius:10px}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-
   .social{display:flex;gap:10px}
   .social a{width:40px;height:40px;display:grid;place-items:center;border-radius:10px;border:1px solid rgba(255,255,255,.25);color:#fff}
   .social a:hover{background:rgba(255,255,255,.16)}
 
-  /* ===== HERO ===== */
-  .hero{
-    position:relative;
-    border-bottom:1px solid #e3ebfb;
-    background:
-      radial-gradient(900px 420px at 15% -5%, #ffffff 0%, #f2f7ff 55%, #ebf3ff 100%);
-  }
-  .hero .inner{padding:46px 0 38px}
+  /* HERO + flag */
+  .hero{position:relative;border-bottom:1px solid #e3ebfb;background:radial-gradient(900px 420px at 15% -5%, #ffffff 0%, #f2f7ff 55%, #ebf3ff 100%);overflow:hidden}
+  .hero .inner{padding:46px 0 38px;position:relative;z-index:2}
   .hero h2{margin:0 0 10px;font-size:52px;line-height:1.06;font-weight:900;color:#0f1b3a}
   .hero h2 .accent{background:linear-gradient(90deg,#1a5fe0,#0f59c7);-webkit-background-clip:text;background-clip:text;color:transparent}
   .hero .lead{color:#2b3f66;max-width:880px}
-
-  /* faint Chakra */
-  .hero::before{
-    content:"";
-    position:absolute; left:28px; top:94px; width:160px; height:160px;
-    opacity:.08; pointer-events:none;
-    background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 120 120"><circle cx="60" cy="60" r="45" fill="none" stroke="%230a5aad" stroke-width="3"/><g stroke="%230a5aad" stroke-width="2"><line x1="60" y1="15" x2="60" y2="105"/><line x1="15" y1="60" x2="105" y2="60"/><line x1="30.4" y1="26.2" x2="89.6" y2="93.8"/><line x1="26.2" y1="30.4" x2="93.8" y2="89.6"/><line x1="93.8" y1="30.4" x2="26.2" y2="89.6"/><line x1="89.6" y1="26.2" x2="30.4" y2="93.8"/></g></svg>') no-repeat center/contain;
-  }
-
-  /* Ribbon chips */
-  .ribbon{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .flagbar{width:200px;height:8px;border-radius:999px;margin:14px 0 4px;background:linear-gradient(90deg,var(--saffron),#ffffff,var(--green));
+           box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .hero::before{content:"";position:absolute;left:-10px;top:70px;width:260px;height:260px;opacity:.14;pointer-events:none;z-index:1;
+    background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="260" height="260" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="none" stroke="%230a5aad" stroke-width="3"/><g stroke="%230a5aad" stroke-width="2"><line x1="60" y1="14" x2="60" y2="106"/><line x1="14" y1="60" x2="106" y2="60"/><line x1="30.4" y1="26.2" x2="89.6" y2="93.8"/><line x1="26.2" y1="30.4" x2="93.8" y2="89.6"/><line x1="93.8" y1="30.4" x2="26.2" y2="89.6"/><line x1="89.6" y1="26.2" x2="30.4" y2="93.8"/></g></svg>') no-repeat center/contain}
+  .ribbon{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
   .ribbon span{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#1f325d;font-weight:900}
   .ribbon .bat::before{content:"🏏 ";}
 
-  /* ===== NEXT MATCHES ===== */
+  /* Sections */
+  section{padding:64px 0}
+  section h3{margin:0 0 14px;font-size:30px;letter-spacing:.2px}
+  section h3:after{content:"";display:block;height:4px;width:110%;background:linear-gradient(90deg,var(--saffron),var(--blue-brand),var(--green));border-radius:999px;margin-top:6px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .sub{color:var(--muted)}
+
+  /* Next matches */
   .matchlist{margin:24px 0}
   .matchlist .row{padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:#fbfdff}
   .matchlist .row + .row{margin-top:10px}
@@ -116,33 +74,19 @@
   .league-dfcl{background:rgba(19,98,204,.12);color:#1362cc}
   .league-leca{background:rgba(29,191,130,.14);color:#129a6a}
 
-  /* ===== SECTIONS ===== */
-  section{padding:64px 0}
-  section h3{margin:0 0 14px;font-size:30px;letter-spacing:.2px}
-  section h3:after{content:"";display:block;height:4px;width:110%;background:linear-gradient(90deg,var(--saffron),var(--blue-brand),var(--green));border-radius:999px;margin-top:6px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-  .sub{color:var(--muted)}
-
-  /* ===== FIXTURES TABLE ===== */
+  /* Fixtures table */
   table{width:100%;border-collapse:collapse}
   th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
   th{background:linear-gradient(180deg,#eff5ff,#e8f0ff);color:#0f1b3a;font-weight:900;letter-spacing:.2px}
   .clock{font-weight:900}
 
-  /* ===== SQUAD ===== */
-  .squad-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-  .squad-card{padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 10px 24px rgba(15,47,107,.08)}
-  .player-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .player{padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#fbfdff;font-weight:700}
-  .tag{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#eef8f2;color:#0c7e55;margin-left:8px}
-  .capt{background:#fff3e6;color:#ce6a00}
-
-  /* ===== SPONSORS ===== */
+  /* Sponsors */
   .sponsor-row{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .sponsor{padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:16px;height:140px;box-shadow:0 10px 24px rgba(15,47,107,.08)}
   .logo-frame{width:200px;height:70px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain}
 
-  /* ===== GALLERY ===== */
+  /* Gallery */
   .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
   .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;cursor:pointer}
   .chip.on{background:#eaf2ff;border-color:#cfe0ff;color:#0f3f9e}
@@ -151,7 +95,7 @@
   .grid img{width:100%;height:210px;object-fit:cover;display:block}
   .grid figcaption{padding:10px 12px;font-weight:700}
 
-  /* ===== DONATIONS / CONTACT ===== */
+  /* Donate & Contact */
   .don-card{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff}
   .copy{padding:10px 12px;border-radius:12px;border:1px solid #ffd9b3;background:linear-gradient(180deg,#ffa64d,#ff851a);color:#fff;font-weight:900;cursor:pointer}
   .contact form{display:grid;gap:10px}
@@ -159,16 +103,15 @@
   .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;font-weight:900;color:#fff;background:linear-gradient(180deg,#2f7de5,#1362cc);border:1px solid #cfe0ff;box-shadow:0 8px 20px rgba(19,98,204,.35);cursor:pointer}
   .btn:hover{transform:translateY(-1px)}
 
-  /* small screens */
   @media (max-width:860px){
-    .squad-grid{grid-template-columns:1fr}
     .brand img{width:64px;height:64px}
+    .hero::before{left:-40px;top:90px;width:220px;height:220px}
   }
 </style>
 </head>
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- NAV (no Squad) -->
 <nav class="nav">
   <div class="wrap container">
     <div class="brand">
@@ -192,7 +135,6 @@
       </div>
 
       <a href="#fixtures">Schedule</a>
-      <a href="#squad">Squad</a>
 
       <div class="dropdown" id="dd-sponsors">
         <button type="button">Sponsors ▾</button>
@@ -215,11 +157,13 @@
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <header class="hero">
   <div class="inner container">
     <h2>Bharat <span class="accent">Warriors</span> Cricket Club</h2>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev</strong> 🕉</p>
+    <div class="flagbar" aria-hidden="true"></div>
+
     <div class="ribbon">
       <span class="bat">Discipline</span>
       <span class="bat">Unity</span>
@@ -230,7 +174,6 @@
     <div class="matchlist card" style="margin-top:18px;padding:16px">
       <h3 style="margin:0 0 10px">Next Matches</h3>
 
-      <!-- show only the two DFCL games now -->
       <div class="row">
         <span class="badge league-dfcl">DFCL</span>
         <strong> Sep 13, 2025 • 7:30 AM — Joyful XI <span class="pill">vs</span> Bharat Warriors</strong><br>
@@ -250,13 +193,13 @@
   </div>
 </header>
 
-<!-- ===== ABOUT ===== -->
+<!-- ABOUT -->
 <section id="about" class="container">
   <h3>About</h3>
   <p>The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. We play hard, play fair, and always respect the game. Our motto: <strong>Play Hard. Play Fair. Play as Warriors.</strong></p>
 </section>
 
-<!-- ===== FIXTURES ===== -->
+<!-- FIXTURES -->
 <section id="fixtures" class="container">
   <h3>Fixtures</h3>
   <p class="sub">Filter by league from the Leagues dropdown.</p>
@@ -274,7 +217,7 @@
         </tr>
       </thead>
       <tbody>
-        <!-- DFCL – Sep 13: Joyful XI vs BW -->
+        <!-- DFCL – Sep 13 -->
         <tr data-league="dfcl">
           <td><strong>Sep 13,<br>2025</strong></td>
           <td>Joyful XI <span class="pill">vs</span> BW</td>
@@ -284,8 +227,7 @@
           <td>—</td>
           <td class="clock">7:30 AM</td>
         </tr>
-
-        <!-- DFCL – Sep 15: DR vs BW -->
+        <!-- DFCL – Sep 15 -->
         <tr data-league="dfcl">
           <td><strong>Sep 15,<br>2025</strong></td>
           <td>Dallas Renegades <span class="pill">vs</span> BW</td>
@@ -295,8 +237,7 @@
           <td>—</td>
           <td class="clock">7:00 PM</td>
         </tr>
-
-        <!-- LECA – Sep 6 result: KR vs BW -->
+        <!-- LECA – Sep 6 result -->
         <tr data-league="leca">
           <td><strong>Sep 6,<br>2025</strong></td>
           <td>Knight Riders <span class="pill">vs</span> BW</td>
@@ -306,7 +247,6 @@
           <td><strong style="color:#18794e">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</strong></td>
           <td class="clock">3:30 PM</td>
         </tr>
-
         <!-- LECA – Sep 13 -->
         <tr data-league="leca">
           <td><strong>Sep 13,<br>2025</strong></td>
@@ -317,7 +257,6 @@
           <td>—</td>
           <td class="clock">11:30 AM</td>
         </tr>
-
         <!-- LECA – Sep 28 -->
         <tr data-league="leca">
           <td><strong>Sep 28,<br>2025</strong></td>
@@ -328,7 +267,6 @@
           <td>—</td>
           <td class="clock">3:30 PM</td>
         </tr>
-
         <!-- LECA – Oct 05 -->
         <tr data-league="leca">
           <td><strong>Oct 05,<br>2025</strong></td>
@@ -339,7 +277,6 @@
           <td>—</td>
           <td class="clock">11:30 AM</td>
         </tr>
-
         <!-- LECA – Oct 11 -->
         <tr data-league="leca">
           <td><strong>Oct 11,<br>2025</strong></td>
@@ -355,62 +292,23 @@
   </div>
 </section>
 
-<!-- ===== SQUAD ===== -->
-<section id="squad" class="container">
-  <h3>Squad</h3>
-  <div class="squad-grid">
-    <div class="squad-card">
-      <h4 style="margin:0 0 6px">DFCL XI</h4>
-      <p class="sub" style="margin:0 0 12px">vs Dallas Renegades • Sat, Sep 6 • 7:30 AM</p>
-      <div class="player-grid">
-        <div class="player">Abhijeet</div>
-        <div class="player">Ajay</div>
-        <div class="player">Ali</div>
-        <div class="player">Anandbhai <span class="tag">WK</span></div>
-        <div class="player">Darsh</div>
-        <div class="player">Ganga</div>
-        <div class="player">Mihirbhai</div>
-        <div class="player">Nirmit</div>
-        <div class="player">Patrick <span class="tag capt">C</span></div>
-        <div class="player">Prabesh</div>
-        <div class="player">Raj <span class="tag">VC</span></div>
-        <div class="player">Tarun</div>
-      </div>
-    </div>
-
-    <div class="squad-card">
-      <h4 style="margin:0 0 6px">LECA XI <span class="sub" style="font-weight:700">— Next LECA matchday squad</span></h4>
-      <div class="player-grid">
-        <div class="player">TBD 1</div><div class="player">TBD 2</div>
-        <div class="player">TBD 3</div><div class="player">TBD 4</div>
-        <div class="player">TBD 5</div><div class="player">TBD 6</div>
-        <div class="player">TBD 7</div><div class="player">TBD 8</div>
-        <div class="player">TBD 9</div><div class="player">TBD 10</div>
-        <div class="player">TBD 11</div><div class="player">—</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SPONSORS ===== -->
+<!-- SPONSORS -->
 <section id="sponsors" class="container">
   <h3>Sponsors</h3>
   <div class="sponsor-row">
     <a class="sponsor" href="https://www.instagram.com/infinity_legacy_group" target="_blank" title="Infinity Legacy Group">
       <div class="logo-frame"><img src="infinity_legacy.jpg" alt="Infinity Legacy Group"></div>
     </a>
-
     <a class="sponsor" href="https://aksharnixglobal.com/" target="_blank" title="AksharNix Global">
       <div class="logo-frame"><img src="akshar_nix_logo.png" alt="AksharNix Global"></div>
     </a>
-
     <a class="sponsor" href="https://www.pizzatwist.com/" target="_blank" title="Pizza Twist">
       <div class="logo-frame"><img src="pizza_twist_logo.jpg" alt="Pizza Twist"></div>
     </a>
   </div>
 </section>
 
-<!-- ===== GALLERY ===== -->
+<!-- GALLERY -->
 <section id="gallery" class="container">
   <h3>Gallery</h3>
   <div class="chips">
@@ -423,7 +321,6 @@
     <figure><img src="Darshan MOM.jpg" alt="Darshan - Man of the Match"><figcaption>Darshan — MOM</figcaption></figure>
     <figure><img src="Gaurav MOM.jpg" alt="Gaurav - Man of the Match"><figcaption>Gaurav — MOM</figcaption></figure>
     <figure><img src="Raj MOM.jpg" alt="Raj - Man of the Match"><figcaption>Raj — MOM</figcaption></figure>
-
     <figure><img src="Bhavik Best Fielder DFCL.jpg" alt="Bhavik - Best Fielder (DFCL)"><figcaption>Bhavik — Best Fielder (DFCL)</figcaption></figure>
     <figure><img src="Darshan Best bowler DFCL.jpg" alt="Darshan - Best Bowler (DFCL)"><figcaption>Darshan — Best Bowler (DFCL)</figcaption></figure>
     <figure><img src="Gaurav Best Bowler DFCL.jpg" alt="Gaurav - Best Bowler (DFCL)"><figcaption>Gaurav — Best Bowler (DFCL)</figcaption></figure>
@@ -441,15 +338,13 @@
   </div>
 </section>
 
-<!-- ===== DONATIONS ===== -->
+<!-- DONATIONS -->
 <section id="donate" class="container">
   <h3>Donations</h3>
   <div class="don-card">
     <div>
       <p>We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
-      <div class="pill" style="padding:10px 12px;gap:12px">
-        <span style="font-weight:900">Recipient:</span> PRATIKKUMAR PATEL
-      </div>
+      <div class="pill" style="padding:10px 12px;gap:12px"><span style="font-weight:900">Recipient:</span> PRATIKKUMAR PATEL</div>
       <div style="margin-top:10px;display:flex;gap:10px;align-items:center">
         <code id="zelle" style="padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:#fff">patelpratik59@gmail.com</code>
         <button class="copy" onclick="navigator.clipboard.writeText(document.getElementById('zelle').textContent)">Copy email</button>
@@ -459,7 +354,7 @@
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
+<!-- CONTACT -->
 <section id="contact" class="container contact">
   <h3>Contact</h3>
   <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST">
@@ -502,9 +397,9 @@
     });
   });
 
-  // optional: fixtures filter by leagues menu
+  // fixtures filter by league
   document.querySelectorAll('#dd-leagues .dropdown-menu a[data-filter]').forEach(a=>{
-    a.addEventListener('click', (ev)=>{
+    a.addEventListener('click', ()=>{
       const league = a.dataset.filter; // 'dfcl' or 'leca'
       const rows = document.querySelectorAll('#fixtures-table tbody tr');
       rows.forEach(r=>{
