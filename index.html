@@ -1,528 +1,504 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Bharat Warriors Cricket Club</title>
-<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, gallery, sponsors, donations, contact." />
-<link rel="icon" href="favicon.png" />
+<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, squad, gallery, sponsors, and contact."/>
+<link rel="icon" href="favicon.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 
 <style>
-  :root{
-    --navy:#0c1e37; --navy-2:#132b4f;
-    --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
-    --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  html,body{margin:0}
-  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-  a{color:inherit;text-decoration:none}
-  .container{max-width:1160px;margin:0 auto;padding:0 18px}
-  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
+:root{
+  --ink:#0b1228; --muted:#4c5d7a; --line:#e7eef9;
+  --navy-900:#0c1f44; --navy-800:#0e2a5a;
+  --blue-brand:#0f66d2; --saffron:#ff7b1a; --green-brand:#138a36; --gold:#f2c14e;
+  --chakra:#0a5aad; --paper:#f8fbff; --sun:#ffc83d;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#f5f8ff}
 
-  /* ===== NAV ===== */
-  .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
-       border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
-       padding-bottom:0; transition:padding-bottom .15s ease;}
-  .nav.dd-open{padding-bottom:220px;}
-  .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
-  .brand .t{font-weight:800;letter-spacing:.3px;color:#ffe39a}
-  .brand .s{font-size:11px;color:#e7f0ff;opacity:.95}
-  .menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
-  .menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;
-    color:#eef4ff;font-weight:800;letter-spacing:.2px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
-    border-radius:12px;transition:transform .08s ease, background .2s ease, box-shadow .2s ease}
-  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18);box-shadow:0 8px 18px rgba(0,0,0,.25)}
-  .menu .active{background:rgba(255,255,255,.22)}
-  .dropdown{position:relative}
-  .dropdown-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:220px; background:#0f2548; color:#fff;
-    border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)}
-  .dropdown.open .dropdown-menu{display:block}
-  .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px;white-space:nowrap}
-  .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-  .social{display:flex;gap:8px;margin-left:6px}
-  .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
-  .social svg{width:18px;height:18px;fill:#fff}
+/* top tricolor */
+.topbar{height:6px;background:
+ linear-gradient(90deg,var(--saffron),#fff 33%,var(--green-brand) 66%), 
+ repeating-linear-gradient(90deg,rgba(255,255,255,.35) 0 30px,transparent 30px 60px);
+}
 
-  /* anchor offset below sticky header */
-  .section{padding:46px 0; scroll-margin-top:130px;}
-  .hero{scroll-margin-top:0}
+/* NAV */
+.nav{position:sticky;top:0;z-index:1000;background:linear-gradient(180deg,var(--navy-900),var(--navy-800));
+  border-bottom:1px solid rgba(255,255,255,.12);box-shadow:0 10px 30px rgba(10,30,80,.25)}
+.nav .wrap{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.brand img{width:64px;height:64px;border-radius:50%;background:#fff;border:2px solid rgba(255,255,255,.25);box-shadow:0 6px 18px rgba(0,0,0,.18);object-fit:contain}
+.brand .tt{font-weight:800;letter-spacing:.2px}
+.brand .tag{font-size:12px;color:#e6eeff;opacity:.95}
 
-  /* ===== HERO (tricolor + chakra) ===== */
-  .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
-  .hero.flag::before{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg,var(--saffron) 0 33.333%, #ffffff 33.333% 66.666%, var(--green) 66.666% 100%);
-    opacity:.18; pointer-events:none;
-  }
-  .hero.flag::after{
-    content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    width:min(48vw,380px); height:min(48vw,380px);
-    background-repeat:no-repeat; background-position:center; background-size:contain; opacity:.28; pointer-events:none;
-    background-image:url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>\
-<defs><g id='sp'><line x1='100' y1='100' x2='100' y2='16' stroke='%230a5aad' stroke-width='6'/></g></defs>\
-<g>\
-<use href='%23sp'/><use href='%23sp' transform='rotate(15 100 100)'/>\
-<use href='%23sp' transform='rotate(30 100 100)'/><use href='%23sp' transform='rotate(45 100 100)'/>\
-<use href='%23sp' transform='rotate(60 100 100)'/><use href='%23sp' transform='rotate(75 100 100)'/>\
-<use href='%23sp' transform='rotate(90 100 100)'/><use href='%23sp' transform='rotate(105 100 100)'/>\
-<use href='%23sp' transform='rotate(120 100 100)'/><use href='%23sp' transform='rotate(135 100 100)'/>\
-<use href='%23sp' transform='rotate(150 100 100)'/><use href='%23sp' transform='rotate(165 100 100)'/>\
-<use href='%23sp' transform='rotate(180 100 100)'/><use href='%23sp' transform='rotate(195 100 100)'/>\
-<use href='%23sp' transform='rotate(210 100 100)'/><use href='%23sp' transform='rotate(225 100 100)'/>\
-<use href='%23sp' transform='rotate(240 100 100)'/><use href='%23sp' transform='rotate(255 100 100)'/>\
-<use href='%23sp' transform='rotate(270 100 100)'/><use href='%23sp' transform='rotate(285 100 100)'/>\
-<use href='%23sp' transform='rotate(300 100 100)'/><use href='%23sp' transform='rotate(315 100 100)'/>\
-<use href='%23sp' transform='rotate(330 100 100)'/><use href='%23sp' transform='rotate(345 100 100)'/>\
-</g>\
-<circle cx='100' cy='100' r='8' fill='%230a5aad'/>\
-<circle cx='100' cy='100' r='92' fill='none' stroke='%230a5aad' stroke-width='6'/>\
-</svg>");
-  }
-  .hero .wrap{padding:40px 0 34px}
-  .h-title{margin:0 0 8px;font-size:38px;line-height:1.07;font-weight:900;color:#0e1d39}
-  .h-title .accent{background:linear-gradient(90deg,var(--blue),#0c56c1);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .lead{color:#31476b;max-width:740px;margin:0 0 8px}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
-  .chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
-  .next{margin:18px 0 0;padding:14px 14px}
-  .next-list{display:grid;gap:8px;margin-top:6px}
-  .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
-  .lg{font-weight:900;color:#0f66d2;margin-right:6px}
+.menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;color:#eef4ff;
+  font-weight:800;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.22);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 4px 14px rgba(0,0,0,.18);text-decoration:none}
+.menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.10))}
+.dropdown{position:relative}
+.dropdown-menu{position:absolute;top:110%;left:0;min-width:200px;background:#162d67;color:#fff;border:1px solid rgba(255,255,255,.2);
+  border-radius:14px;padding:8px;display:none;box-shadow:0 18px 36px rgba(0,0,0,.35);z-index:2000}
+.dropdown.open .dropdown-menu{display:block}
+.dropdown-menu a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;color:#fff}
+.dropdown-menu a:hover{background:rgba(255,255,255,.12)}
 
-  .section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
-  .sub{color:var(--muted);font-size:14px}
+/* HERO with tricolor and embedded Chakra SVG */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid #e3ebfb}
+.hero .inner{max-width:1200px;margin:0 auto;padding:48px 20px 40px}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    /* Chakra watermark, embedded SVG */
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 120 120"><circle cx="60" cy="60" r="45" fill="none" stroke="%230a5aad" stroke-width="3"/><g stroke="%230a5aad" stroke-width="2"><line x1="60" y1="15" x2="60" y2="105"/><line x1="15" y1="60" x2="105" y2="60"/><line x1="30.4" y1="26.2" x2="89.6" y2="93.8"/><line x1="26.2" y1="30.4" x2="93.8" y2="89.6"/><line x1="93.8" y1="30.4" x2="26.2" y2="89.6"/><line x1="89.6" y1="26.2" x2="30.4" y2="93.8"/></g></svg>') no-repeat 2% 40%/180px 180px,
+    linear-gradient(180deg,#fff 0 45%, #f7faff 55%),
+    linear-gradient(90deg, rgba(255,123,26,.12) 0 33%, rgba(255,255,255,0) 33% 66%, rgba(19,138,54,.12) 66% 100%);
+}
+.hero h1{margin:8px 0 6px;font-size:46px;line-height:1.08;font-weight:900;color:#0f1b3a}
+.hero h1 .accent{background:linear-gradient(90deg,var(--blue-brand),#0f59c7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .lead{color:#2b3f66;margin:0 0 10px}
+.ribbon{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.ribbon span{padding:9px 13px;border-radius:999px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#f6faff);color:#1f325d;font-weight:900}
+.ribbon .bat::before{content:"🏏 ";} .ribbon .shield::before{content:"🛡️ ";} .ribbon .spark::before{content:"⚡ ";}
 
-  table{width:100%;border-collapse:collapse}
-  th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
-  th{background:#f0f6ff;color:#0e1d39;font-weight:900}
-  .badge{padding:5px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
-  .league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
-  .league-leca{background:rgba(24,160,106,.14);color:#159765}
-  .result-win{color:#18a06a;font-weight:800}
-  .result-loss{color:#d64545;font-weight:800}
+/* SECTIONS */
+.section{padding:56px 0;background:#fff;border-top:1px solid var(--line)}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+h2{margin:0 0 14px;font-size:30px;letter-spacing:.2px}
+.sub{color:var(--muted);margin:0 0 18px}
 
-  /* ===== GALLERY ===== */
-  .gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
-  @media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media (min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-  .gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer}
-  .gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
-  .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
-  .gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
-  /* lightbox */
-  .lightbox{position:fixed;inset:0;background:rgba(10,20,35,.9);display:none;align-items:center;justify-content:center;z-index:120}
-  .lightbox.open{display:flex}
-  .lb-wrap{max-width:90vw;max-height:88vh}
-  .lb-wrap img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 14px 32px rgba(0,0,0,.35)}
-  .lb-cap{margin-top:8px;text-align:center;color:#eef2ff}
-  .lb-close{position:fixed;top:18px;right:18px;background:#fff;border-radius:10px;border:1px solid #dbe6fb;font-weight:800;padding:8px 12px;cursor:pointer}
+/* NEXT MATCHES card */
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 36px rgba(15,47,107,.08)}
+.matchlist .row{display:flex;gap:12px;align-items:center;padding:16px;border-top:1px solid #edf3ff}
+.matchlist .row:first-child{border-top:0}
+.badge{padding:6px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff;font-weight:800;color:#0f1b3a}
+.badge.dfcl{background:rgba(23,87,209,.10);color:#1757d1}
+.badge.leca{background:rgba(29,191,130,.14);color:#129a6a}
+.vs{margin:0 8px;color:#ff9b1a;font-weight:800}
 
-  /* sponsors */
-  .s-row{display:grid;gap:12px;grid-auto-rows:1fr}
-  @media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  .sponsor{height:150px;display:flex;align-items:center;justify-content:center}
-  .logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
-  .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+/* FIXTURES table */
+table{width:100%;border-collapse:collapse}
+th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left}
+th{background:linear-gradient(180deg,#eff5ff,#e8f0ff);color:#0f1b3a;font-weight:900}
+td small{color:#5d6a87}
+.clock{font-weight:900}
 
-  /* donations compact */
-  .don-card{padding:14px}
-  .don-grid{display:grid;gap:14px;grid-template-columns:1fr}
-  @media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
-  .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
-  .qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+/* SQUAD */
+.squad-grid{display:grid;gap:22px;grid-template-columns:1fr 1fr}
+@media (max-width:900px){.squad-grid{grid-template-columns:1fr}}
+.squad-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 16px 6px;box-shadow:0 10px 24px rgba(15,47,107,.08)}
+.squad-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.player-grid{display:grid;gap:12px;grid-template-columns:1fr 1fr}
+@media (max-width:700px){.player-grid{grid-template-columns:1fr}}
+.player{padding:14px;border:1px solid #e8f0ff;border-radius:12px;background:#fff;font-weight:800}
+.tag{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;font-size:12px;background:#fff3d6;border:1px solid #ffe2a6;color:#b06b00}
 
-  footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
-  footer a{color:#1262d6;font-weight:800}
-  .foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
-  .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
-  .foot-social svg{width:20px;height:20px;fill:#fff}
+/* DONATIONS compact */
+.don-card{display:grid;gap:12px;grid-template-columns:1fr auto;align-items:center}
+@media (max-width:700px){.don-card{grid-template-columns:1fr}}
+.copy{padding:10px 14px;border:none;border-radius:10px;background:linear-gradient(180deg,#ff952e,#ff7b1a);color:#fff;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(255,123,26,.35)}
+.zelle-qr{max-width:220px;border-radius:12px;border:1px solid #e7eef9}
 
-  /* clock icon + time pill */
-  .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
-  .time{ display:inline-flex; align-items:center; gap:6px; color:#31476b; font-weight:800; }
+/* SPONSORS row */
+.sponsor-row{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.sponsor{padding:14px;display:flex;justify-content:center;align-items:center;height:120px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 24px rgba(15,47,107,.08)}
+.logo-frame{width:200px;height:70px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
+.logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+
+/* GALLERY */
+#gallery .chip{cursor:pointer;border:1px solid #dbe6ff;background:#fff;color:#1f325d;padding:10px 14px;border-radius:999px;font-weight:700}
+#gallery .chip.on{background:#eaf2ff;border-color:#cfe0ff}
+.gallery-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+#g .gitem{}
+#gallery .gitem{position:relative;overflow:hidden;border:1px solid #e6eef8;border-radius:14px;background:#fff;box-shadow:0 10px 20px rgba(15,47,107,.06)}
+#gallery .gitem img{width:100%;height:260px;object-fit:cover;display:block;transition:.3s transform}
+#gallery .gitem:hover img{transform:scale(1.03)}
+#gallery .gitem figcaption{padding:10px 12px;font-weight:700;color:#0f1b3a;font-size:14px;border-top:1px solid #eef4ff;background:#fff}
+#gallery .gitem.coming{display:flex;align-items:center;justify-content:center;height:260px;background:#f7fbff}
+#gallery .coming-card{text-align:center;color:#5c6a85;font-weight:700;border:1px dashed #cfe0ff;padding:22px;border-radius:12px;background:#fff}
+
+/* footer */
+.footer{padding:26px 20px;text-align:center;color:#5c6a85;border-top:1px solid var(--line);background:#f7fbff}
+.footer a{color:#0f66d2;text-decoration:none}
+.social{display:flex;gap:10px}
+.social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.12);color:#fff}
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap container">
-    <div class="brand">
-      <img src="bharat-warriors-logo.png" alt="Bharat Warriors">
+<div class="topbar"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#" class="brand">
+      <img src="bharat-warriors-logo.png" alt="Bharat Warriors"/>
       <div>
-        <div class="t">Bharat Warriors</div>
-        <div class="s">We play as ONE.</div>
+        <div class="tt">Bharat Warriors</div>
+        <div class="tag">We play as ONE.</div>
       </div>
-    </div>
+    </a>
+    <div class="menu">
+      <a href="#about">About</a>
 
-    <nav class="menu">
-      <a href="#about" class="active">About</a>
-
-      <div class="dropdown" id="dd-lg">
-        <button onclick="toggleDD('dd-lg')">Leagues ▾</button>
+      <div class="dropdown" id="dd-leagues">
+        <button type="button">Leagues ▾</button>
         <div class="dropdown-menu">
-          <a href="#fixtures" onclick="filterLeague('ALL')">All</a>
-          <a href="#fixtures" onclick="filterLeague('DFCL')">DFCL</a>
-          <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
+          <a href="#" data-league="ALL">All</a>
+          <a href="#" data-league="DFCL">DFCL</a>
+          <a href="#" data-league="LECA">LECA</a>
         </div>
       </div>
 
-      <a href="#fixtures">Schedule</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#squad">Squad</a>
       <a href="#gallery">Gallery</a>
-
-      <div class="dropdown" id="dd-sp">
-        <button onclick="toggleDD('dd-sp')">Sponsors ▾</button>
-        <div class="dropdown-menu">
-          <a href="#sponsors" onclick="toggleDD('dd-sp')">All Sponsors</a>
-          <a href="#sponsor-infinity" onclick="toggleDD('dd-sp')">Infinity Legacy Group</a>
-          <a href="#sponsor-aksharnix" onclick="toggleDD('dd-sp')">AksharNix Global</a>
-          <a href="#sponsor-pizza" onclick="toggleDD('dd-sp')">Pizza Twist</a>
-        </div>
-      </div>
-
       <a href="#donate">Donations</a>
       <a href="#contact">Contact</a>
-    </nav>
 
-    <div class="social">
-      <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5z"/></svg>
-      </a>
-      <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
-      </a>
+      <!-- socials -->
+      <a aria-label="Instagram" href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener">📷</a>
+      <a aria-label="YouTube" href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener">▶️</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="inner">
+    <h1>Bharat <span class="accent">Warriors</span> Cricket Club</h1>
+    <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev</strong> 🕉️</p>
+    <div class="ribbon">
+      <span class="bat">Discipline</span>
+      <span class="shield">Unity</span>
+      <span class="spark">Energy</span>
     </div>
   </div>
 </header>
 
-<section class="hero flag">
-  <div class="wrap container">
-    <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
-    <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
-
-    <div class="chips">
-      <span class="chip">🏏 Discipline</span>
-      <span class="chip">🤝 Unity</span>
-      <span class="chip">⚡ Energy</span>
-    </div>
-
-    <div class="card next">
-      <p style="font-weight:800;margin:0 0 6px">Next Matches</p>
-      <div id="next-matches" class="next-list"><div class="next-item">Loading…</div></div>
-      <div style="margin-top:10px"><a class="btn" href="#fixtures">View full schedule</a></div>
-    </div>
-  </div>
-</section>
-
-<section id="about" class="section">
+<!-- NEXT MATCHES -->
+<section class="section">
   <div class="container">
-    <h2>About</h2>
-    <p class="sub" style="font-size:15px">
-      The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. We play hard, play fair, and always respect the game.
-      <br><strong>Motto:</strong> Play Hard. Play Fair. Play as Warriors. — Har Har Mahadev 🕉
-    </p>
+    <h2>Next Matches</h2>
+    <div id="nextMatches" class="card matchlist"></div>
   </div>
 </section>
 
-<section id="fixtures" class="section">
+<!-- SCHEDULE -->
+<section id="schedule" class="section">
   <div class="container">
     <h2>Fixtures</h2>
     <p class="sub">Filter by league from the Leagues dropdown.</p>
     <div class="card" style="overflow:auto">
-      <table id="fxTable">
+      <table id="fixtures">
         <thead>
-          <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
+          <tr>
+            <th style="min-width:90px">Date</th>
+            <th>Opponent</th>
+            <th>Ground</th>
+            <th>DFCL</th>
+            <th>LECA</th>
+            <th><span class="clock">Result</span></th>
+            <th><span class="clock">⏰ Time</span></th>
+          </tr>
         </thead>
-        <tbody>
-
-          <!-- LECA RESULT (past) -->
-          <tr data-league="LECA" data-date="2025-09-06" data-time="3:30–7:00 PM">
-            <td>Sep 6, 2025</td>
-            <td>Knight Riders 🆚 BW</td>
-            <td>7200 Sung Harbor Cir, Hackberry, TX 75036</td>
-            <td></td>
-            <td><span class="badge league-leca">LECA </span></td>
-            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td>
-            <td>3:30–7:00 PM</td>
-          </tr>
-
-          <!-- NEW DFCL: future -->
-          <tr data-league="DFCL" data-date="2025-09-13" data-time="7:30 AM">
-            <td>Sep 13, 2025</td>
-            <td>Joyful XI 🆚 Bharat Warriors</td>
-            <td>Irving Polo</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
-          </tr>
-
-          <!-- LECA upcoming -->
-          <tr data-league="LECA" data-date="2025-09-13" data-time="11:30 AM">
-            <td>Sep 13, 2025</td>
-            <td>Highland Boyz 🆚 BW</td>
-            <td>Brentwood</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
-          </tr>
-
-          <!-- NEW DFCL: future -->
-          <tr data-league="DFCL" data-date="2025-09-15" data-time="7:00 PM">
-            <td>Sep 15, 2025</td>
-            <td>Dallas Renegades 🆚 Bharat Warriors</td>
-            <td>Sandy Lake ground</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
-          </tr>
-
-          <!-- Remaining LECA -->
-          <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
-            <td>Sep 28, 2025</td>
-            <td>The Topdogs 🆚 BW</td>
-            <td>Brentwood</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
-          </tr>
-
-          <tr data-league="LECA" data-date="2025-10-05" data-time="11:30 AM">
-            <td>Oct 05, 2025</td>
-            <td>Singhams India 101 🆚 BW</td>
-            <td>Hackberry</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
-          </tr>
-
-          <tr data-league="LECA" data-date="2025-10-11" data-time="11:30 AM">
-            <td>Oct 11, 2025</td>
-            <td>Raging Bulls 🆚 BW</td>
-            <td>Hackberry</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
-          </tr>
-        </tbody>
+        <tbody><!-- populated by JS --></tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ===== GALLERY ===== -->
-<section id="gallery" class="section">
+<!-- SQUAD -->
+<section id="squad" class="section" style="background:var(--paper)">
   <div class="container">
-    <h2>Gallery</h2>
-    <p class="sub">Click any photo to view large.</p>
-
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" data-img="gallery/awards.jpg" data-cap="Awards & Recognition">
-        <span class="ph" style="background-image:url('gallery/awards.jpg')"></span>
-        <span class="cap">Awards & Recognition</span>
+    <h2>Squad</h2>
+    <div class="squad-grid">
+      <div class="squad-card">
+        <div class="squad-title"><strong>DFCL XI</strong> <small style="color:#5d6a87">vs Dallas Renegades · Sat, Sep 6 · 7:30 AM</small></div>
+        <div style="color:#5d6a87;margin-bottom:10px">Irving Polo Cricket Ground, 5992 Riverside Dr, Irving, TX 75039</div>
+        <div class="player-grid">
+          <div class="player">Abhijeet</div><div class="player">Ajay</div>
+          <div class="player">Ali</div><div class="player">Anandbhai <span class="tag">WK</span></div>
+          <div class="player">Darsh</div><div class="player">Ganga</div>
+          <div class="player">Mihirbhai</div><div class="player">Nirmit</div>
+          <div class="player">Patrick <span class="tag">C</span></div><div class="player">Prabesh</div>
+          <div class="player">Raj <span class="tag">VC</span></div><div class="player">Tarun</div>
+        </div>
       </div>
 
-      <div class="gallery-item" data-img="gallery/sponsors.jpg" data-cap="Sponsors & Partners">
-        <span class="ph" style="background-image:url('gallery/sponsors.jpg')"></span>
-        <span class="cap">Sponsors & Partners</span>
-      </div>
-
-      <div class="gallery-item" data-img="gallery/team-introductions.jpg" data-cap="Team Introductions">
-        <span class="ph" style="background-image:url('gallery/team-introductions.jpg')"></span>
-        <span class="cap">Team Introductions</span>
+      <div class="squad-card">
+        <div class="squad-title"><strong>LECA XI</strong> <small style="color:#5d6a87">Next LECA matchday squad</small></div>
+        <div class="player-grid">
+          <div class="player">TBD 1</div><div class="player">TBD 2</div>
+          <div class="player">TBD 3</div><div class="player">TBD 4</div>
+          <div class="player">TBD 5</div><div class="player">TBD 6</div>
+          <div class="player">TBD 7</div><div class="player">TBD 8</div>
+          <div class="player">TBD 9</div><div class="player">TBD 10</div>
+          <div class="player">TBD 11</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- SPONSORS (clickable logos) -->
 <section id="sponsors" class="section">
   <div class="container">
     <h2>Sponsors</h2>
-    <div class="s-row">
-      <div id="sponsor-infinity" class="card sponsor">
-        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener">
-          <div class="logo-frame"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
-        </a>
-      </div>
-      <div id="sponsor-aksharnix" class="card sponsor">
-        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
-          <div class="logo-frame"><img src="aksharnix-global-logo.png" alt="AksharNix Global"></div>
-        </a>
-      </div>
-      <div id="sponsor-pizza" class="card sponsor">
-        <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
-          <div class="logo-frame"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
-        </a>
-      </div>
+    <div class="sponsor-row">
+      <a class="sponsor" href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener">
+        <div class="logo-frame"><img src="infinity_legacy_group.jpg" alt="Infinity Legacy Group"/></div>
+      </a>
+      <a class="sponsor" href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
+        <div class="logo-frame"><img src="akshar_nix_logo.png" alt="AksharNix Global"/></div>
+      </a>
+      <a class="sponsor" href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
+        <div class="logo-frame"><img src="pizzatwist.png" alt="Pizza Twist"/></div>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="donate" class="section">
+<!-- DONATIONS -->
+<section id="donate" class="section" style="background:#fff">
   <div class="container">
     <h2>Donations</h2>
     <p class="sub">We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
-
-    <div class="card don-card">
-      <div class="don-grid">
+    <div class="card" style="padding:16px">
+      <div class="don-card">
         <div>
-          <h3 style="margin:0 0 6px;font-size:18px">Zelle</h3>
-          <p style="margin:0 0 6px">Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
-          <p style="margin:0 0 10px">Send to:</p>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-            <span class="code" id="zelle-email">patelpratik59@gmail.com</span>
-            <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
+          <div style="margin-bottom:6px"><strong>Recipient:</strong> PRATIKKUMAR PATEL</div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="zmail" value="patelpratik59@gmail.com" readonly
+              style="width:320px;max-width:100%;padding:11px 12px;border-radius:10px;border:1px solid #dfe8ff;font-weight:700"/>
+            <button class="copy" id="copyBtn">Copy email</button>
           </div>
         </div>
-
-        <div>
-          <p class="sub" style="margin:0 0 8px">Scan this QR in your banking app:</p>
-          <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code">
-        </div>
+        <img class="zelle-qr" src="zelle-qr.jpg" alt="Zelle QR"/>
       </div>
     </div>
   </div>
 </section>
 
-<section id="contact" class="section">
+<!-- GALLERY -->
+<section id="gallery" class="section" style="background:#f8fbff;border-top:1px solid #e6eef8">
   <div class="container">
-    <h2>Contact</h2>
-    <p class="sub">For general inquiries:</p>
-    <div class="card" style="padding:14px;max-width:720px">
-      <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="BW Club Inquiry" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
-          <label> Name
-            <input name="name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
-          </label>
-          <label> Email
-            <input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
-          </label>
-        </div>
-        <label style="display:block;margin-top:10px"> Message
-          <textarea name="message" rows="4" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px"></textarea>
-        </label>
-        <button class="btn" type="submit" style="margin-top:10px">Send</button>
-      </form>
+    <h2><span class="tag-icon">🖼️</span> Gallery</h2>
+    <p class="sub">Highlights from the Bharat Warriors community.</p>
+
+    <div class="filter-chips" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
+      <button class="chip on" data-filter="awards">🏆 Awards & Recognition</button>
+      <button class="chip" data-filter="party">🎉 Team Party</button>
+      <button class="chip" data-filter="intros">👥 Team Introductions</button>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- AWARDS (your photos) -->
+      <figure class="gitem" data-cat="awards">
+        <img src="Darshan%20MOM.jpg" alt="Man of the Match - Darshan"/>
+        <figcaption>Darshan — Man of the Match</figcaption>
+      </figure>
+      <figure class="gitem" data-cat="awards">
+        <img src="Gaurav%20MOM.jpg" alt="Man of the Match - Gaurav"/>
+        <figcaption>Gaurav — Man of the Match</figcaption>
+      </figure>
+      <figure class="gitem" data-cat="awards">
+        <img src="Raj%20MOM.jpg" alt="Man of the Match - Raj"/>
+        <figcaption>Raj — Man of the Match</figcaption>
+      </figure>
+      <figure class="gitem" data-cat="awards">
+        <img src="Bhavik%20Best%20Fielder%20DFCL.jpg" alt="Best Fielder - Bhavik (DFCL)"/>
+        <figcaption>Bhavik — Best Fielder (DFCL)</figcaption>
+      </figure>
+      <figure class="gitem" data-cat="awards">
+        <img src="Darshan%20Best%20bowler%20DFCL.jpg" alt="Best Bowler - Darshan (DFCL)"/>
+        <figcaption>Darshan — Best Bowler (DFCL)</figcaption>
+      </figure>
+      <figure class="gitem" data-cat="awards">
+        <img src="Gaurav%20Best%20Bowler%20DFCL.jpg" alt="Best Bowler - Gaurav (DFCL)"/>
+        <figcaption>Gaurav — Best Bowler (DFCL)</figcaption>
+      </figure>
+      <figure class="gitem" data-cat="awards">
+        <img src="Vadik%20Best%20fielder%20LECA.jpg" alt="Best Fielder - Vadik (LECA)"/>
+        <figcaption>Vadik — Best Fielder (LECA)</figcaption>
+      </figure>
+
+      <!-- TEAM PARTY -->
+      <figure class="gitem coming" data-cat="party">
+        <div class="coming-card">Team Party photos<br/>coming soon</div>
+      </figure>
+
+      <!-- TEAM INTRODUCTIONS -->
+      <figure class="gitem coming" data-cat="intros">
+        <div class="coming-card">Introductions coming soon</div>
+      </figure>
     </div>
   </div>
 </section>
 
-<footer>
+<!-- ABOUT / CONTACT -->
+<section id="about" class="section">
   <div class="container">
-    <div>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a></div>
-    <div class="foot-social">
-      <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5z"/></svg>
-      </a>
-      <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
-      </a>
+    <h2>About</h2>
+    <p class="sub">The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. We play hard, play fair, and always respect the game.</p>
+  </div>
+</section>
+
+<section id="contact" class="section" style="background:#fff">
+  <div class="container">
+    <h2>Contact</h2>
+    <p class="sub">Email: <a href="mailto:bharatwarriors2024@gmail.com">bharatwarriors2024@gmail.com</a></p>
+  </div>
+</section>
+
+<footer class="footer" style="background:linear-gradient(180deg,#0c1f44,#0e2a5a);color:#e6eeff">
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+    <div>© <span id="y"></span> Bharat Warriors • Site by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener" style="color:#ffd27a">AksharNix Global</a></div>
+    <div class="social">
+      <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" title="Instagram">📷</a>
+      <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" title="YouTube">▶️</a>
     </div>
   </div>
 </footer>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <div class="lb-wrap">
-    <img id="lbImg" alt="">
-    <div class="lb-cap" id="lbCap"></div>
-  </div>
-  <button class="lb-close" onclick="closeLB()">Close ✕</button>
-</div>
-
 <script>
-  function toggleDD(id){
-    document.querySelectorAll('.dropdown').forEach(d=>{
-      if(d.id !== id) d.classList.remove('open');
-    });
-    const me = document.getElementById(id);
-    me.classList.toggle('open');
-    const nav = document.querySelector('.nav');
-    const anyOpen = !!document.querySelector('.dropdown.open');
-    if (anyOpen) nav.classList.add('dd-open'); else nav.classList.remove('dd-open');
+/* small helpers */
+document.getElementById('y').textContent = new Date().getFullYear();
+
+/* copy zelle email */
+document.getElementById('copyBtn').addEventListener('click', () => {
+  const v = document.getElementById('zmail'); v.select(); v.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(v.value).then(()=>{document.getElementById('copyBtn').textContent='Copied!';setTimeout(()=>{document.getElementById('copyBtn').textContent='Copy email';},1200);});
+});
+
+/* leagues dropdown */
+const dd = document.getElementById('dd-leagues');
+dd.querySelector('button').addEventListener('click',()=>dd.classList.toggle('open'));
+dd.querySelectorAll('.dropdown-menu a').forEach(a=>{
+  a.addEventListener('click',(e)=>{e.preventDefault();dd.classList.remove('open');setLeagueFilter(a.dataset.league||'ALL');});
+});
+let currentLeague = 'ALL';
+
+/* gallery filter */
+(function(){
+  const chips = document.querySelectorAll('#gallery .chip');
+  const items = document.querySelectorAll('#gallery .gitem');
+  function setFilter(cat){
+    chips.forEach(c => c.classList.toggle('on', c.dataset.filter === cat));
+    items.forEach(el => { el.style.display = (el.dataset.cat === cat) ? '' : 'none'; });
   }
-  window.addEventListener('click', e=>{
-    if(!e.target.closest('.dropdown')){
-      document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
-      document.querySelector('.nav')?.classList.remove('dd-open');
+  chips.forEach(c => c.addEventListener('click', () => setFilter(c.dataset.filter)));
+  setFilter('awards');
+})();
+
+/* ====== FIXTURES from CSV ====== */
+const CSV_URL = 'fixtures.csv'; // keep this file next to index.html
+
+function parseCSV(text){
+  const rows = text.trim().split(/\r?\n/).map(r=>{
+    // split by commas but respect quotes
+    const out=[]; let cur='', q=false;
+    for(let i=0;i<r.length;i++){
+      const ch=r[i];
+      if(ch==='\"'){ q=!q; continue; }
+      if(ch===',' && !q){ out.push(cur); cur=''; continue; }
+      cur+=ch;
     }
+    out.push(cur);
+    return out;
   });
-
-  // SVG we’ll reuse for times
-  const clockSvg = `<svg class="i i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
-
-  // NEW: show only future fixtures (based on data-date), sorted asc
-  function renderNextMatches(){
-    const allRows=[...document.querySelectorAll('#fxTable tbody tr')]
-      .filter(tr => tr.style.display !== 'none');
-
-    const today = new Date();
-    today.setHours(0,0,0,0);
-
-    const upcoming = allRows
-      .map(tr => ({ tr, date: new Date(tr.dataset.date || '2100-01-01') }))
-      .filter(o => !isNaN(o.date) && o.date >= today)
-      .sort((a,b)=>a.date - b.date)
-      .slice(0,3)
-      .map(o=>{
-        const tr=o.tr;
-        const d=tr.children[0].textContent.trim();
-        const opp=tr.children[1].textContent.trim();
-        const grd=tr.children[2].textContent.trim();
-        const lg=tr.dataset.league||'';
-        const time = tr.dataset.time ? ` <span class="time">${clockSvg} ${tr.dataset.time}</span>` : '';
-        return `<div class="next-item"><span class="lg">${lg}</span> ${d}${time} – ${opp}<br><small>${grd}</small></div>`;
-      });
-
-    document.getElementById('next-matches').innerHTML =
-      upcoming.join('') || '<div class="next-item">No upcoming matches.</div>';
-  }
-
-  // Decorate time column with clock icon
-  function decorateTimes(){
-    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const td = tr.children[6]; // 7th column = Time
-      if (!td) return;
-      const t = td.textContent.trim();
-      if (t && !td.dataset.iconized){
-        td.innerHTML = `<span class="time">${clockSvg} ${t}</span>`;
-        td.dataset.iconized = "1";
-      }
-    });
-  }
-
-  // Filter table by league + refresh summaries
-  function filterLeague(lg){
-    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      tr.style.display = (lg==='ALL'||tr.dataset.league===lg)?'':'none';
-    });
-    renderNextMatches();
-    decorateTimes();
-  }
-
-  function copyZelle(btn){
-    const t=document.getElementById('zelle-email').textContent.trim();
-    navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
-  }
-
-  // simple lightbox for gallery
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbCap = document.getElementById('lbCap');
-
-  document.getElementById('galleryGrid').addEventListener('click', (e)=>{
-    const item = e.target.closest('.gallery-item');
-    if(!item) return;
-    const src = item.dataset.img;
-    const cap = item.dataset.cap || '';
-    lbImg.src = src;
-    lbCap.textContent = cap;
-    lb.classList.add('open');
+  const head = rows.shift().map(h=>h.trim().toLowerCase());
+  return rows.map(r=>{
+    const o={}; r.forEach((v,i)=>o[head[i]]=v.trim()); return o;
   });
-  function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
-  window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
+}
 
-  document.addEventListener('DOMContentLoaded', ()=>{
-    renderNextMatches();
-    decorateTimes();
+function fmtDate(iso){
+  const d = new Date(iso+'T00:00:00');
+  const opts={month:'short',day:'2-digit',year:'numeric'};
+  const s = new Intl.DateTimeFormat('en-US',opts).format(d);
+  const [mon,day,year]=s.replace(',','').split(' ');
+  return `<div style="font-weight:800">${mon} ${day},</div><div style="color:#5d6a87">${year}</div>`;
+}
+
+function badge(league){
+  if(league==='DFCL') return '<span class="badge dfcl">DFCL</span>';
+  if(league==='LECA') return '<span class="badge leca">LECA</span>';
+  return '<span class="badge">—</span>';
+}
+
+function buildTable(data){
+  const tb = document.querySelector('#fixtures tbody');
+  tb.innerHTML = '';
+  data.forEach(row=>{
+    const tr = document.createElement('tr');
+    tr.dataset.league = row.league;
+    tr.innerHTML = `
+      <td style="white-space:nowrap">${fmtDate(row.date)}</td>
+      <td>${row.opponent}</td>
+      <td>${row.ground || ''}</td>
+      <td style="text-align:center">${row.league==='DFCL'?badge('DFCL'):''}</td>
+      <td style="text-align:center">${row.league==='LECA'?badge('LECA'):''}</td>
+      <td>${row.result || '—'}</td>
+      <td>${row.time ? '⏰ '+row.time : '—'}</td>
+    `;
+    tb.appendChild(tr);
   });
+  applyLeagueFilter();
+}
+
+function setLeagueFilter(l){ currentLeague = l; applyLeagueFilter(); }
+function applyLeagueFilter(){
+  document.querySelectorAll('#fixtures tbody tr').forEach(tr=>{
+    const show = (currentLeague==='ALL') || (tr.dataset.league===currentLeague);
+    tr.style.display = show ? '' : 'none';
+  });
+}
+
+function buildNextMatches(data){
+  const cont = document.getElementById('nextMatches');
+  cont.innerHTML = '';
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = data.filter(r=>new Date(r.date+'T00:00:00')>=today)
+                       .sort((a,b)=>a.date.localeCompare(b.date))
+                       .slice(0,3);
+  if(upcoming.length===0){
+    cont.innerHTML = '<div style="padding:18px">No upcoming matches.</div>'; return;
+  }
+  upcoming.forEach(r=>{
+    const row = document.createElement('div');
+    row.className='row';
+    row.innerHTML = `
+      <span class="badge ${r.league==='DFCL'?'dfcl':'leca'}">${r.league}</span>
+      <strong style="font-size:16px;margin-left:2px">${new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric'}).format(new Date(r.date+'T00:00:00'))}</strong>
+      <span style="margin-left:auto"></span>
+      <div style="flex:1">
+        <div><strong>${r.opponent.replace('🆚','<span class="vs">vs</span>')}</strong></div>
+        <div style="color:#5d6a87">${r.ground||''}</div>
+      </div>
+      <div style="white-space:nowrap;color:#0f1b3a;font-weight:800">⏰ ${r.time||''}</div>
+    `;
+    cont.appendChild(row);
+  });
+}
+
+fetch(CSV_URL).then(r=>r.text()).then(txt=>{
+  const data = parseCSV(txt);
+  buildTable(data);
+  buildNextMatches(data);
+}).catch(err=>{
+  console.error('fixtures.csv error', err);
+  document.querySelector('#fixtures tbody').innerHTML = '<tr><td colspan="7">Add fixtures.csv next to index.html</td></tr>';
+});
+
+/* close dropdown if clicked elsewhere */
+document.addEventListener('click',(e)=>{
+  if(!dd.contains(e.target)) dd.classList.remove('open');
+});
 </script>
 </body>
 </html>
