@@ -90,6 +90,7 @@
   .lead{color:#31476b;max-width:740px;margin:0 0 8px}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
   .chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
+  .chip.on{background:#eaf2ff;border-color:#cfe0ff;color:#0f3f9e}
   .next{margin:18px 0 0;padding:14px 14px}
   .next-list{display:grid;gap:8px;margin-top:6px}
   .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
@@ -315,21 +316,65 @@
 <section id="gallery" class="section">
   <div class="container">
     <h2>Gallery</h2>
-    <p class="sub">Click any photo to view large.</p>
+    <p class="sub">Tap a photo to view large. Use the tabs to switch.</p>
 
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" data-img="gallery/awards.jpg" data-cap="Awards & Recognition">
-        <span class="ph" style="background-image:url('gallery/awards.jpg')"></span>
-        <span class="cap">Awards & Recognition</span>
+    <!-- Tabs -->
+    <div class="chips" id="galleryTabs" style="margin-bottom:10px">
+      <button class="chip on" data-tab="awards">Awards & Recognition</button>
+      <button class="chip" data-tab="party">Team Party</button>
+      <button class="chip" data-tab="intro">Team Introductions</button>
+    </div>
+
+    <!-- Awards -->
+    <div class="gallery-grid" data-panel="awards">
+      <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — MOM">
+        <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span>
+        <span class="cap">Darshan — MOM</span>
       </div>
 
-      <div class="gallery-item" data-img="gallery/sponsors.jpg" data-cap="Sponsors & Partners">
-        <span class="ph" style="background-image:url('gallery/sponsors.jpg')"></span>
-        <span class="cap">Sponsors & Partners</span>
+      <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — MOM">
+        <span class="ph" style="background-image:url('Gaurav MOM.jpg')"></span>
+        <span class="cap">Gaurav — MOM</span>
       </div>
 
-      <div class="gallery-item" data-img="gallery/team-introductions.jpg" data-cap="Team Introductions">
-        <span class="ph" style="background-image:url('gallery/team-introductions.jpg')"></span>
+      <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — MOM">
+        <span class="ph" style="background-image:url('Raj MOM.jpg')"></span>
+        <span class="cap">Raj — MOM</span>
+      </div>
+
+      <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
+        <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span>
+        <span class="cap">Bhavik — Best Fielder (DFCL)</span>
+      </div>
+
+      <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
+        <span class="ph" style="background-image:url('Darshan Best bowler DFCL.jpg')"></span>
+        <span class="cap">Darshan — Best Bowler (DFCL)</span>
+      </div>
+
+      <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
+        <span class="ph" style="background-image:url('Gaurav Best Bowler DFCL.jpg')"></span>
+        <span class="cap">Gaurav — Best Bowler (DFCL)</span>
+      </div>
+
+      <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
+        <span class="ph" style="background-image:url('Vadik Best fielder LECA.jpg')"></span>
+        <span class="cap">Vadik — Best Fielder (LECA)</span>
+      </div>
+    </div>
+
+    <!-- Team Party (placeholder) -->
+    <div class="gallery-grid" data-panel="party" hidden>
+      <div class="gallery-item" data-img="" data-cap="">
+        <span class="ph" style="display:grid;place-items:center;background:linear-gradient(135deg,#0f66d2,#19a06b);color:#fff;font-weight:900">Photos coming soon</span>
+        <span class="cap">Team Party</span>
+      </div>
+    </div>
+
+    <!-- Team Introductions (placeholder) -->
+    <div class="gallery-grid" data-panel="intro" hidden>
+      <div class="gallery-item" data-img="" data-cap="">
+        <span class="ph" style="display:grid;place-items:center;background:linear-gradient(135deg,#ff8a3c,#ffd085);color:#1d2b4b;font-weight:900">Photos coming soon</span>
         <span class="cap">Team Introductions</span>
       </div>
     </div>
@@ -452,10 +497,9 @@
     }
   });
 
-  // SVG we’ll reuse for times
+  // SVG for time
   const clockSvg = `<svg class="i i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
 
-  // NEW: show only future fixtures (based on data-date), sorted asc
   function renderNextMatches(){
     const allRows=[...document.querySelectorAll('#fxTable tbody tr')]
       .filter(tr => tr.style.display !== 'none');
@@ -482,10 +526,9 @@
       upcoming.join('') || '<div class="next-item">No upcoming matches.</div>';
   }
 
-  // Decorate time column with clock icon
   function decorateTimes(){
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const td = tr.children[6]; // 7th column = Time
+      const td = tr.children[6];
       if (!td) return;
       const t = td.textContent.trim();
       if (t && !td.dataset.iconized){
@@ -495,7 +538,6 @@
     });
   }
 
-  // Filter table by league + refresh summaries
   function filterLeague(lg){
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
       tr.style.display = (lg==='ALL'||tr.dataset.league===lg)?'':'none';
@@ -509,20 +551,33 @@
     navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
   }
 
-  // simple lightbox for gallery
+  // lightbox
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
 
-  document.getElementById('galleryGrid').addEventListener('click', (e)=>{
+  // gallery tabs
+  const galleryTabs = document.getElementById('galleryTabs');
+  if(galleryTabs){
+    galleryTabs.addEventListener('click', (e)=>{
+      const btn = e.target.closest('.chip');
+      if(!btn) return;
+      galleryTabs.querySelectorAll('.chip').forEach(b=>b.classList.remove('on'));
+      btn.classList.add('on');
+      const tab = btn.dataset.tab;
+      document.querySelectorAll('#gallery [data-panel]').forEach(p => p.hidden = p.dataset.panel !== tab);
+    });
+  }
+
+  // open lightbox
+  document.addEventListener('click', (e)=>{
     const item = e.target.closest('.gallery-item');
-    if(!item) return;
-    const src = item.dataset.img;
-    const cap = item.dataset.cap || '';
-    lbImg.src = src;
-    lbCap.textContent = cap;
+    if(!item || !item.dataset.img) return;
+    lbImg.src = item.dataset.img;
+    lbCap.textContent = item.dataset.cap || '';
     lb.classList.add('open');
   });
+
   function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
   window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
 
