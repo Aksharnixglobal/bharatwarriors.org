@@ -22,7 +22,6 @@
   .container{max-width:1160px;margin:0 auto;padding:0 18px}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
-  /* ===== NAV ===== */
   .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
        border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
        padding-bottom:0; transition:padding-bottom .15s ease;}
@@ -48,11 +47,9 @@
   .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
   .social svg{width:18px;height:18px;fill:#fff}
 
-  /* anchor offset below sticky header */
   .section{padding:46px 0; scroll-margin-top:130px;}
   .hero{scroll-margin-top:0}
 
-  /* ===== HERO (tricolor + chakra) ===== */
   .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
   .hero.flag::before{
     content:""; position:absolute; inset:0;
@@ -108,7 +105,6 @@
   .result-win{color:#18a06a;font-weight:800}
   .result-loss{color:#d64545;font-weight:800}
 
-  /* ===== GALLERY ===== */
   .gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
   @media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media (min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -116,7 +112,6 @@
   .gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
   .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
   .gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
-  /* lightbox */
   .lightbox{position:fixed;inset:0;background:rgba(10,20,35,.9);display:none;align-items:center;justify-content:center;z-index:120}
   .lightbox.open{display:flex}
   .lb-wrap{max-width:90vw;max-height:88vh}
@@ -124,7 +119,6 @@
   .lb-cap{margin-top:8px;text-align:center;color:#eef2ff}
   .lb-close{position:fixed;top:18px;right:18px;background:#fff;border-radius:10px;border:1px solid #dbe6fb;font-weight:800;padding:8px 12px;cursor:pointer}
 
-  /* sponsors */
   .s-row{display:grid;gap:12px;grid-auto-rows:1fr}
   @media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -132,7 +126,6 @@
   .logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
   .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
 
-  /* donations compact */
   .don-card{padding:14px}
   .don-grid{display:grid;gap:14px;grid-template-columns:1fr}
   @media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
@@ -146,7 +139,6 @@
   .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
   .foot-social svg{width:20px;height:20px;fill:#fff}
 
-  /* clock icon + time pill */
   .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
   .time{ display:inline-flex; align-items:center; gap:6px; color:#31476b; font-weight:800; }
 </style>
@@ -242,7 +234,6 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
         </thead>
         <tbody>
-          <!-- DFCL (past) -->
           <tr data-league="DFCL" data-date="2025-09-06" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
@@ -250,7 +241,6 @@
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
 
-          <!-- LECA RESULT (past) -->
           <tr data-league="LECA" data-date="2025-09-06" data-time="3:30–7:00 PM">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
@@ -261,7 +251,6 @@
             <td>3:30–7:00 PM</td>
           </tr>
 
-          <!-- NEW DFCL: future -->
           <tr data-league="DFCL" data-date="2025-09-13" data-time="7:30 AM">
             <td>Sep 13, 2025</td>
             <td>Joyful XI 🆚 Bharat Warriors</td>
@@ -269,7 +258,6 @@
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
 
-          <!-- LECA upcoming -->
           <tr data-league="LECA" data-date="2025-09-13" data-time="11:30 AM">
             <td>Sep 13, 2025</td>
             <td>Highland Boyz 🆚 BW</td>
@@ -277,7 +265,6 @@
             <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
 
-          <!-- NEW DFCL: future -->
           <tr data-league="DFCL" data-date="2025-09-15" data-time="7:00 PM">
             <td>Sep 15, 2025</td>
             <td>Dallas Renegades 🆚 Bharat Warriors</td>
@@ -285,7 +272,6 @@
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
           </tr>
 
-          <!-- Remaining LECA -->
           <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
             <td>Sep 28, 2025</td>
             <td>The Topdogs 🆚 BW</td>
@@ -312,13 +298,11 @@
   </div>
 </section>
 
-<!-- ===== GALLERY ===== -->
 <section id="gallery" class="section">
   <div class="container">
     <h2>Gallery</h2>
     <p class="sub">Tap a photo to view large. Use the tabs to switch.</p>
 
-    <!-- Tabs -->
     <div class="chips" id="galleryTabs" style="margin-bottom:10px">
       <button class="chip on" data-tab="awards">Awards & Recognition</button>
       <button class="chip" data-tab="party">Team Party</button>
@@ -331,43 +315,73 @@
         <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span>
         <span class="cap">Darshan — MOM</span>
       </div>
-
       <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — MOM">
         <span class="ph" style="background-image:url('Gaurav MOM.jpg')"></span>
         <span class="cap">Gaurav — MOM</span>
       </div>
-
       <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — MOM">
         <span class="ph" style="background-image:url('Raj MOM.jpg')"></span>
         <span class="cap">Raj — MOM</span>
       </div>
-
       <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
         <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span>
         <span class="cap">Bhavik — Best Fielder (DFCL)</span>
       </div>
-
       <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
         <span class="ph" style="background-image:url('Darshan Best bowler DFCL.jpg')"></span>
         <span class="cap">Darshan — Best Bowler (DFCL)</span>
       </div>
-
       <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
         <span class="ph" style="background-image:url('Gaurav Best Bowler DFCL.jpg')"></span>
         <span class="cap">Gaurav — Best Bowler (DFCL)</span>
       </div>
-
       <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
         <span class="ph" style="background-image:url('Vadik Best fielder LECA.jpg')"></span>
         <span class="cap">Vadik — Best Fielder (LECA)</span>
       </div>
     </div>
 
-    <!-- Team Party (placeholder) -->
+    <!-- Team Party (now filled) -->
     <div class="gallery-grid" data-panel="party" hidden>
-      <div class="gallery-item" data-img="" data-cap="">
-        <span class="ph" style="display:grid;place-items:center;background:linear-gradient(135deg,#0f66d2,#19a06b);color:#fff;font-weight:900">Photos coming soon</span>
-        <span class="cap">Team Party</span>
+      <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party — 1">
+        <span class="ph" style="background-image:url('Party 1.jpg')"></span>
+        <span class="cap">Team Party — 1</span>
+      </div>
+      <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party — 2">
+        <span class="ph" style="background-image:url('Party 2.jpg')"></span>
+        <span class="cap">Team Party — 2</span>
+      </div>
+      <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party — 3">
+        <span class="ph" style="background-image:url('Party 3.jpg')"></span>
+        <span class="cap">Team Party — 3</span>
+      </div>
+      <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party — 4">
+        <span class="ph" style="background-image:url('Party 4.jpg')"></span>
+        <span class="cap">Team Party — 4</span>
+      </div>
+      <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party — 5">
+        <span class="ph" style="background-image:url('Party 5.jpg')"></span>
+        <span class="cap">Team Party — 5</span>
+      </div>
+      <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party — 6">
+        <span class="ph" style="background-image:url('Party 6.jpg')"></span>
+        <span class="cap">Team Party — 6</span>
+      </div>
+      <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party — 7">
+        <span class="ph" style="background-image:url('Party 7.jpg')"></span>
+        <span class="cap">Team Party — 7</span>
+      </div>
+      <div class="gallery-item" data-img="Party 8.jpg" data-cap="Team Party — 8">
+        <span class="ph" style="background-image:url('Party 8.jpg')"></span>
+        <span class="cap">Team Party — 8</span>
+      </div>
+      <div class="gallery-item" data-img="Party 9.jpg" data-cap="Team Party — 9">
+        <span class="ph" style="background-image:url('Party 9.jpg')"></span>
+        <span class="cap">Team Party — 9</span>
+      </div>
+      <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party — 10">
+        <span class="ph" style="background-image:url('Party 10.jpg')"></span>
+        <span class="cap">Team Party — 10</span>
       </div>
     </div>
 
@@ -470,7 +484,6 @@
   </div>
 </footer>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <div class="lb-wrap">
     <img id="lbImg" alt="">
@@ -497,7 +510,6 @@
     }
   });
 
-  // SVG for time
   const clockSvg = `<svg class="i i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
 
   function renderNextMatches(){
@@ -551,12 +563,10 @@
     navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
   }
 
-  // lightbox
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
 
-  // gallery tabs
   const galleryTabs = document.getElementById('galleryTabs');
   if(galleryTabs){
     galleryTabs.addEventListener('click', (e)=>{
@@ -569,7 +579,6 @@
     });
   }
 
-  // open lightbox
   document.addEventListener('click', (e)=>{
     const item = e.target.closest('.gallery-item');
     if(!item || !item.dataset.img) return;
