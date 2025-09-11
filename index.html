@@ -7,155 +7,108 @@
 <meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, gallery, sponsors, donations, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
-
 <style>
-  :root{
-    --navy:#0c1e37; --navy-2:#132b4f;
-    --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
-    --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
-  }
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  html,body{margin:0}
-  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-  a{color:inherit;text-decoration:none}
-  .container{max-width:1160px;margin:0 auto;padding:0 18px}
-  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
+:root{
+  --navy:#0c1e37; --navy-2:#132b4f;
+  --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#fff;
+  --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} html,body{margin:0}
+body{font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit;text-decoration:none}
+.container{max-width:1160px;margin:0 auto;padding:0 18px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
-  /* NAV */
-  .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
-       border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22)}
-  .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
-  .brand{display:flex;align-items:center;gap:12px}
-  .brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
-  .brand .t{font-weight:800;letter-spacing:.3px;color:#ffe39a}
-  .brand .s{font-size:11px;color:#e7f0ff;opacity:.95}
-  .menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
-  .menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;
-    color:#eef4ff;font-weight:800;letter-spacing:.2px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
-    border-radius:12px;transition:transform .08s ease, background .2s ease, box-shadow .2s ease}
-  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18);box-shadow:0 8px 18px rgba(0,0,0,.25)}
-  .menu .active{background:rgba(255,255,255,.22)}
-  .dropdown{position:relative}
-  .dropdown-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:220px; background:#0f2548; color:#fff;
-    border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)}
-  .dropdown.open .dropdown-menu{display:block}
-  .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px;white-space:nowrap}
-  .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-  .social{display:flex;gap:8px;margin-left:6px}
-  .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
-  .social svg{width:18px;height:18px;fill:#fff}
+/* NAV */
+.nav{position:sticky;top:0;z-index:80;background:linear-gradient(180deg,var(--navy),var(--navy-2));border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 8px 22px rgba(10,28,60,.22)}
+.nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+.brand .t{font-weight:800;letter-spacing:.3px;color:#ffe39a}
+.brand .s{font-size:11px;color:#e7f0ff;opacity:.95}
+.menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
+.menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;color:#eef4ff;font-weight:800;letter-spacing:.2px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:12px;transition:transform .08s,background .2s,box-shadow .2s}
+.menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18);box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.menu .active{background:rgba(255,255,255,.22)}
+.dropdown{position:relative}
+.dropdown-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:220px;background:#0f2548;color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:6px;display:none;box-shadow:0 18px 36px rgba(0,0,0,.35)}
+.dropdown.open .dropdown-menu{display:block}
+.dropdown-menu a{display:block;padding:9px 10px;border-radius:8px;white-space:nowrap}
+.dropdown-menu a:hover{background:rgba(255,255,255,.12)}
+.social{display:flex;gap:8px;margin-left:6px}
+.social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
+.social svg{width:18px;height:18px;fill:#fff}
 
-  .section{padding:46px 0; scroll-margin-top:130px}
-  .hero{scroll-margin-top:0}
+/* sections */
+.section{padding:46px 0;scroll-margin-top:130px} .hero{scroll-margin-top:0}
 
-  /* HERO tricolor + chakra */
-  .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
-  .hero.flag::before{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg,var(--saffron) 0 33.333%, #ffffff 33.333% 66.666%, var(--green) 66.666% 100%);
-    opacity:.18; pointer-events:none;
-  }
-  .hero.flag::after{
-    content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-    width:min(48vw,380px); height:min(48vw,380px);
-    background-repeat:no-repeat; background-position:center; background-size:contain; opacity:.28; pointer-events:none;
-    background-image:url("data:image/svg+xml;utf8,\
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>\
-<defs><g id='sp'><line x1='100' y1='100' x2='100' y2='16' stroke='%230a5aad' stroke-width='6'/></g></defs>\
-<g>\
-<use href='%23sp'/><use href='%23sp' transform='rotate(15 100 100)'/>\
-<use href='%23sp' transform='rotate(30 100 100)'/><use href='%23sp' transform='rotate(45 100 100)'/>\
-<use href='%23sp' transform='rotate(60 100 100)'/><use href='%23sp' transform='rotate(75 100 100)'/>\
-<use href='%23sp' transform='rotate(90 100 100)'/><use href='%23sp' transform='rotate(105 100 100)'/>\
-<use href='%23sp' transform='rotate(120 100 100)'/><use href='%23sp' transform='rotate(135 100 100)'/>\
-<use href='%23sp' transform='rotate(150 100 100)'/><use href='%23sp' transform='rotate(165 100 100)'/>\
-<use href='%23sp' transform='rotate(180 100 100)'/><use href='%23sp' transform='rotate(195 100 100)'/>\
-<use href='%23sp' transform='rotate(210 100 100)'/><use href='%23sp' transform='rotate(225 100 100)'/>\
-<use href='%23sp' transform='rotate(240 100 100)'/><use href='%23sp' transform='rotate(255 100 100)'/>\
-<use href='%23sp' transform='rotate(270 100 100)'/><use href='%23sp' transform='rotate(285 100 100)'/>\
-<use href='%23sp' transform='rotate(300 100 100)'/><use href='%23sp' transform='rotate(315 100 100)'/>\
-<use href='%23sp' transform='rotate(330 100 100)'/><use href='%23sp' transform='rotate(345 100 100)'/>\
-</g>\
-<circle cx='100' cy='100' r='8' fill='%230a5aad'/>\
-<circle cx='100' cy='100' r='92' fill='none' stroke='%230a5aad' stroke-width='6'/>\
-</svg>");
-  }
-  .hero .wrap{padding:40px 0 34px}
-  .h-title{margin:0 0 8px;font-size:38px;line-height:1.07;font-weight:900;color:#0e1d39}
-  .h-title .accent{background:linear-gradient(90deg,var(--blue),#0c56c1);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .lead{color:#31476b;max-width:740px;margin:0 0 8px}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
-  .chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
-  .next{margin:18px 0 0;padding:14px 14px}
-  .next-list{display:grid;gap:8px;margin-top:6px}
-  .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
-  .lg{font-weight:900;color:#0f66d2;margin-right:6px}
+/* HERO flag + chakra */
+.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.hero.flag::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--saffron) 0 33.333%,#fff 33.333% 66.666%,var(--green) 66.666% 100%);opacity:.18;pointer-events:none}
+.hero.flag::after{
+  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(48vw,380px);height:min(48vw,380px);background-repeat:no-repeat;background-position:center;background-size:contain;opacity:.28;pointer-events:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><g id='sp'><line x1='100' y1='100' x2='100' y2='16' stroke='%230a5aad' stroke-width='6'/></g></defs><g><use href='%23sp'/><use href='%23sp' transform='rotate(15 100 100)'/><use href='%23sp' transform='rotate(30 100 100)'/><use href='%23sp' transform='rotate(45 100 100)'/><use href='%23sp' transform='rotate(60 100 100)'/><use href='%23sp' transform='rotate(75 100 100)'/><use href='%23sp' transform='rotate(90 100 100)'/><use href='%23sp' transform='rotate(105 100 100)'/><use href='%23sp' transform='rotate(120 100 100)'/><use href='%23sp' transform='rotate(135 100 100)'/><use href='%23sp' transform='rotate(150 100 100)'/><use href='%23sp' transform='rotate(165 100 100)'/><use href='%23sp' transform='rotate(180 100 100)'/><use href='%23sp' transform='rotate(195 100 100)'/><use href='%23sp' transform='rotate(210 100 100)'/><use href='%23sp' transform='rotate(225 100 100)'/><use href='%23sp' transform='rotate(240 100 100)'/><use href='%23sp' transform='rotate(255 100 100)'/><use href='%23sp' transform='rotate(270 100 100)'/><use href='%23sp' transform='rotate(285 100 100)'/><use href='%23sp' transform='rotate(300 100 100)'/><use href='%23sp' transform='rotate(315 100 100)'/><use href='%23sp' transform='rotate(330 100 100)'/><use href='%23sp' transform='rotate(345 100 100)'/></g><circle cx='100' cy='100' r='8' fill='%230a5aad'/><circle cx='100' cy='100' r='92' fill='none' stroke='%230a5aad' stroke-width='6'/></svg>");
+}
+.hero .wrap{padding:40px 0 34px}
+.h-title{margin:0 0 8px;font-size:38px;line-height:1.07;font-weight:900;color:#0e1d39}
+.h-title .accent{background:linear-gradient(90deg,var(--blue),#0c56c1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:#31476b;max-width:740px;margin:0 0 8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+.chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
+.next{margin:18px 0 0;padding:14px 14px}
+.next-list{display:grid;gap:8px;margin-top:6px}
+.next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
+.lg{font-weight:900;color:#0f66d2;margin-right:6px}
 
-  .section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
-  .sub{color:var(--muted);font-size:14px}
+/* tables */
+.section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
+.sub{color:var(--muted);font-size:14px}
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
+th{background:#f0f6ff;color:#0e1d39;font-weight:900}
+.badge{padding:5px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
+.league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
+.league-leca{background:rgba(24,160,106,.14);color:#159765}
+.result-win{color:#18a06a;font-weight:800}
 
-  table{width:100%;border-collapse:collapse}
-  th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
-  th{background:#f0f6ff;color:#0e1d39;font-weight:900}
-  .badge{padding:5px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
-  .league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
-  .league-leca{background:rgba(24,160,106,.14);color:#159765}
-  .result-win{color:#18a06a;font-weight:800}
-  .result-loss{color:#d64545;font-weight:800}
+/* GALLERY */
+.gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer}
+.gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
+.gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
+.gallery-item .cap:empty{display:none}
+.gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
+/* gallery tabs (JS driven) */
+.gal-tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.gal-tabs .tab{cursor:pointer;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;color:#21335b}
+.gal-tabs .tab.active{background:#eaf2ff;border-color:#cfe0ff;color:#0f3f9e}
+[hidden]{display:none !important}
 
-  /* GALLERY GRID */
-  .gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
-  @media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media (min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-  .gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer}
-  .gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
-  .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
-  .gallery-item .cap:empty{display:none} /* hide empty captions (used for Team Party) */
-  .gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
+/* sponsors / donations / footer */
+.s-row{display:grid;gap:12px;grid-auto-rows:1fr}
+@media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sponsor{height:150px;display:flex;align-items:center;justify-content:center}
+.logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
+.logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.don-card{padding:14px}
+.don-grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
+.code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
+.qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
+footer a{color:#1262d6;font-weight:800}
+.foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
+.foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
+.foot-social svg{width:20px;height:20px;fill:#fff}
 
-  /* LIGHTBOX */
-  .lightbox{position:fixed;inset:0;background:rgba(10,20,35,.9);display:none;align-items:center;justify-content:center;z-index:120}
-  .lightbox.open{display:flex}
-  .lb-wrap{max-width:90vw;max-height:88vh}
-  .lb-wrap img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 14px 32px rgba(0,0,0,.35)}
-  .lb-cap{margin-top:8px;text-align:center;color:#eef2ff}
-  .lb-close{position:fixed;top:18px;right:18px;background:#fff;border-radius:10px;border:1px solid #dbe6fb;font-weight:800;padding:8px 12px;cursor:pointer}
-
-  /* SPONSORS */
-  .s-row{display:grid;gap:12px;grid-auto-rows:1fr}
-  @media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  .sponsor{height:150px;display:flex;align-items:center;justify-content:center}
-  .logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
-  .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
-
-  /* DONATIONS */
-  .don-card{padding:14px}
-  .don-grid{display:grid;gap:14px;grid-template-columns:1fr}
-  @media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
-  .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
-  .qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
-
-  footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
-  footer a{color:#1262d6;font-weight:800}
-  .foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
-  .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
-  .foot-social svg{width:20px;height:20px;fill:#fff}
-
-  .i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
-  .time{display:inline-flex;align-items:center;gap:6px;color:#31476b;font-weight:800}
-
-  /* Gallery Tabs (CSS-only) */
-  .gal-tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-  .gal-tabs input{display:none}
-  .gal-tabs label{cursor:pointer;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;color:#21335b}
-  .gal-tabs input:checked + label{background:#eaf2ff;border-color:#cfe0ff;color:#0f3f9e}
-  .gal-panels .gallery-grid{display:none}
-  #tab-awards:checked ~ .gal-panels [data-panel="awards"]{display:grid}
-  #tab-party:checked  ~ .gal-panels [data-panel="party"]{display:grid}
-  #tab-intro:checked   ~ .gal-panels [data-panel="intro"]{display:grid}
+/* icons */
+.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.time{display:inline-flex;align-items:center;gap:6px;color:#31476b;font-weight:800}
 </style>
 </head>
 <body>
@@ -164,10 +117,7 @@
   <div class="wrap container">
     <div class="brand">
       <img src="bharat-warriors-logo.png" alt="Bharat Warriors">
-      <div>
-        <div class="t">Bharat Warriors</div>
-        <div class="s">We play as ONE.</div>
-      </div>
+      <div><div class="t">Bharat Warriors</div><div class="s">We play as ONE.</div></div>
     </div>
 
     <nav class="menu">
@@ -214,13 +164,7 @@
   <div class="wrap container">
     <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
-
-    <div class="chips">
-      <span class="chip">🏏 Discipline</span>
-      <span class="chip">🤝 Unity</span>
-      <span class="chip">⚡ Energy</span>
-    </div>
-
+    <div class="chips"><span class="chip">🏏 Discipline</span><span class="chip">🤝 Unity</span><span class="chip">⚡ Energy</span></div>
     <div class="card next">
       <p style="font-weight:800;margin:0 0 6px">Next Matches</p>
       <div id="next-matches" class="next-list"><div class="next-item">Loading…</div></div>
@@ -245,60 +189,42 @@
     <p class="sub">Filter by league from the Leagues dropdown.</p>
     <div class="card" style="overflow:auto">
       <table id="fxTable">
-        <thead>
-          <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
-        </thead>
+        <thead><tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr></thead>
         <tbody>
           <tr data-league="DFCL" data-date="2025-09-06" data-time="7:30 AM">
-            <td>Sep 6, 2025</td>
-            <td>Bharat Warriors 🆚 Dallas Renegades</td>
+            <td>Sep 6, 2025</td><td>Bharat Warriors 🆚 Dallas Renegades</td>
             <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
           <tr data-league="LECA" data-date="2025-09-06" data-time="3:30–7:00 PM">
-            <td>Sep 6, 2025</td>
-            <td>Knight Riders 🆚 BW</td>
+            <td>Sep 6, 2025</td><td>Knight Riders 🆚 BW</td>
             <td>7200 Sung Harbor Cir, Hackberry, TX 75036</td>
-            <td></td>
-            <td><span class="badge league-leca">LECA • Div A</span></td>
-            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td>
-            <td>3:30–7:00 PM</td>
+            <td></td><td><span class="badge league-leca">LECA • Div A</span></td>
+            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td><td>3:30–7:00 PM</td>
           </tr>
           <tr data-league="DFCL" data-date="2025-09-13" data-time="7:30 AM">
-            <td>Sep 13, 2025</td>
-            <td>Joyful XI 🆚 Bharat Warriors</td>
-            <td>Irving Polo</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
+            <td>Sep 13, 2025</td><td>Joyful XI 🆚 Bharat Warriors</td>
+            <td>Irving Polo</td><td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
           <tr data-league="LECA" data-date="2025-09-13" data-time="11:30 AM">
-            <td>Sep 13, 2025</td>
-            <td>Highland Boyz 🆚 BW</td>
-            <td>Brentwood</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td>
+            <td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
           <tr data-league="DFCL" data-date="2025-09-15" data-time="7:00 PM">
-            <td>Sep 15, 2025</td>
-            <td>Dallas Renegades 🆚 Bharat Warriors</td>
-            <td>Sandy Lake ground</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
+            <td>Sep 15, 2025</td><td>Dallas Renegades 🆚 Bharat Warriors</td>
+            <td>Sandy Lake ground</td><td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
           </tr>
           <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
-            <td>Sep 28, 2025</td>
-            <td>The Topdogs 🆚 BW</td>
-            <td>Brentwood</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
+            <td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td>
+            <td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
           </tr>
           <tr data-league="LECA" data-date="2025-10-05" data-time="11:30 AM">
-            <td>Oct 05, 2025</td>
-            <td>Singhams India 101 🆚 BW</td>
-            <td>Hackberry</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td>
+            <td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
           <tr data-league="LECA" data-date="2025-10-11" data-time="11:30 AM">
-            <td>Oct 11, 2025</td>
-            <td>Raging Bulls 🆚 BW</td>
-            <td>Hackberry</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>Oct 11, 2025</td><td>Raging Bulls 🆚 BW</td>
+            <td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
         </tbody>
       </table>
@@ -312,100 +238,80 @@
     <h2>Gallery</h2>
     <p class="sub">Tap a tab to see that album; click any photo to view large.</p>
 
-    <!-- CSS-only tabs -->
+    <!-- Tabs -->
     <div class="gal-tabs">
-      <input type="radio" name="gal" id="tab-awards" checked>
-      <label for="tab-awards">Awards & Recognition</label>
+      <button class="tab active" data-target="awards">Awards & Recognition</button>
+      <button class="tab" data-target="party">Team Party</button>
+      <button class="tab" data-target="intro">Team Introductions</button>
+    </div>
 
-      <input type="radio" name="gal" id="tab-party">
-      <label for="tab-party">Team Party</label>
-
-      <input type="radio" name="gal" id="tab-intro">
-      <label for="tab-intro">Team Introductions</label>
-
-      <div class="gal-panels">
-        <!-- Awards album -->
-        <div class="gallery-grid" data-panel="awards">
-          <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — MOM">
-            <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span>
-            <span class="cap">Darshan — MOM</span>
-          </div>
-          <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — MOM">
-            <span class="ph" style="background-image:url('Gaurav MOM.jpg')"></span>
-            <span class="cap">Gaurav — MOM</span>
-          </div>
-          <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — MOM">
-            <span class="ph" style="background-image:url('Raj MOM.jpg')"></span>
-            <span class="cap">Raj — MOM</span>
-          </div>
-          <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
-            <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span>
-            <span class="cap">Bhavik — Best Fielder (DFCL)</span>
-          </div>
-          <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
-            <span class="ph" style="background-image:url('Darshan Best bowler DFCL.jpg')"></span>
-            <span class="cap">Darshan — Best Bowler (DFCL)</span>
-          </div>
-          <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
-            <span class="ph" style="background-image:url('Gaurav Best Bowler DFCL.jpg')"></span>
-            <span class="cap">Gaurav — Best Bowler (DFCL)</span>
-          </div>
-          <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
-            <span class="ph" style="background-image:url('Vadik Best fielder LECA.jpg')"></span>
-            <span class="cap">Vadik — Best Fielder (LECA)</span>
-          </div>
+    <!-- Panels -->
+    <div class="gal-panels">
+      <!-- Awards -->
+      <div class="gallery-grid" id="album-awards">
+        <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — MOM">
+          <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span><span class="cap">Darshan — MOM</span>
         </div>
-
-        <!-- Team Party album (NO visible captions) -->
-        <div class="gallery-grid" data-panel="party">
-          <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 1.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 2.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 3.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 4.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 5.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 6.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 7.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 8.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 8.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 9.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 9.jpg')"></span>
-            <span class="cap"></span>
-          </div>
-          <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party">
-            <span class="ph" style="background-image:url('Party 10.jpg')"></span>
-            <span class="cap"></span>
-          </div>
+        <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — MOM">
+          <span class="ph" style="background-image:url('Gaurav MOM.jpg')"></span><span class="cap">Gaurav — MOM</span>
         </div>
+        <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — MOM">
+          <span class="ph" style="background-image:url('Raj MOM.jpg')"></span><span class="cap">Raj — MOM</span>
+        </div>
+        <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
+          <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span><span class="cap">Bhavik — Best Fielder (DFCL)</span>
+        </div>
+        <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
+          <span class="ph" style="background-image:url('Darshan Best bowler DFCL.jpg')"></span><span class="cap">Darshan — Best Bowler (DFCL)</span>
+        </div>
+        <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
+          <span class="ph" style="background-image:url('Gaurav Best Bowler DFCL.jpg')"></span><span class="cap">Gaurav — Best Bowler (DFCL)</span>
+        </div>
+        <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
+          <span class="ph" style="background-image:url('Vadik Best fielder LECA.jpg')"></span><span class="cap">Vadik — Best Fielder (LECA)</span>
+        </div>
+      </div>
 
-        <!-- Team Introductions -->
-        <div class="gallery-grid" data-panel="intro">
-          <div class="gallery-item">
-            <span class="ph" style="display:grid;place-items:center;background:linear-gradient(135deg,#ff8a3c,#ffd085);color:#1d2b4b;font-weight:900">Photos coming soon</span>
-            <span class="cap">Team Introductions</span>
-          </div>
+      <!-- Team Party: NO visible captions -->
+      <div class="gallery-grid" id="album-party" hidden>
+        <!-- just repeat blocks; cap left empty so nothing shows on the thumbnail -->
+        <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 1.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 2.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 3.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 4.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 5.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 6.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 7.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 8.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 8.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 9.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 9.jpg')"></span><span class="cap"></span>
+        </div>
+        <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party">
+          <span class="ph" style="background-image:url('Party 10.jpg')"></span><span class="cap"></span>
+        </div>
+      </div>
+
+      <!-- Team Introductions -->
+      <div class="gallery-grid" id="album-intro" hidden>
+        <div class="gallery-item">
+          <span class="ph" style="display:grid;place-items:center;background:linear-gradient(135deg,#ff8a3c,#ffd085);color:#1d2b4b;font-weight:900">Photos coming soon</span>
+          <span class="cap">Team Introductions</span>
         </div>
       </div>
     </div>
@@ -499,90 +405,74 @@
   </div>
 </footer>
 
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <div class="lb-wrap">
-    <img id="lbImg" alt="">
-    <div class="lb-cap" id="lbCap"></div>
-  </div>
+  <div class="lb-wrap"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
   <button class="lb-close" onclick="closeLB()">Close ✕</button>
 </div>
 
 <script>
-  function toggleDD(id){
-    document.querySelectorAll('.dropdown').forEach(d=>{
-      if(d.id !== id) d.classList.remove('open');
-    });
-    const me = document.getElementById(id);
-    me.classList.toggle('open');
-  }
-  window.addEventListener('click', e=>{
-    if(!e.target.closest('.dropdown')){
-      document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
-    }
+function toggleDD(id){
+  document.querySelectorAll('.dropdown').forEach(d=>{ if(d.id!==id) d.classList.remove('open') });
+  document.getElementById(id).classList.toggle('open');
+}
+window.addEventListener('click', e=>{
+  if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
+});
+
+const clockSvg=`<svg class="i i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
+
+function renderNextMatches(){
+  const rows=[...document.querySelectorAll('#fxTable tbody tr')].filter(tr=>tr.style.display!=='none');
+  const today=new Date(); today.setHours(0,0,0,0);
+  const html=rows.map(tr=>({tr,date:new Date(tr.dataset.date||'2100-01-01')}))
+    .filter(o=>!isNaN(o.date)&&o.date>=today).sort((a,b)=>a.date-b.date).slice(0,3)
+    .map(o=>{
+      const tr=o.tr,d=tr.children[0].textContent.trim(),opp=tr.children[1].textContent.trim(),
+            grd=tr.children[2].textContent.trim(),lg=tr.dataset.league||'',
+            time=tr.dataset.time?` <span class="time">${clockSvg} ${tr.dataset.time}</span>`:'';
+      return `<div class="next-item"><span class="lg">${lg}</span> ${d}${time} – ${opp}<br><small>${grd}</small></div>`;
+    }).join('');
+  document.getElementById('next-matches').innerHTML=html||'<div class="next-item">No upcoming matches.</div>';
+}
+
+function decorateTimes(){
+  document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
+    const td=tr.children[6]; if(!td) return;
+    const t=td.textContent.trim(); if(t && !td.dataset.iconized){ td.innerHTML=`<span class="time">${clockSvg} ${t}</span>`; td.dataset.iconized=1; }
   });
+}
 
-  const clockSvg = `<svg class="i i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
+function filterLeague(lg){
+  document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{ tr.style.display=(lg==='ALL'||tr.dataset.league===lg)?'':''; });
+  renderNextMatches(); decorateTimes();
+}
 
-  function renderNextMatches(){
-    const allRows=[...document.querySelectorAll('#fxTable tbody tr')].filter(tr => tr.style.display !== 'none');
-    const today = new Date(); today.setHours(0,0,0,0);
-    const upcoming = allRows
-      .map(tr => ({ tr, date: new Date(tr.dataset.date || '2100-01-01') }))
-      .filter(o => !isNaN(o.date) && o.date >= today)
-      .sort((a,b)=>a.date - b.date).slice(0,3)
-      .map(o=>{
-        const tr=o.tr, d=tr.children[0].textContent.trim(), opp=tr.children[1].textContent.trim(),
-              grd=tr.children[2].textContent.trim(), lg=tr.dataset.league||'',
-              time = tr.dataset.time ? ` <span class="time">${clockSvg} ${tr.dataset.time}</span>` : '';
-        return `<div class="next-item"><span class="lg">${lg}</span> ${d}${time} – ${opp}<br><small>${grd}</small></div>`;
-      });
-    document.getElementById('next-matches').innerHTML = upcoming.join('') || '<div class="next-item">No upcoming matches.</div>';
-  }
+function copyZelle(btn){
+  const t=document.getElementById('zelle-email').textContent.trim();
+  navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
+}
 
-  function decorateTimes(){
-    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const td = tr.children[6];
-      if (!td) return;
-      const t = td.textContent.trim();
-      if (t && !td.dataset.iconized){
-        td.innerHTML = `<span class="time">${clockSvg} ${t}</span>`;
-        td.dataset.iconized = "1";
-      }
-    });
-  }
+/* Gallery: JS tabs */
+function showAlbum(key){
+  document.querySelectorAll('.gal-tabs .tab').forEach(b=>b.classList.toggle('active', b.dataset.target===key));
+  document.querySelectorAll('.gal-panels .gallery-grid').forEach(g=>g.hidden = (g.id !== 'album-'+key));
+}
+document.addEventListener('click', e=>{
+  const tab = e.target.closest('.gal-tabs .tab');
+  if(tab){ showAlbum(tab.dataset.target); }
+});
 
-  function filterLeague(lg){
-    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      tr.style.display = (lg==='ALL'||tr.dataset.league===lg)?'':'none';
-    });
-    renderNextMatches();
-    decorateTimes();
-  }
+/* Lightbox */
+const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap');
+document.addEventListener('click', e=>{
+  const it=e.target.closest('.gallery-item'); if(!it || !it.dataset.img) return;
+  lbImg.src=it.dataset.img; lbCap.textContent=it.dataset.cap||''; lb.classList.add('open');
+});
+function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
+window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
 
-  function copyZelle(btn){
-    const t=document.getElementById('zelle-email').textContent.trim();
-    navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
-  }
-
-  // Lightbox
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbCap = document.getElementById('lbCap');
-  document.addEventListener('click', (e)=>{
-    const item = e.target.closest('.gallery-item');
-    if(!item || !item.dataset.img) return;
-    lbImg.src = item.dataset.img;
-    lbCap.textContent = item.dataset.cap || '';
-    lb.classList.add('open');
-  });
-  function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
-  window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
-
-  document.addEventListener('DOMContentLoaded', ()=>{
-    renderNextMatches();
-    decorateTimes();
-  });
+document.addEventListener('DOMContentLoaded', ()=>{ renderNextMatches(); decorateTimes(); showAlbum('awards'); });
 </script>
 </body>
 </html>
