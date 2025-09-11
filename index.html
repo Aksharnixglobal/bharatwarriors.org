@@ -111,6 +111,7 @@
   .gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer}
   .gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
   .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
+  .gallery-item .cap:empty{display:none} /* hide empty captions (used for Team Party) */
   .gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
 
   /* LIGHTBOX */
@@ -143,14 +144,13 @@
   .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
   .foot-social svg{width:20px;height:20px;fill:#fff}
 
-  /* Clock icon + time pill */
-  .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2 }
-  .time{ display:inline-flex; align-items:center; gap:6px; color:#31476b; font-weight:800 }
+  .i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+  .time{display:inline-flex;align-items:center;gap:6px;color:#31476b;font-weight:800}
 
-  /* --- CSS TABS FOR GALLERY (no JS required) --- */
+  /* Gallery Tabs (CSS-only) */
   .gal-tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
   .gal-tabs input{display:none}
-  .gal-tabs label{cursor:pointer; padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; font-weight:800; color:#21335b}
+  .gal-tabs label{cursor:pointer;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;color:#21335b}
   .gal-tabs input:checked + label{background:#eaf2ff;border-color:#cfe0ff;color:#0f3f9e}
   .gal-panels .gallery-grid{display:none}
   #tab-awards:checked ~ .gal-panels [data-panel="awards"]{display:grid}
@@ -190,8 +190,8 @@
         <div class="dropdown-menu">
           <a href="#sponsors" onclick="toggleDD('dd-sp')">All Sponsors</a>
           <a href="#sponsor-infinity" onclick="toggleDD('dd-sp')">Infinity Legacy Group</a>
-          <a href="#sponsor-aksharnix"  onclick="toggleDD('dd-sp')">AksharNix Global</a>
-          <a href="#sponsor-pizza"     onclick="toggleDD('dd-sp')">Pizza Twist</a>
+          <a href="#sponsor-aksharnix" onclick="toggleDD('dd-sp')">AksharNix Global</a>
+          <a href="#sponsor-pizza" onclick="toggleDD('dd-sp')">Pizza Twist</a>
         </div>
       </div>
 
@@ -356,51 +356,51 @@
           </div>
         </div>
 
-        <!-- Team Party album -->
+        <!-- Team Party album (NO visible captions) -->
         <div class="gallery-grid" data-panel="party">
-          <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party — 1">
+          <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 1.jpg')"></span>
-            <span class="cap">Team Party — 1</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party — 2">
+          <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 2.jpg')"></span>
-            <span class="cap">Team Party — 2</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party — 3">
+          <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 3.jpg')"></span>
-            <span class="cap">Team Party — 3</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party — 4">
+          <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 4.jpg')"></span>
-            <span class="cap">Team Party — 4</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party — 5">
+          <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 5.jpg')"></span>
-            <span class="cap">Team Party — 5</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party — 6">
+          <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 6.jpg')"></span>
-            <span class="cap">Team Party — 6</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party — 7">
+          <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 7.jpg')"></span>
-            <span class="cap">Team Party — 7</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 8.jpg" data-cap="Team Party — 8">
+          <div class="gallery-item" data-img="Party 8.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 8.jpg')"></span>
-            <span class="cap">Team Party — 8</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 9.jpg" data-cap="Team Party — 9">
+          <div class="gallery-item" data-img="Party 9.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 9.jpg')"></span>
-            <span class="cap">Team Party — 9</span>
+            <span class="cap"></span>
           </div>
-          <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party — 10">
+          <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party">
             <span class="ph" style="background-image:url('Party 10.jpg')"></span>
-            <span class="cap">Team Party — 10</span>
+            <span class="cap"></span>
           </div>
         </div>
 
-        <!-- Team Introductions (placeholder) -->
+        <!-- Team Introductions -->
         <div class="gallery-grid" data-panel="intro">
           <div class="gallery-item">
             <span class="ph" style="display:grid;place-items:center;background:linear-gradient(135deg,#ff8a3c,#ffd085);color:#1d2b4b;font-weight:900">Photos coming soon</span>
@@ -565,7 +565,7 @@
     navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
   }
 
-  // Lightbox open/close
+  // Lightbox
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
