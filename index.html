@@ -7,108 +7,145 @@
 <meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, gallery, sponsors, donations, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --navy:#0c1e37; --navy-2:#132b4f;
-  --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#fff;
-  --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth} html,body{margin:0}
-body{font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-a{color:inherit;text-decoration:none}
-.container{max-width:1160px;margin:0 auto;padding:0 18px}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
+  :root{
+    --navy:#0c1e37; --navy-2:#132b4f;
+    --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
+    --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  html,body{margin:0}
+  body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1160px;margin:0 auto;padding:0 18px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:80;background:linear-gradient(180deg,var(--navy),var(--navy-2));border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 8px 22px rgba(10,28,60,.22)}
-.nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
-.brand{display:flex;align-items:center;gap:12px}
-.brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
-.brand .t{font-weight:800;letter-spacing:.3px;color:#ffe39a}
-.brand .s{font-size:11px;color:#e7f0ff;opacity:.95}
-.menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
-.menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;color:#eef4ff;font-weight:800;letter-spacing:.2px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:12px;transition:transform .08s,background .2s,box-shadow .2s}
-.menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18);box-shadow:0 8px 18px rgba(0,0,0,.25)}
-.menu .active{background:rgba(255,255,255,.22)}
-.dropdown{position:relative}
-.dropdown-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:220px;background:#0f2548;color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:6px;display:none;box-shadow:0 18px 36px rgba(0,0,0,.35)}
-.dropdown.open .dropdown-menu{display:block}
-.dropdown-menu a{display:block;padding:9px 10px;border-radius:8px;white-space:nowrap}
-.dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-.social{display:flex;gap:8px;margin-left:6px}
-.social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
-.social svg{width:18px;height:18px;fill:#fff}
+  /* NAV */
+  .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
+       border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
+       padding-bottom:0; transition:padding-bottom .15s ease;}
+  .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:64px;height:64px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+  .brand .t{font-weight:800;letter-spacing:.3px;color:#ffe39a}
+  .brand .s{font-size:11px;color:#e7f0ff;opacity:.95}
+  .menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
+  .menu a,.dropdown>button{cursor:pointer;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 14px;
+    color:#eef4ff;font-weight:800;letter-spacing:.2px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+    border-radius:12px;transition:transform .08s ease, background .2s ease, box-shadow .2s ease}
+  .menu a:hover,.dropdown>button:hover{transform:translateY(-1px);background:rgba(255,255,255,.18);box-shadow:0 8px 18px rgba(0,0,0,.25)}
+  .menu .active{background:rgba(255,255,255,.22)}
+  .dropdown{position:relative}
+  .dropdown-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:220px; background:#0f2548; color:#fff;
+    border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:6px; display:none; box-shadow:0 18px 36px rgba(0,0,0,.35)}
+  .dropdown.open .dropdown-menu{display:block}
+  .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px;white-space:nowrap}
+  .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
+  .social{display:flex;gap:8px;margin-left:6px}
+  .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
+  .social svg{width:18px;height:18px;fill:#fff}
 
-/* sections */
-.section{padding:46px 0;scroll-margin-top:130px} .hero{scroll-margin-top:0}
+  .section{padding:46px 0; scroll-margin-top:130px;}
+  .hero{scroll-margin-top:0}
 
-/* HERO flag + chakra */
-.hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
-.hero.flag::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--saffron) 0 33.333%,#fff 33.333% 66.666%,var(--green) 66.666% 100%);opacity:.18;pointer-events:none}
-.hero.flag::after{
-  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(48vw,380px);height:min(48vw,380px);background-repeat:no-repeat;background-position:center;background-size:contain;opacity:.28;pointer-events:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><defs><g id='sp'><line x1='100' y1='100' x2='100' y2='16' stroke='%230a5aad' stroke-width='6'/></g></defs><g><use href='%23sp'/><use href='%23sp' transform='rotate(15 100 100)'/><use href='%23sp' transform='rotate(30 100 100)'/><use href='%23sp' transform='rotate(45 100 100)'/><use href='%23sp' transform='rotate(60 100 100)'/><use href='%23sp' transform='rotate(75 100 100)'/><use href='%23sp' transform='rotate(90 100 100)'/><use href='%23sp' transform='rotate(105 100 100)'/><use href='%23sp' transform='rotate(120 100 100)'/><use href='%23sp' transform='rotate(135 100 100)'/><use href='%23sp' transform='rotate(150 100 100)'/><use href='%23sp' transform='rotate(165 100 100)'/><use href='%23sp' transform='rotate(180 100 100)'/><use href='%23sp' transform='rotate(195 100 100)'/><use href='%23sp' transform='rotate(210 100 100)'/><use href='%23sp' transform='rotate(225 100 100)'/><use href='%23sp' transform='rotate(240 100 100)'/><use href='%23sp' transform='rotate(255 100 100)'/><use href='%23sp' transform='rotate(270 100 100)'/><use href='%23sp' transform='rotate(285 100 100)'/><use href='%23sp' transform='rotate(300 100 100)'/><use href='%23sp' transform='rotate(315 100 100)'/><use href='%23sp' transform='rotate(330 100 100)'/><use href='%23sp' transform='rotate(345 100 100)'/></g><circle cx='100' cy='100' r='8' fill='%230a5aad'/><circle cx='100' cy='100' r='92' fill='none' stroke='%230a5aad' stroke-width='6'/></svg>");
-}
-.hero .wrap{padding:40px 0 34px}
-.h-title{margin:0 0 8px;font-size:38px;line-height:1.07;font-weight:900;color:#0e1d39}
-.h-title .accent{background:linear-gradient(90deg,var(--blue),#0c56c1);-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{color:#31476b;max-width:740px;margin:0 0 8px}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
-.chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
-.next{margin:18px 0 0;padding:14px 14px}
-.next-list{display:grid;gap:8px;margin-top:6px}
-.next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
-.lg{font-weight:900;color:#0f66d2;margin-right:6px}
+  /* HERO (tricolor + chakra) */
+  .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+  .hero.flag::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg,var(--saffron) 0 33.333%, #ffffff 33.333% 66.666%, var(--green) 66.666% 100%);
+    opacity:.18; pointer-events:none;
+  }
+  .hero.flag::after{
+    content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+    width:min(48vw,380px); height:min(48vw,380px);
+    background-repeat:no-repeat; background-position:center; background-size:contain; opacity:.28; pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>\
+<defs><g id='sp'><line x1='100' y1='100' x2='100' y2='16' stroke='%230a5aad' stroke-width='6'/></g></defs>\
+<g>\
+<use href='%23sp'/><use href='%23sp' transform='rotate(15 100 100)'/>\
+<use href='%23sp' transform='rotate(30 100 100)'/><use href='%23sp' transform='rotate(45 100 100)'/>\
+<use href='%23sp' transform='rotate(60 100 100)'/><use href='%23sp' transform='rotate(75 100 100)'/>\
+<use href='%23sp' transform='rotate(90 100 100)'/><use href='%23sp' transform='rotate(105 100 100)'/>\
+<use href='%23sp' transform='rotate(120 100 100)'/><use href='%23sp' transform='rotate(135 100 100)'/>\
+<use href='%23sp' transform='rotate(150 100 100)'/><use href='%23sp' transform='rotate(165 100 100)'/>\
+<use href='%23sp' transform='rotate(180 100 100)'/><use href='%23sp' transform='rotate(195 100 100)'/>\
+<use href='%23sp' transform='rotate(210 100 100)'/><use href='%23sp' transform='rotate(225 100 100)'/>\
+<use href='%23sp' transform='rotate(240 100 100)'/><use href='%23sp' transform='rotate(255 100 100)'/>\
+<use href='%23sp' transform='rotate(270 100 100)'/><use href='%23sp' transform='rotate(285 100 100)'/>\
+<use href='%23sp' transform='rotate(300 100 100)'/><use href='%23sp' transform='rotate(315 100 100)'/>\
+<use href='%23sp' transform='rotate(330 100 100)'/><use href='%23sp' transform='rotate(345 100 100)'/>\
+</g>\
+<circle cx='100' cy='100' r='8' fill='%230a5aad'/>\
+<circle cx='100' cy='100' r='92' fill='none' stroke='%230a5aad' stroke-width='6'/>\
+</svg>");
+  }
+  .hero .wrap{padding:40px 0 34px}
+  .h-title{margin:0 0 8px;font-size:38px;line-height:1.07;font-weight:900;color:#0e1d39}
+  .h-title .accent{background:linear-gradient(90deg,var(--blue),#0c56c1);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:#31476b;max-width:740px;margin:0 0 8px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+  .chip{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;color:#21335b;font-weight:800}
+  .next{margin:18px 0 0;padding:14px 14px}
+  .next-list{display:grid;gap:8px;margin-top:6px}
+  .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
+  .lg{font-weight:900;color:#0f66d2;margin-right:6px}
 
-/* tables */
-.section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
-.sub{color:var(--muted);font-size:14px}
-table{width:100%;border-collapse:collapse}
-th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
-th{background:#f0f6ff;color:#0e1d39;font-weight:900}
-.badge{padding:5px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
-.league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
-.league-leca{background:rgba(24,160,106,.14);color:#159765}
-.result-win{color:#18a06a;font-weight:800}
+  .section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
+  .sub{color:var(--muted);font-size:14px}
 
-/* GALLERY */
-.gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer}
-.gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
-.gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
-.gallery-item .cap:empty{display:none}
-.gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
-/* gallery tabs (JS driven) */
-.gal-tabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.gal-tabs .tab{cursor:pointer;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;color:#21335b}
-.gal-tabs .tab.active{background:#eaf2ff;border-color:#cfe0ff;color:#0f3f9e}
-[hidden]{display:none !important}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
+  th{background:#f0f6ff;color:#0e1d39;font-weight:900}
+  .badge{padding:5px 9px;border-radius:999px;font-size:12px;border:1px solid var(--line);background:#fff}
+  .league-dfcl{background:rgba(18,98,214,.13);color:#1262d6}
+  .league-leca{background:rgba(24,160,106,.14);color:#159765}
+  .result-win{color:#18a06a;font-weight:800}
+  .result-loss{color:#d64545;font-weight:800}
 
-/* sponsors / donations / footer */
-.s-row{display:grid;gap:12px;grid-auto-rows:1fr}
-@media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.sponsor{height:150px;display:flex;align-items:center;justify-content:center}
-.logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
-.logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
-.don-card{padding:14px}
-.don-grid{display:grid;gap:14px;grid-template-columns:1fr}
-@media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
-.code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
-.qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
-footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
-footer a{color:#1262d6;font-weight:800}
-.foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
-.foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
-.foot-social svg{width:20px;height:20px;fill:#fff}
+  /* GALLERY */
+  .gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+  @media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer}
+  .gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
+  .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
+  .gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
+  /* lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(10,20,35,.9);display:none;align-items:center;justify-content:center;z-index:120}
+  .lightbox.open{display:flex}
+  .lb-wrap{max-width:90vw;max-height:88vh}
+  .lb-wrap img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 14px 32px rgba(0,0,0,.35)}
+  .lb-cap{margin-top:8px;text-align:center;color:#eef2ff}
+  .lb-close{position:fixed;top:18px;right:18px;background:#fff;border-radius:10px;border:1px solid #dbe6fb;font-weight:800;padding:8px 12px;cursor:pointer}
 
-/* icons */
-.i{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
-.time{display:inline-flex;align-items:center;gap:6px;color:#31476b;font-weight:800}
+  /* sponsors */
+  .s-row{display:grid;gap:12px;grid-auto-rows:1fr}
+  @media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .sponsor{height:150px;display:flex;align-items:center;justify-content:center}
+  .logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
+  .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+
+  /* donations compact */
+  .don-card{padding:14px}
+  .don-grid{display:grid;gap:14px;grid-template-columns:1fr}
+  @media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
+  .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
+  .qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+
+  footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
+  footer a{color:#1262d6;font-weight:800}
+  .foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
+  .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
+  .foot-social svg{width:20px;height:20px;fill:#fff}
+
+  /* clock icon + time pill */
+  .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
+  .time{ display:inline-flex; align-items:center; gap:6px; color:#31476b; font-weight:800; }
 </style>
 </head>
 <body>
@@ -117,7 +154,10 @@ footer a{color:#1262d6;font-weight:800}
   <div class="wrap container">
     <div class="brand">
       <img src="bharat-warriors-logo.png" alt="Bharat Warriors">
-      <div><div class="t">Bharat Warriors</div><div class="s">We play as ONE.</div></div>
+      <div>
+        <div class="t">Bharat Warriors</div>
+        <div class="s">We play as ONE.</div>
+      </div>
     </div>
 
     <nav class="menu">
@@ -164,7 +204,13 @@ footer a{color:#1262d6;font-weight:800}
   <div class="wrap container">
     <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
     <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
-    <div class="chips"><span class="chip">🏏 Discipline</span><span class="chip">🤝 Unity</span><span class="chip">⚡ Energy</span></div>
+
+    <div class="chips">
+      <span class="chip">🏏 Discipline</span>
+      <span class="chip">🤝 Unity</span>
+      <span class="chip">⚡ Energy</span>
+    </div>
+
     <div class="card next">
       <p style="font-weight:800;margin:0 0 6px">Next Matches</p>
       <div id="next-matches" class="next-list"><div class="next-item">Loading…</div></div>
@@ -189,42 +235,73 @@ footer a{color:#1262d6;font-weight:800}
     <p class="sub">Filter by league from the Leagues dropdown.</p>
     <div class="card" style="overflow:auto">
       <table id="fxTable">
-        <thead><tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr></thead>
+        <thead>
+          <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
+        </thead>
         <tbody>
+          <!-- DFCL (past) -->
           <tr data-league="DFCL" data-date="2025-09-06" data-time="7:30 AM">
-            <td>Sep 6, 2025</td><td>Bharat Warriors 🆚 Dallas Renegades</td>
+            <td>Sep 6, 2025</td>
+            <td>Bharat Warriors 🆚 Dallas Renegades</td>
             <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
-          <tr data-league="LECA" data-date="2025-09-06" data-time="3:30–7:00 PM">
-            <td>Sep 6, 2025</td><td>Knight Riders 🆚 BW</td>
+
+          <!-- LECA RESULT (past) -->
+          <tr data-league="LECA" data-date="2025-09-06" data-time="3:30 PM">
+            <td>Sep 6, 2025</td>
+            <td>Knight Riders 🆚 BW</td>
             <td>7200 Sung Harbor Cir, Hackberry, TX 75036</td>
-            <td></td><td><span class="badge league-leca">LECA • Div A</span></td>
-            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td><td>3:30–7:00 PM</td>
+            <td></td>
+            <td><span class="badge league-leca">LECA • Div A</span></td>
+            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td>
+            <td>3:30–7:00 PM</td>
           </tr>
+
+          <!-- NEW DFCL: future -->
           <tr data-league="DFCL" data-date="2025-09-13" data-time="7:30 AM">
-            <td>Sep 13, 2025</td><td>Joyful XI 🆚 Bharat Warriors</td>
-            <td>Irving Polo</td><td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
+            <td>Sep 13, 2025</td>
+            <td>Joyful XI 🆚 Bharat Warriors</td>
+            <td>Irving Polo</td>
+            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
+
+          <!-- LECA upcoming -->
           <tr data-league="LECA" data-date="2025-09-13" data-time="11:30 AM">
-            <td>Sep 13, 2025</td><td>Highland Boyz 🆚 BW</td>
-            <td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>Sep 13, 2025</td>
+            <td>Highland Boyz 🆚 BW</td>
+            <td>Brentwood</td>
+            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
+
+          <!-- NEW DFCL: future -->
           <tr data-league="DFCL" data-date="2025-09-15" data-time="7:00 PM">
-            <td>Sep 15, 2025</td><td>Dallas Renegades 🆚 Bharat Warriors</td>
-            <td>Sandy Lake ground</td><td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
+            <td>Sep 15, 2025</td>
+            <td>Dallas Renegades 🆚 Bharat Warriors</td>
+            <td>Sandy Lake ground</td>
+            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
           </tr>
+
+          <!-- Remaining LECA -->
           <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
-            <td>Sep 28, 2025</td><td>The Topdogs 🆚 BW</td>
-            <td>Brentwood</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
+            <td>Sep 28, 2025</td>
+            <td>The Topdogs 🆚 BW</td>
+            <td>Brentwood</td>
+            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
           </tr>
+
           <tr data-league="LECA" data-date="2025-10-05" data-time="11:30 AM">
-            <td>Oct 05, 2025</td><td>Singhams India 101 🆚 BW</td>
-            <td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>Oct 05, 2025</td>
+            <td>Singhams India 101 🆚 BW</td>
+            <td>Hackberry</td>
+            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
+
           <tr data-league="LECA" data-date="2025-10-11" data-time="11:30 AM">
-            <td>Oct 11, 2025</td><td>Raging Bulls 🆚 BW</td>
-            <td>Hackberry</td><td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>Oct 11, 2025</td>
+            <td>Raging Bulls 🆚 BW</td>
+            <td>Hackberry</td>
+            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
         </tbody>
       </table>
@@ -236,85 +313,61 @@ footer a{color:#1262d6;font-weight:800}
 <section id="gallery" class="section">
   <div class="container">
     <h2>Gallery</h2>
-    <p class="sub">Tap a tab to see that album; click any photo to view large.</p>
+    <p class="sub">Click any photo to view large.</p>
 
-    <!-- Tabs -->
-    <div class="gal-tabs">
-      <button class="tab active" data-target="awards">Awards & Recognition</button>
-      <button class="tab" data-target="party">Team Party</button>
-      <button class="tab" data-target="intro">Team Introductions</button>
+    <!-- Album tabs -->
+    <div style="display:flex;gap:10px;margin:10px 0 18px">
+      <button class="btn" onclick="showAlbum('awards')">Awards & Recognition</button>
+      <button class="btn" onclick="showAlbum('party')">Team Party</button>
+      <button class="btn" onclick="showAlbum('intro')">Team Introductions</button>
     </div>
 
-    <!-- Panels -->
-    <div class="gal-panels">
-      <!-- Awards -->
-      <div class="gallery-grid" id="album-awards">
-        <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — MOM">
-          <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span><span class="cap">Darshan — MOM</span>
-        </div>
-        <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — MOM">
-          <span class="ph" style="background-image:url('Gaurav MOM.jpg')"></span><span class="cap">Gaurav — MOM</span>
-        </div>
-        <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — MOM">
-          <span class="ph" style="background-image:url('Raj MOM.jpg')"></span><span class="cap">Raj — MOM</span>
-        </div>
-        <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
-          <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span><span class="cap">Bhavik — Best Fielder (DFCL)</span>
-        </div>
-        <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
-          <span class="ph" style="background-image:url('Darshan Best bowler DFCL.jpg')"></span><span class="cap">Darshan — Best Bowler (DFCL)</span>
-        </div>
-        <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
-          <span class="ph" style="background-image:url('Gaurav Best Bowler DFCL.jpg')"></span><span class="cap">Gaurav — Best Bowler (DFCL)</span>
-        </div>
-        <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
-          <span class="ph" style="background-image:url('Vadik Best fielder LECA.jpg')"></span><span class="cap">Vadik — Best Fielder (LECA)</span>
-        </div>
+    <div id="album-awards" class="gallery-grid">
+      <!-- use exact filenames (case sensitive on many servers) -->
+      <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — MOM">
+        <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span><span class="cap">Darshan — MOM</span>
+      </div>
+      <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — MOM">
+        <span class="ph" style="background-image:url('Gaurav MOM.jpg')"></span><span class="cap">Gaurav — MOM</span>
+      </div>
+      <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — MOM">
+        <span class="ph" style="background-image:url('Raj MOM.jpg')"></span><span class="cap">Raj — MOM</span>
+      </div>
+      <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
+        <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span><span class="cap">Bhavik — Best Fielder (DFCL)</span>
       </div>
 
-      <!-- Team Party: NO visible captions -->
-      <div class="gallery-grid" id="album-party" hidden>
-        <!-- just repeat blocks; cap left empty so nothing shows on the thumbnail -->
-        <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 1.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 2.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 3.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 4.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 5.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 6.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 7.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 8.jpg" data-cap="Team Party">
-  <span class="ph" style="background-image:url('Party 8.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 9.jpg" data-cap="Team Party">
-  <span class="ph" style="background-image:url('Party 9.jpg')"></span><span class="cap"></span>
-        </div>
-        <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party">
-          <span class="ph" style="background-image:url('Party 10.jpg')"></span><span class="cap"></span>
-        </div>
+      <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
+        <span class="ph" style="background-image:url('Darshan Best bowler DFCL.jpg')"></span><span class="cap">Darshan — Best Bowler (DFCL)</span>
       </div>
-
-      <!-- Team Introductions -->
-      <div class="gallery-grid" id="album-intro" hidden>
-        <div class="gallery-item">
-          <span class="ph" style="display:grid;place-items:center;background:linear-gradient(135deg,#ff8a3c,#ffd085);color:#1d2b4b;font-weight:900">Photos coming soon</span>
-          <span class="cap">Team Introductions</span>
-        </div>
+      <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
+        <span class="ph" style="background-image:url('Gaurav Best Bowler DFCL.jpg')"></span><span class="cap">Gaurav — Best Bowler (DFCL)</span>
+      </div>
+      <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
+        <span class="ph" style="background-image:url('Vadik Best fielder LECA.jpg')"></span><span class="cap">Vadik — Best Fielder (LECA)</span>
       </div>
     </div>
+
+    <div id="album-party" class="gallery-grid" style="display:none">
+      <!-- Use the exact file names you added to repo (case exact) -->
+      <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party — 1"><span class="ph" style="background-image:url('Party 1.jpg')"></span><span class="cap">Team Party — 1</span></div>
+      <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party — 2"><span class="ph" style="background-image:url('Party 2.jpg')"></span><span class="cap">Team Party — 2</span></div>
+      <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party — 3"><span class="ph" style="background-image:url('Party 3.jpg')"></span><span class="cap">Team Party — 3</span></div>
+      <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party — 4"><span class="ph" style="background-image:url('Party 4.jpg')"></span><span class="cap">Team Party — 4</span></div>
+      <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party — 5"><span class="ph" style="background-image:url('Party 5.jpg')"></span><span class="cap">Team Party — 5</span></div>
+      <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party — 6"><span class="ph" style="background-image:url('Party 6.jpg')"></span><span class="cap">Team Party — 6</span></div>
+      <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party — 7"><span class="ph" style="background-image:url('Party 7.jpg')"></span><span class="cap">Team Party — 7</span></div>
+      <div class="gallery-item" data-img="Party 8.JPG" data-cap="Team Party — 8"><span class="ph" style="background-image:url('Party 8.JPG')"></span><span class="cap">Team Party — 8</span></div>
+      <div class="gallery-item" data-img="Party 9.JPG" data-cap="Team Party — 9"><span class="ph" style="background-image:url('Party 9.JPG')"></span><span class="cap">Team Party — 9</span></div>
+      <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party — 10"><span class="ph" style="background-image:url('Party 10.jpg')"></span><span class="cap">Team Party — 10</span></div>
+    </div>
+
+    <div id="album-intro" class="gallery-grid" style="display:none">
+      <div class="gallery-item" data-img="team-intro-1.jpg" data-cap="Team Intro — 1"><span class="ph" style="background-image:url('team-intro-1.jpg')"></span><span class="cap">Team Intro — 1</span></div>
+      <div class="gallery-item" data-img="team-intro-2.jpg" data-cap="Team Intro — 2"><span class="ph" style="background-image:url('team-intro-2.jpg')"></span><span class="cap">Team Intro — 2</span></div>
+      <!-- add more intro images if you have them -->
+    </div>
+
   </div>
 </section>
 
@@ -345,6 +398,7 @@ footer a{color:#1262d6;font-weight:800}
   <div class="container">
     <h2>Donations</h2>
     <p class="sub">We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
+
     <div class="card don-card">
       <div class="don-grid">
         <div>
@@ -356,6 +410,7 @@ footer a{color:#1262d6;font-weight:800}
             <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
           </div>
         </div>
+
         <div>
           <p class="sub" style="margin:0 0 8px">Scan this QR in your banking app:</p>
           <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code">
@@ -405,74 +460,166 @@ footer a{color:#1262d6;font-weight:800}
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
-  <div class="lb-wrap"><img id="lbImg" alt=""><div class="lb-cap" id="lbCap"></div></div>
+  <div class="lb-wrap">
+    <img id="lbImg" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
   <button class="lb-close" onclick="closeLB()">Close ✕</button>
 </div>
 
 <script>
-function toggleDD(id){
-  document.querySelectorAll('.dropdown').forEach(d=>{ if(d.id!==id) d.classList.remove('open') });
-  document.getElementById(id).classList.toggle('open');
-}
-window.addEventListener('click', e=>{
-  if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
-});
-
-const clockSvg=`<svg class="i i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
-
-function renderNextMatches(){
-  const rows=[...document.querySelectorAll('#fxTable tbody tr')].filter(tr=>tr.style.display!=='none');
-  const today=new Date(); today.setHours(0,0,0,0);
-  const html=rows.map(tr=>({tr,date:new Date(tr.dataset.date||'2100-01-01')}))
-    .filter(o=>!isNaN(o.date)&&o.date>=today).sort((a,b)=>a.date-b.date).slice(0,3)
-    .map(o=>{
-      const tr=o.tr,d=tr.children[0].textContent.trim(),opp=tr.children[1].textContent.trim(),
-            grd=tr.children[2].textContent.trim(),lg=tr.dataset.league||'',
-            time=tr.dataset.time?` <span class="time">${clockSvg} ${tr.dataset.time}</span>`:'';
-      return `<div class="next-item"><span class="lg">${lg}</span> ${d}${time} – ${opp}<br><small>${grd}</small></div>`;
-    }).join('');
-  document.getElementById('next-matches').innerHTML=html||'<div class="next-item">No upcoming matches.</div>';
-}
-
-function decorateTimes(){
-  document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-    const td=tr.children[6]; if(!td) return;
-    const t=td.textContent.trim(); if(t && !td.dataset.iconized){ td.innerHTML=`<span class="time">${clockSvg} ${t}</span>`; td.dataset.iconized=1; }
+  /* --- Dropdown helpers --- */
+  function toggleDD(id){
+    document.querySelectorAll('.dropdown').forEach(d=>{
+      if(d.id !== id) d.classList.remove('open');
+    });
+    const me = document.getElementById(id);
+    me.classList.toggle('open');
+  }
+  window.addEventListener('click', e=>{
+    if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
   });
-}
 
-function filterLeague(lg){
-  document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{ tr.style.display=(lg==='ALL'||tr.dataset.league===lg)?'':''; });
-  renderNextMatches(); decorateTimes();
-}
+  /* --- small svg clock used in list --- */
+  const clockSvg = `<svg class="i i-clock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
 
-function copyZelle(btn){
-  const t=document.getElementById('zelle-email').textContent.trim();
-  navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
-}
+  /* parse a date + time to a JS Date object.
+     Accepts:
+       - data-date: YYYY-MM-DD (recommended)
+       - data-time: "7:30 AM" or "3:30–7:00 PM" or "7:30 PM"
+     If time is a range, we take the start time for sorting.
+  */
+  function parseRowDateTime(tr){
+    const dateRaw = tr.dataset.date || '';
+    const timeRaw = (tr.dataset.time || '').trim();
+    if(!dateRaw) return null;
+    // parse date part (YYYY-MM-DD)
+    const [y,m,d] = dateRaw.split('-').map(Number);
+    if(!y||!m||!d) return null;
+    // Determine time: default midday if not provided
+    let hours = 12, minutes = 0;
+    if(timeRaw){
+      // if range like "3:30–7:00 PM" or "3:30–7:00 PM" – take first part
+      let t = timeRaw.split('–')[0].trim();
+      // If suffix "AM"/"PM" is only at end of range, and first part lacks it, try to append last suffix
+      if(!/am|pm/i.test(t) && /am|pm/i.test(timeRaw)) {
+        const suff = (timeRaw.match(/(am|pm)/i) || [])[0] || '';
+        if(suff) t = t + ' ' + suff;
+      }
+      // parse "7:30 AM" or "7 PM"
+      const m1 = t.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
+      if(m1){
+        let hh = parseInt(m1[1],10);
+        let mm = m1[2] ? parseInt(m1[2],10) : 0;
+        const ap = (m1[3] || '').toLowerCase();
+        if(ap === 'pm' && hh < 12) hh += 12;
+        if(ap === 'am' && hh === 12) hh = 0;
+        hours = hh; minutes = mm;
+      }
+    }
+    // create date in local timezone
+    return new Date(y, m-1, d, hours, minutes, 0, 0);
+  }
 
-/* Gallery: JS tabs */
-function showAlbum(key){
-  document.querySelectorAll('.gal-tabs .tab').forEach(b=>b.classList.toggle('active', b.dataset.target===key));
-  document.querySelectorAll('.gal-panels .gallery-grid').forEach(g=>g.hidden = (g.id !== 'album-'+key));
-}
-document.addEventListener('click', e=>{
-  const tab = e.target.closest('.gal-tabs .tab');
-  if(tab){ showAlbum(tab.dataset.target); }
-});
+  /* Build upcoming matches: pick rows where date >= today, sort by datetime */
+  function renderNextMatches(){
+    const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'))
+      .filter(tr => tr.style.display !== 'none');
 
-/* Lightbox */
-const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap');
-document.addEventListener('click', e=>{
-  const it=e.target.closest('.gallery-item'); if(!it || !it.dataset.img) return;
-  lbImg.src=it.dataset.img; lbCap.textContent=it.dataset.cap||''; lb.classList.add('open');
-});
-function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
-window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
+    const today = new Date();
+    today.setHours(0,0,0,0);
 
-document.addEventListener('DOMContentLoaded', ()=>{ renderNextMatches(); decorateTimes(); showAlbum('awards'); });
+    // map rows to {tr, dt}
+    const mapped = rows.map(tr => ({tr, dt: parseRowDateTime(tr)}))
+      .filter(o => o.dt !== null)
+      .filter(o => {
+        // include events on or after today
+        const dcopy = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
+        return dcopy >= today;
+      })
+      .sort((a,b)=>a.dt - b.dt);
+
+    // take up to 3 upcoming
+    const upcoming = mapped.slice(0,3).map(o=>{
+      const tr = o.tr;
+      const d = tr.children[0].textContent.trim();
+      const opp = tr.children[1].textContent.trim();
+      const grd = tr.children[2].textContent.trim();
+      const lg = (tr.dataset.league || '').toUpperCase();
+      const timestr = tr.dataset.time ? tr.dataset.time : '';
+      const timeHtml = timestr ? ` <span class="time">${clockSvg} ${timestr}</span>` : '';
+      return `<div class="next-item"><span class="lg">${lg}</span> ${d}${timeHtml} – ${opp}<br><small>${grd}</small></div>`;
+    });
+
+    document.getElementById('next-matches').innerHTML = (upcoming.length ? upcoming.join('') : '<div class="next-item">No upcoming matches.</div>');
+  }
+
+  /* decorate time column in table with clock icon */
+  function decorateTimes(){
+    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
+      const td = tr.children[6]; // 7th column
+      if(!td) return;
+      const t = td.textContent.trim();
+      if(t && !td.dataset.iconized){
+        td.innerHTML = `<span class="time">${clockSvg} ${t}</span>`;
+        td.dataset.iconized = "1";
+      }
+    });
+  }
+
+  /* Filter rows by league code: DFCL, LECA, ALL */
+  function filterLeague(lg){
+    const all = document.querySelectorAll('#fxTable tbody tr');
+    all.forEach(tr => {
+      if(lg === 'ALL') tr.style.display = '';
+      else tr.style.display = (tr.dataset.league === lg) ? '' : 'none';
+    });
+    renderNextMatches();
+    decorateTimes();
+  }
+
+  /* copy Zelle */
+  function copyZelle(btn){
+    const t = document.getElementById('zelle-email').textContent.trim();
+    navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
+  }
+
+  /* Gallery lightbox */
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+
+  document.addEventListener('click', function(e){
+    const item = e.target.closest('.gallery-item');
+    if(!item) return;
+    const src = item.dataset.img;
+    const cap = item.dataset.cap || '';
+    // set img src - make sure file exists in same folder or provide full path
+    lbImg.src = src;
+    lbCap.textContent = cap;
+    lb.classList.add('open');
+  });
+
+  function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
+  window.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLB(); });
+
+  /* Album tabs show/hide */
+  function showAlbum(name){
+    document.getElementById('album-awards').style.display = (name==='awards') ? 'grid' : 'none';
+    document.getElementById('album-party').style.display = (name==='party') ? 'grid' : 'none';
+    document.getElementById('album-intro').style.display = (name==='intro') ? 'grid' : 'none';
+    // scroll a bit to the gallery area
+    location.hash = '#gallery';
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    renderNextMatches();
+    decorateTimes();
+    // default album
+    showAlbum('awards');
+  });
 </script>
 </body>
 </html>
