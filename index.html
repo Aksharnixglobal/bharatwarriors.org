@@ -23,7 +23,7 @@
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
   /* NAV */
-  .nav{position:sticky; top:0; z-index:120; background:linear-gradient(180deg,var(--navy),var(--navy-2));
+  .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
        border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
        padding-bottom:0; transition:padding-bottom .15s ease;}
   .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
@@ -47,15 +47,10 @@
   .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
   .social svg{width:18px;height:18px;fill:#fff}
 
-  /* MOBILE NAV (hamburger) */
-  .hamburger{display:none;background:transparent;border:0;color:#fff;font-size:22px;padding:8px;border-radius:8px;cursor:pointer}
-  .mobile-menu{display:none;position:fixed;inset:64px 14px auto 14px;background:linear-gradient(180deg,#071229, #031226);border-radius:12px;padding:12px;box-shadow:0 18px 36px rgba(1,12,28,0.7);z-index:130}
-  .mobile-menu a{display:block;padding:12px;border-radius:10px;color:#eef6ff;font-weight:800;margin-bottom:6px}
-  .mobile-menu .cta{display:flex;gap:8px;margin-top:8px}
-  .mobile-menu .cta a{flex:1;text-align:center}
-
-  /* HERO */
   .section{padding:46px 0; scroll-margin-top:130px;}
+  .hero{scroll-margin-top:0}
+
+  /* HERO (tricolor + chakra) */
   .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
   .hero.flag::before{
     content:""; position:absolute; inset:0;
@@ -109,7 +104,6 @@
   .league-leca{background:rgba(24,160,106,.14);color:#159765}
   .result-win{color:#18a06a;font-weight:800}
   .result-loss{color:#d64545;font-weight:800}
-  .result-tie{color:#d98f00;font-weight:800}
 
   /* GALLERY */
   .gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -152,36 +146,21 @@
   /* clock icon + time pill */
   .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
   .time{ display:inline-flex; align-items:center; gap:6px; color:#31476b; font-weight:800; }
-
-  /* Responsive: show hamburger and hide desktop menu */
-  @media (max-width:880px){
-    .menu{display:none}
-    .hamburger{display:block}
-    .social{display:none}
-    .brand img{width:48px;height:48px}
-    .brand .t{font-size:16px}
-    .mobile-menu{display:none}
-  }
 </style>
 </head>
 <body>
 
 <header class="nav">
-  <div class="wrap container" style="align-items:center">
-    <div style="display:flex;align-items:center;gap:12px">
-      <div class="brand">
-        <img src="bharat-warriors-logo.png" alt="Bharat Warriors">
-        <div>
-          <div class="t">Bharat Warriors</div>
-          <div class="s">We play as ONE.</div>
-        </div>
+  <div class="wrap container">
+    <div class="brand">
+      <img src="bharat-warriors-logo.png" alt="Bharat Warriors">
+      <div>
+        <div class="t">Bharat Warriors</div>
+        <div class="s">We play as ONE.</div>
       </div>
     </div>
 
-    <!-- Hamburger shown on small screens -->
-    <button class="hamburger" id="hambBtn" aria-label="Open menu">☰</button>
-
-    <nav class="menu" aria-label="Main navigation">
+    <nav class="menu">
       <a href="#about" class="active">About</a>
 
       <div class="dropdown" id="dd-lg">
@@ -217,33 +196,6 @@
       <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
         <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
       </a>
-    </div>
-  </div>
-
-  <!-- Mobile menu panel -->
-  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-    <a href="#about" onclick="closeMobileMenu()">About</a>
-    <div style="margin-top:6px">
-      <strong style="color:#fff;display:block;margin-bottom:6px">Leagues</strong>
-      <a href="#fixtures" onclick="filterLeague('ALL'); closeMobileMenu()">All</a>
-      <a href="#fixtures" onclick="filterLeague('DFCL'); closeMobileMenu()">DFCL</a>
-      <a href="#fixtures" onclick="filterLeague('LECA'); closeMobileMenu()">LECA</a>
-    </div>
-    <a href="#fixtures" onclick="closeMobileMenu()">Schedule</a>
-    <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
-    <div style="margin-top:6px">
-      <strong style="color:#fff;display:block;margin-bottom:6px">Sponsors</strong>
-      <a href="#sponsors" onclick="closeMobileMenu()">All Sponsors</a>
-      <a href="#sponsor-infinity" onclick="closeMobileMenu()">Infinity Legacy Group</a>
-      <a href="#sponsor-aksharnix" onclick="closeMobileMenu()">AksharNix Global</a>
-      <a href="#sponsor-pizza" onclick="closeMobileMenu()">Pizza Twist</a>
-    </div>
-    <a href="#donate" onclick="closeMobileMenu()">Donations</a>
-    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
-
-    <div class="cta" style="margin-top:10px">
-      <a class="btn" href="#donate" style="background:linear-gradient(180deg,var(--saffron),#e26700);border:0">Donate</a>
-      <a class="btn" href="#contact" style="background:linear-gradient(180deg,var(--blue),#0c56c1);border:0">Contact</a>
     </div>
   </div>
 </header>
@@ -287,28 +239,26 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
         </thead>
         <tbody>
-          <!-- Updated DFCL match (result updated according to your paste: BW won by 16 runs) -->
+          <!-- DFCL (past) -->
           <tr data-league="DFCL" data-date="2025-09-06" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
             <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td>
-            <td class="result-win">BW 152/10 (18.5) — DR 136/9 (20.0) — <strong>Bharat Warriors won by 16 Runs</strong></td>
-            <td>7:30 AM</td>
+            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
 
-          <!-- LECA tie (updated from your paste) -->
-          <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
-            <td>Sep 28, 2025</td>
-            <td>Bharat Warriors 🆚 Highland Boyz</td>
-            <td>Brentwood</td>
+          <!-- LECA RESULT (past) -->
+          <tr data-league="LECA" data-date="2025-09-06" data-time="3:30 PM">
+            <td>Sep 6, 2025</td>
+            <td>Knight Riders 🆚 BW</td>
+            <td>7200 Sung Harbor Cir, Hackberry, TX 75036</td>
             <td></td>
             <td><span class="badge league-leca">LECA • Div A</span></td>
-            <td class="result-tie">BW 144/10 (19.1) — HB 144/8 (20.0) — <strong>Match tied</strong></td>
-            <td>3:30 PM</td>
+            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td>
+            <td>3:30–7:00 PM</td>
           </tr>
 
-          <!-- Keep other upcoming fixtures (unchanged) -->
+          <!-- NEW DFCL: future -->
           <tr data-league="DFCL" data-date="2025-09-13" data-time="7:30 AM">
             <td>Sep 13, 2025</td>
             <td>Joyful XI 🆚 Bharat Warriors</td>
@@ -316,6 +266,7 @@
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
 
+          <!-- LECA upcoming -->
           <tr data-league="LECA" data-date="2025-09-13" data-time="11:30 AM">
             <td>Sep 13, 2025</td>
             <td>Highland Boyz 🆚 BW</td>
@@ -323,11 +274,20 @@
             <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
 
+          <!-- NEW DFCL: future -->
           <tr data-league="DFCL" data-date="2025-09-15" data-time="7:00 PM">
             <td>Sep 15, 2025</td>
             <td>Dallas Renegades 🆚 Bharat Warriors</td>
             <td>Sandy Lake ground</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
+          </tr>
+
+          <!-- Remaining LECA -->
+          <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
+            <td>Sep 28, 2025</td>
+            <td>The Topdogs 🆚 BW</td>
+            <td>Brentwood</td>
+            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
           </tr>
 
           <tr data-league="LECA" data-date="2025-10-05" data-time="11:30 AM">
@@ -343,18 +303,19 @@
             <td>Hackberry</td>
             <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
           </tr>
-
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
+<!-- GALLERY -->
 <section id="gallery" class="section">
   <div class="container">
     <h2>Gallery</h2>
     <p class="sub">Click any photo to view large.</p>
 
+    <!-- Album tabs -->
     <div style="display:flex;gap:10px;margin:10px 0 18px">
       <button class="btn" onclick="showAlbum('awards')">Awards & Recognition</button>
       <button class="btn" onclick="showAlbum('party')">Team Party</button>
@@ -362,6 +323,7 @@
     </div>
 
     <div id="album-awards" class="gallery-grid">
+      <!-- use exact filenames (case sensitive on many servers) -->
       <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — MOM">
         <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span><span class="cap">Darshan — MOM</span>
       </div>
@@ -386,28 +348,24 @@
       </div>
     </div>
 
-    <!-- Album: Party (only real files) -->
     <div id="album-party" class="gallery-grid" style="display:none">
-      <!-- Replace the filenames below with the actual party image filenames you have -->
-      <div class="gallery-item" data-img="party-group-2024.jpg" data-cap="Season Wrap Party — 2024">
-        <span class="ph" style="background-image:url('party-group-2024.jpg')"></span>
-        <span class="cap">Season Wrap Party — 2024</span>
-      </div>
-
-      <div class="gallery-item" data-img="party-team-photo.jpg" data-cap="Team Photo — Celebration">
-        <span class="ph" style="background-image:url('party-team-photo.jpg')"></span>
-        <span class="cap">Team Photo — Celebration</span>
-      </div>
-
-      <div class="gallery-item" data-img="party-candids.jpg" data-cap="Candid Moments — Team">
-        <span class="ph" style="background-image:url('party-candids.jpg')"></span>
-        <span class="cap">Candid Moments — Team</span>
-      </div>
+      <!-- Use the exact file names you added to repo (case exact) -->
+      <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party — 1"><span class="ph" style="background-image:url('Party 1.jpg')"></span><span class="cap">Team Party — 1</span></div>
+      <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party — 2"><span class="ph" style="background-image:url('Party 2.jpg')"></span><span class="cap">Team Party — 2</span></div>
+      <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party — 3"><span class="ph" style="background-image:url('Party 3.jpg')"></span><span class="cap">Team Party — 3</span></div>
+      <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party — 4"><span class="ph" style="background-image:url('Party 4.jpg')"></span><span class="cap">Team Party — 4</span></div>
+      <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party — 5"><span class="ph" style="background-image:url('Party 5.jpg')"></span><span class="cap">Team Party — 5</span></div>
+      <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party — 6"><span class="ph" style="background-image:url('Party 6.jpg')"></span><span class="cap">Team Party — 6</span></div>
+      <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party — 7"><span class="ph" style="background-image:url('Party 7.jpg')"></span><span class="cap">Team Party — 7</span></div>
+      <div class="gallery-item" data-img="Party 8.JPG" data-cap="Team Party — 8"><span class="ph" style="background-image:url('Party 8.JPG')"></span><span class="cap">Team Party — 8</span></div>
+      <div class="gallery-item" data-img="Party 9.JPG" data-cap="Team Party — 9"><span class="ph" style="background-image:url('Party 9.JPG')"></span><span class="cap">Team Party — 9</span></div>
+      <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party — 10"><span class="ph" style="background-image:url('Party 10.jpg')"></span><span class="cap">Team Party — 10</span></div>
     </div>
 
     <div id="album-intro" class="gallery-grid" style="display:none">
       <div class="gallery-item" data-img="team-intro-1.jpg" data-cap="Team Intro — 1"><span class="ph" style="background-image:url('team-intro-1.jpg')"></span><span class="cap">Team Intro — 1</span></div>
       <div class="gallery-item" data-img="team-intro-2.jpg" data-cap="Team Intro — 2"><span class="ph" style="background-image:url('team-intro-2.jpg')"></span><span class="cap">Team Intro — 2</span></div>
+      <!-- add more intro images if you have them -->
     </div>
 
   </div>
@@ -514,23 +472,15 @@
 <script>
   /* --- Dropdown helpers --- */
   function toggleDD(id){
-    document.querySelectorAll('.dropdown').forEach(d=>{ if(d.id !== id) d.classList.remove('open'); });
+    document.querySelectorAll('.dropdown').forEach(d=>{
+      if(d.id !== id) d.classList.remove('open');
+    });
     const me = document.getElementById(id);
     me.classList.toggle('open');
   }
   window.addEventListener('click', e=>{
     if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
   });
-
-  /* --- mobile menu --- */
-  const hambBtn = document.getElementById('hambBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hambBtn?.addEventListener('click', (e)=>{
-    const open = mobileMenu.style.display !== 'block';
-    mobileMenu.style.display = open ? 'block' : 'none';
-    mobileMenu.setAttribute('aria-hidden', !open);
-  });
-  function closeMobileMenu(){ mobileMenu.style.display = 'none'; mobileMenu.setAttribute('aria-hidden', 'true'); }
 
   /* --- small svg clock used in list --- */
   const clockSvg = `<svg class="i i-clock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
@@ -545,15 +495,20 @@
     const dateRaw = tr.dataset.date || '';
     const timeRaw = (tr.dataset.time || '').trim();
     if(!dateRaw) return null;
+    // parse date part (YYYY-MM-DD)
     const [y,m,d] = dateRaw.split('-').map(Number);
     if(!y||!m||!d) return null;
+    // Determine time: default midday if not provided
     let hours = 12, minutes = 0;
     if(timeRaw){
+      // if range like "3:30–7:00 PM" or "3:30–7:00 PM" – take first part
       let t = timeRaw.split('–')[0].trim();
+      // If suffix "AM"/"PM" is only at end of range, and first part lacks it, try to append last suffix
       if(!/am|pm/i.test(t) && /am|pm/i.test(timeRaw)) {
         const suff = (timeRaw.match(/(am|pm)/i) || [])[0] || '';
         if(suff) t = t + ' ' + suff;
       }
+      // parse "7:30 AM" or "7 PM"
       const m1 = t.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
       if(m1){
         let hh = parseInt(m1[1],10);
@@ -564,6 +519,7 @@
         hours = hh; minutes = mm;
       }
     }
+    // create date in local timezone
     return new Date(y, m-1, d, hours, minutes, 0, 0);
   }
 
@@ -575,14 +531,17 @@
     const today = new Date();
     today.setHours(0,0,0,0);
 
+    // map rows to {tr, dt}
     const mapped = rows.map(tr => ({tr, dt: parseRowDateTime(tr)}))
       .filter(o => o.dt !== null)
       .filter(o => {
+        // include events on or after today
         const dcopy = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
         return dcopy >= today;
       })
       .sort((a,b)=>a.dt - b.dt);
 
+    // take up to 3 upcoming
     const upcoming = mapped.slice(0,3).map(o=>{
       const tr = o.tr;
       const d = tr.children[0].textContent.trim();
@@ -597,10 +556,10 @@
     document.getElementById('next-matches').innerHTML = (upcoming.length ? upcoming.join('') : '<div class="next-item">No upcoming matches.</div>');
   }
 
-  /* decorate result/time column in table */
+  /* decorate time column in table with clock icon */
   function decorateTimes(){
     document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const td = tr.children[6]; // 7th column (Time)
+      const td = tr.children[6]; // 7th column
       if(!td) return;
       const t = td.textContent.trim();
       if(t && !td.dataset.iconized){
@@ -627,7 +586,7 @@
     navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
   }
 
-  /* lightbox */
+  /* Gallery lightbox */
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
@@ -637,24 +596,28 @@
     if(!item) return;
     const src = item.dataset.img;
     const cap = item.dataset.cap || '';
+    // set img src - make sure file exists in same folder or provide full path
     lbImg.src = src;
     lbCap.textContent = cap;
     lb.classList.add('open');
   });
+
   function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
   window.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLB(); });
 
-  /* album tabs */
+  /* Album tabs show/hide */
   function showAlbum(name){
     document.getElementById('album-awards').style.display = (name==='awards') ? 'grid' : 'none';
     document.getElementById('album-party').style.display = (name==='party') ? 'grid' : 'none';
     document.getElementById('album-intro').style.display = (name==='intro') ? 'grid' : 'none';
+    // scroll a bit to the gallery area
     location.hash = '#gallery';
   }
 
   document.addEventListener('DOMContentLoaded', function(){
     renderNextMatches();
     decorateTimes();
+    // default album
     showAlbum('awards');
   });
 </script>
