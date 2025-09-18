@@ -13,18 +13,18 @@
     --navy:#0c1e37; --navy-2:#132b4f;
     --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
     --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
-    --gold:#ffd700; --purple:#8a2be2;
+    --purple:#8b5cf6; --gold:#fbbf24;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  html,body{margin:0}
+  html,body{margin:0;height:100%}
   body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
   a{color:inherit;text-decoration:none}
   .container{max-width:1160px;margin:0 auto;padding:0 18px}
   .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06)}
 
   /* NAV */
-  .nav{position:sticky; top:0; z-index:80; background:linear-gradient(180deg,var(--navy),var(--navy-2));
+  .nav{position:sticky; top:0; z-index:120; background:linear-gradient(180deg,var(--navy),var(--navy-2));
        border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
        padding-bottom:0; transition:padding-bottom .15s ease;}
   .nav .wrap{display:flex;align-items:center;gap:12px;padding:8px 14px}
@@ -44,14 +44,20 @@
   .dropdown.open .dropdown-menu{display:block}
   .dropdown-menu a{display:block;padding:9px 10px;border-radius:8px;white-space:nowrap}
   .dropdown-menu a:hover{background:rgba(255,255,255,.12)}
-  .social{display:flex;gap:8px;margin-left:6px}
+  .social{display:flex;gap:8px;margin-left:12px}
   .social a{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2)}
   .social svg{width:18px;height:18px;fill:#fff}
 
-  .section{padding:46px 0; scroll-margin-top:130px;}
+  /* mobile */
+  .hamburger{display:none;background:transparent;border:0;color:#fff;font-size:22px;padding:8px;border-radius:8px;cursor:pointer}
+  .mobile-menu{display:none;position:fixed;inset:64px 14px auto 14px;background:linear-gradient(180deg,#071229, #031226);border-radius:12px;padding:12px;box-shadow:0 18px 36px rgba(1,12,28,0.7);z-index:130}
+  .mobile-menu a{display:block;padding:12px;border-radius:10px;color:#eef6ff;font-weight:800;margin-bottom:6px}
+
+  /* anchor offset below sticky header */
+  .section{padding:46px 0; scroll-margin-top:120px;}
   .hero{scroll-margin-top:0}
 
-  /* HERO (tricolor + chakra) */
+  /* HERO */
   .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden}
   .hero.flag::before{
     content:""; position:absolute; inset:0;
@@ -94,15 +100,11 @@
   .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
   .lg{font-weight:900;color:#0f66d2;margin-right:6px}
 
-  /* NEW TEAM ANNOUNCEMENT */
-  .new-team{background:linear-gradient(135deg, var(--purple), var(--gold));color:#fff;text-align:center;position:relative;overflow:hidden}
-  .new-team::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 70%, rgba(255,255,255,.1) 0%, transparent 50%);pointer-events:none}
-  .new-team .wrap{padding:50px 0;position:relative}
-  .new-team h2{margin:0 0 12px;font-size:32px;font-weight:900;text-shadow:0 2px 8px rgba(0,0,0,.3)}
-  .new-team .subtitle{font-size:18px;margin:0 0 20px;opacity:.9}
-  .new-team .description{max-width:600px;margin:0 auto 25px;font-size:16px;line-height:1.5;opacity:.85}
-  .coming-soon{display:inline-block;padding:12px 24px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:999px;font-weight:800;font-size:14px;letter-spacing:.5px;text-transform:uppercase;backdrop-filter:blur(10px);transition:all .3s ease}
-  .coming-soon:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+  /* new-team */
+  .new-team{background:linear-gradient(135deg, var(--purple), var(--blue), var(--gold)); color:white;text-align:center;position:relative;overflow:hidden}
+  .new-team .wrap{position:relative;z-index:2;padding:60px 0}
+  .team-logo{width:120px;height:120px;border-radius:50%;background:white;padding:8px;box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+  .team-logo img{width:100%;height:100%;object-fit:contain}
 
   .section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
   .sub{color:var(--muted);font-size:14px}
@@ -115,80 +117,65 @@
   .league-leca{background:rgba(24,160,106,.14);color:#159765}
   .result-win{color:#18a06a;font-weight:800}
   .result-loss{color:#d64545;font-weight:800}
+  .result-tie{color:#d98f00;font-weight:800}
 
-  /* GALLERY */
+  /* gallery */
   .gallery-grid{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
   @media (min-width:700px){.gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   @media (min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-  .gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer}
-  .gallery-item .ph{aspect-ratio:4/3;width:100%;background:#eef3ff center/cover no-repeat;display:block}
+  .gallery-item{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;cursor:pointer;min-height:160px}
+  .gallery-item .ph{width:100%;height:100%;background:#eef3ff center/cover no-repeat;display:block;min-height:160px}
   .gallery-item .cap{position:absolute;left:0;right:0;bottom:0;padding:8px 10px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.55));color:#fff;font-weight:800;font-size:13px}
   .gallery-item:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(0,0,0,.12)}
+
   /* lightbox */
-  .lightbox{position:fixed;inset:0;background:rgba(10,20,35,.9);display:none;align-items:center;justify-content:center;z-index:120}
+  .lightbox{position:fixed;inset:0;background:rgba(10,20,35,.9);display:none;align-items:center;justify-content:center;z-index:120;padding:24px}
   .lightbox.open{display:flex}
-  .lb-wrap{max-width:90vw;max-height:88vh}
-  .lb-wrap img{max-width:100%;max-height:88vh;border-radius:10px;box-shadow:0 14px 32px rgba(0,0,0,.35)}
+  .lb-wrap{max-width:1100px;max-height:88vh;width:100%}
+  .lb-img{width:100%;height:auto;display:block;border-radius:10px;box-shadow:0 14px 32px rgba(0,0,0,.35)}
   .lb-cap{margin-top:8px;text-align:center;color:#eef2ff}
   .lb-close{position:fixed;top:18px;right:18px;background:#fff;border-radius:10px;border:1px solid #dbe6fb;font-weight:800;padding:8px 12px;cursor:pointer}
 
-  /* sponsors */
-  .s-row{display:grid;gap:12px;grid-auto-rows:1fr}
-  @media (min-width:900px){.s-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media (min-width:600px) and (max-width:899px){.s-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  .sponsor{height:150px;display:flex;align-items:center;justify-content:center}
-  .logo-frame{width:210px;height:64px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:inset 0 0 0 1px #e5eaf3}
-  .logo-frame img{max-width:100%;max-height:100%;object-fit:contain;display:block}
-
-  /* donations compact */
-  .don-card{padding:14px}
-  .don-grid{display:grid;gap:14px;grid-template-columns:1fr}
-  @media (min-width:760px){.don-grid{grid-template-columns:1.2fr .8fr}}
-  .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:1px dashed #dbe6fb;border-radius:8px;padding:6px 8px;display:inline-block}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:10px;font-weight:800;color:#fff;background:linear-gradient(180deg,var(--saffron),#e26700);border:1px solid #ffd0a8;box-shadow:0 8px 16px rgba(226,103,0,.25)}
-  .qr{max-width:200px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
-
   footer{padding:18px 0;text-align:center;background:#fff;color:#334463;border-top:1px solid var(--line)}
-  footer a{color:#1262d6;font-weight:800}
+  footer a{color:var(--blue);font-weight:800}
   .foot-social{display:flex;gap:10px;justify-content:center;margin-top:8px}
   .foot-social a{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--navy-2);color:#fff;border:1px solid #d9e5ff}
   .foot-social svg{width:20px;height:20px;fill:#fff}
 
-  /* clock icon + time pill */
-  .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
-  .time{ display:inline-flex; align-items:center; gap:6px; color:#31476b; font-weight:800; }
-
-  /* Mobile responsive adjustments */
-  @media (max-width:768px){
-    .new-team h2{font-size:24px}
-    .new-team .subtitle{font-size:16px}
-    .new-team .description{font-size:14px}
-    .h-title{font-size:28px}
-    .menu{flex-direction:column;gap:6px}
-    .nav .wrap{flex-direction:column;align-items:flex-start}
-    .brand{margin-bottom:8px}
+  /* responsive */
+  @media (max-width:880px){
+    .menu{display:none}
+    .hamburger{display:block}
+    .social{display:none}
+    .brand img{width:48px;height:48px}
+    .brand .t{font-size:16px}
+    .mobile-menu{display:none}
   }
 </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap container">
-    <div class="brand">
-      <img src="bharat-warriors-logo.png" alt="Bharat Warriors">
-      <div>
-        <div class="t">Bharat Warriors</div>
-        <div class="s">We play as ONE.</div>
+<header class="nav" role="banner">
+  <div class="wrap container" style="align-items:center">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div class="brand" aria-label="Bharat Warriors">
+        <img src="bharat-warriors-logo.png" alt="Bharat Warriors">
+        <div>
+          <div class="t">Bharat Warriors</div>
+          <div class="s">We play as ONE.</div>
+        </div>
       </div>
     </div>
 
-    <nav class="menu">
+    <button class="hamburger" id="hambBtn" aria-label="Open menu">☰</button>
+
+    <nav class="menu" aria-label="Main navigation">
       <a href="#about" class="active">About</a>
       <a href="#new-team">New Team</a>
 
       <div class="dropdown" id="dd-lg">
         <button onclick="toggleDD('dd-lg')">Leagues ▾</button>
-        <div class="dropdown-menu">
+        <div class="dropdown-menu" aria-hidden="true">
           <a href="#fixtures" onclick="filterLeague('ALL')">All</a>
           <a href="#fixtures" onclick="filterLeague('DFCL')">DFCL</a>
           <a href="#fixtures" onclick="filterLeague('LECA')">LECA</a>
@@ -200,11 +187,11 @@
 
       <div class="dropdown" id="dd-sp">
         <button onclick="toggleDD('dd-sp')">Sponsors ▾</button>
-        <div class="dropdown-menu">
-          <a href="#sponsors" onclick="toggleDD('dd-sp')">All Sponsors</a>
-          <a href="#sponsor-infinity" onclick="toggleDD('dd-sp')">Infinity Legacy Group</a>
-          <a href="#sponsor-aksharnix" onclick="toggleDD('dd-sp')">AksharNix Global</a>
-          <a href="#sponsor-pizza" onclick="toggleDD('dd-sp')">Pizza Twist</a>
+        <div class="dropdown-menu" aria-hidden="true">
+          <a href="#sponsors">All Sponsors</a>
+          <a href="#sponsor-infinity">Infinity Legacy Group</a>
+          <a href="#sponsor-aksharnix">AksharNix Global</a>
+          <a href="#sponsor-pizza">Pizza Twist</a>
         </div>
       </div>
 
@@ -212,14 +199,37 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <div class="social">
-      <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+    <div class="social" aria-hidden="false">
+      <a href="https://www.instagram.com/bharatwarriors2024" target="_blank" rel="noopener" aria-label="Instagram">
         <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5z"/></svg>
       </a>
-      <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
+      <a href="https://youtube.com/@bharatwarriorsdallas" target="_blank" rel="noopener" aria-label="YouTube">
         <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
       </a>
     </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#new-team" onclick="closeMobileMenu()">New Team</a>
+    <div style="margin-top:6px">
+      <strong style="color:#fff;display:block;margin-bottom:6px">Leagues</strong>
+      <a href="#fixtures" onclick="filterLeague('ALL'); closeMobileMenu()">All</a>
+      <a href="#fixtures" onclick="filterLeague('DFCL'); closeMobileMenu()">DFCL</a>
+      <a href="#fixtures" onclick="filterLeague('LECA'); closeMobileMenu()">LECA</a>
+    </div>
+    <a href="#fixtures" onclick="closeMobileMenu()">Schedule</a>
+    <a href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+    <div style="margin-top:6px">
+      <strong style="color:#fff;display:block;margin-bottom:6px">Sponsors</strong>
+      <a href="#sponsors" onclick="closeMobileMenu()">All Sponsors</a>
+      <a href="#sponsor-infinity" onclick="closeMobileMenu()">Infinity Legacy Group</a>
+      <a href="#sponsor-aksharnix" onclick="closeMobileMenu()">AksharNix Global</a>
+      <a href="#sponsor-pizza" onclick="closeMobileMenu()">Pizza Twist</a>
+    </div>
+    <a href="#donate" onclick="closeMobileMenu()">Donations</a>
+    <a href="#contact" onclick="closeMobileMenu()">Contact</a>
   </div>
 </header>
 
@@ -234,7 +244,7 @@
       <span class="chip">⚡ Energy</span>
     </div>
 
-    <div class="card next">
+    <div class="card next" style="margin-top:18px;max-width:880px">
       <p style="font-weight:800;margin:0 0 6px">Next Matches</p>
       <div id="next-matches" class="next-list"><div class="next-item">Loading…</div></div>
       <div style="margin-top:10px"><a class="btn" href="#fixtures">View full schedule</a></div>
@@ -243,20 +253,26 @@
 </section>
 
 <!-- NEW TEAM ANNOUNCEMENT SECTION -->
-<section id="new-team" class="new-team">
+<section id="new-team" class="new-team section">
   <div class="wrap container">
-    <div style="margin-bottom: 20px;">
-      <img src="bharat-yodhas-logo.png" alt="Bharat Yodhas Logo" style="width: 120px; height: 120px; border-radius: 50%; background: #fff; padding: 8px; box-shadow: 0 8px 20px rgba(0,0,0,.3);">
+    <div style="display:flex;align-items:center;gap:18px;flex-direction:column">
+      <div class="team-logo">
+        <img src="bharat-yodhas-logo.png" alt="Bharat Yodhas Logo">
+      </div>
+      <div style="text-align:center;">
+        <h2>🏏 Bharat Yodhas 🏏</h2>
+        <p class="subtitle">Our Second Team is Coming Soon!</p>
+      </div>
     </div>
-    <h2>🏏 Bharat Yodhas 🏏</h2>
-    <p class="subtitle">Our Second Team is Coming Soon!</p>
-    <p class="description">
-      We're excited to announce the formation of our second cricket team - <strong>Bharat Yodhas</strong>! 
-      Building on the success and warrior spirit of Bharat Warriors, the Yodhas will bring even more 
-      passion and dedication to the field. Stay tuned for team announcements, player registrations, 
-      and upcoming matches.
+
+    <p class="description" style="color:rgba(255,255,255,0.95);margin-top:12px">
+      We're excited to announce the formation of our second cricket team - <strong>Bharat Yodhas</strong>! Building on our warrior spirit,
+      the Yodhas will expand our club and bring new opportunities for players and fans alike.
     </p>
-    <div class="coming-soon">Coming Soon 2025</div>
+
+    <div style="margin-top:18px">
+      <span class="coming-soon">Coming Soon 2025</span>
+    </div>
   </div>
 </section>
 
@@ -280,70 +296,35 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
         </thead>
         <tbody>
-          <!-- DFCL (past) -->
+          <!-- example rows (adjust dates / results as needed) -->
           <tr data-league="DFCL" data-date="2025-09-06" data-time="7:30 AM">
             <td>Sep 6, 2025</td>
             <td>Bharat Warriors 🆚 Dallas Renegades</td>
-            <td>Irving Polo Cricket Ground (5992 Riverside Dr, Irving, TX 75039)</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
+            <td>Irving Polo Cricket Ground</td>
+            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>BW 152/10 — DR 136/9 — <span class="result-win">BW won by 16</span></td><td>7:30 AM</td>
           </tr>
 
-          <!-- LECA RESULT (past) -->
           <tr data-league="LECA" data-date="2025-09-06" data-time="3:30 PM">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
-            <td>7200 Sung Harbor Cir, Hackberry, TX 75036</td>
-            <td></td>
-            <td><span class="badge league-leca">LECA • Div A</span></td>
-            <td class="result-win">BW 140/7 (19.5) beat KR 139/8 (20) — Won by 3 wickets</td>
-            <td>3:30–7:00 PM</td>
+            <td>Hackberry</td>
+            <td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>TBD</td><td>3:30 PM</td>
           </tr>
 
-          <!-- NEW DFCL: future -->
+          <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
+            <td>Sep 28, 2025</td>
+            <td>Bharat Warriors 🆚 Highland Boyz</td>
+            <td>Brentwood</td>
+            <td></td><td><span class="badge league-leca">LECA</span></td><td class="result-tie">BW 144/10 — HB 144/8 — Tie</td><td>3:30 PM</td>
+          </tr>
+
           <tr data-league="DFCL" data-date="2025-09-13" data-time="7:30 AM">
             <td>Sep 13, 2025</td>
             <td>Joyful XI 🆚 Bharat Warriors</td>
-            <td>Irving Polo</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
+            <td>Irving Polo</td><td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
 
-          <!-- LECA upcoming -->
-          <tr data-league="LECA" data-date="2025-09-13" data-time="11:30 AM">
-            <td>Sep 13, 2025</td>
-            <td>Highland Boyz 🆚 BW</td>
-            <td>Brentwood</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
-          </tr>
-
-          <!-- NEW DFCL: future -->
-          <tr data-league="DFCL" data-date="2025-09-15" data-time="7:00 PM">
-            <td>Sep 15, 2025</td>
-            <td>Dallas Renegades 🆚 Bharat Warriors</td>
-            <td>Sandy Lake ground</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
-          </tr>
-
-          <!-- Remaining LECA -->
-          <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
-            <td>Sep 28, 2025</td>
-            <td>The Topdogs 🆚 BW</td>
-            <td>Brentwood</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
-          </tr>
-
-          <tr data-league="LECA" data-date="2025-10-05" data-time="11:30 AM">
-            <td>Oct 05, 2025</td>
-            <td>Singhams India 101 🆚 BW</td>
-            <td>Hackberry</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
-          </tr>
-
-          <tr data-league="LECA" data-date="2025-10-11" data-time="11:30 AM">
-            <td>Oct 11, 2025</td>
-            <td>Raging Bulls 🆚 BW</td>
-            <td>Hackberry</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
-          </tr>
+          <!-- add more rows here -->
         </tbody>
       </table>
     </div>
@@ -356,26 +337,312 @@
     <h2>Gallery</h2>
     <p class="sub">Click any photo to view large.</p>
 
-    <!-- Album tabs -->
-    <div style="display:flex;gap:10px;margin:10px 0 18px">
-      <button class="btn" onclick="showAlbum('awards')">Awards & Recognition</button>
-      <button class="btn" onclick="showAlbum('party')">Team Party</button>
-      <button class="btn" onclick="showAlbum('intro')">Team Introductions</button>
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Update these files with your real images. Put them in gallery/ or adjust paths. -->
+      <div class="gallery-item" data-img="gallery/party-01.jpg" data-cap="Arrival & Registrations">
+        <span class="ph" style="background-image:url('gallery/party-01.jpg')"></span>
+        <span class="cap">Arrival & Registrations</span>
+      </div>
+
+      <div class="gallery-item" data-img="gallery/party-02.jpg" data-cap="Opening Ceremony">
+        <span class="ph" style="background-image:url('gallery/party-02.jpg')"></span>
+        <span class="cap">Opening Ceremony</span>
+      </div>
+
+      <div class="gallery-item" data-img="gallery/party-03.jpg" data-cap="Team Introductions">
+        <span class="ph" style="background-image:url('gallery/party-03.jpg')"></span>
+        <span class="cap">Team Introductions</span>
+      </div>
+
+      <div class="gallery-item" data-img="gallery/party-04.jpg" data-cap="Awards & Recognition">
+        <span class="ph" style="background-image:url('gallery/party-04.jpg')"></span>
+        <span class="cap">Awards & Recognition</span>
+      </div>
+
+      <div class="gallery-item" data-img="gallery/party-05.jpg" data-cap="Family & Kids">
+        <span class="ph" style="background-image:url('gallery/party-05.jpg')"></span>
+        <span class="cap">Family & Kids</span>
+      </div>
+
+      <div class="gallery-item" data-img="gallery/party-06.jpg" data-cap="Dinner Time">
+        <span class="ph" style="background-image:url('gallery/party-06.jpg')"></span>
+        <span class="cap">Dinner Time</span>
+      </div>
+
+      <div class="gallery-item" data-img="gallery/party-07.jpg" data-cap="MOM Award">
+        <span class="ph" style="background-image:url('gallery/party-07.jpg')"></span>
+        <span class="cap">Player of the Match</span>
+      </div>
+
+      <div class="gallery-item" data-img="gallery/party-08.jpg" data-cap="Group Photo">
+        <span class="ph" style="background-image:url('gallery/party-08.jpg')"></span>
+        <span class="cap">Group Photo</span>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div id="album-awards" class="gallery-grid">
-      <!-- use exact filenames (case sensitive on many servers) -->
-      <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — MOM">
-        <span class="ph" style="background-image:url('Darshan MOM.jpg')"></span><span class="cap">Darshan — MOM</span>
+<section id="sponsors" class="section">
+  <div class="container">
+    <h2>Sponsors</h2>
+    <div class="s-row">
+      <div id="sponsor-infinity" class="card sponsor">
+        <a href="https://www.instagram.com/infinity_legacy_group" target="_blank" rel="noopener">
+          <div class="logo-frame"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
+        </a>
       </div>
-      <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — MOM">
-        <span class="ph" style="background-image:url('Gaurav MOM.jpg')"></span><span class="cap">Gaurav — MOM</span>
+      <div id="sponsor-aksharnix" class="card sponsor">
+        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
+          <div class="logo-frame"><img src="aksharnix-global-logo.png" alt="AksharNix Global"></div>
+        </a>
       </div>
-      <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — MOM">
-        <span class="ph" style="background-image:url('Raj MOM.jpg')"></span><span class="cap">Raj — MOM</span>
+      <div id="sponsor-pizza" class="card sponsor">
+        <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
+          <div class="logo-frame"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
+        </a>
       </div>
-      <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
-        <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span><span class="cap">Bhavik — Best Fielder (DFCL)</span>
-      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap
+<section id="donate" class="section">
+  <div class="container">
+    <h2>Donations</h2>
+    <p class="sub">We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
+
+    <div class="card don-card">
+      <div class="don-grid" style="display:grid;grid-template-columns:1fr;gap:12px">
+        <div>
+          <h3 style="margin:0 0 6px;font-size:18px">Zelle</h3>
+          <p style="margin:0 0 6px">Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <span class="code" id="zelle-email">patelpratik59@gmail.com</span>
+            <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
+          </div>
+        </div>
+
+        <div>
+          <p class="sub" style="margin:0 0 8px">Scan this QR in your banking app:</p>
+          <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <h2>Contact</h2>
+    <p class="sub">For general inquiries:</p>
+    <div class="card" style="padding:14px;max-width:720px">
+      <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="BW Club Inquiry" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+          <label> Name
+            <input name="name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
+          </label>
+          <label> Email
+            <input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
+          </label>
+        </div>
+        <label style="display:block;margin-top:10px"> Message
+          <textarea name="message" rows="4" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px"></textarea>
+        </label>
+        <button class="btn" type="submit" style="margin-top:10px">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a></div>
+    <div class="foot-social" style="margin-top:8px">
+      <a href="https://www.instagram.com/bharatwarriors2024" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5z"/></svg>
+      </a>
+      <a href="https://youtube.com/@bharatwarriorsdallas" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="lb-wrap">
+    <img id="lbImg" class="lb-img" alt="">
+    <div id="lbCap" class="lb-cap"></div>
+  </div>
+  <button class="lb-close" onclick="closeLB()" aria-label="Close">Close ✕</button>
+</div>
+
+<script>
+  // Dropdown helpers
+  function toggleDD(id){
+    document.querySelectorAll('.dropdown').forEach(d=>{ if(d.id !== id) d.classList.remove('open'); });
+    const me = document.getElementById(id);
+    me.classList.toggle('open');
+  }
+  window.addEventListener('click', e=>{
+    if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
+  });
+
+  // Mobile menu toggle
+  const hambBtn = document.getElementById('hambBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hambBtn?.addEventListener('click', (e)=>{
+    const open = mobileMenu.style.display !== 'block';
+    mobileMenu.style.display = open ? 'block' : 'none';
+    mobileMenu.setAttribute('aria-hidden', !open);
+  });
+  function closeMobileMenu(){ mobileMenu.style.display = 'none'; mobileMenu.setAttribute('aria-hidden', 'true'); }
+
+  // tiny clock svg
+  const clockSvg = `<svg class="i i-clock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
+
+  // parse data-date (YYYY-MM-DD) + data-time -> Date
+  function parseRowDateTime(tr){
+    const dateRaw = tr.dataset.date || tr.children[0]?.textContent?.trim() || '';
+    const timeRaw = (tr.dataset.time || '').trim();
+    // try to parse known formats; fallback to today
+    const tryDate = new Date(dateRaw);
+    if(!isNaN(tryDate)) {
+      const d = new Date(tryDate.getFullYear(), tryDate.getMonth(), tryDate.getDate());
+      if(timeRaw){
+        // take first part of range if present
+        let t = timeRaw.split('–')[0].trim();
+        if(!/am|pm/i.test(t) && /am|pm/i.test(timeRaw)) {
+          const suff = (timeRaw.match(/(am|pm)/i) || [])[0] || '';
+          if(suff) t = t + ' ' + suff;
+        }
+        const m = t.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
+        if(m){
+          let hh = parseInt(m[1],10);
+          let mm = m[2] ? parseInt(m[2],10) : 0;
+          const ap = (m[3] || '').toLowerCase();
+          if(ap === 'pm' && hh < 12) hh += 12;
+          if(ap === 'am' && hh === 12) hh = 0;
+          return new Date(d.getFullYear(), d.getMonth(), d.getDate(), hh, mm);
+        }
+      }
+      return d;
+    }
+    return null;
+  }
+
+  // Build "Next Matches" from fixtures table
+  function renderNextMatches(){
+    const rows = Array.from(document.querySelectorAll('#fxTable tbody tr')).filter(tr => tr.style.display !== 'none');
+    const today = new Date(); today.setHours(0,0,0,0);
+    const mapped = rows.map(tr => ({tr, dt: parseRowDateTime(tr)})).filter(o => o.dt !== null);
+    mapped.sort((a,b)=>a.dt - b.dt);
+    const upcoming = mapped.filter(o=>{
+      const dcopy = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
+      return dcopy >= today;
+    }).slice(0,3);
+    const html = upcoming.length ? upcoming.map(o=>{
+      const tr = o.tr;
+      const d = tr.children[0].textContent.trim();
+      const opp = tr.children[1].textContent.trim();
+      const grd = tr.children[2].textContent.trim();
+      const lg = (tr.dataset.league || '').toUpperCase();
+      const timestr = tr.dataset.time ? tr.dataset.time : (tr.children[6] && tr.children[6].textContent.trim() ? tr.children[6].textContent.trim() : '');
+      const timeHtml = timestr ? ` <span class="time">${clockSvg} ${timestr}</span>` : '';
+      return `<div class="next-item"><span class="lg">${lg}</span> ${d}${timeHtml} – ${opp}<br><small>${grd}</small></div>`;
+    }).join('') : '<div class="next-item">No upcoming matches.</div>';
+    document.getElementById('next-matches').innerHTML = html;
+  }
+
+  // decorate time column with icon
+  function decorateTimes(){
+    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
+      const td = tr.children[6];
+      if(!td) return;
+      const t = td.textContent.trim();
+      if(t && !td.dataset.iconized){
+        td.innerHTML = `<span class="time">${clockSvg} ${t}</span>`;
+        td.dataset.iconized = "1";
+      }
+    });
+  }
+
+  // filter league rows
+  function filterLeague(lg){
+    const all = document.querySelectorAll('#fxTable tbody tr');
+    all.forEach(tr=>{
+      if(lg === 'ALL') tr.style.display = '';
+      else tr.style.display = (tr.dataset.league === lg) ? '' : 'none';
+    });
+    renderNextMatches();
+    decorateTimes();
+  }
+
+  // copy Zelle
+  function copyZelle(btn){
+    const t = document.getElementById('zelle-email').textContent.trim();
+    if(navigator.clipboard) {
+      navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
+    } else {
+      // fallback
+      const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy email',1200); } catch(e){}
+      ta.remove();
+    }
+  }
+
+  // lightbox behavior
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  document.addEventListener('click', function(e){
+    const item = e.target.closest('.gallery-item');
+    if(!item) return;
+    const src = item.dataset.img;
+    const cap = item.dataset.cap || '';
+    if(!src) return;
+    lbImg.src = src;
+    lbImg.alt = cap;
+    lbCap.textContent = cap;
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden','false');
+    // prevent background scroll
+    document.body.style.overflow = 'hidden';
+  });
+  function closeLB(){
+    lb.classList.remove('open');
+    lbImg.src = '';
+    lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLB(); });
+
+  // initial run
+  document.addEventListener('DOMContentLoaded', function(){
+    renderNextMatches();
+    decorateTimes();
+  });
+
+  // simple diagnostic helper — logs any gallery image 404s to console and marks missing tiles
+  window.addEventListener('load', function(){
+    document.querySelectorAll('.gallery-item').forEach(item=>{
+      const src = item.dataset.img;
+      if(!src) return;
+      const img = new Image();
+      img.onload = ()=>{ /* ok */ };
+      img.onerror = ()=> {
+        console.warn('Missing image:', src);
+        item.style.outline = '3px dashed rgba(210,50,50,.22)';
+        if(!item.querySelector('.cap')) {
+          const c=document.createElement('div'); c.className='cap'; c.textContent='Image not found'; item.appendChild(c);
+        }
+      };
+      img.src = src;
+    });
+  });
+</script>
+
+</body>
+</html>
