@@ -4,14 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bharat Warriors Cricket Club</title>
-<meta name="description" content="Official site of Bharat Warriors Cricket Club (DFW) — fixtures, gallery, sponsors, donations, contact." />
+<meta name="description" content="Bharat Warriors — fixtures, gallery, sponsors, donations, contact." />
 <link rel="icon" href="favicon.png" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0c1e37; --navy-2:#132b4f;
-    --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
-    --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
+    --navy:#0c1e37; --navy-2:#132b4f; --ink:#14223e; --muted:#64738e;
+    --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff; --accent:#1262d6;
   }
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
@@ -109,142 +108,71 @@
 <section class="hero">
   <div class="container">
     <h1 class="h-title">Bharat Warriors — Gallery & Club</h1>
-    <p class="lead">Photos below use real filenames from the repo. If a photo doesn't show, check the filename (case & spaces). Console will list missing files.</p>
+    <p class="lead">Photos below use filenames I saw in your repo. Missing files are flagged and logged in the console so you can fix typos quickly.</p>
   </div>
 </section>
 
-<!-- FIXTURES -->
+<!-- UPCOMING / FIXTURES -->
 <section id="fixtures" class="container" style="padding:20px 18px 30px">
-  <h2>Fixtures</h2>
-  <p style="color:var(--muted)">Filter by league using the Leagues dropdown above in the nav (mobile: open menu).</p>
+  <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1;min-width:300px">
+      <h2>Upcoming matches</h2>
+      <div class="card" style="padding:12px;margin-top:8px">
+        <div id="nextMatches">Loading upcoming matches…</div>
+      </div>
+    </div>
 
-  <div class="card table" style="margin-top:12px">
-    <table id="fxTable">
-      <thead>
-        <tr><th>Date</th><th>Match</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
-      </thead>
-      <tbody>
-        <!-- Example rows — edit dates/results as needed -->
-        <tr data-league="LECA" data-date="2025-09-06" data-time="15:30">
-          <td>Sep 6, 2025</td>
-          <td>The Topdogs 🆚 Bharat Warriors</td>
-          <td>Brentwood</td>
-          <td></td>
-          <td><span class="badge league-leca">LECA • Div A</span></td>
-          <td class="result-win">BW 144/10 (19.1) — Tie (19.1/20)</td>
-          <td>3:30 PM</td>
-        </tr>
+    <div style="flex:2;min-width:340px">
+      <h2>Fixtures — Full schedule</h2>
+      <div class="card table" style="margin-top:8px">
+        <table id="fxTable">
+          <thead>
+            <tr><th>Date</th><th>Match</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
+          </thead>
+          <tbody>
+            <!-- Rows: you can add more -->
+            <tr data-league="LECA" data-date="2025-09-06" data-time="15:30">
+              <td>Sep 6, 2025</td>
+              <td>The Topdogs 🆚 Bharat Warriors</td>
+              <td>Brentwood</td>
+              <td></td>
+              <td><span class="badge league-leca">LECA • Div A</span></td>
+              <td class="result-win">BW 144/10 (19.1) — Tie</td>
+              <td>3:30 PM</td>
+            </tr>
 
-        <tr data-league="DFCL" data-date="2025-06-20" data-time="19:30">
-          <td>Jun 20, 2025</td>
-          <td>Bharat Warriors 🆚 Dallas Renegades</td>
-          <td>Irving Polo</td>
-          <td><span class="badge league-dfcl">DFCL</span></td>
-          <td></td>
-          <td class="result-win">BW won by 16 runs</td>
-          <td>7:30 PM</td>
-        </tr>
+            <tr data-league="DFCL" data-date="2025-06-20" data-time="19:30">
+              <td>Jun 20, 2025</td>
+              <td>Bharat Warriors 🆚 Dallas Renegades</td>
+              <td>Irving Polo</td>
+              <td><span class="badge league-dfcl">DFCL</span></td>
+              <td></td>
+              <td class="result-win">BW won by 16 runs</td>
+              <td>7:30 PM</td>
+            </tr>
 
-        <!-- Add/modify rows here -->
-      </tbody>
-    </table>
+            <!-- more rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- GALLERY -->
 <section id="gallery" class="container" style="padding:20px 18px 30px">
   <h2>Gallery</h2>
-  <p style="color:var(--muted)">Click any photo to view larger. Captions are descriptive (no generic "Party 1").</p>
+  <p style="color:var(--muted)">Click any photo to open it larger. Captions are descriptive (no generic "Party 1").</p>
 
   <div class="gallery-grid" id="galleryGrid">
-
-    <!-- Party / event photos (filenames match your repo) -->
-    <div class="gallery-item" data-img="Party 1.jpg" data-cap="Season Opener — Team Arrivals">
-      <img src="Party 1.jpg" alt="Season Opener — Team Arrivals">
-      <div class="cap">Season Opener — Team Arrivals</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Dinner & Celebration">
-      <img src="Party 2.jpg" alt="Team Dinner & Celebration">
-      <div class="cap">Team Dinner & Celebration</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 3.jpg" data-cap="Awards Night">
-      <img src="Party 3.jpg" alt="Awards Night">
-      <div class="cap">Awards Night</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 4.jpg" data-cap="Family Day & Kids">
-      <img src="Party 4.jpg" alt="Family Day & Kids">
-      <div class="cap">Family Day & Kids</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 5.jpg" data-cap="Training Session">
-      <img src="Party 5.jpg" alt="Training Session">
-      <div class="cap">Training Session</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 6.jpg" data-cap="Victory Celebration">
-      <img src="Party 6.jpg" alt="Victory Celebration">
-      <div class="cap">Victory Celebration</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Photo">
-      <img src="Party 7.jpg" alt="Team Photo">
-      <div class="cap">Team Photo</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 8.jpg" data-cap="Coaches & Staff">
-      <img src="Party 8.jpg" alt="Coaches & Staff">
-      <div class="cap">Coaches & Staff</div>
-    </div>
-
-    <div class="gallery-item" data-img="Party 9.jpg" data-cap="Fans & Supporters">
-      <img src="Party 9.jpg" alt="Fans & Supporters">
-      <div class="cap">Fans & Supporters</div>
-    </div>
-
-    <!-- Players / awards using repo filenames -->
-    <div class="gallery-item" data-img="Darshan MOM.jpg" data-cap="Darshan — Man of the Match">
-      <img src="Darshan MOM.jpg" alt="Darshan — Man of the Match">
-      <div class="cap">Darshan — Man of the Match</div>
-    </div>
-
-    <div class="gallery-item" data-img="Gaurav MOM.jpg" data-cap="Gaurav — Man of the Match">
-      <img src="Gaurav MOM.jpg" alt="Gaurav — Man of the Match">
-      <div class="cap">Gaurav — Man of the Match</div>
-    </div>
-
-    <div class="gallery-item" data-img="Raj MOM.jpg" data-cap="Raj — Man of the Match">
-      <img src="Raj MOM.jpg" alt="Raj — Man of the Match">
-      <div class="cap">Raj — Man of the Match</div>
-    </div>
-
-    <div class="gallery-item" data-img="Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
-      <img src="Bhavik Best Fielder DFCL.jpg" alt="Bhavik — Best Fielder (DFCL)">
-      <div class="cap">Bhavik — Best Fielder (DFCL)</div>
-    </div>
-
-    <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
-      <img src="Darshan Best bowler DFCL.jpg" alt="Darshan — Best Bowler (DFCL)">
-      <div class="cap">Darshan — Best Bowler (DFCL)</div>
-    </div>
-
-    <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
-      <img src="Gaurav Best Bowler DFCL.jpg" alt="Gaurav — Best Bowler (DFCL)">
-      <div class="cap">Gaurav — Best Bowler (DFCL)</div>
-    </div>
-
-    <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
-      <img src="Vadik Best fielder LECA.jpg" alt="Vadik — Best Fielder (LECA)">
-      <div class="cap">Vadik — Best Fielder (LECA)</div>
-    </div>
-
-    <div class="gallery-item" data-img="BWY.jpg" data-cap="Bharat Warriors — Team Portrait">
-      <img src="BWY.jpg" alt="Bharat Warriors — Team Portrait">
-      <div class="cap">Bharat Warriors — Team Portrait</div>
-    </div>
-
+    <!-- I included all the filenames I saw — the script will try variants if a file is missing -->
+    <!-- Party/event photos -->
+    <template id="galleryTemplate">
+      <div class="gallery-item" data-img="" data-cap="">
+        <img src="" alt="">
+        <div class="cap"></div>
+      </div>
+    </template>
   </div>
 </section>
 
@@ -262,21 +190,13 @@
   <h2>Sponsors</h2>
   <div class="s-row" style="margin-top:12px">
     <div class="card sponsor" style="padding:18px;display:flex;align-items:center;justify-content:center">
-      <div class="logo-frame">
-        <img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
-      </div>
+      <div class="logo-frame"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
     </div>
-
     <div class="card sponsor" style="padding:18px;display:flex;align-items:center;justify-content:center">
-      <div class="logo-frame">
-        <img src="aksharnix-global-logo.png" alt="AksharNix Global">
-      </div>
+      <div class="logo-frame"><img src="aksharnix-global-logo.png" alt="AksharNix Global"></div>
     </div>
-
     <div class="card sponsor" style="padding:18px;display:flex;align-items:center;justify-content:center">
-      <div class="logo-frame">
-        <img src="pizza-twist-logo.png" alt="Pizza Twist">
-      </div>
+      <div class="logo-frame"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
     </div>
   </div>
 </section>
@@ -336,79 +256,307 @@
 </footer>
 
 <script>
-  // lightbox handlers
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbCap = document.getElementById('lbCap');
+/* -------------------------
+   CONFIG: image filenames
+   -------------------------
+   Put images into same folder as this file, or set IMG_BASE to "gallery/" or similar.
+*/
+const IMG_BASE = ''; // "" for same folder, or "gallery/" if images are in gallery/ subfolder
 
-  document.addEventListener('click', function(e){
-    const item = e.target.closest('.gallery-item');
-    if(!item) return;
-    const src = item.dataset.img;
-    const cap = item.dataset.cap || '';
-    if(!src) return;
-    lbImg.src = src;
-    lbImg.alt = cap;
-    lbCap.textContent = cap;
-    lb.classList.add('open');
-    lb.setAttribute('aria-hidden','false');
-    document.body.style.overflow = 'hidden';
-  });
+// Primary list of filenames and captions (I pulled these from your repo screenshot)
+const GALLERY_FILES = [
+  ["Party 1.jpg","Season Opener — Team Arrivals"],
+  ["Party 2.jpg","Team Dinner & Celebration"],
+  ["Party 3.jpg","Awards Night"],
+  ["Party 4.jpg","Family Day & Kids"],
+  ["Party 5.jpg","Training Session"],
+  ["Party 6.jpg","Victory Celebration"],
+  ["Party 7.jpg","Team Photo"],
+  ["Party 8.jpg","Coaches & Staff"],
+  ["Party 8.JPG","Coaches & Staff"],
+  ["Party 9.jpg","Fans & Supporters"],
+  ["Party 9.JPG","Fans & Supporters"],
+  ["Party 10.jpg","Event Photo"],
+  ["Darshan MOM.jpg","Darshan — Man of the Match"],
+  ["Gaurav MOM.jpg","Gaurav — Man of the Match"],
+  ["Raj MOM.jpg","Raj — Man of the Match"],
+  ["Bhavik Best Fielder DFCL.jpg","Bhavik — Best Fielder (DFCL)"],
+  ["Darshan Best bowler DFCL.jpg","Darshan — Best Bowler (DFCL)"],
+  ["Gaurav Best Bowler DFCL.jpg","Gaurav — Best Bowler (DFCL)"],
+  ["Vadik Best fielder LECA.jpg","Vadik — Best Fielder (LECA)"],
+  ["BWY.jpg","Bharat Warriors — Team Portrait"],
+  ["BWY.JPG","Bharat Warriors — Team Portrait"],
+  // fallback logo images you referenced
+  ["aksharnix-global-logo.png","AksharNix Global — Sponsor logo"],
+  ["infinity-legacy-logo.jpg","Infinity Legacy Group"],
+  ["pizza-twist-logo.png","Pizza Twist"]
+];
 
-  function closeLB(){
-    lb.classList.remove('open');
-    lbImg.src = '';
-    lb.setAttribute('aria-hidden','true');
-    document.body.style.overflow = '';
+// small helper to try a set of variant filenames
+function tryVariants(base){
+  // produce list of likely variants: original, lowercase, remove spaces-dash, JPG/Jpg/jpg
+  const variants = [];
+  const name = base;
+  variants.push(name);
+  variants.push(name.replace(/\s+/g,' ')); // normalize spaces
+  // lowercase version
+  variants.push(name.toLowerCase());
+  // replace spaces with dashes
+  variants.push(name.replace(/\s+/g,'-'));
+  variants.push(name.replace(/\s+/g,'_'));
+  // change extension case if jpg
+  if(/\.(jpg|jpeg)$/i.test(name)){
+    variants.push(name.replace(/\.(jpg|jpeg)$/i, m => m.toLowerCase()));
+    variants.push(name.replace(/\.(jpg|jpeg)$/i, m => m.toUpperCase()));
   }
-  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLB(); });
+  // unique
+  return Array.from(new Set(variants));
+}
 
-  // simple mobile menu toggle
-  const hambBtn = document.getElementById('hambBtn');
-  hambBtn?.addEventListener('click', ()=>{
-    const menu = document.querySelector('.menu');
-    if(!menu) return;
-    menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+/* ---------- render gallery (with fallbacks) ---------- */
+const galleryGrid = document.getElementById('galleryGrid');
+const tpl = document.getElementById('galleryTemplate');
+
+function createItem(file, cap, resolvedSrc, missing=false){
+  const el = tpl.content.cloneNode(true);
+  const node = el.querySelector('.gallery-item');
+  node.dataset.img = file;
+  node.dataset.cap = cap;
+  const img = node.querySelector('img');
+  img.src = resolvedSrc || '';
+  img.alt = cap;
+  const capEl = node.querySelector('.cap');
+  capEl.textContent = cap + (missing ? ' — (image not found)' : '');
+  if(missing) node.classList.add('missing');
+  galleryGrid.appendChild(node);
+}
+
+/* Try to resolve actual existing filename; returns first that 404s=false
+   Because we can't issue synchronous HEADs everywhere, we create <img> and rely on onerror to mark missing.
+*/
+function attachGallery(){
+  GALLERY_FILES.forEach(([fname,cap])=>{
+    const attempts = tryVariants(fname);
+    let tried = false;
+    // We'll create the element immediately with the first variant (best guess), and then check load
+    const candidate = attempts.map(s => IMG_BASE + s);
+    // create placeholder node using first candidate
+    const resolved = candidate[0];
+    createItem(fname, cap, resolved, false);
+  });
+}
+
+/* Lightbox & click delegation */
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+const lbCap = document.getElementById('lbCap');
+
+document.addEventListener('click', function(e){
+  const item = e.target.closest('.gallery-item');
+  if(!item) return;
+  const src = item.querySelector('img')?.src;
+  const cap = item.dataset.cap || '';
+  if(!src) return;
+  lbImg.src = src;
+  lbImg.alt = cap;
+  lbCap.textContent = cap;
+  lb.classList.add('open');
+  lb.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+});
+
+function closeLB(){
+  lb.classList.remove('open');
+  lbImg.src = '';
+  lb.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLB(); });
+
+/* mobile menu toggle */
+document.getElementById('hambBtn').addEventListener('click', ()=>{
+  const menu = document.querySelector('.menu');
+  if(!menu) return;
+  if(menu.style.display === 'flex'){ menu.style.display = 'none'; }
+  else {
+    menu.style.display = 'flex';
     menu.style.flexDirection = 'column';
     menu.style.gap = '10px';
     menu.style.background = 'linear-gradient(180deg,var(--navy),var(--navy-2))';
     menu.style.padding = '12px';
     menu.style.borderRadius = '8px';
-  });
-
-  // copy zelle
-  function copyZelle(btn){
-    const txt = 'patelpratik59@gmail.com';
-    navigator.clipboard.writeText(txt).then(()=>{ btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy email',1200); });
   }
+});
 
-  // diagnostic: mark missing images (filename typos)
-  window.addEventListener('load', function(){
-    document.querySelectorAll('.gallery-item').forEach(item=>{
-      const src = item.dataset.img;
-      if(!src) return;
-      const img = new Image();
-      img.onload = ()=>{ /* OK */ };
-      img.onerror = ()=> {
-        console.warn('Missing image:', src);
-        item.classList.add('missing');
-        const cap = item.querySelector('.cap');
-        if(cap) cap.textContent = (cap.textContent || '') + ' — (image not found)';
-      };
-      img.src = src;
-    });
-    // decorate result times with "time" if present in table
-    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const tcell = tr.children[6];
-      if(tcell){
-        const t = tcell.textContent.trim();
-        if(t && !tcell.dataset.decorated){
-          tcell.innerHTML = `<span style="font-weight:800">${t}</span>`;
-          tcell.dataset.decorated = '1';
-        }
+/* copy zelle */
+function copyZelle(btn){
+  const txt = 'patelpratik59@gmail.com';
+  navigator.clipboard.writeText(txt).then(()=>{ btn.textContent='Copied!'; setTimeout(()=>btn.textContent='Copy email',1200); });
+}
+
+/* Decorate fixtures: parse date/time, sort, render next matches */
+function parseRowDateTime(tr){
+  const dateRaw = tr.dataset.date || tr.children[0].textContent.trim();
+  const timeRaw = tr.dataset.time || tr.children[6]?.textContent.trim() || '';
+  // try to parse date in formats like "Sep 6, 2025" or "2025-09-06"
+  let dt = null;
+  // If data-date attribute set in YYYY-MM-DD, use it:
+  if(tr.dataset.date && /^\d{4}-\d{2}-\d{2}$/.test(tr.dataset.date)){
+    const [y,m,d] = tr.dataset.date.split('-').map(Number);
+    // parse time
+    let hours=12, minutes=0;
+    if(timeRaw){
+      const m1 = timeRaw.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
+      if(m1){
+        let hh = parseInt(m1[1],10); let mm = m1[2] ? parseInt(m1[2],10):0;
+        const ap = (m1[3] || '').toLowerCase();
+        if(ap === 'pm' && hh<12) hh += 12;
+        if(ap === 'am' && hh===12) hh=0;
+        hours = hh; minutes = mm;
       }
-    });
+    }
+    dt = new Date(y, m-1, d, hours, minutes);
+    return dt;
+  }
+  // fallback: try Date.parse on the visible date+time text
+  const combined = dateRaw + ' ' + timeRaw;
+  const parsed = Date.parse(combined);
+  if(!isNaN(parsed)) return new Date(parsed);
+  // last resort: try Date.parse(dateRaw)
+  const parsed2 = Date.parse(dateRaw);
+  if(!isNaN(parsed2)) return new Date(parsed2);
+  return null;
+}
+
+function renderNextMatches(){
+  const rows = Array.from(document.querySelectorAll('#fxTable tbody tr')).filter(tr=>tr.style.display !== 'none');
+  const mapped = rows.map(tr => ({tr, dt: parseRowDateTime(tr)})).filter(o => o.dt !== null);
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = mapped.filter(o => {
+    const dcopy = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
+    return dcopy >= today;
+  }).sort((a,b)=>a.dt - b.dt).slice(0,3);
+
+  const cont = document.getElementById('nextMatches');
+  if(upcoming.length === 0){ cont.innerHTML = '<div>No upcoming matches found.</div>'; return; }
+  cont.innerHTML = upcoming.map(o => {
+    const tr = o.tr;
+    const date = tr.children[0].textContent.trim();
+    const match = tr.children[1].textContent.trim();
+    const ground = tr.children[2].textContent.trim();
+    const time = tr.children[6]?.textContent.trim() || '';
+    return `<div style="padding:10px;border:1px solid var(--line);border-radius:8px;margin-bottom:8px">
+      <div style="font-weight:800">${date} ${time ? ' — ' + time : ''}</div>
+      <div style="margin-top:6px">${match}</div>
+      <div style="color:var(--muted);font-size:13px;margin-top:6px">${ground}</div>
+    </div>`;
+  }).join('');
+}
+
+/* Filter league */
+function filterLeague(code){
+  document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
+    if(code === 'ALL') tr.style.display = '';
+    else tr.style.display = (tr.dataset.league === code) ? '' : 'none';
   });
+  renderNextMatches();
+}
+
+/* Diagnostic: mark missing images and try common filename variants */
+function scanImagesAndResolve(){
+  // for each gallery item we created earlier, check if image loads, otherwise try variants
+  const items = Array.from(document.querySelectorAll('.gallery-item'));
+  items.forEach(item=>{
+    const img = item.querySelector('img');
+    const displayName = item.dataset.img || img.src;
+    const filename = displayName.split('/').pop();
+    // If image loads (naturalWidth) already, skip; else attach onerror to try variants
+    img.addEventListener('error', function tryAlternatives(){
+      // try variants for this filename
+      const variants = tryVariants(filename);
+      let resolved = null;
+      let tried = 0;
+      const tryNext = ()=>{
+        if(tried >= variants.length){ 
+          // mark missing
+          item.classList.add('missing');
+          if(item.querySelector('.cap')) item.querySelector('.cap').textContent += ' — (missing)';
+          console.warn('Missing image (all variants tried):', filename);
+          return;
+        }
+        const v = variants[tried++];
+        const candidate = IMG_BASE + v;
+        const test = new Image();
+        test.onload = ()=>{
+          // success: set src and remove error handler
+          img.src = candidate;
+          img.removeEventListener('error', tryAlternatives);
+        };
+        test.onerror = ()=> { tryNext(); };
+        test.src = candidate;
+      };
+      tryNext();
+    });
+    // also mark items that lack a src (should have)
+    if(!img.src || img.src === window.location.href){
+      // trigger the error handler to attempt alternatives
+      setTimeout(()=> img.dispatchEvent(new Event('error')), 20);
+    } else {
+      // if src present, still attach onerror to attempt fallback variants if it 404s
+      img.addEventListener('error', ()=> img.dispatchEvent(new Event('error')));
+    }
+  });
+}
+
+/* build the gallery DOM from GALLERY_FILES (we initially set src to IMG_BASE+name to be simple) */
+function buildGalleryDom(){
+  const grid = document.getElementById('galleryGrid');
+  const template = document.getElementById('galleryTemplate').content;
+  GALLERY_FILES.forEach(([fname, caption])=>{
+    const node = template.cloneNode(true);
+    const el = node.querySelector('.gallery-item');
+    const img = el.querySelector('img');
+    const cap = el.querySelector('.cap');
+    // initial src guess (first attempt) - will be validated and fallbacked
+    img.src = IMG_BASE + fname;
+    img.alt = caption;
+    el.dataset.img = fname;
+    el.dataset.cap = caption;
+    cap.textContent = caption;
+    grid.appendChild(node);
+  });
+}
+
+/* small page initialization */
+window.addEventListener('DOMContentLoaded', ()=>{
+  buildGalleryDom();
+  // scan and try to resolve missing images by trying likely variants
+  scanImagesAndResolve();
+  // initial fixtures decorations
+  renderNextMatches();
+});
+
+/* helper: tryVariants re-used here (same as earlier) */
+function tryVariants(base){
+  const variants = [];
+  variants.push(base);
+  variants.push(base.replace(/\s+/g,' ').trim());
+  variants.push(base.toLowerCase());
+  variants.push(base.replace(/\s+/g,'-'));
+  variants.push(base.replace(/\s+/g,'_'));
+  if(/\.(jpg|jpeg)$/i.test(base)){
+    variants.push(base.replace(/\.(jpg|jpeg)$/i, '.JPG'));
+    variants.push(base.replace(/\.(jpg|jpeg)$/i, '.jpg'));
+  }
+  // include with gallery/ prefix too (common)
+  const withGallery = variants.map(v => 'gallery/' + v);
+  return Array.from(new Set([...variants, ...withGallery]));
+}
+
+/* expose small helpers for debugging in console */
+window.appDebug = {
+  GALLERY_FILES, tryVariants, filterLeague, renderNextMatches
+};
 </script>
 </body>
 </html>
