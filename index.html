@@ -13,6 +13,7 @@
     --navy:#0c1e37; --navy-2:#132b4f;
     --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
     --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
+    --gold:#ffd700; --purple:#8a2be2;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -93,6 +94,16 @@
   .next-item{padding:10px;border:1px solid var(--line);border-radius:10px;background:#fbfdff}
   .lg{font-weight:900;color:#0f66d2;margin-right:6px}
 
+  /* NEW TEAM ANNOUNCEMENT */
+  .new-team{background:linear-gradient(135deg, var(--purple), var(--gold));color:#fff;text-align:center;position:relative;overflow:hidden}
+  .new-team::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 70%, rgba(255,255,255,.1) 0%, transparent 50%);pointer-events:none}
+  .new-team .wrap{padding:50px 0;position:relative}
+  .new-team h2{margin:0 0 12px;font-size:32px;font-weight:900;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .new-team .subtitle{font-size:18px;margin:0 0 20px;opacity:.9}
+  .new-team .description{max-width:600px;margin:0 auto 25px;font-size:16px;line-height:1.5;opacity:.85}
+  .coming-soon{display:inline-block;padding:12px 24px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:999px;font-weight:800;font-size:14px;letter-spacing:.5px;text-transform:uppercase;backdrop-filter:blur(10px);transition:all .3s ease}
+  .coming-soon:hover{background:rgba(255,255,255,.25);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+
   .section h2{margin:0 0 8px;font-size:24px;font-weight:800;color:#0e1d39}
   .sub{color:var(--muted);font-size:14px}
 
@@ -146,6 +157,17 @@
   /* clock icon + time pill */
   .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }
   .time{ display:inline-flex; align-items:center; gap:6px; color:#31476b; font-weight:800; }
+
+  /* Mobile responsive adjustments */
+  @media (max-width:768px){
+    .new-team h2{font-size:24px}
+    .new-team .subtitle{font-size:16px}
+    .new-team .description{font-size:14px}
+    .h-title{font-size:28px}
+    .menu{flex-direction:column;gap:6px}
+    .nav .wrap{flex-direction:column;align-items:flex-start}
+    .brand{margin-bottom:8px}
+  }
 </style>
 </head>
 <body>
@@ -162,6 +184,7 @@
 
     <nav class="menu">
       <a href="#about" class="active">About</a>
+      <a href="#new-team">New Team</a>
 
       <div class="dropdown" id="dd-lg">
         <button onclick="toggleDD('dd-lg')">Leagues ▾</button>
@@ -216,6 +239,24 @@
       <div id="next-matches" class="next-list"><div class="next-item">Loading…</div></div>
       <div style="margin-top:10px"><a class="btn" href="#fixtures">View full schedule</a></div>
     </div>
+  </div>
+</section>
+
+<!-- NEW TEAM ANNOUNCEMENT SECTION -->
+<section id="new-team" class="new-team">
+  <div class="wrap container">
+    <div style="margin-bottom: 20px;">
+      <img src="bharat-yodhas-logo.png" alt="Bharat Yodhas Logo" style="width: 120px; height: 120px; border-radius: 50%; background: #fff; padding: 8px; box-shadow: 0 8px 20px rgba(0,0,0,.3);">
+    </div>
+    <h2>🏏 Bharat Yodhas 🏏</h2>
+    <p class="subtitle">Our Second Team is Coming Soon!</p>
+    <p class="description">
+      We're excited to announce the formation of our second cricket team - <strong>Bharat Yodhas</strong>! 
+      Building on the success and warrior spirit of Bharat Warriors, the Yodhas will bring even more 
+      passion and dedication to the field. Stay tuned for team announcements, player registrations, 
+      and upcoming matches.
+    </p>
+    <div class="coming-soon">Coming Soon 2024</div>
   </div>
 </section>
 
@@ -337,289 +378,4 @@
         <span class="ph" style="background-image:url('Bhavik Best Fielder DFCL.jpg')"></span><span class="cap">Bhavik — Best Fielder (DFCL)</span>
       </div>
 
-      <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
-        <span class="ph" style="background-image:url('Darshan Best bowler DFCL.jpg')"></span><span class="cap">Darshan — Best Bowler (DFCL)</span>
-      </div>
-      <div class="gallery-item" data-img="Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
-        <span class="ph" style="background-image:url('Gaurav Best Bowler DFCL.jpg')"></span><span class="cap">Gaurav — Best Bowler (DFCL)</span>
-      </div>
-      <div class="gallery-item" data-img="Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
-        <span class="ph" style="background-image:url('Vadik Best fielder LECA.jpg')"></span><span class="cap">Vadik — Best Fielder (LECA)</span>
-      </div>
-    </div>
-
-    <div id="album-party" class="gallery-grid" style="display:none">
-      <!-- Use the exact file names you added to repo (case exact) -->
-      <div class="gallery-item" data-img="Party 1.jpg" data-cap="Team Party — 1"><span class="ph" style="background-image:url('Party 1.jpg')"></span><span class="cap">Team Party — 1</span></div>
-      <div class="gallery-item" data-img="Party 2.jpg" data-cap="Team Party — 2"><span class="ph" style="background-image:url('Party 2.jpg')"></span><span class="cap">Team Party — 2</span></div>
-      <div class="gallery-item" data-img="Party 3.jpg" data-cap="Team Party — 3"><span class="ph" style="background-image:url('Party 3.jpg')"></span><span class="cap">Team Party — 3</span></div>
-      <div class="gallery-item" data-img="Party 4.jpg" data-cap="Team Party — 4"><span class="ph" style="background-image:url('Party 4.jpg')"></span><span class="cap">Team Party — 4</span></div>
-      <div class="gallery-item" data-img="Party 5.jpg" data-cap="Team Party — 5"><span class="ph" style="background-image:url('Party 5.jpg')"></span><span class="cap">Team Party — 5</span></div>
-      <div class="gallery-item" data-img="Party 6.jpg" data-cap="Team Party — 6"><span class="ph" style="background-image:url('Party 6.jpg')"></span><span class="cap">Team Party — 6</span></div>
-      <div class="gallery-item" data-img="Party 7.jpg" data-cap="Team Party — 7"><span class="ph" style="background-image:url('Party 7.jpg')"></span><span class="cap">Team Party — 7</span></div>
-      <div class="gallery-item" data-img="Party 8.JPG" data-cap="Team Party — 8"><span class="ph" style="background-image:url('Party 8.JPG')"></span><span class="cap">Team Party — 8</span></div>
-      <div class="gallery-item" data-img="Party 9.JPG" data-cap="Team Party — 9"><span class="ph" style="background-image:url('Party 9.JPG')"></span><span class="cap">Team Party — 9</span></div>
-      <div class="gallery-item" data-img="Party 10.jpg" data-cap="Team Party — 10"><span class="ph" style="background-image:url('Party 10.jpg')"></span><span class="cap">Team Party — 10</span></div>
-    </div>
-
-    <div id="album-intro" class="gallery-grid" style="display:none">
-      <div class="gallery-item" data-img="team-intro-1.jpg" data-cap="Team Intro — 1"><span class="ph" style="background-image:url('team-intro-1.jpg')"></span><span class="cap">Team Intro — 1</span></div>
-      <div class="gallery-item" data-img="team-intro-2.jpg" data-cap="Team Intro — 2"><span class="ph" style="background-image:url('team-intro-2.jpg')"></span><span class="cap">Team Intro — 2</span></div>
-      <!-- add more intro images if you have them -->
-    </div>
-
-  </div>
-</section>
-
-<section id="sponsors" class="section">
-  <div class="container">
-    <h2>Sponsors</h2>
-    <div class="s-row">
-      <div id="sponsor-infinity" class="card sponsor">
-        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener">
-          <div class="logo-frame"><img src="infinity-legacy-logo.jpg" alt="Infinity Legacy Group"></div>
-        </a>
-      </div>
-      <div id="sponsor-aksharnix" class="card sponsor">
-        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
-          <div class="logo-frame"><img src="aksharnix-global-logo.png" alt="AksharNix Global"></div>
-        </a>
-      </div>
-      <div id="sponsor-pizza" class="card sponsor">
-        <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
-          <div class="logo-frame"><img src="pizza-twist-logo.png" alt="Pizza Twist"></div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="donate" class="section">
-  <div class="container">
-    <h2>Donations</h2>
-    <p class="sub">We accept donations via <strong>Zelle</strong>. Thank you for supporting the Bharat Warriors! 🙏</p>
-
-    <div class="card don-card">
-      <div class="don-grid">
-        <div>
-          <h3 style="margin:0 0 6px;font-size:18px">Zelle</h3>
-          <p style="margin:0 0 6px">Recipient: <strong>PRATIKKUMAR PATEL</strong></p>
-          <p style="margin:0 0 10px">Send to:</p>
-          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-            <span class="code" id="zelle-email">patelpratik59@gmail.com</span>
-            <button class="btn" type="button" onclick="copyZelle(this)">Copy email</button>
-          </div>
-        </div>
-
-        <div>
-          <p class="sub" style="margin:0 0 8px">Scan this QR in your banking app:</p>
-          <img class="qr" src="zelle-qr.jpg" alt="Zelle QR Code">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="section">
-  <div class="container">
-    <h2>Contact</h2>
-    <p class="sub">For general inquiries:</p>
-    <div class="card" style="padding:14px;max-width:720px">
-      <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="BW Club Inquiry" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="_captcha" value="false" />
-        <div style="display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
-          <label> Name
-            <input name="name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
-          </label>
-          <label> Email
-            <input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px">
-          </label>
-        </div>
-        <label style="display:block;margin-top:10px"> Message
-          <textarea name="message" rows="4" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:10px"></textarea>
-        </label>
-        <button class="btn" type="submit" style="margin-top:10px">Send</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <div>Site created by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a></div>
-    <div class="foot-social">
-      <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5z"/></svg>
-      </a>
-      <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
-      </a>
-    </div>
-  </div>
-</footer>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <div class="lb-wrap">
-    <img id="lbImg" alt="">
-    <div class="lb-cap" id="lbCap"></div>
-  </div>
-  <button class="lb-close" onclick="closeLB()">Close ✕</button>
-</div>
-
-<script>
-  /* --- Dropdown helpers --- */
-  function toggleDD(id){
-    document.querySelectorAll('.dropdown').forEach(d=>{
-      if(d.id !== id) d.classList.remove('open');
-    });
-    const me = document.getElementById(id);
-    me.classList.toggle('open');
-  }
-  window.addEventListener('click', e=>{
-    if(!e.target.closest('.dropdown')) document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
-  });
-
-  /* --- small svg clock used in list --- */
-  const clockSvg = `<svg class="i i-clock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`;
-
-  /* parse a date + time to a JS Date object.
-     Accepts:
-       - data-date: YYYY-MM-DD (recommended)
-       - data-time: "7:30 AM" or "3:30–7:00 PM" or "7:30 PM"
-     If time is a range, we take the start time for sorting.
-  */
-  function parseRowDateTime(tr){
-    const dateRaw = tr.dataset.date || '';
-    const timeRaw = (tr.dataset.time || '').trim();
-    if(!dateRaw) return null;
-    // parse date part (YYYY-MM-DD)
-    const [y,m,d] = dateRaw.split('-').map(Number);
-    if(!y||!m||!d) return null;
-    // Determine time: default midday if not provided
-    let hours = 12, minutes = 0;
-    if(timeRaw){
-      // if range like "3:30–7:00 PM" or "3:30–7:00 PM" – take first part
-      let t = timeRaw.split('–')[0].trim();
-      // If suffix "AM"/"PM" is only at end of range, and first part lacks it, try to append last suffix
-      if(!/am|pm/i.test(t) && /am|pm/i.test(timeRaw)) {
-        const suff = (timeRaw.match(/(am|pm)/i) || [])[0] || '';
-        if(suff) t = t + ' ' + suff;
-      }
-      // parse "7:30 AM" or "7 PM"
-      const m1 = t.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)?/i);
-      if(m1){
-        let hh = parseInt(m1[1],10);
-        let mm = m1[2] ? parseInt(m1[2],10) : 0;
-        const ap = (m1[3] || '').toLowerCase();
-        if(ap === 'pm' && hh < 12) hh += 12;
-        if(ap === 'am' && hh === 12) hh = 0;
-        hours = hh; minutes = mm;
-      }
-    }
-    // create date in local timezone
-    return new Date(y, m-1, d, hours, minutes, 0, 0);
-  }
-
-  /* Build upcoming matches: pick rows where date >= today, sort by datetime */
-  function renderNextMatches(){
-    const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'))
-      .filter(tr => tr.style.display !== 'none');
-
-    const today = new Date();
-    today.setHours(0,0,0,0);
-
-    // map rows to {tr, dt}
-    const mapped = rows.map(tr => ({tr, dt: parseRowDateTime(tr)}))
-      .filter(o => o.dt !== null)
-      .filter(o => {
-        // include events on or after today
-        const dcopy = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
-        return dcopy >= today;
-      })
-      .sort((a,b)=>a.dt - b.dt);
-
-    // take up to 3 upcoming
-    const upcoming = mapped.slice(0,3).map(o=>{
-      const tr = o.tr;
-      const d = tr.children[0].textContent.trim();
-      const opp = tr.children[1].textContent.trim();
-      const grd = tr.children[2].textContent.trim();
-      const lg = (tr.dataset.league || '').toUpperCase();
-      const timestr = tr.dataset.time ? tr.dataset.time : '';
-      const timeHtml = timestr ? ` <span class="time">${clockSvg} ${timestr}</span>` : '';
-      return `<div class="next-item"><span class="lg">${lg}</span> ${d}${timeHtml} – ${opp}<br><small>${grd}</small></div>`;
-    });
-
-    document.getElementById('next-matches').innerHTML = (upcoming.length ? upcoming.join('') : '<div class="next-item">No upcoming matches.</div>');
-  }
-
-  /* decorate time column in table with clock icon */
-  function decorateTimes(){
-    document.querySelectorAll('#fxTable tbody tr').forEach(tr=>{
-      const td = tr.children[6]; // 7th column
-      if(!td) return;
-      const t = td.textContent.trim();
-      if(t && !td.dataset.iconized){
-        td.innerHTML = `<span class="time">${clockSvg} ${t}</span>`;
-        td.dataset.iconized = "1";
-      }
-    });
-  }
-
-  /* Filter rows by league code: DFCL, LECA, ALL */
-  function filterLeague(lg){
-    const all = document.querySelectorAll('#fxTable tbody tr');
-    all.forEach(tr => {
-      if(lg === 'ALL') tr.style.display = '';
-      else tr.style.display = (tr.dataset.league === lg) ? '' : 'none';
-    });
-    renderNextMatches();
-    decorateTimes();
-  }
-
-  /* copy Zelle */
-  function copyZelle(btn){
-    const t = document.getElementById('zelle-email').textContent.trim();
-    navigator.clipboard.writeText(t).then(()=>{btn.textContent='Copied!';setTimeout(()=>btn.textContent='Copy email',1200);});
-  }
-
-  /* Gallery lightbox */
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lbImg');
-  const lbCap = document.getElementById('lbCap');
-
-  document.addEventListener('click', function(e){
-    const item = e.target.closest('.gallery-item');
-    if(!item) return;
-    const src = item.dataset.img;
-    const cap = item.dataset.cap || '';
-    // set img src - make sure file exists in same folder or provide full path
-    lbImg.src = src;
-    lbCap.textContent = cap;
-    lb.classList.add('open');
-  });
-
-  function closeLB(){ lb.classList.remove('open'); lbImg.src=''; }
-  window.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeLB(); });
-
-  /* Album tabs show/hide */
-  function showAlbum(name){
-    document.getElementById('album-awards').style.display = (name==='awards') ? 'grid' : 'none';
-    document.getElementById('album-party').style.display = (name==='party') ? 'grid' : 'none';
-    document.getElementById('album-intro').style.display = (name==='intro') ? 'grid' : 'none';
-    // scroll a bit to the gallery area
-    location.hash = '#gallery';
-  }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    renderNextMatches();
-    decorateTimes();
-    // default album
-    showAlbum('awards');
-  });
-</script>
-</body>
-</html>
+      <div class="gallery-item" data-img="Darshan Best bowler DFCL.jpg" data-cap
