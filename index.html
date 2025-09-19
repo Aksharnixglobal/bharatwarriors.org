@@ -118,6 +118,15 @@
   .section h2::after{content:'';position:absolute;bottom:-4px;left:0;width:60px;height:4px;background:var(--accent-gradient);border-radius:2px}
   .sub{color:var(--muted);font-size:16px;margin-bottom:20px}
 
+  /* League tabs */
+  .league-tabs{justify-content:center}
+  .league-tab{padding:12px 20px;border-radius:12px;font-weight:700;border:2px solid var(--line);
+    background:#fff;color:var(--ink);cursor:pointer;transition:all 0.3s ease;
+    display:inline-flex;align-items:center;gap:8px}
+  .league-tab:hover{background:#f0f6ff;border-color:var(--blue);transform:translateY(-2px)}
+  .league-tab.active{background:var(--accent-gradient);color:#fff;border-color:transparent;
+    box-shadow:0 8px 20px rgba(255,122,26,.3)}
+
   /* Enhanced Tables */
   .table-wrapper{overflow-x:auto;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.08)}
   table{width:100%;border-collapse:collapse;background:#fff}
@@ -330,22 +339,27 @@
         <div class="stat-label">Active Leagues</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">70+</div>
-        <div class="stat-label">Team Players</div>
+        <div class="stat-number">11</div>
+        <div class="stat-label">Total Matches</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">50+</div>
-        <div class="stat-label">Matches Played</div>
+        <div class="stat-number">4W-2L</div>
+        <div class="stat-label">DFCL Record</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">3</div>
-        <div class="stat-label">Sponsor Partners</div>
+        <div class="stat-number">2W-1L-1T</div>
+        <div class="stat-label">LECA Record</div>
       </div>
     </div>
 
     <div class="achievement">
-      <div class="achievement-title">🏆 Recent Victory</div>
-      <div class="achievement-desc">BW 140/7 (19.5) beat Knight Riders 139/8 (20) — Won by 3 wickets in LECA Division A</div>
+      <div class="achievement-title">🏆 Recent DFCL Victory</div>
+      <div class="achievement-desc">BW won by 16 runs vs Dallas Renegades (BW 152/10, DR 136/9) — Sep 15, 2025</div>
+    </div>
+
+    <div class="achievement">
+      <div class="achievement-title">🤝 LECA Tie Game</div>
+      <div class="achievement-desc">Thrilling tie vs Highland Boyz (both teams 144) — Sep 13, 2025</div>
     </div>
   </div>
 </section>
@@ -353,7 +367,20 @@
 <section id="fixtures" class="section">
   <div class="container">
     <h2>Match Fixtures</h2>
-    <p class="sub">Filter by league using the dropdown above, or view our complete schedule below.</p>
+    <p class="sub">View matches by league using the tabs below, or see our complete schedule.</p>
+    
+    <!-- League Filter Tabs -->
+    <div class="league-tabs" style="display:flex;gap:12px;margin:20px 0 30px;flex-wrap:wrap">
+      <button class="league-tab active" onclick="filterLeague('ALL')" data-league="ALL">
+        🏏 All Matches
+      </button>
+      <button class="league-tab" onclick="filterLeague('DFCL')" data-league="DFCL">
+        🏆 DFCL Summer 2025
+      </button>
+      <button class="league-tab" onclick="filterLeague('LECA')" data-league="LECA">
+        ⚡ LECA Fall 2025
+      </button>
+    </div>
     
     <div class="card table-wrapper">
       <table id="fxTable">
@@ -361,7 +388,62 @@
           <tr><th>Date</th><th>Opponent</th><th>Ground</th><th>DFCL</th><th>LECA</th><th>Result</th><th>Time</th></tr>
         </thead>
         <tbody>
-          <!-- Recent Results -->
+          <!-- PAST RESULTS - DFCL Summer 2025 -->
+          <tr data-league="DFCL" data-date="2025-07-26" data-time="8:00 AM">
+            <td>Jul 26, 2025</td>
+            <td>Bharat Warriors 🆚 Kerala Legends</td>
+            <td>DFCL Ground</td>
+            <td><span class="badge league-dfcl">DFCL Summer</span></td><td></td>
+            <td class="result-loss">Kerala Legends won by 3 wickets (BW 143/9, KL 147/7)</td>
+            <td>8:00 AM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-08-02" data-time="8:00 AM">
+            <td>Aug 2, 2025</td>
+            <td>Bharat Warriors 🆚 Tyrants XI</td>
+            <td>DFCL Ground</td>
+            <td><span class="badge league-dfcl">DFCL Summer</span></td><td></td>
+            <td class="result-win">BW won by 17 runs (BW 166/11, TX 149/8)</td>
+            <td>8:00 AM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-08-07" data-time="8:00 AM">
+            <td>Aug 7, 2025</td>
+            <td>Bharat Warriors 🆚 Legends XI</td>
+            <td>DFCL Ground</td>
+            <td><span class="badge league-dfcl">DFCL Summer</span></td><td></td>
+            <td class="result-win">BW won by 59 runs (BW 148/10, LX 89/11)</td>
+            <td>8:00 AM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-08-23" data-time="8:00 AM">
+            <td>Aug 23, 2025</td>
+            <td>Bharat Warriors 🆚 Dallas Challengers</td>
+            <td>DFCL Ground</td>
+            <td><span class="badge league-dfcl">DFCL Summer</span></td><td></td>
+            <td class="result-win">BW won by 70 runs (BW 162/7, DC 92/11)</td>
+            <td>8:00 AM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-09-13" data-time="8:00 AM">
+            <td>Sep 13, 2025</td>
+            <td>Bharat Warriors 🆚 Joyful X1</td>
+            <td>DFCL Ground</td>
+            <td><span class="badge league-dfcl">DFCL Summer</span></td><td></td>
+            <td class="result-loss">Joyful X1 won by 9 wickets (BW 71/11, JX 72/1)</td>
+            <td>8:00 AM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-09-15" data-time="8:00 AM">
+            <td>Sep 15, 2025</td>
+            <td>Bharat Warriors 🆚 Dallas Renegades</td>
+            <td>DFCL Ground</td>
+            <td><span class="badge league-dfcl">DFCL Summer</span></td><td></td>
+            <td class="result-win">BW won by 16 runs (BW 152/10, DR 136/9)</td>
+            <td>8:00 AM</td>
+          </tr>
+
+          <!-- Recent LECA Result -->
           <tr data-league="LECA" data-date="2025-09-06" data-time="3:30 PM">
             <td>Sep 6, 2025</td>
             <td>Knight Riders 🆚 BW</td>
@@ -372,61 +454,76 @@
             <td>3:30–7:00 PM</td>
           </tr>
 
-          <!-- Updated Current/Future Matches -->
-          <tr data-league="DFCL" data-date="2025-09-21" data-time="7:30 AM">
-            <td>Sep 21, 2025</td>
-            <td>Bharat Warriors 🆚 Dallas Renegades</td>
-            <td>Irving Polo Cricket Ground</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
-          </tr>
-
-          <tr data-league="LECA" data-date="2025-09-28" data-time="11:30 AM">
+          <!-- ACTUAL UPCOMING MATCHES from LECA -->
+          <tr data-league="LECA" data-date="2025-09-28" data-time="3:30 PM">
             <td>Sep 28, 2025</td>
-            <td>Highland Boyz 🆚 BW</td>
-            <td>Brentwood Cricket Ground</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>The Topdogs 🆚 Bharat Warriors</td>
+            <td>Brentwood - LECA</td>
+            <td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>—</td><td>3:30 PM</td>
           </tr>
 
-          <tr data-league="DFCL" data-date="2025-10-05" data-time="7:00 PM">
+          <tr data-league="LECA" data-date="2025-10-05" data-time="11:30 AM">
             <td>Oct 5, 2025</td>
-            <td>Dallas Renegades 🆚 Bharat Warriors</td>
-            <td>Sandy Lake Cricket Ground</td>
-            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:00 PM</td>
+            <td>Singhams India 101 🆚 Bharat Warriors</td>
+            <td>Hackberry - LECA</td>
+            <td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>—</td><td>11:30 AM</td>
           </tr>
 
-          <tr data-league="LECA" data-date="2025-10-12" data-time="3:30 PM">
-            <td>Oct 12, 2025</td>
-            <td>The Topdogs 🆚 BW</td>
-            <td>Brentwood Cricket Ground</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>3:30 PM</td>
+          <tr data-league="LECA" data-date="2025-10-11" data-time="11:30 AM">
+            <td>Oct 11, 2025</td>
+            <td>Raging Bulls 🆚 Bharat Warriors</td>
+            <td>Hackberry - LECA</td>
+            <td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>—</td><td>11:30 AM</td>
           </tr>
 
-          <tr data-league="LECA" data-date="2025-10-19" data-time="11:30 AM">
-            <td>Oct 19, 2025</td>
-            <td>Singhams India 101 🆚 BW</td>
-            <td>Hackberry Cricket Ground</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
-          </tr>
-
-          <tr data-league="LECA" data-date="2025-10-26" data-time="11:30 AM">
+          <!-- Additional Future Matches -->
+          <tr data-league="LECA" data-date="2025-10-26" data-time="2:00 PM">
             <td>Oct 26, 2025</td>
-            <td>Raging Bulls 🆚 BW</td>
-            <td>Hackberry Cricket Ground</td>
-            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>11:30 AM</td>
+            <td>BW 🆚 Highland Boyz</td>
+            <td>Brentwood - LECA</td>
+            <td></td><td><span class="badge league-leca">LECA • Div A</span></td><td>—</td><td>2:00 PM</td>
           </tr>
 
-          <tr data-league="DFCL" data-date="2025-11-02" data-time="7:30 AM">
+          <tr data-league="DFCL" data-date="2025-11-02" data-time="8:00 AM">
             <td>Nov 2, 2025</td>
+            <td>Joyful XI 🆚 Bharat Warriors</td>
+            <td>Irving Polo Cricket Ground</td>
+            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>8:00 AM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-11-03" data-time="7:30 AM">
+            <td>Nov 3, 2025</td>
             <td>Joyful XI 🆚 Bharat Warriors</td>
             <td>Irving Polo Cricket Ground</td>
             <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
 
-          <tr data-league="LECA" data-date="2025-11-09" data-time="2:00 PM">
-            <td>Nov 9, 2025</td>
+          <tr data-league="LECA" data-date="2025-11-10" data-time="2:00 PM">
+            <td>Nov 10, 2025</td>
             <td>BW 🆚 Thunder Strikers</td>
             <td>Brentwood Cricket Ground</td>
             <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>2:00 PM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-11-17" data-time="8:00 AM">
+            <td>Nov 17, 2025</td>
+            <td>BW 🆚 Mumbai Tigers</td>
+            <td>Irving Polo Cricket Ground</td>
+            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>8:00 AM</td>
+          </tr>
+
+          <tr data-league="LECA" data-date="2025-11-24" data-time="1:00 PM">
+            <td>Nov 24, 2025</td>
+            <td>Chennai Super Kings 🆚 BW</td>
+            <td>Hackberry Cricket Ground</td>
+            <td></td><td><span class="badge league-leca">LECA</span></td><td>—</td><td>1:00 PM</td>
+          </tr>
+
+          <tr data-league="DFCL" data-date="2025-12-01" data-time="7:30 AM">
+            <td>Dec 1, 2025</td>
+            <td>BW 🆚 Royal Challengers</td>
+            <td>Sandy Lake Cricket Ground</td>
+            <td><span class="badge league-dfcl">DFCL</span></td><td></td><td>—</td><td>7:30 AM</td>
           </tr>
         </tbody>
       </table>
@@ -792,14 +889,15 @@
     const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'))
       .filter(tr => tr.style.display !== 'none');
 
-    const today = new Date();
+    // Use current date (September 19, 2025)
+    const today = new Date(2025, 8, 19); // Month is 0-indexed, so 8 = September
     today.setHours(0,0,0,0);
 
     const mapped = rows.map(tr => ({tr, dt: parseRowDateTime(tr)}))
       .filter(o => o.dt !== null)
       .filter(o => {
-        const dcopy = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
-        return dcopy >= today;
+        const matchDate = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
+        return matchDate >= today;
       })
       .sort((a,b)=>a.dt - b.dt);
 
@@ -812,16 +910,29 @@
       const timestr = tr.dataset.time ? tr.dataset.time : '';
       const timeHtml = timestr ? ` <span class="time">${clockSvg} ${timestr}</span>` : '';
       
+      // Calculate days until match
+      const matchDate = new Date(o.dt.getFullYear(), o.dt.getMonth(), o.dt.getDate());
+      const daysUntil = Math.ceil((matchDate - today) / (1000 * 60 * 60 * 24));
+      const daysBadge = daysUntil === 0 ? ' <span style="color:var(--saffron);font-weight:900">TODAY!</span>' :
+                       daysUntil === 1 ? ' <span style="color:var(--green);font-weight:900">TOMORROW</span>' :
+                       daysUntil <= 7 ? ` <span style="color:var(--blue);font-weight:700">in ${daysUntil} days</span>` : '';
+      
       return `<div class="next-item">
-        <span class="lg">${lg}</span> ${d}${timeHtml} — ${opp}
+        <span class="lg">${lg}</span> ${d}${timeHtml}${daysBadge}
+        <br><strong>${opp}</strong>
         <br><small style="color:var(--muted)">${grd}</small>
       </div>`;
     });
 
-    document.getElementById('next-matches').innerHTML = (upcoming.length ? 
-      upcoming.join('') : 
-      '<div class="next-item">No upcoming matches scheduled.</div>'
-    );
+    const container = document.getElementById('next-matches');
+    if(container) {
+      container.innerHTML = (upcoming.length ? 
+        upcoming.join('') : 
+        '<div class="next-item">No upcoming matches scheduled. Check back soon!</div>'
+      );
+    }
+    
+    console.log(`Found ${upcoming.length} upcoming matches from ${mapped.length} total future matches`);
   }
 
   /* Enhance time display in table */
@@ -837,7 +948,7 @@
     });
   }
 
-  /* Enhanced league filtering */
+  /* Enhanced league filtering with tabs */
   function filterLeague(lg){
     const all = document.querySelectorAll('#fxTable tbody tr');
     all.forEach(tr => {
@@ -847,10 +958,19 @@
         tr.style.display = (tr.dataset.league === lg) ? '' : 'none';
       }
     });
+    
+    // Update active tab
+    document.querySelectorAll('.league-tab').forEach(tab => {
+      tab.classList.remove('active');
+      if(tab.dataset.league === lg) {
+        tab.classList.add('active');
+      }
+    });
+    
     renderNextMatches();
     decorateTimes();
     
-    // Close dropdown after selection
+    // Close dropdown after selection (if any)
     document.querySelectorAll('.dropdown').forEach(d=>d.classList.remove('open'));
   }
 
