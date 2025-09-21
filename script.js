@@ -446,10 +446,10 @@ document.addEventListener('DOMContentLoaded', function() {
       let formName = '';
       
       if (team === 'Bharat Warriors' && (currentLeague === 'DFCL' || selectedMatch.includes('DFCL'))) {
-        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfp8_R5UJ5q1Wht4Ipy4BUKWGcyS3bxuOo1T5-Lj9QQKBgMWQ/formResponse';
+        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfCvw6k6U8w8QZOlF6bxFGsHUqfRE4JwfrkeJKP7/formResponse';
         formName = 'DFCL Bharat Warriors';
       } else if (team === 'Bharat Yodhas' && (currentLeague === 'DFCL' || selectedMatch.includes('DFCL'))) {
-        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdR-t6mJCVwc7L_gHv8pX2kN4nM9jZsAeIoU6rFyQhPvBgXoA/formResponse';
+        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfnxd6SdHiKWV7czP6b6476/formResponse';
         formName = 'DFCL Bharat Yodhas';
       } else if (team === 'Bharat Warriors' && (currentLeague === 'LECA' || selectedMatch.includes('LECA'))) {
         googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfJPlW8YLEJEZqeo-1beQ7__yvL_oUd2rZjUFuB4K7Xy6dNxg/formResponse';
@@ -460,11 +460,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Create form data for Google Form
+      // Create form data for Google Form with common entry IDs
       const googleFormData = new FormData();
-      googleFormData.append('entry.1045781291', name); // Player name field
-      googleFormData.append('entry.839337160', availability === 'yes' ? 'Yes' : 'No'); // Availability field
-      googleFormData.append('entry.1166974658', selectedMatch); // Match details field
+      googleFormData.append('entry.2005620554', name); // Common pattern for name field
+      googleFormData.append('entry.1065046570', availability === 'yes' ? 'Yes' : 'No'); // Common pattern for availability
+      googleFormData.append('entry.1166974658', selectedMatch); // Common pattern for match details
       
       // Show success immediately with debug info
       const submitBtn = compactForm.querySelector('button[type="submit"]');
