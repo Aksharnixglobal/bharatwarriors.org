@@ -194,8 +194,8 @@
         <p class="sub" style="margin:0">View matches by league using the tabs below, or see our complete schedule.</p>
       </div>
       <!-- Compact Availability Button -->
-      <button class="btn-compact" onclick="openAvailabilityModal()" style="background:var(--green);padding:10px 16px;font-size:13px;font-weight:600;border:none;border-radius:8px;color:#fff;cursor:pointer;transition:all 0.3s ease;white-space:nowrap">
-        📋 Player Availability
+      <button class="btn-compact" onclick="openAvailabilityModal()" style="background:var(--green);padding:12px 20px;font-size:14px;font-weight:700;border:none;border-radius:10px;color:#fff;cursor:pointer;transition:all 0.3s ease;white-space:nowrap;box-shadow:0 4px 12px rgba(46,125,50,0.3);">
+        ⚡ Confirm Availability
       </button>
     </div>
     
@@ -870,12 +870,11 @@
     
     <form id="compactAvailabilityForm">
       <div class="form-row">
-        <input type="text" name="playerName" required class="form-input" placeholder="Your Name" style="flex:2">
+        <input type="text" name="name" required class="form-input" placeholder="Your Name" style="flex:2">
         <select name="availability" required class="form-select" style="flex:1">
           <option value="">Status</option>
-          <option value="Available">✅ Available</option>
-          <option value="Not Available">❌ Not Available</option>
-          <option value="Maybe">🤔 Maybe</option>
+          <option value="yes">✅ Available</option>
+          <option value="no">❌ Not Available</option>
         </select>
       </div>
       
@@ -887,7 +886,7 @@
         </select>
       </div>
       
-      <input type="hidden" name="matchInfo" id="selectedMatchInfo">
+      <input type="hidden" name="selectedMatch" id="selectedMatchInfo">
       
       <div class="form-actions">
         <button type="button" class="btn-small" onclick="closeAvailabilityModal()" style="background:var(--muted)">

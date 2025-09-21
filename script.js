@@ -437,35 +437,77 @@ document.addEventListener('DOMContentLoaded', function() {
       const team = formData.get('team');
       const selectedMatch = formData.get('selectedMatch');
       
-      // Create availability message with match info
-      const teamText = team || 'Bharat Warriors Club';
-      const availabilityText = availability === 'yes' ? '✅ AVAILABLE' : '❌ NOT AVAILABLE';
+      // Get current league from active tab
+      const activeLeagueTab = document.querySelector('.league-tab-modal.active');
+      const currentLeague = activeLeagueTab ? activeLeagueTab.dataset.league : 'ALL';
       
-      const message = `🏏 AVAILABILITY UPDATE - ${teamText}
-
-Player: ${name}
-Match: ${selectedMatch}
-Status: ${availabilityText}
-
-Sent via bharatwarriors.org`;
+      // Determine which Google Form to use based on team and league
+      let googleFormUrl = '';
+      let formName = '';
       
-      // WhatsApp integration
-      const whatsappNumber = "15106851234";
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      if (team === 'Bharat Warriors' && (currentLeague === 'DFCL' || selectedMatch.includes('DFCL'))) {
+        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfp8_R5UJ5q1Wht4Ipy4BUKWGcyS3bxuOo1T5-Lj9QQKBgMWQ/formResponse';
+        formName = 'DFCL Bharat Warriors';
+      } else if (team === 'Bharat Yodhas' && (currentLeague === 'DFCL' || selectedMatch.includes('DFCL'))) {
+        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSdR-t6mJCVwc7L_gHv8pX2kN4nM9jZsAeIoU6rFyQhPvBgXoA/formResponse';
+        formName = 'DFCL Bharat Yodhas';
+      } else if (team === 'Bharat Warriors' && (currentLeague === 'LECA' || selectedMatch.includes('LECA'))) {
+        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfJPlW8YLEJEZqeo-1beQ7__yvL_oUd2rZjUFuB4K7Xy6dNxg/formResponse';
+        formName = 'LECA Bharat Warriors';
+      } else {
+        // Default fallback - you can set a default form or show error
+        alert('Please select a valid team and league combination.');
+        return;
+      }
       
-      // Show success and open WhatsApp
+      // Create form data for Google Form
+      const googleFormData = new FormData();
+      googleFormData.append('entry.1045781291', name); // Player name field
+      googleFormData.append('entry.839337160', availability === 'yes' ? 'Yes' : 'No'); // Availability field
+      googleFormData.append('entry.1166974658', selectedMatch); // Match details field
+      
+      // Show success immediately with debug info
       const submitBtn = compactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = '✅ Sending...';
+      submitBtn.textContent = `🔄 Testing ${formName}...`;
       submitBtn.disabled = true;
       
-      setTimeout(() => {
-        window.open(whatsappUrl, '_blank');
-        compactForm.reset();
-        closeAvailabilityModal();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }, 1000);
+      console.log('Form URL:', googleFormUrl);
+      console.log('Form Data:', {
+        name: name,
+        availability: availability,
+        selectedMatch: selectedMatch
+      });
+      
+      // Submit to appropriate Google Form
+      fetch(googleFormUrl, {
+        method: 'POST',
+        body: googleFormData,
+        mode: 'no-cors' // Required for Google Forms
+      }).then(() => {
+        // Success feedback
+        submitBtn.textContent = `✅ Submitted to ${formName}!`;
+        submitBtn.style.background = 'var(--green)';
+        
+        setTimeout(() => {
+          compactForm.reset();
+          closeAvailabilityModal();
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = 'var(--chakra)';
+          submitBtn.disabled = false;
+        }, 2500);
+      }).catch((error) => {
+        console.error('Form submission error:', error);
+        // Error feedback
+        submitBtn.textContent = '❌ Error - Check Console';
+        submitBtn.style.background = '#dc3545';
+        
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = 'var(--chakra)';
+          submitBtn.disabled = false;
+        }, 3000);
+      });
     });
   }
   
