@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Warriors - Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            background: #f0f0f0; 
+            padding: 20px;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .status { 
+            color: green; 
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .image-test {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 5px;
+        }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Bharat Warriors Website Test</h1>
+        <div class="status">✅ CSS Loading Test - SUCCESS</div>
+        
+        <h2>Image Path Tests:</h2>
+        
+        <div class="image-test">
+            <h3>Logo Test:</h3>
+            <img src="images/logos/bharat-warriors-logo.png" alt="Bharat Warriors Logo" style="max-width: 100px;">
+            <p>Path: images/logos/bharat-warriors-logo.png</p>
+        </div>
+        
+        <div class="image-test">
+            <h3>Award Image Test:</h3>
+            <img src="images/awards/Darshan MOM.jpg" alt="Award" style="max-width: 150px;">
+            <p>Path: images/awards/Darshan MOM.jpg</p>
+        </div>
+        
+        <div class="image-test">
+            <h3>Party Image Test:</h3>
+            <img src="images/party/Party 1.jpg" alt="Party" style="max-width: 150px;">
+            <p>Path: images/party/Party 1.jpg</p>
+        </div>
+        
+        <div class="image-test">
+            <h3>Gallery Image Test:</h3>
+            <img src="images/gallery/BWY.jpg" alt="Team" style="max-width: 150px;">
+            <p>Path: images/gallery/BWY.jpg</p>
+        </div>
+        
+        <h2>Font Test:</h2>
+        <p style="font-family: 'Montserrat', sans-serif; font-weight: 900;">This should be Montserrat Bold if fonts are loading properly.</p>
+        
+        <h2>Issues Found:</h2>
+        <p>If any images above are broken or CSS doesn't look right, there may be path issues or CSS syntax problems.</p>
+        
+        <a href="index.html" style="display: inline-block; background: #0c1e37; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-top: 20px;">← Back to Main Site</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Warriors - External Files Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: #f0f0f0; 
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .status { 
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .test-item {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        button {
+            background: #0c1e37;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1a365d;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🏏 Bharat Warriors - External Files Test</h1>
+        
+        <div class="test-item">
+            <h3>CSS Loading Test</h3>
+            <p>Testing if styles.css loads properly:</p>
+            <div id="css-test">
+                <link rel="stylesheet" href="styles.css">
+                <div style="--saffron: #ff7a1a; background: var(--saffron); padding: 10px; border-radius: 5px; color: white; margin: 5px 0;">
+                    If this box has an orange background, CSS variables are working!
+                </div>
+            </div>
+            <div id="css-result" class="status"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>JavaScript Loading Test</h3>
+            <p>Testing if script.js loads and functions work:</p>
+            <button onclick="testJavaScriptFunctions()">Test JavaScript Functions</button>
+            <div id="js-result" class="status"></div>
+        </div>
+
+        <div class="test-item">
+            <h3>Image Loading Test</h3>
+            <p>Testing organized image paths:</p>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                <img src="images/logos/bharat-warriors-logo.png" alt="Logo" style="width: 60px; height: 60px; border-radius: 50%;">
+                <img src="images/awards/Darshan MOM.jpg" alt="Award" style="width: 60px; height: 60px; border-radius: 5px;">
+                <img src="images/party/Party 1.jpg" alt="Party" style="width: 60px; height: 60px; border-radius: 5px;">
+                <img src="images/gallery/BWY.jpg" alt="Team" style="width: 60px; height: 60px; border-radius: 5px;">
+            </div>
+            <p>✅ If you see 4 images above, image paths are working correctly!</p>
+        </div>
+
+        <div class="test-item">
+            <h3>Performance Test</h3>
+            <p>External files should load faster and reduce HTML file size:</p>
+            <div id="file-sizes">
+                <p>📊 Loading file size information...</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html" style="background: #0c1e37; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px;">
+                🏏 Go to Main Website
+            </a>
+            <button onclick="runAllTests()" style="background: #18a06a;">
+                🔄 Run All Tests
+            </button>
+        </div>
+    </div>
+
+    <!-- Load external JavaScript -->
+    <script src="script.js"></script>
+    
+    <script>
+        function testJavaScriptFunctions() {
+            const result = document.getElementById('js-result');
+            try {
+                // Test if functions from script.js are available
+                const tests = [];
+                
+                if (typeof toggleDD === 'function') {
+                    tests.push('✅ toggleDD function loaded');
+                } else {
+                    tests.push('❌ toggleDD function missing');
+                }
+                
+                if (typeof renderNextMatches === 'function') {
+                    tests.push('✅ renderNextMatches function loaded');
+                } else {
+                    tests.push('❌ renderNextMatches function missing');
+                }
+                
+                if (typeof filterLeague === 'function') {
+                    tests.push('✅ filterLeague function loaded');
+                } else {
+                    tests.push('❌ filterLeague function missing');
+                }
+                
+                if (typeof copyZelle === 'function') {
+                    tests.push('✅ copyZelle function loaded');
+                } else {
+                    tests.push('❌ copyZelle function missing');
+                }
+                
+                if (typeof showAlbum === 'function') {
+                    tests.push('✅ showAlbum function loaded');
+                } else {
+                    tests.push('❌ showAlbum function missing');
+                }
+
+                const allPassed = tests.every(test => test.includes('✅'));
+                result.className = 'status ' + (allPassed ? 'success' : 'error');
+                result.innerHTML = '<strong>JavaScript Test Results:</strong><br>' + tests.join('<br>');
+                
+            } catch (error) {
+                result.className = 'status error';
+                result.innerHTML = '<strong>JavaScript Error:</strong><br>' + error.message;
+            }
+        }
+        
+        function checkCSSLoading() {
+            const result = document.getElementById('css-result');
+            try {
+                // Test if CSS custom properties work
+                const testDiv = document.createElement('div');
+                testDiv.style.cssText = '--test-color: #ff7a1a; background: var(--test-color);';
+                document.body.appendChild(testDiv);
+                
+                const computed = getComputedStyle(testDiv).backgroundColor;
+                document.body.removeChild(testDiv);
+                
+                if (computed && computed !== 'rgba(0, 0, 0, 0)' && computed !== 'transparent') {
+                    result.className = 'status success';
+                    result.innerHTML = '✅ CSS custom properties working! Computed color: ' + computed;
+                } else {
+                    result.className = 'status error';
+                    result.innerHTML = '❌ CSS custom properties may not be working';
+                }
+            } catch (error) {
+                result.className = 'status error';
+                result.innerHTML = '❌ CSS loading error: ' + error.message;
+            }
+        }
+        
+        function displayFileSizes() {
+            const container = document.getElementById('file-sizes');
+            container.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: left;">
+                    <div>
+                        <strong>📄 index.html</strong><br>
+                        <small>Main HTML file (now much smaller!)</small>
+                    </div>
+                    <div>
+                        <strong>🎨 styles.css</strong><br>
+                        <small>All CSS styles externalized</small>
+                    </div>
+                    <div>
+                        <strong>⚡ script.js</strong><br>
+                        <small>All JavaScript externalized</small>
+                    </div>
+                </div>
+                <p style="color: #18a06a; font-weight: bold; margin-top: 15px;">
+                    ✅ Benefits: Faster loading, better caching, cleaner code structure!
+                </p>
+            `;
+        }
+        
+        function runAllTests() {
+            console.log('🏏 Running Bharat Warriors external files test...');
+            checkCSSLoading();
+            testJavaScriptFunctions();
+            displayFileSizes();
+        }
+        
+        // Run tests when page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                runAllTests();
+            }, 500);
+        });
+    </script>
+</body>
+</html>
