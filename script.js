@@ -337,5 +337,145 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
   }, 3000);
 });
 
+/* Compact Availability Modal Functions */
+function openAvailabilityModal() {
+  const modal = document.getElementById('availabilityModal');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  
+  // Load next match when modal opens
+  loadNextMatchForModal();
+}
+
+function closeAvailabilityModal() {
+  const modal = document.getElementById('availabilityModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* League Switching in Modal */
+function switchLeague(league) {
+  // Update active tab
+  document.querySelectorAll('.league-tab-modal').forEach(tab => {
+    tab.classList.remove('active');
+    if (tab.dataset.league === league) {
+      tab.classList.add('active');
+    }
+  });
+  
+  // Load matches for selected league
+  loadNextMatchForModal(league);
+}
+
+/* Load Next Match for Modal */
+function loadNextMatchForModal(league = 'ALL') {
+  const modalNextMatch = document.getElementById('modalNextMatch');
+  const matchInfo = document.getElementById('selectedMatchInfo');
+  
+  // Get upcoming matches from the fixtures table
+  const upcomingMatches = [];
+  const currentDate = new Date();
+  
+  // Parse matches from the fixtures table
+  const fixtureRows = document.querySelectorAll('#fxTable tbody tr');
+  fixtureRows.forEach(row => {
+    const dateCell = row.cells[0];
+    const opponentCell = row.cells[1];
+    const groundCell = row.cells[2];
+    const dfclCell = row.cells[3];
+    const lecaCell = row.cells[4];
+    const timeCell = row.cells[6];
+    
+    if (dateCell && opponentCell) {
+      const matchDate = new Date(row.dataset.date || dateCell.textContent);
+      
+      // Only include future matches
+      if (matchDate >= currentDate) {
+        const matchLeague = dfclCell.textContent.includes('DFCL') ? 'DFCL' : 
+                          lecaCell.textContent.includes('LECA') ? 'LECA' : 'OTHER';
+        
+        if (league === 'ALL' || league === matchLeague) {
+          upcomingMatches.push({
+            date: matchDate,
+            opponent: opponentCell.textContent.trim(),
+            ground: groundCell.textContent.trim(),
+            league: matchLeague,
+            time: timeCell.textContent.trim(),
+            dateText: dateCell.textContent.trim()
+          });
+        }
+      }
+    }
+  });
+  
+  // Sort by date and get the next match
+  upcomingMatches.sort((a, b) => a.date - b.date);
+  
+  if (upcomingMatches.length > 0) {
+    const nextMatch = upcomingMatches[0];
+    const leagueEmoji = nextMatch.league === 'DFCL' ? '🏆' : nextMatch.league === 'LECA' ? '⚡' : '🏏';
+    modalNextMatch.innerHTML = `${leagueEmoji} ${nextMatch.dateText} - ${nextMatch.opponent}<br>
+                               <small style="color:var(--muted)">${nextMatch.ground} • ${nextMatch.time}</small>`;
+    matchInfo.value = `${nextMatch.dateText} - ${nextMatch.opponent} (${nextMatch.league})`;
+  } else {
+    const leagueText = league === 'DFCL' ? 'DFCL' : league === 'LECA' ? 'LECA' : '';
+    modalNextMatch.innerHTML = `No upcoming ${leagueText} matches found`;
+    matchInfo.value = `No upcoming ${leagueText} matches`;
+  }
+}
+
+/* Compact Availability Form Handling */
+document.addEventListener('DOMContentLoaded', function() {
+  const compactForm = document.getElementById('compactAvailabilityForm');
+  if (compactForm) {
+    compactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(compactForm);
+      const name = formData.get('name');
+      const availability = formData.get('availability');
+      const team = formData.get('team');
+      const selectedMatch = formData.get('selectedMatch');
+      
+      // Create availability message with match info
+      const teamText = team || 'Bharat Warriors Club';
+      const availabilityText = availability === 'yes' ? '✅ AVAILABLE' : '❌ NOT AVAILABLE';
+      
+      const message = `🏏 AVAILABILITY UPDATE - ${teamText}
+
+Player: ${name}
+Match: ${selectedMatch}
+Status: ${availabilityText}
+
+Sent via bharatwarriors.org`;
+      
+      // WhatsApp integration
+      const whatsappNumber = "15106851234";
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      
+      // Show success and open WhatsApp
+      const submitBtn = compactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = '✅ Sending...';
+      submitBtn.disabled = true;
+      
+      setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+        compactForm.reset();
+        closeAvailabilityModal();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }, 1000);
+    });
+  }
+  
+  // Close modal on backdrop click
+  document.getElementById('availabilityModal')?.addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeAvailabilityModal();
+    }
+  });
+});
+
 /* Add loading animation class to body when page loads */
 document.body.classList.add('loading');
