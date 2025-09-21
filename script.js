@@ -79,13 +79,13 @@ function parseRowDateTime(tr) {
   return new Date(y, m - 1, d, hours, minutes, 0, 0);
 }
 
-/* Enhanced upcoming matches display */
+/* Enhanced upcoming matches display - Show only next match */
 function renderNextMatches() {
   const rows = Array.from(document.querySelectorAll('#fxTable tbody tr'))
     .filter(tr => tr.style.display !== 'none');
 
-  // Use current date (September 19, 2025)
-  const today = new Date(2025, 8, 19); // Month is 0-indexed, so 8 = September
+  // Use current date (September 20, 2025)
+  const today = new Date(2025, 8, 20); // Month is 0-indexed, so 8 = September
   today.setHours(0, 0, 0, 0);
 
   const mapped = rows.map(tr => ({tr, dt: parseRowDateTime(tr)}))
@@ -96,7 +96,8 @@ function renderNextMatches() {
     })
     .sort((a, b) => a.dt - b.dt);
 
-  const upcoming = mapped.slice(0, 3).map(o => {
+  // Show only the very next upcoming match (limit to 1)
+  const nextMatch = mapped.slice(0, 1).map(o => {
     const tr = o.tr;
     const d = tr.children[0].textContent.trim();
     const opp = tr.children[1].textContent.trim();
@@ -110,7 +111,8 @@ function renderNextMatches() {
     const daysUntil = Math.ceil((matchDate - today) / (1000 * 60 * 60 * 24));
     const daysBadge = daysUntil === 0 ? ' <span style="color:var(--saffron);font-weight:900">TODAY!</span>' :
                      daysUntil === 1 ? ' <span style="color:var(--green);font-weight:900">TOMORROW</span>' :
-                     daysUntil <= 7 ? ` <span style="color:var(--blue);font-weight:700">in ${daysUntil} days</span>` : '';
+                     daysUntil <= 7 ? ` <span style="color:var(--blue);font-weight:700">in ${daysUntil} days</span>` : 
+                     ` <span style="color:var(--muted);font-weight:600">in ${daysUntil} days</span>`;
     
     return `<div class="next-item">
       <span class="lg">${lg}</span> ${d}${timeHtml}${daysBadge}
@@ -121,13 +123,13 @@ function renderNextMatches() {
 
   const container = document.getElementById('next-matches');
   if (container) {
-    container.innerHTML = (upcoming.length ? 
-      upcoming.join('') : 
+    container.innerHTML = (nextMatch.length ? 
+      nextMatch.join('') : 
       '<div class="next-item">No upcoming matches scheduled. Check back soon!</div>'
     );
   }
   
-  console.log(`Found ${upcoming.length} upcoming matches from ${mapped.length} total future matches`);
+  console.log(`Showing next upcoming match from ${mapped.length} total future matches`);
 }
 
 /* Enhance time display in table */
