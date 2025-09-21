@@ -446,13 +446,16 @@ document.addEventListener('DOMContentLoaded', function() {
       let formName = '';
       
       if (team === 'Bharat Warriors' && (currentLeague === 'DFCL' || selectedMatch.includes('DFCL'))) {
-        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfCvw6k6U8w8QZOlF6bxFGsHUqfRE4JwfrkeJKP7/formResponse';
+        // DFCL Bharat Warriors: https://forms.gle/HUqfRE4JwfrkeJKP7
+        googleFormUrl = 'https://forms.gle/HUqfRE4JwfrkeJKP7';
         formName = 'DFCL Bharat Warriors';
       } else if (team === 'Bharat Yodhas' && (currentLeague === 'DFCL' || selectedMatch.includes('DFCL'))) {
-        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfnxd6SdHiKWV7czP6b6476/formResponse';
+        // DFCL Bharat Yodhas: https://forms.gle/SdHiKWV7czP6b6476
+        googleFormUrl = 'https://forms.gle/SdHiKWV7czP6b6476';
         formName = 'DFCL Bharat Yodhas';
       } else if (team === 'Bharat Warriors' && (currentLeague === 'LECA' || selectedMatch.includes('LECA'))) {
-        googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSfJPlW8YLEJEZqeo-1beQ7__yvL_oUd2rZjUFuB4K7Xy6dNxg/formResponse';
+        // LECA Bharat Warriors: https://forms.gle/ujda4fdHVnba2JZj6
+        googleFormUrl = 'https://forms.gle/ujda4fdHVnba2JZj6';
         formName = 'LECA Bharat Warriors';
       } else {
         // Default fallback - you can set a default form or show error
@@ -460,34 +463,26 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Create form data for Google Form with common entry IDs
-      const googleFormData = new FormData();
-      googleFormData.append('entry.2005620554', name); // Common pattern for name field
-      googleFormData.append('entry.1065046570', availability === 'yes' ? 'Yes' : 'No'); // Common pattern for availability
-      googleFormData.append('entry.1166974658', selectedMatch); // Common pattern for match details
-      
-      // Show success immediately with debug info
+      // Show feedback and open Google Form
       const submitBtn = compactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      submitBtn.textContent = `🔄 Testing ${formName}...`;
+      submitBtn.textContent = `📝 Opening ${formName}...`;
       submitBtn.disabled = true;
       
-      console.log('Form URL:', googleFormUrl);
-      console.log('Form Data:', {
-        name: name,
-        availability: availability,
-        selectedMatch: selectedMatch
-      });
+      // Create a message to copy to clipboard or display
+      const message = `Player: ${name}\nTeam: ${team}\nAvailability: ${availability === 'yes' ? 'Available' : 'Not Available'}\nMatch: ${selectedMatch}`;
       
-      // Submit to appropriate Google Form
-      fetch(googleFormUrl, {
-        method: 'POST',
-        body: googleFormData,
-        mode: 'no-cors' // Required for Google Forms
-      }).then(() => {
-        // Success feedback
-        submitBtn.textContent = `✅ Submitted to ${formName}!`;
+      console.log('Form Details:', message);
+      
+      // Open the Google Form
+      setTimeout(() => {
+        window.open(googleFormUrl, '_blank');
+        
+        submitBtn.textContent = `✅ Opened ${formName}`;
         submitBtn.style.background = 'var(--green)';
+        
+        // Show instructions to user
+        alert(`Google Form opened! Please fill in:\n\nName: ${name}\nAvailability: ${availability === 'yes' ? 'Available' : 'Not Available'}\n\nThen click Submit in the form.`);
         
         setTimeout(() => {
           compactForm.reset();
@@ -495,19 +490,8 @@ document.addEventListener('DOMContentLoaded', function() {
           submitBtn.textContent = originalText;
           submitBtn.style.background = 'var(--chakra)';
           submitBtn.disabled = false;
-        }, 2500);
-      }).catch((error) => {
-        console.error('Form submission error:', error);
-        // Error feedback
-        submitBtn.textContent = '❌ Error - Check Console';
-        submitBtn.style.background = '#dc3545';
-        
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.style.background = 'var(--chakra)';
-          submitBtn.disabled = false;
-        }, 3000);
-      });
+        }, 2000);
+      }, 500);
     });
   }
   
