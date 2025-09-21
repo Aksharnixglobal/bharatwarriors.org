@@ -505,3 +505,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Add loading animation class to body when page loads */
 document.body.classList.add('loading');
+
+/* Hero Carousel Functionality */
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const indicators = document.querySelectorAll('.indicator');
+
+function showSlide(index) {
+  // Hide all slides
+  slides.forEach(slide => slide.classList.remove('active'));
+  indicators.forEach(indicator => indicator.classList.remove('active'));
+  
+  // Show current slide
+  slides[index].classList.add('active');
+  indicators[index].classList.add('active');
+}
+
+function changeSlide(direction) {
+  currentSlide += direction;
+  
+  if (currentSlide >= slides.length) {
+    currentSlide = 0;
+  } else if (currentSlide < 0) {
+    currentSlide = slides.length - 1;
+  }
+  
+  showSlide(currentSlide);
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  showSlide(currentSlide);
+}
+
+// Auto-advance carousel every 6 seconds
+function startCarousel() {
+  setInterval(() => {
+    changeSlide(1);
+  }, 6000);
+}
+
+// Initialize carousel when DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+  if (slides.length > 0) {
+    showSlide(0);
+    startCarousel();
+  }
+});

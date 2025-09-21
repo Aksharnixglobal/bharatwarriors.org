@@ -73,22 +73,81 @@
   </div>
 </header>
 
-<section class="hero flag">
-  <div class="wrap container">
-    <h1 class="h-title">Bharat <span class="accent">Warriors</span> Cricket Club</h1>
-    <p class="lead">Passion • Teamwork • Spirit. <strong>Har Har Mahadev 🕉</strong></p>
-
-    <div class="chips">
-      <span class="chip">🏏 Discipline</span>
-      <span class="chip">🤝 Unity</span>
-      <span class="chip">⚡ Energy</span>
-      <span class="chip">🏆 Champions</span>
+<section class="hero-carousel">
+  <div class="carousel-container">
+    <div class="carousel-slides">
+      <!-- Slide 1 -->
+      <div class="carousel-slide active">
+        <img src="images/hero/bw-team-photo.jpg" alt="Bharat Warriors Championship Team" class="carousel-image">
+        <div class="carousel-overlay">
+          <div class="container">
+            <div class="carousel-content">
+              <h1 class="carousel-title">PASSION MEETS <span class="accent">PERFORMANCE</span></h1>
+              <p class="carousel-subtitle">Building cricket excellence in the heart of Texas</p>
+              <div class="carousel-chips">
+                <span class="chip">🏏 Discipline</span>
+                <span class="chip">🤝 Unity</span>
+                <span class="chip">⚡ Energy</span>
+                <span class="chip">🏆 Champions</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <img src="images/hero/bw-team-photo.jpg" alt="Bharat Warriors Championship Team" class="carousel-image">
+        <div class="carousel-overlay">
+          <div class="container">
+            <div class="carousel-content">
+              <h1 class="carousel-title">EYES ON THE <span class="accent">PRIZE</span></h1>
+              <p class="carousel-subtitle">Where dedication meets victory on the pitch</p>
+              <div class="carousel-action">
+                <a href="#gallery" class="btn-carousel">View Gallery</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Slide 3 -->
+      <div class="carousel-slide">
+        <img src="images/hero/bw-team-photo.jpg" alt="Bharat Warriors Championship Team" class="carousel-image">
+        <div class="carousel-overlay">
+          <div class="container">
+            <div class="carousel-content">
+              <h1 class="carousel-title">UNITED WE <span class="accent">CONQUER</span></h1>
+              <p class="carousel-subtitle">The brotherhood that defines Bharat Warriors</p>
+              <div class="carousel-action">
+                <a href="#team" class="btn-carousel">Meet The Team</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="card next">
-      <p style="font-weight:800;margin:0 0 10px;font-size:18px">Next Match</p>
-      <div id="next-matches" class="next-list"><div class="next-item">Loading next match...</div></div>
-      <div style="margin-top:16px"><a class="btn" href="#fixtures">View Full Schedule</a></div>
+    
+    <!-- Navigation -->
+    <button class="carousel-nav prev" onclick="changeSlide(-1)">‹</button>
+    <button class="carousel-nav next" onclick="changeSlide(1)">›</button>
+    
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button class="indicator active" onclick="goToSlide(0)"></button>
+      <button class="indicator" onclick="goToSlide(1)"></button>
+      <button class="indicator" onclick="goToSlide(2)"></button>
+    </div>
+  </div>
+  
+  <!-- Next Match Card (floating over carousel) -->
+  <div class="floating-next-match">
+    <div class="container">
+      <div class="card next">
+        <p style="font-weight:800;margin:0 0 10px;font-size:18px">Next Match</p>
+        <div id="next-matches" class="next-list"><div class="next-item">Loading next match...</div></div>
+        <div style="margin-top:16px"><a class="btn" href="#fixtures">View Full Schedule</a></div>
+      </div>
     </div>
   </div>
 </section>
@@ -149,34 +208,34 @@
 
 <section id="about" class="section">
   <div class="container">
-    <h2>About Our Team</h2>
+    <h2>Where Champions Are Made</h2>
     <p class="sub">
-      The Bharat Warriors are a dynamic cricket team built on passion, teamwork, and a warrior spirit. We play hard, play fair, and always respect the game.
-      <br><strong>Motto:</strong> Play Hard. Play Fair. Play as Warriors. — Har Har Mahadev 🕉
+      Excellence isn't just our goal—it's our tradition. The Bharat Warriors are more than a cricket team; we're a brotherhood forged in passion, united in purpose, and relentless in pursuit of greatness.
+      <br><strong>Our Philosophy:</strong> Every match is a battle. Every victory is earned. Every warrior plays with honor. — Har Har Mahadev 🕉
     </p>
 
     <div class="stats-grid">
       <div class="stat-card">
-        <div class="stat-number">2</div>
-        <div class="stat-label">Active Leagues</div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">Championship Leagues</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">70+</div>
-        <div class="stat-label">Team Players</div>
+        <div class="stat-label">Elite Warriors</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">50+</div>
-        <div class="stat-label">Matches Played</div>
+        <div class="stat-label">Battles Won</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">3</div>
-        <div class="stat-label">Sponsor Partners</div>
+        <div class="stat-label">Trusted Partners</div>
       </div>
     </div>
 
     <div class="achievement">
-      <div class="achievement-title">🏆 Recent DFCL Victory</div>
-      <div class="achievement-desc">BW won by 16 runs vs Dallas Renegades (BW 152/10, DR 136/9) — Sep 15, 2025</div>
+      <div class="achievement-title">🏆 Latest Championship Glory</div>
+      <div class="achievement-desc">BW dominated by 16 runs vs Dallas Renegades (BW 152/10, DR 136/9) — Sep 15, 2025</div>
     </div>
 
     <div class="achievement">
@@ -584,8 +643,8 @@
 
 <section id="gallery" class="section">
   <div class="container">
-    <h2>Team Gallery</h2>
-    <p class="sub">Capturing our journey, victories, and team spirit through memorable moments.</p>
+    <h2>Moments of Glory</h2>
+    <p class="sub">Every victory, every celebration, every warrior moment—captured forever. These images tell the story of our relentless pursuit of cricket excellence.</p>
 
     <div class="gallery-controls">
       <button class="gallery-btn active" onclick="showAlbum('awards')">🏆 Awards & Recognition</button>
@@ -682,44 +741,69 @@
 
 <section id="sponsors" class="section">
   <div class="container">
-    <h2>Our Sponsors</h2>
-    <p class="sub">We're grateful to our sponsor partners who support our journey and help us achieve excellence.</p>
+    <h2>Our Trusted Partners</h2>
+    <p class="sub">We're grateful to our sponsor partners who support our journey and help us achieve excellence in cricket.</p>
     
-    <div class="s-row">
-      <div id="sponsor-infinity" class="card sponsor">
+    <div class="sponsor-grid">
+      <div id="sponsor-infinity" class="sponsor">
         <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener">
-          <div class="logo-frame">
-            <img src="images/logos/infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
+          <div class="logo-container">
+            <div class="logo-frame">
+              <img src="images/logos/infinity-legacy-logo.jpg" alt="Infinity Legacy Group">
+            </div>
+          </div>
+          <div class="sponsor-info">
+            <h3>Infinity Legacy Group</h3>
+            <p class="sponsor-description">Leading real estate and investment company dedicated to building lasting legacies for families and communities.</p>
+            <span class="sponsor-link">Visit Website →</span>
           </div>
         </a>
       </div>
-      <div id="sponsor-aksharnix" class="card sponsor">
+      
+      <div id="sponsor-aksharnix" class="sponsor">
         <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
-          <div class="logo-frame">
-            <img src="images/logos/aksharnix-global-logo.png" alt="AksharNix Global">
+          <div class="logo-container">
+            <div class="logo-frame">
+              <img src="images/logos/aksharnix-global-logo.png" alt="AksharNix Global">
+            </div>
+          </div>
+          <div class="sponsor-info">
+            <h3>AksharNix Global</h3>
+            <p class="sponsor-description">Innovative technology solutions provider specializing in digital transformation and software development services.</p>
+            <span class="sponsor-link">Learn More →</span>
           </div>
         </a>
       </div>
-      <div id="sponsor-pizza" class="card sponsor">
+      
+      <div id="sponsor-pizza" class="sponsor">
         <a href="https://www.pizzatwist.com/" target="_blank" rel="noopener">
-          <div class="logo-frame">
-            <img src="images/logos/pizza-twist-logo.png" alt="Pizza Twist">
+          <div class="logo-container">
+            <div class="logo-frame">
+              <img src="images/logos/pizza-twist-logo.png" alt="Pizza Twist">
+            </div>
+          </div>
+          <div class="sponsor-info">
+            <h3>Pizza Twist</h3>
+            <p class="sponsor-description">Authentic Indian fusion pizza restaurant bringing unique flavors and exceptional dining experiences to the community.</p>
+            <span class="sponsor-link">Order Now →</span>
           </div>
         </a>
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:40px">
-      <p style="color:var(--muted);margin-bottom:16px">Interested in sponsoring the Bharat Warriors?</p>
+    <div class="become-sponsor">
+      <h3>Partner With Us</h3>
+      <p>Join our journey and support the Bharat Warriors cricket community</p>
       <a href="#contact" class="btn">Become a Sponsor</a>
     </div>
   </div>
 </section>
+</section>
 
 <section id="donate" class="section">
   <div class="container">
-    <h2>Support Our Team</h2>
-    <p class="sub">Help the Bharat Warriors continue our journey to excellence. Every contribution makes a difference! 🙏</p>
+    <h2>Fuel Our Warriors</h2>
+    <p class="sub">Champions aren't just made on the field—they're supported by a community that believes in greatness. Your contribution helps us write cricket history! 🏆</p>
 
     <div class="card don-card">
       <div class="don-grid">
@@ -750,8 +834,8 @@
 
 <section id="contact" class="section">
   <div class="container">
-    <h2>Get in Touch</h2>
-    <p class="sub">Have questions? Want to join our team? Interested in sponsorship? We'd love to hear from you!</p>
+    <h2>Join the Warriors</h2>
+    <p class="sub">Ready to be part of something extraordinary? Whether you're a player, supporter, or partner—every warrior has a place in our story!</p>
     
     <div class="card contact-form" style="padding:28px">
       <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST">
@@ -810,24 +894,101 @@
   </div>
 </section>
 
-<footer>
+<footer class="enhanced-footer">
   <div class="container">
-    <div style="margin-bottom:12px">
-      <strong>Bharat Warriors Cricket Club</strong> — Representing DFW with pride since 2024
+    <div class="footer-content">
+      <!-- Club Info Section -->
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="images/logos/bharat-warriors-logo.png" alt="Bharat Warriors" class="footer-logo-img">
+          <div class="footer-brand">
+            <h3>Bharat Warriors</h3>
+            <p>Cricket Club</p>
+          </div>
+        </div>
+        <p class="footer-tagline">Representing DFW with pride since 2024. Where passion meets performance and dreams become reality.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5z"/></svg>
+          </a>
+          <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.378 14.192 5 15.115 5H18V0h-3.808C10.596 0 9 1.583 9 4.615V8z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#teams">Our Teams</a></li>
+          <li><a href="#fixtures">Fixtures</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#awards">Awards</a></li>
+          <li><a href="#availability">Join Team</a></li>
+        </ul>
+      </div>
+
+      <!-- Leagues -->
+      <div class="footer-section">
+        <h4>Our Leagues</h4>
+        <ul class="footer-links">
+          <li><a href="#teams">DFCL Bharat Warriors</a></li>
+          <li><a href="#teams">DFCL Bharat Yodhas</a></li>
+          <li><a href="#teams">LECA Bharat Warriors</a></li>
+        </ul>
+        <h4 style="margin-top: 20px;">Support</h4>
+        <ul class="footer-links">
+          <li><a href="#sponsors">Our Sponsors</a></li>
+          <li><a href="#donations">Donate</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h4>Get In Touch</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+            <a href="#contact">Send us a message</a>
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span>Dallas-Fort Worth, Texas</span>
+          </div>
+        </div>
+        
+        <div class="newsletter">
+          <h5>Stay Updated</h5>
+          <p>Follow our social media for latest updates, match results, and team news.</p>
+        </div>
+      </div>
     </div>
-    <div style="margin-bottom:16px">
-      Site created with ❤️ by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a>
-    </div>
-    <div class="foot-social">
-      <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5z"/></svg>
-      </a>
-      <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" target="_blank" rel="noopener" aria-label="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3.1 3.1 0 0 0-2.2-2.2C19.2 3.5 12 3.5 12 3.5s-7.2 0-9.3.5A3.1 3.1 0 0 0 .5 6.2V17.8a3.1 3.1 0 0 0 2.2 2.2C4.8 20.5 12 20.5 12 20.5s7.2 0 9.3-.5a3.1 3.1 0 0 0 2.2-2.2V6.2zM9.8 15.5V8.5l6.2 3.5z"/></svg>
-      </a>
-    </div>
-    <div style="margin-top:16px;font-size:14px;color:#94a3b8">
-      © 2024 Bharat Warriors Cricket Club. All rights reserved.
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <p>&copy; 2024 Bharat Warriors Cricket Club. All rights reserved.</p>
+        <div class="footer-links-bottom">
+          <a href="#" onclick="alert('Privacy Policy page coming soon!')">Privacy Policy</a>
+          <span>•</span>
+          <a href="#" onclick="alert('Terms of Service page coming soon!')">Terms of Service</a>
+          <span>•</span>
+          <span>Site by <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">AksharNix Global</a></span>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
