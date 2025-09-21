@@ -349,116 +349,85 @@
     <p class="sub">Capturing our journey, victories, and team spirit through memorable moments.</p>
 
     <div class="gallery-controls">
-      <button class="gallery-btn active" onclick="showAlbum('awards')" data-album="awards">🏆 Awards & Recognition</button>
-      <button class="gallery-btn" onclick="showAlbum('party')" data-album="party">🎉 Team Celebrations</button>
-      <button class="gallery-btn" onclick="showAlbum('intro')" data-album="intro">👥 Team Introductions</button>
+      <button class="gallery-btn active" onclick="showAlbum('awards')">🏆 Awards & Recognition</button>
+      <button class="gallery-btn" onclick="showAlbum('party')">🎉 Team Celebrations</button>
+      <button class="gallery-btn" onclick="showAlbum('intro')">👥 Team Introductions</button>
     </div>
 
-    <!-- Carousel Container -->
-    <div class="carousel-container">
-      <div class="carousel-wrapper">
-        <!-- Awards Album -->
-        <div id="album-awards" class="carousel-album active">
-          <div class="carousel-track" id="track-awards">
-            <div class="carousel-slide" data-img="images/awards/Darshan MOM.jpg" data-cap="Darshan — Man of the Match">
-              <img src="images/awards/Darshan MOM.jpg" alt="Darshan — Man of the Match">
-              <div class="slide-caption">Darshan — Man of the Match</div>
-            </div>
-            <div class="carousel-slide" data-img="images/awards/Gaurav MOM.jpg" data-cap="Gaurav — Man of the Match">
-              <img src="images/awards/Gaurav MOM.jpg" alt="Gaurav — Man of the Match">
-              <div class="slide-caption">Gaurav — Man of the Match</div>
-            </div>
-            <div class="carousel-slide" data-img="images/awards/Raj MOM.jpg" data-cap="Raj — Man of the Match">
-              <img src="images/awards/Raj MOM.jpg" alt="Raj — Man of the Match">
-              <div class="slide-caption">Raj — Man of the Match</div>
-            </div>
-            <div class="carousel-slide" data-img="images/awards/Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
-              <img src="images/awards/Bhavik Best Fielder DFCL.jpg" alt="Bhavik — Best Fielder (DFCL)">
-              <div class="slide-caption">Bhavik — Best Fielder (DFCL)</div>
-            </div>
-            <div class="carousel-slide" data-img="images/awards/Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
-              <img src="images/awards/Darshan Best bowler DFCL.jpg" alt="Darshan — Best Bowler (DFCL)">
-              <div class="slide-caption">Darshan — Best Bowler (DFCL)</div>
-            </div>
-            <div class="carousel-slide" data-img="images/awards/Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
-              <img src="images/awards/Gaurav Best Bowler DFCL.jpg" alt="Gaurav — Best Bowler (DFCL)">
-              <div class="slide-caption">Gaurav — Best Bowler (DFCL)</div>
-            </div>
-            <div class="carousel-slide" data-img="images/awards/Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
-              <img src="images/awards/Vadik Best fielder LECA.jpg" alt="Vadik — Best Fielder (LECA)">
-              <div class="slide-caption">Vadik — Best Fielder (LECA)</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Party Album -->
-        <div id="album-party" class="carousel-album">
-          <div class="carousel-track" id="track-party">
-            <div class="carousel-slide" data-img="images/party/Party 1.jpg" data-cap="Team Celebration — Victory Party">
-              <img src="images/party/Party 1.jpg" alt="Team Celebration — Victory Party">
-              <div class="slide-caption">Team Celebration — Victory Party</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 2.jpg" data-cap="Team Bonding — Off Field">
-              <img src="images/party/Party 2.jpg" alt="Team Bonding — Off Field">
-              <div class="slide-caption">Team Bonding — Off Field</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 3.jpg" data-cap="Warriors Together — Team Unity">
-              <img src="images/party/Party 3.jpg" alt="Warriors Together — Team Unity">
-              <div class="slide-caption">Warriors Together — Team Unity</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 4.jpg" data-cap="Celebration Time — Post Match">
-              <img src="images/party/Party 4.jpg" alt="Celebration Time — Post Match">
-              <div class="slide-caption">Celebration Time — Post Match</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 5.jpg" data-cap="Team Fellowship — Building Bonds">
-              <img src="images/party/Party 5.jpg" alt="Team Fellowship — Building Bonds">
-              <div class="slide-caption">Team Fellowship — Building Bonds</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 6.jpg" data-cap="Warriors United — Team Spirit">
-              <img src="images/party/Party 6.jpg" alt="Warriors United — Team Spirit">
-              <div class="slide-caption">Warriors United — Team Spirit</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 7.jpg" data-cap="Victory Celebration — Champions">
-              <img src="images/party/Party 7.jpg" alt="Victory Celebration — Champions">
-              <div class="slide-caption">Victory Celebration — Champions</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 8.jpg" data-cap="Team Gathering — Friendship">
-              <img src="images/party/Party 8.jpg" alt="Team Gathering — Friendship">
-              <div class="slide-caption">Team Gathering — Friendship</div>
-            </div>
-            <div class="carousel-slide" data-img="images/party/Party 9.jpg" data-cap="Warriors Family — Together Strong">
-              <img src="images/party/Party 9.jpg" alt="Warriors Family — Together Strong">
-              <div class="slide-caption">Warriors Family — Together Strong</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Team Intro Album -->
-        <div id="album-intro" class="carousel-album">
-          <div class="carousel-track" id="track-intro">
-            <div class="carousel-slide" data-img="images/gallery/BWY.jpg" data-cap="Bharat Warriors — Team Photo">
-              <img src="images/gallery/BWY.jpg" alt="Bharat Warriors — Team Photo">
-              <div class="slide-caption">Bharat Warriors — Team Photo</div>
-            </div>
-          </div>
-        </div>
+    <div id="album-awards" class="gallery-grid">
+      <div class="gallery-item" data-img="images/awards/Darshan MOM.jpg" data-cap="Darshan — Man of the Match">
+        <span class="ph" style="background-image:url('images/awards/Darshan MOM.jpg')"></span>
+        <span class="cap">Darshan — Man of the Match</span>
       </div>
-      
-      <!-- Navigation Arrows -->
-      <button class="carousel-nav carousel-prev" onclick="moveCarousel('prev')" aria-label="Previous image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M15 18l-6-6 6-6"/>
-        </svg>
-      </button>
-      <button class="carousel-nav carousel-next" onclick="moveCarousel('next')" aria-label="Next image">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M9 18l6-6-6-6"/>
-        </svg>
-      </button>
-      
-      <!-- Dots Navigation -->
-      <div class="carousel-dots" id="carousel-dots">
-        <!-- Dots will be generated by JavaScript -->
+      <div class="gallery-item" data-img="images/awards/Gaurav MOM.jpg" data-cap="Gaurav — Man of the Match">
+        <span class="ph" style="background-image:url('images/awards/Gaurav MOM.jpg')"></span>
+        <span class="cap">Gaurav — Man of the Match</span>
+      </div>
+      <div class="gallery-item" data-img="images/awards/Raj MOM.jpg" data-cap="Raj — Man of the Match">
+        <span class="ph" style="background-image:url('images/awards/Raj MOM.jpg')"></span>
+        <span class="cap">Raj — Man of the Match</span>
+      </div>
+      <div class="gallery-item" data-img="images/awards/Bhavik Best Fielder DFCL.jpg" data-cap="Bhavik — Best Fielder (DFCL)">
+        <span class="ph" style="background-image:url('images/awards/Bhavik Best Fielder DFCL.jpg')"></span>
+        <span class="cap">Bhavik — Best Fielder (DFCL)</span>
+      </div>
+      <div class="gallery-item" data-img="images/awards/Darshan Best bowler DFCL.jpg" data-cap="Darshan — Best Bowler (DFCL)">
+        <span class="ph" style="background-image:url('images/awards/Darshan Best bowler DFCL.jpg')"></span>
+        <span class="cap">Darshan — Best Bowler (DFCL)</span>
+      </div>
+      <div class="gallery-item" data-img="images/awards/Gaurav Best Bowler DFCL.jpg" data-cap="Gaurav — Best Bowler (DFCL)">
+        <span class="ph" style="background-image:url('images/awards/Gaurav Best Bowler DFCL.jpg')"></span>
+        <span class="cap">Gaurav — Best Bowler (DFCL)</span>
+      </div>
+      <div class="gallery-item" data-img="images/awards/Vadik Best fielder LECA.jpg" data-cap="Vadik — Best Fielder (LECA)">
+        <span class="ph" style="background-image:url('images/awards/Vadik Best fielder LECA.jpg')"></span>
+        <span class="cap">Vadik — Best Fielder (LECA)</span>
+      </div>
+    </div>
+
+    <div id="album-party" class="gallery-grid" style="display:none">
+      <div class="gallery-item" data-img="images/party/Party 1.jpg" data-cap="Team Celebration — Victory Party">
+        <span class="ph" style="background-image:url('images/party/Party 1.jpg')"></span>
+        <span class="cap">Team Celebration — Victory Party</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 2.jpg" data-cap="Team Bonding — Off Field">
+        <span class="ph" style="background-image:url('images/party/Party 2.jpg')"></span>
+        <span class="cap">Team Bonding — Off Field</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 3.jpg" data-cap="Warriors Together — Team Unity">
+        <span class="ph" style="background-image:url('images/party/Party 3.jpg')"></span>
+        <span class="cap">Warriors Together — Team Unity</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 4.jpg" data-cap="Celebration Time — Post Match">
+        <span class="ph" style="background-image:url('images/party/Party 4.jpg')"></span>
+        <span class="cap">Celebration Time — Post Match</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 5.jpg" data-cap="Team Fellowship — Building Bonds">
+        <span class="ph" style="background-image:url('images/party/Party 5.jpg')"></span>
+        <span class="cap">Team Fellowship — Building Bonds</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 6.jpg" data-cap="Warriors United — Team Spirit">
+        <span class="ph" style="background-image:url('images/party/Party 6.jpg')"></span>
+        <span class="cap">Warriors United — Team Spirit</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 7.jpg" data-cap="Victory Celebration — Champions">
+        <span class="ph" style="background-image:url('images/party/Party 7.jpg')"></span>
+        <span class="cap">Victory Celebration — Champions</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 8.jpg" data-cap="Team Gathering — Friendship">
+        <span class="ph" style="background-image:url('images/party/Party 8.jpg')"></span>
+        <span class="cap">Team Gathering — Friendship</span>
+      </div>
+      <div class="gallery-item" data-img="images/party/Party 9.jpg" data-cap="Warriors Family — Together Strong">
+        <span class="ph" style="background-image:url('images/party/Party 9.jpg')"></span>
+        <span class="cap">Warriors Family — Together Strong</span>
+      </div>
+    </div>
+
+    <div id="album-intro" class="gallery-grid" style="display:none">
+      <div class="gallery-item" data-img="images/gallery/BWY.jpg" data-cap="Bharat Warriors — Team Photo">
+        <span class="ph" style="background-image:url('images/gallery/BWY.jpg')"></span>
+        <span class="cap">Bharat Warriors — Team Photo</span>
       </div>
     </div>
   </div>

@@ -199,25 +199,17 @@ function copyZelle(btn) {
   });
 }
 
-/* Enhanced gallery carousel functionality */
-let currentAlbum = 'awards';
-let currentSlide = 0;
-let albumSizes = {
-  'awards': 7,
-  'party': 9,
-  'intro': 1
-};
-
+/* Enhanced gallery album switching */
 function showAlbum(albumName) {
   // Hide all albums
-  document.querySelectorAll('.carousel-album').forEach(album => {
-    album.classList.remove('active');
+  document.querySelectorAll('.gallery-grid').forEach(grid => {
+    grid.style.display = 'none';
   });
   
   // Show selected album
   const targetAlbum = document.getElementById(`album-${albumName}`);
   if (targetAlbum) {
-    targetAlbum.classList.add('active');
+    targetAlbum.style.display = 'grid';
   }
   
   // Update active button
@@ -227,73 +219,16 @@ function showAlbum(albumName) {
   
   event.target.classList.add('active');
   
-  // Update current album and reset slide
-  currentAlbum = albumName;
-  currentSlide = 0;
-  
-  // Update carousel position and dots
-  updateCarousel();
-  generateDots();
-  
   // Re-bind lightbox events
   bindLightboxEvents();
 }
 
-function moveCarousel(direction) {
-  const maxSlides = albumSizes[currentAlbum] || 1;
-  
-  if (direction === 'next') {
-    currentSlide = (currentSlide + 1) % maxSlides;
-  } else {
-    currentSlide = currentSlide === 0 ? maxSlides - 1 : currentSlide - 1;
-  }
-  
-  updateCarousel();
-}
-
-function goToSlide(slideIndex) {
-  currentSlide = slideIndex;
-  updateCarousel();
-}
-
-function updateCarousel() {
-  const track = document.getElementById(`track-${currentAlbum}`);
-  if (track) {
-    const translateX = -currentSlide * 100;
-    track.style.transform = `translateX(${translateX}%)`;
-  }
-  
-  // Update dots
-  updateDots();
-}
-
-function generateDots() {
-  const dotsContainer = document.getElementById('carousel-dots');
-  const maxSlides = albumSizes[currentAlbum] || 1;
-  
-  dotsContainer.innerHTML = '';
-  
-  for (let i = 0; i < maxSlides; i++) {
-    const dot = document.createElement('button');
-    dot.className = `carousel-dot ${i === currentSlide ? 'active' : ''}`;
-    dot.onclick = () => goToSlide(i);
-    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    dotsContainer.appendChild(dot);
-  }
-}
-
-function updateDots() {
-  document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
-    dot.classList.toggle('active', index === currentSlide);
-  });
-}
-
 /* Enhanced lightbox functionality */
 function bindLightboxEvents() {
-  document.querySelectorAll('.carousel-slide').forEach(slide => {
-    slide.onclick = () => {
-      const img = slide.dataset.img;
-      const cap = slide.dataset.cap;
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.onclick = () => {
+      const img = item.dataset.img;
+      const cap = item.dataset.cap;
       
       const lightbox = document.getElementById('lightbox');
       const lbImg = document.getElementById('lbImg');
@@ -343,63 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize time icons
   decorateTimes();
   
-  // Initialize carousel
-  generateDots();
-  updateCarousel();
-  
   // Initialize lightbox events
   bindLightboxEvents();
   
-  // Add keyboard navigation
-  setupKeyboardNavigation();
-  
-  // Add touch/swipe support
-  setupTouchNavigation();
-  
   console.log('Bharat Warriors website initialized successfully!');
 });
-
-/* Keyboard navigation for carousel */
-function setupKeyboardNavigation() {
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-      moveCarousel('prev');
-    } else if (e.key === 'ArrowRight') {
-      moveCarousel('next');
-    }
-  });
-}
-
-/* Touch/Swipe navigation for carousel */
-function setupTouchNavigation() {
-  const carousel = document.querySelector('.carousel-wrapper');
-  if (!carousel) return;
-  
-  let startX = 0;
-  let endX = 0;
-  
-  carousel.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-  }, { passive: true });
-  
-  carousel.addEventListener('touchend', (e) => {
-    endX = e.changedTouches[0].clientX;
-    handleSwipe();
-  }, { passive: true });
-  
-  function handleSwipe() {
-    const diffX = startX - endX;
-    const threshold = 50; // Minimum swipe distance
-    
-    if (Math.abs(diffX) > threshold) {
-      if (diffX > 0) {
-        moveCarousel('next'); // Swipe left - go to next
-      } else {
-        moveCarousel('prev'); // Swipe right - go to previous
-      }
-    }
-  }
-}
 
 /* Smooth scrolling for navigation links */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
