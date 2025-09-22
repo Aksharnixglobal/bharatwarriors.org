@@ -545,10 +545,104 @@ function startCarousel() {
   }, 6000);
 }
 
+/* Animated Counter System */
+function animateCounter(element, target, duration = 2000) {
+  const start = 0;
+  const increment = target / (duration / 16);
+  let current = start;
+  const card = element.closest('.stat-card');
+  
+  // Add counting class for visual feedback
+  card.classList.add('counting');
+  
+  const timer = setInterval(() => {
+    current += increment;
+    
+    if (current >= target) {
+      element.textContent = Math.floor(target);
+      clearInterval(timer);
+      
+      // Remove counting class and add completion effects
+      card.classList.remove('counting');
+      card.classList.add('completed');
+      
+      // Add completion animation
+      element.style.transform = 'scale(1.15)';
+      setTimeout(() => {
+        element.style.transform = 'scale(1)';
+        card.classList.remove('completed');
+      }, 600);
+      
+      // Show the + symbol for relevant stats
+      const plusElement = element.parentElement.querySelector('.stat-plus');
+      if (plusElement) {
+        plusElement.style.opacity = '1';
+        plusElement.style.animation = 'pulse 2s ease-in-out infinite';
+      }
+      
+    } else {
+      element.textContent = Math.floor(current);
+    }
+  }, 16);
+}
+
+function startCounterAnimations() {
+  const counters = document.querySelectorAll('[data-count]');
+  
+  counters.forEach((counter, index) => {
+    const target = parseInt(counter.getAttribute('data-count'));
+    const delay = index * 200; // Stagger the animations
+    
+    setTimeout(() => {
+      animateCounter(counter, target, 1500);
+    }, delay);
+  });
+}
+
+// Intersection Observer for triggering counters when visible
+function setupCounterObserver() {
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+        entry.target.classList.add('counted');
+        const counters = entry.target.querySelectorAll('[data-count]');
+        
+        // Add sparkle effect to the stats grid
+        entry.target.style.position = 'relative';
+        
+        counters.forEach((counter, index) => {
+          const target = parseInt(counter.getAttribute('data-count'));
+          const delay = index * 300;
+          
+          setTimeout(() => {
+            animateCounter(counter, target, 2000);
+          }, delay);
+        });
+      }
+    });
+  }, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
+  });
+  
+  // Observe all stats grids
+  document.querySelectorAll('.stats-grid').forEach(grid => {
+    counterObserver.observe(grid);
+  });
+}
+
 // Initialize carousel when DOM loads
 document.addEventListener('DOMContentLoaded', function() {
   if (slides.length > 0) {
     showSlide(0);
     startCarousel();
   }
+  
+  // Initialize counter animations
+  setupCounterObserver();
+  
+  // Add icon animation delays
+  document.querySelectorAll('[data-animate] .stat-icon').forEach((icon, index) => {
+    icon.style.animationDelay = `${0.8 + (index * 0.2)}s`;
+  });
 });
