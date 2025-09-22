@@ -645,4 +645,140 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('[data-animate] .stat-icon').forEach((icon, index) => {
     icon.style.animationDelay = `${0.8 + (index * 0.2)}s`;
   });
+
+  // Initialize enhanced navigation
+  setupEnhancedNavigation();
 });
+
+/* Enhanced Navigation System */
+function setupEnhancedNavigation() {
+  const nav = document.querySelector('.nav');
+  const menuLinks = document.querySelectorAll('.menu a[href^="#"]');
+  const sections = document.querySelectorAll('.section[id]');
+  
+  // Enhanced scroll detection with throttling
+  let scrollTimeout;
+  function handleScroll() {
+    if (scrollTimeout) return;
+    
+    scrollTimeout = setTimeout(() => {
+      const scrollY = window.scrollY;
+      
+      // Add scrolled class for enhanced navbar styling
+      if (scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+      
+      // Update active navigation links based on scroll position
+      updateActiveNavLink();
+      
+      scrollTimeout = null;
+    }, 16); // ~60fps throttling
+  }
+  
+  // Update active navigation link based on current section
+  function updateActiveNavLink() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    // If near bottom of page, highlight last section
+    if (scrollY + windowHeight >= documentHeight - 50) {
+      const lastSection = sections[sections.length - 1];
+      if (lastSection) {
+        setActiveLink(`#${lastSection.id}`);
+        return;
+      }
+    }
+    
+    // Find current section based on scroll position
+    let currentSection = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 150; // Account for sticky nav
+      const sectionHeight = section.offsetHeight;
+      
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        currentSection = `#${section.id}`;
+      }
+    });
+    
+    // If we're at the top, highlight the first relevant section
+    if (scrollY < 200) {
+      currentSection = '#about'; // Default to about section
+    }
+    
+    setActiveLink(currentSection);
+  }
+  
+  // Set active navigation link
+  function setActiveLink(href) {
+    menuLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === href) {
+        link.classList.add('active');
+      }
+    });
+  }
+  
+  // Enhanced smooth scroll with easing
+  function smoothScrollTo(targetId) {
+    const target = document.querySelector(targetId);
+    if (!target) return;
+    
+    const navHeight = nav.offsetHeight;
+    const targetPosition = target.offsetTop - navHeight - 20;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = Math.min(Math.abs(distance) * 0.8, 1200); // Max 1.2s
+    
+    let start = null;
+    
+    function animation(currentTime) {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const progress = Math.min(timeElapsed / duration, 1);
+      
+      // Easing function (easeInOutCubic)
+      const ease = progress < 0.5 
+        ? 4 * progress * progress * progress
+        : (progress - 1) * (2 * progress - 2) * (2 * progress - 2) + 1;
+      
+      window.scrollTo(0, startPosition + distance * ease);
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    }
+    
+    requestAnimationFrame(animation);
+  }
+  
+  // Add click handlers for smooth scroll navigation
+  menuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      
+      if (targetId.startsWith('#')) {
+        smoothScrollTo(targetId);
+        
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById('main-menu');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        if (mobileMenu && mobileMenu.classList.contains('mobile-open')) {
+          mobileMenu.classList.remove('mobile-open');
+          toggle.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  });
+  
+  // Add scroll event listener with passive for better performance
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  
+  // Initialize active link on page load
+  setTimeout(updateActiveNavLink, 100);
+}
