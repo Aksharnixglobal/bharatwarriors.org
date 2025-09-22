@@ -1,16 +1,152 @@
-/* Bharat Warriors Cricket Club - Main Stylesheet */
+/* Bharat Warriors Cricket Club - Enhanced Brand System */
 
-:root{
-  --navy:#0c1e37; --navy-2:#132b4f;
-  --ink:#14223e; --muted:#64738e; --line:#e9eef6; --bg:#f6f9ff; --paper:#ffffff;
-  --saffron:#ff7a1a; --green:#18a06a; --blue:#1262d6; --chakra:#0a5aad;
+:root {
+  /* Core Brand Colors */
+  --navy: #0c1e37;
+  --navy-2: #132b4f;
+  --navy-light: rgba(12, 30, 55, 0.8);
+  --navy-dark: #081625;
+  
+  /* Brand Accent Colors */
+  --saffron: #ff7a1a;
+  --saffron-light: #ff9447;
+  --saffron-dark: #e6690e;
+  --green: #18a06a;
+  --green-light: #20b377;
+  --green-dark: #138f5d;
+  --blue: #1262d6;
+  --blue-light: #2572e3;
+  --blue-dark: #0f55c2;
+  
+  /* Extended Palette */
+  --orange: var(--saffron);
+  --primary-color: var(--saffron);
+  --secondary-color: var(--blue);
+  --chakra: #0a5aad;
+  
+  /* Typography Colors */
+  --ink: #14223e;
+  --text-color: #14223e;
+  --text-light: #64738e;
+  --muted: #64738e;
+  --text-accent: var(--navy);
+  
+  /* Surface Colors */
+  --line: #e9eef6;
+  --line-light: #f4f7fb;
+  --bg: #f6f9ff;
+  --bg-secondary: #ffffff;
+  --paper: #ffffff;
+  --surface-elevated: rgba(255, 255, 255, 0.95);
+  
+  /* Brand Gradients */
   --accent-gradient: linear-gradient(135deg, var(--saffron) 0%, var(--green) 50%, var(--blue) 100%);
+  --hero-gradient: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 50%, var(--chakra) 100%);
+  --brand-gradient: linear-gradient(45deg, var(--saffron), var(--green), var(--blue));
+  --warm-gradient: linear-gradient(135deg, #fff5f0 0%, #fee2d3 100%);
+  
+  /* Shadow System */
+  --shadow-sm: 0 2px 8px rgba(12, 30, 55, 0.08);
+  --shadow-md: 0 8px 20px rgba(12, 30, 55, 0.12);
+  --shadow-lg: 0 15px 35px rgba(12, 30, 55, 0.15);
+  --shadow-xl: 0 25px 50px rgba(12, 30, 55, 0.2);
+  
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  
+  /* Border Radius Scale */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 50%;
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-html,body{margin:0}
-body{font-family:"Montserrat",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;overflow-x:hidden}
+/* Global Reset and Typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+/* Enhanced Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.025em;
+}
+
+p {
+  margin: 0 0 1em;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--saffron-dark);
+}
+
+/* Improved Focus States */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Typography Utilities */
+.text-gradient {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-navy { color: var(--navy); }
+.text-saffron { color: var(--saffron); }
+.text-green { color: var(--green); }
+.text-blue { color: var(--blue); }
+.text-muted { color: var(--muted); }
+
+.fw-light { font-weight: 300; }
+.fw-normal { font-weight: 500; }
+.fw-semibold { font-weight: 600; }
+.fw-bold { font-weight: 700; }
+.fw-black { font-weight: 900; }
 a{color:inherit;text-decoration:none}
 .container{max-width:1160px;margin:0 auto;padding:0 18px;width:100%}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 14px rgba(20,34,62,.06);transition:transform 0.3s ease, box-shadow 0.3s ease}
@@ -171,9 +307,62 @@ a{color:inherit;text-decoration:none}
   .vs-separator{width:40px;height:40px;font-size:20px}
 }
 
-.section h2{margin:0 0 12px;font-size:32px;font-weight:900;color:#0e1d39;position:relative}
-.section h2::after{content:'';position:absolute;bottom:-4px;left:0;width:60px;height:4px;background:var(--accent-gradient);border-radius:2px}
-.sub{color:var(--muted);font-size:16px;margin-bottom:20px}
+/* Enhanced Typography System */
+.section h1, .section h2 {
+  margin: 0 0 16px;
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 900;
+  color: #0e1d39;
+  position: relative;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.section h1::after, .section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 70px;
+  height: 4px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+@keyframes slideInLeft {
+  from { width: 0; }
+  to { width: 70px; }
+}
+
+.section h3 {
+  color: var(--navy);
+  font-size: clamp(20px, 3.5vw, 24px);
+  font-weight: 800;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  font-family: "Montserrat", sans-serif;
+}
+
+.section h4 {
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  line-height: 1.4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: clamp(15px, 2.5vw, 17px);
+  margin-bottom: 30px;
+  line-height: 1.7;
+  font-weight: 500;
+  max-width: 800px;
+}
 
 /* League tabs */
 .league-tabs{justify-content:center}
@@ -407,8 +596,6 @@ tr:hover{background:#f8fbff}
   box-shadow: 0 15px 35px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,0.9);
   border-color: rgba(255,107,107,0.4);
 }
-  box-shadow: 0 8px 24px rgba(0,0,0,.15);
-}
 
 .logo-frame img {
   max-width: 90%;
@@ -522,10 +709,78 @@ tr:hover{background:#f8fbff}
 .code{font-family:ui-monospace,Menlo,Consolas,monospace;background:#f8fbff;border:2px dashed #dbe6fb;
   border-radius:10px;padding:10px 12px;display:inline-block;font-weight:600;transition:all 0.3s ease}
 .code:hover{background:#eef5ff;border-color:#b3d1ff}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;font-weight:800;
-  color:#fff;background:var(--accent-gradient);border:none;cursor:pointer;
-  box-shadow:0 8px 16px rgba(255,122,26,.25);transition:all 0.3s ease;text-decoration:none}
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(255,122,26,.35)}
+/* Enhanced Button System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+  background: var(--accent-gradient);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(255,122,26,.25), 0 2px 8px rgba(255,122,26,.1);
+  transition: all 0.3s cubic-bezier(0.4,0.0,0.2,1);
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(255,122,26,.4), 0 5px 15px rgba(255,122,26,.2);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background: linear-gradient(135deg, var(--navy), var(--darkgray));
+  box-shadow: 0 8px 20px rgba(14,29,57,.25), 0 2px 8px rgba(14,29,57,.1);
+}
+
+.btn-secondary:hover {
+  box-shadow: 0 15px 30px rgba(14,29,57,.4), 0 5px 15px rgba(14,29,57,.2);
+}
+
+/* Outline Button */
+.btn-outline {
+  background: transparent;
+  color: var(--orange);
+  border: 2px solid var(--orange);
+  box-shadow: none;
+}
+
+.btn-outline:hover {
+  background: var(--orange);
+  color: white;
+  box-shadow: 0 8px 20px rgba(255,122,26,.3);
+}
 .qr{max-width:220px;width:100%;height:auto;border-radius:12px;box-shadow:0 12px 24px rgba(0,0,0,.12);
   transition:transform 0.3s ease}
 .qr:hover{transform:scale(1.02)}
