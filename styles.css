@@ -220,6 +220,28 @@ tr:hover{background:#f8fbff}
   .coming-soon-message{display:flex;align-items:center;justify-content:center;min-height:400px;
     background:linear-gradient(135deg,#f8fafc 0%,#e2e8f0 100%);border-radius:16px;border:2px dashed #cbd5e0;
     text-align:center;padding:40px 20px}
+  
+  .practice-upload-message{display:flex;align-items:center;justify-content:center;min-height:400px;
+    background:linear-gradient(135deg,#fff7ed 0%,#fed7aa 100%);border-radius:16px;border:2px dashed var(--primary-color);
+    text-align:center;padding:40px 20px}
+    
+  .upload-instructions {
+    background: rgba(255, 107, 107, 0.1);
+    border: 2px dashed var(--primary-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .upload-instructions code {
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: 600;
+  }
+  
   .coming-soon-content{max-width:400px}
   .coming-soon-icon{font-size:4rem;margin-bottom:20px;animation:bounce 2s infinite}
   .coming-soon-content h3{color:var(--navy);font-size:28px;font-weight:800;margin:0 0 16px;
