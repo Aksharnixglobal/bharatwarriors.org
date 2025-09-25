@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AksharNix Global - Professional IT Staffing</title>
+    <style>
+        /* Professional IT Staffing Section Styles */
+        .aksharnix-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .aksharnix-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #1e293b 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* IT Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6, #10b981);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .service-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #f1f5f9;
+            color: #475569;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Team Diversity Section */
+        .diversity-section {
+            background: white;
+            padding: 60px 0;
+            border-radius: 30px;
+            margin: 60px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .diversity-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .diversity-content h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .diversity-content p {
+            color: #64748b;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .diversity-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: #3b82f6;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .diversity-image {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .diversity-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Trust Indicators */
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .trust-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .trust-item strong {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #10b981);
+            color: white;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-secondary:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 36px;
+            }
+
+            .diversity-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .trust-indicators {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="aksharnix-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>💼</span>
+                    <span>Professional IT Staffing Solutions</span>
+                </div>
+                <h1 class="section-title">Build Your Dream Tech Team</h1>
+                <p class="section-subtitle">We connect exceptional IT talent with forward-thinking companies across all technology domains</p>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Cloud & DevOps Engineers</h3>
+                    <p>Expert cloud architects and DevOps professionals ready to accelerate your digital transformation journey.</p>
+                    <div class="service-skills">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">CI/CD</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Cybersecurity Specialists</h3>
+                    <p>Protect your digital assets with our certified security experts and risk management professionals.</p>
+                    <div class="service-skills">
+                        <span class="skill-tag">CISSP</span>
+                        <span class="skill-tag">Penetration Testing</span>
+                        <span class="skill-tag">SOC</span>
+                        <span class="skill-tag">Compliance</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Scientists & Analysts</h3>
+                    <p>Turn your data into actionable insights with our skilled data professionals and AI specialists.</p>
+                    <div class="service-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">AI/ML</span>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Full-Stack Developers</h3>
+                    <p>End-to-end development expertise for web applications, mobile apps, and enterprise solutions.</p>
+                    <div class="service-skills">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">.NET</span>
+                        <span class="skill-tag">Mobile</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diversity Section -->
+            <div class="diversity-section">
+                <div class="diversity-grid">
+                    <div class="diversity-content">
+                        <h2>Diverse Talent, Exceptional Results</h2>
+                        <p>We believe that diverse teams drive innovation. Our network spans across different backgrounds, experiences, and expertise levels to bring you the best talent for your unique needs.</p>
+                        
+                        <div class="diversity-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">500+</div>
+                                <div class="stat-label">Successful Placements</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">95%</div>
+                                <div class="stat-label">Client Satisfaction</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">48hr</div>
+                                <div class="stat-label">Average Response</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">85%</div>
+                                <div class="stat-label">Diversity Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diversity-image">
+                        <!-- Placeholder for diverse team photo -->
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Diverse IT Team Collaboration">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Indicators -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <div class="trust-icon">🏆</div>
+                    <div>
+                        <strong>Industry Leader</strong><br>
+                        <small>5+ Years Experience</small>
+                    </div>
+                </div>
+                
+                <div class="trust-item">
+                    <div class="trust-icon">✅</div>
+                    <div>
+                        <strong>Verified Professionals</strong><br>
+                        <small>Background Checked</small>
+                    </div>
+                </div>
+                
+                <div class="trust-item">
+                    <div class="trust-icon">⚡</div>
+                    <div>
+                        <strong>Rapid Deployment</strong><br>
+                        <small>48-72 Hour Turnaround</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2 style="margin-bottom: 20px; color: #1e293b;">Ready to Build Your Dream Team?</h2>
+                <p style="color: #64748b; margin-bottom: 40px; font-size: 18px;">Let's discuss your specific requirements and find the perfect IT professionals for your project.</p>
+                
+                <div class="cta-buttons">
+                    <a href="mailto:contact@aksharnixglobal.com" class="btn-primary">
+                        <span>📧</span>
+                        <span>Get Started Today</span>
+                    </a>
+                    <a href="tel:+1234567890" class="btn-secondary">
+                        <span>📞</span>
+                        <span>Schedule a Call</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

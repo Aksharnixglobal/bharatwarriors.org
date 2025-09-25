@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AksharNix Global - Premier Business Solutions</title>
+    <meta name="description" content="Leading business solutions provider offering IT services, consulting, and digital transformation. Trusted by 500+ companies worldwide.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Modern CSS Variables */
+        :root {
+            --primary-blue: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-indigo: #4f46e5;
+            --accent-emerald: #10b981;
+            --accent-orange: #f59e0b;
+            
+            --neutral-50: #f8fafc;
+            --neutral-100: #f1f5f9;
+            --neutral-200: #e2e8f0;
+            --neutral-300: #cbd5e1;
+            --neutral-400: #94a3b8;
+            --neutral-500: #64748b;
+            --neutral-600: #475569;
+            --neutral-700: #334155;
+            --neutral-800: #1e293b;
+            --neutral-900: #0f172a;
+            
+            --white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--secondary-indigo));
+            --gradient-accent: linear-gradient(135deg, var(--accent-emerald), var(--accent-orange));
+            
+            --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        body {
+            font-family: var(--font-inter);
+            line-height: 1.6;
+            color: var(--neutral-700);
+            background: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--neutral-200);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--neutral-900);
+            text-decoration: none;
+        }
+        
+        .nav-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--neutral-600);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-blue);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-cta {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--neutral-50) 0%, var(--white) 100%);
+            padding: 8rem 0 4rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><circle cx="200" cy="300" r="100" fill="%232563eb" opacity="0.05"/><circle cx="800" cy="200" r="150" fill="%234f46e5" opacity="0.05"/><circle cx="600" cy="700" r="80" fill="%2310b981" opacity="0.05"/></svg>');
+            z-index: 0;
+        }
+        
+        .hero-container {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.25rem;
+            color: var(--neutral-600);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--neutral-500);
+            font-weight: 500;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .btn-secondary {
+            color: var(--neutral-700);
+            padding: 1rem 2rem;
+            border: 2px solid var(--neutral-300);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+            transform: translateY(-2px);
+        }
+        
+        .hero-visual {
+            position: relative;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+        }
+        
+        .floating-card {
+            position: absolute;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-xl);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--neutral-200);
+        }
+        
+        .floating-card-1 {
+            top: 20px;
+            left: -20px;
+            width: 200px;
+        }
+        
+        .floating-card-2 {
+            bottom: 20px;
+            right: -20px;
+            width: 180px;
+        }
+        
+        .floating-card h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--neutral-900);
+            margin-bottom: 0.5rem;
+        }
+        
+        .floating-card p {
+            font-size: 0.75rem;
+            color: var(--neutral-600);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--neutral-900);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--neutral-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--neutral-200);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: var(--neutral-600);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-features {
+            list-style: none;
+        }
+        
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--neutral-600);
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent-emerald);
+            font-weight: 600;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--neutral-50);
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--neutral-900);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            font-size: 1.125rem;
+            color: var(--neutral-600);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .feature-text {
+            font-weight: 600;
+            color: var(--neutral-700);
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--neutral-200);
+            transition: all 0.3s ease;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+        
+        .team-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+        }
+        
+        .team-card h4 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .team-card p {
+            color: var(--neutral-600);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 6rem 0;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon points="0,0 1000,200 1000,1000 0,800" fill="rgba(255,255,255,0.05)"/></svg>');
+            z-index: 0;
+        }
+        
+        .stats-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stats-item h3 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stats-item p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            background: var(--neutral-50);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--neutral-700);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--neutral-300);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .form-textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .contact-item-content h4 {
+            font-weight: 600;
+            color: var(--neutral-900);
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-item-content p {
+            color: var(--neutral-600);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--neutral-900);
+            color: var(--neutral-300);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-brand {
+            grid-column: span 2;
+        }
+        
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-brand p {
+            color: var(--neutral-400);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column h4 {
+            color: white;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-link {
+            color: var(--neutral-400);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid var(--neutral-700);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--neutral-800);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neutral-400);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-blue);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container,
+            .about-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                justify-content: space-around;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .services-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-brand {
+                grid-column: span 1;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Floating Animation */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container container">
+            <a href="#" class="nav-brand">
+                <div class="nav-logo">
+                    <img src="images/logos/aksharnix-global-logo.png" alt="AksharNix Global Logo" style="height: 40px; width: auto;">
+                </div>
+                AksharNix Global
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#team" class="nav-link">Team</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Get Started</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-container">
+                <div class="hero-content" data-aos="fade-right">
+                    <h1>Premier IT Staffing & Web Development Solutions</h1>
+                    <p class="subtitle">
+                        <strong>📍 DFW-based • Nationwide placements</strong><br>
+                        Connecting exceptional IT talent with forward-thinking companies. We specialize in IT staffing solutions 
+                        and custom web development services that drive your business forward.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Trusted Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects Delivered</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-buttons">
+                        <a href="#services" class="btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Explore Services
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            <i class="fas fa-phone"></i>
+                            Schedule Call
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual" data-aos="fade-left">
+                    <div class="hero-image"></div>
+                    <div class="floating-card floating-card-1 floating">
+                        <h4><i class="fas fa-chart-line"></i> Growth Analytics</h4>
+                        <p>Real-time business insights and performance metrics</p>
+                    </div>
+                    <div class="floating-card floating-card-2 floating" style="animation-delay: -3s;">
+                        <h4><i class="fas fa-shield-alt"></i> Secure Solutions</h4>
+                        <p>Enterprise-grade security and compliance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>IT Staffing & Development Services</h2>
+                <p>Specialized IT staffing solutions and custom web development services tailored to your business needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>IT Staffing Solutions</h3>
+                    <p>Connect with top-tier IT professionals tailored to your specific project needs and company culture.</p>
+                    <ul class="service-features">
+                        <li>Contract & permanent placements</li>
+                        <li>E-Verify • W-2 • C2C • 1099 options</li>
+                        <li>Comprehensive background checks</li>
+                        <li>Quick turnaround (48-72 hours)</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Talent Acquisition</h3>
+                    <p>Expert recruitment services to find and place the perfect IT professionals for your specific requirements.</p>
+                    <ul class="service-features">
+                        <li>Technical skill assessment</li>
+                        <li>Cultural fit evaluation</li>
+                        <li>Contract-to-hire options</li>
+                        <li>Rapid candidate sourcing</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Custom Web Development</h3>
+                    <p>Professional web development services from concept to deployment, built with modern technologies.</p>
+                    <ul class="service-features">
+                        <li>Responsive web applications</li>
+                        <li>E-commerce solutions</li>
+                        <li>CMS & database integration</li>
+                        <li>Ongoing support & maintenance</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Business Intelligence</h3>
+                    <p>Transform your data into actionable insights with advanced analytics and reporting solutions.</p>
+                    <ul class="service-features">
+                        <li>Data visualization dashboards</li>
+                        <li>Predictive analytics</li>
+                        <li>Real-time reporting</li>
+                        <li>KPI tracking & monitoring</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cybersecurity</h3>
+                    <p>Comprehensive security solutions to protect your business from evolving cyber threats.</p>
+                    <ul class="service-features">
+                        <li>Security audits & assessments</li>
+                        <li>Threat detection & response</li>
+                        <li>Compliance management</li>
+                        <li>Employee security training</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Process Automation</h3>
+                    <p>Streamline operations and increase efficiency through intelligent process automation solutions.</p>
+                    <ul class="service-features">
+                        <li>Workflow automation</li>
+                        <li>RPA implementation</li>
+                        <li>Process optimization</li>
+                        <li>Integration solutions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image" data-aos="fade-right"></div>
+                
+                <div class="about-content" data-aos="fade-left">
+                    <h2>Your Trusted IT Staffing & Development Partner</h2>
+                    <p>
+                        AksharNix Global specializes in connecting businesses with exceptional IT talent and delivering 
+                        high-quality web development solutions. Our focused approach ensures we understand your specific 
+                        needs and provide the right professionals and technical solutions to drive your success.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <span class="feature-text">E-Verify Certified</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <span class="feature-text">DFW-Based, Nationwide</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <span class="feature-text">Flexible Employment Options</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <span class="feature-text">Background Verified</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn-primary">
+                        <i class="fas fa-arrow-right"></i>
+                        Partner With Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance & Trust Section -->
+    <section class="compliance" style="padding: 4rem 0; background: var(--neutral-100);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Trusted & Compliant Staffing Partner</h2>
+                <p>Full compliance and flexible engagement models for your peace of mind</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="100" style="background: white; border-radius: 16px; padding: 2rem; text-align: center; box-shadow: var(--shadow-md); border: 1px solid var(--neutral-200);">
+                    <div style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto 1rem;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 style="color: var(--neutral-900); margin-bottom: 0.5rem;">E-Verify Certified</h4>
+                    <p style="color: var(--neutral-600); font-size: 0.9rem;">Fully compliant with federal employment verification requirements</p>
+                </div>
+                
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="200" style="background: white; border-radius: 16px; padding: 2rem; text-align: center; box-shadow: var(--shadow-md); border: 1px solid var(--neutral-200);">
+                    <div style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto 1rem;">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h4 style="color: var(--neutral-900); margin-bottom: 0.5rem;">Flexible Employment</h4>
+                    <p style="color: var(--neutral-600); font-size: 0.9rem;">W-2 • C2C • 1099 - Choose what works best for your business</p>
+                </div>
+                
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="300" style="background: white; border-radius: 16px; padding: 2rem; text-align: center; box-shadow: var(--shadow-md); border: 1px solid var(--neutral-200);">
+                    <div style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto 1rem;">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4 style="color: var(--neutral-900); margin-bottom: 0.5rem;">Background Verified</h4>
+                    <p style="color: var(--neutral-600); font-size: 0.9rem;">Comprehensive background checks for all placements</p>
+                </div>
+                
+                <div class="trust-card" data-aos="fade-up" data-aos-delay="400" style="background: white; border-radius: 16px; padding: 2rem; text-align: center; box-shadow: var(--shadow-md); border: 1px solid var(--neutral-200);">
+                    <div style="width: 60px; height: 60px; background: var(--gradient-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; margin: 0 auto 1rem;">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h4 style="color: var(--neutral-900); margin-bottom: 0.5rem;">DFW-Based, Nationwide</h4>
+                    <p style="color: var(--neutral-600); font-size: 0.9rem;">Local expertise with nationwide placement capabilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Meet Our Leadership Team</h2>
+                <p>Experienced professionals dedicated to driving your success through innovation and expertise</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="team-avatar">AP</div>
+                    <h4>Akshay Patel</h4>
+                    <p class="team-role">Chief Executive Officer</p>
+                    <p>Visionary leader with 15+ years of experience in business strategy and digital transformation.</p>
+                </div>
+                
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="team-avatar">SM</div>
+                    <h4>Sarah Mitchell</h4>
+                    <p class="team-role">Chief Technology Officer</p>
+                    <p>Technology expert specializing in cloud architecture and enterprise software solutions.</p>
+                </div>
+                
+                <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="team-avatar">RK</div>
+                    <h4>Raj Kumar</h4>
+                    <p class="team-role">Head of Operations</p>
+                    <p>Operations excellence leader ensuring seamless project delivery and client satisfaction.</p>
+                </div>
+                
+                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="team-avatar">LW</div>
+                    <h4>Lisa Wang</h4>
+                    <p class="team-role">Head of Security</p>
+                    <p>Cybersecurity specialist with expertise in enterprise security and compliance frameworks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 style="color: white;">Trusted by Industry Leaders</h2>
+                    <p style="color: rgba(255,255,255,0.9);">Our track record speaks for itself - delivering exceptional results across industries</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stats-item" data-aos="fade-up" data-aos-delay="100">
+                        <h3>5</h3>
+                        <p>Trusted Clients</p>
+                    </div>
+                    <div class="stats-item" data-aos="fade-up" data-aos-delay="200">
+                        <h3>10+</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stats-item" data-aos="fade-up" data-aos-delay="300">
+                        <h3>48hr</h3>
+                        <p>Average Response</p>
+                    </div>
+                    <div class="stats-item" data-aos="fade-up" data-aos-delay="400">
+                        <h3>100%</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Let's Build Something Amazing Together</h2>
+                <p>Ready to transform your business? Get in touch with our experts today</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-form" data-aos="fade-right">
+                    <h3>Send Us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" placeholder="your.email@company.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company</label>
+                            <input type="text" class="form-input" placeholder="Your company name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Tell us about your project requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info" data-aos="fade-left">
+                    <h3>Get in Touch</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>DFW Office Location</h4>
+                            <p>Dallas-Fort Worth Metroplex<br>Texas • Nationwide Placements</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Phone Number</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Email Address</h4>
+                            <p>info@aksharnixglobal.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-item-content">
+                            <h4>Business Hours</h4>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-brand">
+                    <h3>AksharNix Global</h3>
+                    <p>
+                        Empowering businesses through innovative technology solutions and strategic digital transformation. 
+                        Partner with us to unlock your organization's full potential.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <a href="#" class="footer-link">IT Consulting</a>
+                    <a href="#" class="footer-link">Cloud Solutions</a>
+                    <a href="#" class="footer-link">Custom Development</a>
+                    <a href="#" class="footer-link">Business Intelligence</a>
+                    <a href="#" class="footer-link">Cybersecurity</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Our Team</a>
+                    <a href="#" class="footer-link">Careers</a>
+                    <a href="#" class="footer-link">News & Insights</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#" class="footer-link">Case Studies</a>
+                    <a href="#" class="footer-link">White Papers</a>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Documentation</a>
+                    <a href="#" class="footer-link">Support</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 AksharNix Global. All rights reserved.</p>
+                <div>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you soon.');
+        });
+
+        // Counter animation for stats
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.stats-item h3');
+                    counters.forEach(counter => {
+                        const text = counter.textContent;
+                        const target = parseInt(text.replace(/[^\d]/g, ''));
+                        
+                        // Skip animation for non-numeric values
+                        if (isNaN(target) || target === 0) return;
+                        
+                        let current = 0;
+                        const increment = target / 50; // Adjust for smaller numbers
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                counter.textContent = text; // Restore original text
+                                clearInterval(timer);
+                            } else {
+                                // Keep original suffix/prefix, just update number
+                                const currentNum = Math.floor(current);
+                                counter.textContent = text.replace(/\d+/, currentNum);
+                            }
+                        }, 30);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
