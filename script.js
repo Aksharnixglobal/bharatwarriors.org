@@ -782,3 +782,40 @@ function setupEnhancedNavigation() {
   // Initialize active link on page load
   setTimeout(updateActiveNavLink, 100);
 }
+
+/* Team Roster Tab Functionality */
+document.addEventListener('DOMContentLoaded', function() {
+  const teamTabs = document.querySelectorAll('.team-tab');
+  const teamContents = document.querySelectorAll('.team-content');
+  
+  teamTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetTeam = tab.dataset.team;
+      
+      // Remove active classes
+      teamTabs.forEach(t => t.classList.remove('active'));
+      teamContents.forEach(c => c.classList.remove('active'));
+      
+      // Add active classes
+      tab.classList.add('active');
+      const targetContent = document.getElementById(targetTeam);
+      if (targetContent) {
+        targetContent.classList.add('active');
+      }
+      
+      // Add smooth transition effect
+      setTimeout(() => {
+        targetContent.style.opacity = '1';
+        targetContent.style.transform = 'translateY(0)';
+      }, 10);
+    });
+  });
+  
+  // Initialize first tab as active
+  const firstTab = teamTabs[0];
+  const firstContent = teamContents[0];
+  if (firstTab && firstContent) {
+    firstTab.classList.add('active');
+    firstContent.classList.add('active');
+  }
+});
