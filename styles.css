@@ -211,6 +211,17 @@ a{color:inherit;text-decoration:none}
 
 /* Comprehensive Mobile Styles */
 @media (max-width: 768px) {
+  /* Mobile Body and Container */
+  body {
+    overflow-x: hidden;
+  }
+  
+  .container {
+    padding: 0 15px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
   /* Mobile Navigation */
   .nav {
     padding: 0;
@@ -1071,8 +1082,10 @@ tr:hover{background:#f8fbff}
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #f8fafc;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding: 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .innovative-footer::before {
@@ -1221,6 +1234,23 @@ tr:hover{background:#f8fbff}
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+/* Phone number special styling */
+.nav-column a[href^="tel"] {
+  color: #28a745 !important;
+  font-weight: 600 !important;
+  background: rgba(40, 167, 69, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.nav-column a[href^="tel"]:hover {
+  background: rgba(40, 167, 69, 0.2) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.2);
 }
 
 /* Social & Actions */
@@ -1480,6 +1510,82 @@ tr:hover{background:#f8fbff}
   .secondary-btn {
     justify-content: center;
     width: 100%;
+  }
+}
+
+/* Mobile Footer Responsiveness */
+@media (max-width: 768px) {
+  .innovative-footer {
+    padding: 20px 15px;
+  }
+  
+  .footer-main {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    padding: 30px 0 20px !important;
+    text-align: center;
+  }
+  
+  .brand-hub {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .brand-identity {
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .nav-grid {
+    grid-template-columns: 1fr !important;
+    gap: 25px;
+    text-align: center;
+  }
+  
+  .nav-column {
+    margin-bottom: 20px;
+  }
+  
+  .nav-column h4::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .action-hub {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .social-compact {
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .innovative-footer {
+    padding: 15px 10px;
+  }
+  
+  .footer-main {
+    gap: 20px !important;
+    padding: 20px 0 15px !important;
+  }
+  
+  .footer-logo {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .nav-column h4 {
+    font-size: 16px;
+  }
+  
+  .nav-column a {
+    font-size: 14px;
+    padding: 8px 0;
   }
 }
 
