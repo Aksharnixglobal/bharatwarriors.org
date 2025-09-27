@@ -328,31 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Bharat Warriors website initialized successfully!');
 });
 
-/* Smooth scrolling for navigation links */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-      
-      // Close any open dropdowns
-      document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
-      
-      // Close mobile menu on navigation
-      const menu = document.getElementById('main-menu');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      if (menu && menu.classList.contains('mobile-open')) {
-        menu.classList.remove('mobile-open');
-        toggle.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-  });
-});
+/* Smooth scrolling for navigation links - handled by enhanced navigation system */
 
 /* Form validation and enhancement */
 document.querySelector('form')?.addEventListener('submit', function(e) {
@@ -797,14 +773,17 @@ function setupEnhancedNavigation() {
     requestAnimationFrame(animation);
   }
   
-  // Add click handlers for smooth scroll navigation
-  menuLinks.forEach(link => {
+  // Add click handlers for smooth scroll navigation (all anchor links)
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const targetId = link.getAttribute('href');
       
-      if (targetId.startsWith('#')) {
+      if (targetId.startsWith('#') && targetId.length > 1) {
         smoothScrollTo(targetId);
+        
+        // Close any open dropdowns
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
         
         // Close mobile menu if open
         const mobileMenu = document.getElementById('main-menu');
