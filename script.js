@@ -2,6 +2,11 @@
 
 /* Modern enhancements and scroll progress */
 document.addEventListener('DOMContentLoaded', function() {
+  // Ensure scrolling is enabled on page load - force override any CSS
+  document.body.style.removeProperty('overflow');
+  document.body.style.setProperty('overflow-y', 'auto', 'important');
+  document.body.style.setProperty('overflow-x', 'hidden', 'important');
+  
   // Create scroll progress indicator
   const progressBar = document.createElement('div');
   progressBar.className = 'scroll-progress';
