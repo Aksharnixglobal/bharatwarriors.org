@@ -825,6 +825,14 @@ function setupEnhancedNavigation() {
   setTimeout(updateActiveNavLink, 100);
 }
 
+/* Failsafe: Reset body overflow on window resize if mobile menu is not open */
+window.addEventListener('resize', () => {
+  const menu = document.getElementById('main-menu');
+  if (!menu.classList.contains('mobile-open')) {
+    document.body.style.overflow = '';
+  }
+});
+
 /* Team Roster Tab Functionality */
 document.addEventListener('DOMContentLoaded', function() {
   const teamTabs = document.querySelectorAll('.team-tab');
