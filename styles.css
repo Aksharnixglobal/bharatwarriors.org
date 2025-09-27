@@ -1853,6 +1853,12 @@ footer:not(.innovative-footer) {display: none;}
   .team-roster{grid-template-columns:repeat(2,1fr);gap:15px}
   .player-card{padding:20px 15px}
   
+  /* Squad players mobile responsive */
+  .players-grid.squad {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
   /* Enhanced Tables */
   .table-wrapper{font-size:14px; overflow-x: auto; -webkit-overflow-scrolling: touch;}
   th,td{padding:12px 8px}
@@ -2197,8 +2203,44 @@ footer:not(.innovative-footer) {display: none;}
 }
 
 .players-grid.squad {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+/* Enhanced squad player cards */
+.players-grid.squad .modern-player-card {
+  padding: 18px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.98) 100%);
+  border: 1px solid rgba(44, 90, 160, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.players-grid.squad .modern-player-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(44, 90, 160, 0.2);
+  border-color: rgba(44, 90, 160, 0.3);
+}
+
+.players-grid.squad .player-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #2c3e50;
+}
+
+.players-grid.squad .player-role {
+  font-size: 14px;
+  color: #6c757d;
+  margin: 0;
+}
+
+.players-grid.squad .avatar-placeholder {
+  width: 45px;
+  height: 45px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* Modern Player Cards */
