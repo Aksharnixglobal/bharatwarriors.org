@@ -466,8 +466,162 @@ a{color:inherit;text-decoration:none}
   }
 }
 
-.section{padding:60px 0; scroll-margin-top:130px;}
-.hero{scroll-margin-top:0}
+.section {
+  padding: 80px 0;
+  scroll-margin-top: 130px;
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+  opacity: 0.5;
+}
+
+.hero {
+  scroll-margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle animations on scroll */
+.section h2 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced loading and entrance animations */
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Enhanced pulse animation for important elements */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(44, 90, 160, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(44, 90, 160, 0);
+  }
+}
+
+/* Modern Performance & Visual Enhancements */
+
+/* Enhanced performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Better text selection */
+::selection {
+  background: rgba(44, 90, 160, 0.2);
+  color: var(--navy);
+}
+
+::-moz-selection {
+  background: rgba(44, 90, 160, 0.2);
+  color: var(--navy);
+}
+
+/* Enhanced scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--blue), var(--saffron));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--saffron), var(--blue));
+}
+
+/* Improved accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhanced loading states */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
 
 /* Enhanced Hero with Indian flag and animations */
 .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden;min-height:70vh;display:flex;align-items:center}
@@ -994,22 +1148,26 @@ tr:hover{background:#f8fbff}
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  padding: 14px 24px;
-  border-radius: 30px;
-  font-weight: 700;
+  padding: 16px 28px;
+  border-radius: 50px;
+  font-weight: 600;
   font-size: 15px;
   color: #fff;
   background: var(--accent-gradient);
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255,122,26,.25), 0 2px 8px rgba(255,122,26,.1);
-  transition: all 0.3s cubic-bezier(0.4,0.0,0.2,1);
+  box-shadow: 0 4px 15px rgba(255,122,26,.3), 0 2px 5px rgba(0,0,0,.1);
+  transition: all 0.4s cubic-bezier(0.4,0.0,0.2,1);
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
   position: relative;
   overflow: hidden;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 13px;
+  min-width: 140px;
 }
 
 .btn::before {
@@ -2245,17 +2403,19 @@ footer:not(.innovative-footer) {display: none;}
 
 /* Modern Player Cards */
 .modern-player-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   border: 2px solid rgba(44, 90, 160, 0.1);
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 18px;
+  padding: 22px;
   display: flex;
   align-items: center;
-  gap: 15px;
-  transition: all 0.3s ease;
+  gap: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .modern-player-card::before {

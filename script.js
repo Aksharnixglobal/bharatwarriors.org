@@ -1,5 +1,47 @@
 /* Bharat Warriors Cricket Club - Main JavaScript */
 
+/* Modern enhancements and scroll progress */
+document.addEventListener('DOMContentLoaded', function() {
+  // Create scroll progress indicator
+  const progressBar = document.createElement('div');
+  progressBar.className = 'scroll-progress';
+  progressBar.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff7a1a, #2c5aa0, #2e7d32);
+    z-index: 9999;
+    transition: width 0.1s ease-out;
+  `;
+  document.body.appendChild(progressBar);
+  
+  // Update progress on scroll
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    progressBar.style.width = scrolled + '%';
+  });
+
+  // Enhanced performance for animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe section headings for animation
+  document.querySelectorAll('.section h2').forEach(h2 => {
+    h2.style.opacity = '0';
+    h2.style.transform = 'translateY(30px)';
+    observer.observe(h2);
+  });
+});
+
 /* Mobile menu toggle functionality */
 function toggleMobileMenu() {
   const menu = document.getElementById('main-menu');
