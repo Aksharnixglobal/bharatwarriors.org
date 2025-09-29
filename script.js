@@ -5,25 +5,74 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create scroll progress indicator
   const progressBar = document.createElement('div');
   progressBar.className = 'scroll-progress';
-  progressBar.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 3px;
-    background: linear-gradient(90deg, #ff7a1a, #2c5aa0, #2e7d32);
-    z-index: 9999;
-    transition: width 0.1s ease-out;
-  `;
-  document.body.appendChild(progressBar);
+  progressBar.id = 'scroll-progress';
   
-  // Update progress on scroll
-  window.addEventListener('scroll', () => {
+  // Set initial styles to ensure visibility
+  progressBar.style.cssText = `
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 0% !important;
+    height: 4px !important;
+    background: linear-gradient(90deg, #dc3545 0%, #007bff 50%, #28a745 100%) !important;
+    z-index: 99999 !important;
+    transition: width 0.1s ease-out !important;
+    border-radius: 0 2px 2px 0 !important;
+    box-shadow: 0 2px 4px rgba(44, 90, 160, 0.3) !important;
+    pointer-events: none !important;
+  `;
+  
+  // Insert at the very beginning of body
+  document.body.insertBefore(progressBar, document.body.firstChild);
+  
+  // Debug log
+  console.log('Scroll progress bar created:', progressBar);
+  
+  // Update progress on scroll with throttling
+  let ticking = false;
+  
+  function updateScrollProgress() {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrolled = (winScroll / height) * 100;
+    const scrolled = Math.min((winScroll / height) * 100, 100);
+    
     progressBar.style.width = scrolled + '%';
-  });
+    
+    // Debug log for first few updates
+    if (winScroll < 100) {
+      console.log('Scroll progress:', scrolled + '%', 'winScroll:', winScroll, 'height:', height);
+    }
+    
+    ticking = false;
+  }
+  
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(updateScrollProgress);
+      ticking = true;
+    }
+  }
+  
+  window.addEventListener('scroll', requestTick);
+  
+  // Initial call
+  updateScrollProgress();
+
+  // Also handle backup progress bar if it exists
+  const backupProgressBar = document.getElementById('scroll-progress-backup');
+  if (backupProgressBar) {
+    function updateBackupProgress() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = Math.min((winScroll / height) * 100, 100);
+      backupProgressBar.style.width = scrolled + '%';
+    }
+    
+    window.addEventListener('scroll', updateBackupProgress);
+    updateBackupProgress(); // Initial call
+    
+    console.log('Backup progress bar found and initialized:', backupProgressBar);
+  }
 
   // Enhanced performance for animations
   const observer = new IntersectionObserver((entries) => {
