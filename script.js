@@ -2,6 +2,17 @@
 
 /* Modern enhancements and scroll progress */
 document.addEventListener('DOMContentLoaded', function() {
+  // Ensure scrolling is enabled on page load - force override any CSS
+  document.body.style.removeProperty('overflow');
+  document.body.style.removeProperty('overflow-x');
+  document.body.style.removeProperty('overflow-y');
+  document.body.style.setProperty('overflow-y', 'auto', 'important');
+  document.body.style.setProperty('overflow-x', 'hidden', 'important');
+  // Fix body height constraint that's preventing scrolling
+  document.body.style.removeProperty('height');
+  document.body.style.setProperty('height', 'auto', 'important');
+  document.body.style.setProperty('min-height', '100vh', 'important');
+  
   // Create scroll progress indicator
   const progressBar = document.createElement('div');
   progressBar.className = 'scroll-progress';
@@ -50,11 +61,14 @@ function toggleMobileMenu() {
   menu.classList.toggle('mobile-open');
   toggle.classList.toggle('active');
   
-  // Prevent body scroll when menu is open
+  // Prevent body scroll when menu is open but keep vertical scrolling
   if (menu.classList.contains('mobile-open')) {
-    document.body.style.overflow = 'hidden';
+    document.body.style.setProperty('overflow-x', 'hidden', 'important');
+    document.body.style.setProperty('overflow-y', 'auto', 'important');
   } else {
-    document.body.style.overflow = '';
+    document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
+    document.body.style.setProperty('overflow-x', 'hidden', 'important');
+    document.body.style.setProperty('overflow-y', 'auto', 'important');
     // Close any open dropdowns when closing mobile menu
     document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
   }
@@ -81,7 +95,9 @@ window.addEventListener('click', e => {
     if (menu && menu.classList.contains('mobile-open')) {
       menu.classList.remove('mobile-open');
       toggle.classList.remove('active');
-      document.body.style.overflow = '';
+      document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
+      document.body.style.setProperty('overflow-x', 'hidden', 'important');
+      document.body.style.setProperty('overflow-y', 'auto', 'important');
     }
   }
 });
@@ -284,8 +300,9 @@ function bindLightboxEvents() {
         lbCap.textContent = cap;
         lightbox.classList.add('open');
         
-        // Prevent body scroll when lightbox is open
-        document.body.style.overflow = 'hidden';
+        // Prevent body scroll when lightbox is open but allow vertical scrolling
+        document.body.style.setProperty('overflow-x', 'hidden', 'important');
+        document.body.style.setProperty('overflow-y', 'auto', 'important');
       }
     };
   });
@@ -296,7 +313,9 @@ function closeLB() {
   if (lightbox) {
     lightbox.classList.remove('open');
     // Restore body scroll
-    document.body.style.overflow = '';
+    document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
+    document.body.style.setProperty('overflow-x', 'hidden', 'important');
+    document.body.style.setProperty('overflow-y', 'auto', 'important');
   }
 }
 
@@ -348,7 +367,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       if (menu && menu.classList.contains('mobile-open')) {
         menu.classList.remove('mobile-open');
         toggle.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
+        document.body.style.setProperty('overflow-x', 'hidden', 'important');
+        document.body.style.setProperty('overflow-y', 'auto', 'important');
       }
     }
   });
@@ -383,7 +404,9 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
 function openAvailabilityModal() {
   const modal = document.getElementById('availabilityModal');
   modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  // Keep scrolling enabled even when modal is open
+  document.body.style.setProperty('overflow-x', 'hidden', 'important');
+  document.body.style.setProperty('overflow-y', 'auto', 'important');
   
   // Load next match when modal opens
   loadNextMatchForModal();
@@ -392,7 +415,9 @@ function openAvailabilityModal() {
 function closeAvailabilityModal() {
   const modal = document.getElementById('availabilityModal');
   modal.classList.remove('open');
-  document.body.style.overflow = '';
+  document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
+  document.body.style.setProperty('overflow-x', 'hidden', 'important');
+  document.body.style.setProperty('overflow-y', 'auto', 'important');
 }
 
 /* League Switching in Modal */
@@ -812,7 +837,9 @@ function setupEnhancedNavigation() {
         if (mobileMenu && mobileMenu.classList.contains('mobile-open')) {
           mobileMenu.classList.remove('mobile-open');
           toggle.classList.remove('active');
-          document.body.style.overflow = '';
+          document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
+          document.body.style.setProperty('overflow-x', 'hidden', 'important');
+          document.body.style.setProperty('overflow-y', 'auto', 'important');
         }
       }
     });
