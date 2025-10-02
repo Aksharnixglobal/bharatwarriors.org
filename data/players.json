@@ -1,0 +1,26 @@
+{
+  "warriors": [
+    { "initials": "PP", "name": "Pratik Patel", "role": "Captain & Team Leader", "badges": ["All-Rounder","Leader"], "type": "captain" },
+    { "initials": "RL", "name": "Raj Lakkad", "role": "Vice Captain & Middle Order", "badges": ["Batsman","MOM"], "type": "vice" },
+    { "initials": "DP", "name": "Darshan Patel", "role": "Fast Bowler & Best Bowler", "badges": ["Fast","Accurate"], "type": "bowler" },
+    { "initials": "GP", "name": "Gaurav Prabhukhot", "role": "Top Order Batsman & Best Bowler", "badges": ["Bat","Bowl"], "type": "bowler" },
+    { "initials": "BG", "name": "Bhavik Gandhi", "role": "All-Rounder & Best Fielder", "badges": ["All-Round","Fielder"], "type": "allrounder" },
+    { "initials": "VM", "name": "Vaidik Moradiya", "role": "Best Fielder (LECA)", "badges": ["Fielder","Quick"], "type": "fielder" },
+    { "initials": "PP", "name": "Patrick Patel", "role": "Best Bowler & All-Rounder", "badges": ["MOM","17 Wickets"], "type": "allrounder" },
+    { "initials": "RL", "name": "Raj Lakkad", "role": "Middle Order & MOM", "badges": ["Man of Match","Batsman"], "type": "allrounder" },
+    { "initials": "AM", "name": "Abhisek Mohanty", "role": "Squad Player" },
+    { "initials": "AV", "name": "Ajay Vasani", "role": "Squad Player" },
+    { "initials": "AS", "name": "Alpit Shah", "role": "Squad Player" },
+    { "initials": "AK", "name": "Anand Katariya", "role": "Squad Player" },
+    { "initials": "AP", "name": "Ankit Patel", "role": "Squad Player" },
+    { "initials": "AR", "name": "Arnav Raul", "role": "Squad Player" },
+    { "initials": "BJ", "name": "Bhavesh Jariwala", "role": "Squad Player" },
+    { "initials": "BS", "name": "Bhavesh Shah", "role": "Squad Player" },
+    { "initials": "CP", "name": "Charles Patel", "role": "Squad Player" },
+    { "initials": "CR", "name": "Chettan Rawal", "role": "Squad Player" },
+    { "initials": "CH", "name": "(continued)", "role": "..." }
+  ],
+  "yodhas": [
+    { "initials": "BY", "name": "Bharat Yodhas", "role": "Team" }
+  ]
+}
