@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     left: 0 !important;
     width: 0% !important;
     height: 4px !important;
-    background: linear-gradient(90deg, #dc3545 0%, #007bff 50%, #28a745 100%) !important;
+    background: linear-gradient(90deg, #EF4444 0%, #3B82F6 50%, #10B981 100%) !important;
     z-index: 99999 !important;
     transition: width 0.1s ease-out !important;
     border-radius: 0 2px 2px 0 !important;
