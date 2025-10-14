@@ -1,11 +1,29 @@
 /* Bharat Warriors Cricket Club - Enhanced Brand System */
 
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 html.smooth-scroll {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #212529;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
@@ -3927,5 +3945,132 @@ footer:not(.innovative-footer) {display: none;}
   
   .legal-links {
     justify-content: center;
+  }
+  
+  /* Mobile hero improvements */
+  #home h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  #home p {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Teams overview mobile */
+  #teams-overview > div > div:last-child {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+}
+
+/* Additional Performance and Visual Improvements */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth hover transitions for all interactive elements */
+a, button, .card, [style*="transition"] {
+  transition: all 0.3s ease !important;
+}
+
+/* Ensure proper scrolling */
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix any layout issues */
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Improve button styling */
+a[style*="background"] {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Loading state */
+.loaded {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+/* Float animation for hero images */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Header mobile responsiveness */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.4rem !important;
+  }
+  
+  header nav {
+    gap: 0.25rem !important;
+  }
+  
+  header nav a {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  header div[style*="width: 50px"] {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 0.5rem !important;
+  }
+}
+
+/* Hero section mobile responsiveness */
+@media (max-width: 768px) {
+  #home > div > div {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+  
+  #home h1 {
+    font-size: 2.5rem !important;
+  }
+  
+  #home img {
+    width: 300px !important;
+    height: 200px !important;
+  }
+  
+  #home > div > div > div:first-child {
+    order: 2;
+  }
+  
+  #home > div > div > div:last-child {
+    order: 1;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto !important;
   }
 }
