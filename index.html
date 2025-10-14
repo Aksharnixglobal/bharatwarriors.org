@@ -10,18 +10,81 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+
+<!-- Security -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none';" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-Frame-Options" content="DENY" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
+<!-- Open Graph Meta Tags for Social Media -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Bharat Cricket Club By UGNT - Dallas-Fort Worth Cricket Team" />
+<meta property="og:description" content="Official site of Bharat Cricket Club By UGNT (DFW). Passion • Teamwork • Spirit. Competing in DFCL and LECA leagues. Join our cricket community!" />
+<meta property="og:url" content="https://bharatwarriors.org/" />
+<meta property="og:image" content="https://bharatwarriors.org/images/gallery/BCCNT.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Bharat Cricket Club Team Photo" />
+<meta property="og:site_name" content="Bharat Cricket Club" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bharat Cricket Club By UGNT - Dallas-Fort Worth Cricket Team" />
+<meta name="twitter:description" content="Official site of Bharat Cricket Club By UGNT (DFW). Passion • Teamwork • Spirit. Competing in DFCL and LECA leagues." />
+<meta name="twitter:image" content="https://bharatwarriors.org/images/gallery/BCCNT.jpg" />
+<meta name="twitter:image:alt" content="Bharat Cricket Club Team Photo" />
+
 <link rel="icon" href="favicon.png" />
 <link rel="apple-touch-icon" href="images/gallery/BCCNT.jpg" />
+<link rel="canonical" href="https://bharatwarriors.org/" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=2025100104">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "Bharat Cricket Club By UGNT",
+  "alternateName": "Bharat Warriors",
+  "url": "https://bharatwarriors.org/",
+  "logo": "https://bharatwarriors.org/images/gallery/BCCNT.jpg",
+  "image": "https://bharatwarriors.org/images/gallery/BCCNT.jpg",
+  "description": "Official site of Bharat Cricket Club By UGNT (DFW) — fixtures, gallery, sponsors, donations, contact. Competing in DFCL and LECA leagues.",
+  "sport": "Cricket",
+  "email": "bharatwarriors2024@gmail.com",
+  "telephone": "+1-773-750-6813",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dallas-Fort Worth",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.instagram.com/bharatwarriors2024",
+    "https://www.facebook.com/groups/dfwgujarati",
+    "https://youtube.com/@bharatwarriorsdallas"
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "United Gujaratis of North Texas",
+    "url": "https://bharatwarriors.org/"
+  }
+}
+</script>
 </head>
 
 <body>
+<!-- Skip to Content Link for Accessibility -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 <!-- Scroll Progress Bar -->
 <div id="scroll-progress-backup" style="position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #dc3545 0%, #007bff 50%, #28a745 100%); z-index: 999999; transition: width 0.1s ease;"></div>
 
 <!-- Header & Navigation - Live Website Style -->
-<header style="
+<header role="banner" aria-label="Site Header" style="
   position: fixed;
   top: 0;
   width: 100%;
@@ -33,7 +96,7 @@
   <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
     <!-- Top Section: Logo + Title -->
     <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-      <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo" style="
+      <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo" width="70" height="70" loading="eager" style="
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -59,8 +122,8 @@
     </div>
     
     <!-- Navigation Menu -->
-    <nav style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-      <a href="#about" style="
+    <nav role="navigation" aria-label="Main Navigation" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+      <a href="#about" aria-label="Navigate to About section" style="
         background: rgba(255,255,255,0.15);
         color: white;
         padding: 0.5rem 1rem;
@@ -98,7 +161,7 @@
         box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         overflow: hidden;
       ">
-        <img src="mahakaal.jpg" alt="Har Har Mahadev" style="
+        <img src="mahakaal.jpg" alt="Har Har Mahadev" width="50" height="50" loading="lazy" style="
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -163,7 +226,8 @@
 </header>
 
 <!-- Hero Section - Live Website Style -->
-<section id="home" style="
+<main id="main-content">
+<section id="home" role="banner" aria-label="Hero Section" style="
   min-height: 100vh;
   background: linear-gradient(135deg, #2c5aa0 0%, #4472c4 50%, #007bff 100%);
   padding: 160px 0 60px;
@@ -295,7 +359,7 @@
       <!-- Right Side - Floating Team Photos -->
       <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem;">
         <!-- First Team Photo (moved up) -->
-        <img src="images/hero/bw-team-photo.jpg" alt="Bharat Warriors Team" style="
+        <img src="images/hero/bw-team-photo.jpg" alt="Bharat Warriors Team Photo" width="380" height="260" loading="eager" style="
           width: 380px;
           height: 260px;
           object-fit: cover;
@@ -306,7 +370,7 @@
         " onmouseover="this.style.transform='translateY(-10px) scale(1.04)'; this.style.boxShadow='0 25px 60px rgba(44, 90, 160, 0.4)';" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 40px rgba(44, 90, 160, 0.3)';">
         
         <!-- Second Team Photo (new) -->
-        <img src="images/gallery/Pra.jpg" alt="Bharat Warriors Practice" style="
+        <img src="images/gallery/Pra.jpg" alt="Bharat Warriors Practice Session" width="380" height="260" loading="lazy" style="
           width: 380px;
           height: 260px;
           object-fit: cover;
@@ -342,14 +406,14 @@
           <div class="teams-showcase">
             <div class="team-box team-warriors">
               <div class="team-logo">
-                <img src="images/logos/bharat-warriors-logo.png" alt="Bharat Warriors Logo" class="logo-img">
+                <img src="images/logos/bharat-warriors-logo.png" alt="Bharat Warriors Logo" width="120" height="120" loading="lazy" class="logo-img">
               </div>
               <div class="team-name">Bharat Warriors</div>
             </div>
             <div class="vs-separator">+</div>
             <div class="team-box team-yodhas">
               <div class="team-logo">
-                <img src="images/logos/bharat-yodhas-logo.jpg" alt="Bharat Yodhas Logo" class="logo-img">
+                <img src="images/logos/bharat-yodhas-logo.jpg" alt="Bharat Yodhas Logo" width="120" height="120" loading="lazy" class="logo-img">
               </div>
               <div class="team-name">Bharat Yodhas</div>
             </div>
@@ -447,7 +511,7 @@
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
-        "><img src="images/gallery/BW.jpg" alt="Bharat Warriors" style="width: 30px; height: 30px; border-radius: 50%;"> Bharat Warriors</h3>
+        "><img src="images/gallery/BW.jpg" alt="Bharat Warriors Team Logo" width="30" height="30" loading="lazy" style="width: 30px; height: 30px; border-radius: 50%;"> Bharat Warriors</h3>
         <p style="text-align: center; color: #6c757d; margin: 0 0 1.5rem; font-style: italic;">DFCL & LECA League Team</p>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -482,7 +546,7 @@
           align-items: center;
           justify-content: center;
           gap: 0.5rem;
-        "><img src="images/gallery/BY.jpg" alt="Bharat Yodhas" style="width: 30px; height: 30px; border-radius: 50%;"> Bharat Yodhas</h3>
+        "><img src="images/gallery/BY.jpg" alt="Bharat Yodhas Team Logo" width="30" height="30" loading="lazy" style="width: 30px; height: 30px; border-radius: 50%;"> Bharat Yodhas</h3>
         <p style="text-align: center; color: #6c757d; margin: 0 0 1.5rem; font-style: italic;">DFCL</p>
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -681,7 +745,7 @@
     
     <div class="sponsor-grid">
       <div id="sponsor-infinity" class="sponsor">
-        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener">
+        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener noreferrer">
           <div class="logo-container" style="
             display: flex;
             align-items: center;
@@ -697,7 +761,7 @@
               align-items: center;
               justify-content: center;
             ">
-              <img src="images/logos/infinity-legacy-logo.jpg" alt="Infinity Legacy Group" style="
+              <img src="images/logos/infinity-legacy-logo.jpg" alt="Infinity Legacy Group Logo" width="200" height="120" loading="lazy" style="
                 max-width: 120%;
                 max-height: 100%;
                 width: auto;
@@ -715,7 +779,7 @@
       </div>
       
       <div id="sponsor-aksharnix" class="sponsor">
-        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
+        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer">
           <div class="logo-container" style="
             display: flex;
             align-items: center;
@@ -731,7 +795,7 @@
               align-items: center;
               justify-content: center;
             ">
-              <img src="images/logos/aksharnix-global-logo.png" alt="AksharNix Global" style="
+              <img src="images/logos/aksharnix-global-logo.png" alt="AksharNix Global Logo" width="200" height="120" loading="lazy" style="
                 max-width: 100%;
                 max-height: 100%;
                 width: auto;
@@ -781,7 +845,7 @@
 
         <div style="text-align:center">
           <p style="margin:0 0 12px;font-weight:600">📱 Scan QR Code</p>
-          <img class="qr" src="images/zelle-qr.jpg" alt="Zelle QR Code for Donations">
+          <img class="qr" src="images/zelle-qr.jpg" alt="Zelle QR Code for Donations" width="300" height="300" loading="lazy">
           <p style="margin:12px 0 0;color:var(--muted);font-size:14px">
             Open your banking app and scan to donate
           </p>
@@ -867,30 +931,38 @@
       
       <!-- Center Column - Compact Contact Form -->
       <div class="card contact-form" style="padding: 1.5rem; margin: 0;">
-        <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST">
+        <form action="https://formsubmit.co/bharatwarriors2024@gmail.com" method="POST" role="form" aria-label="Contact Form">
           <input type="hidden" name="_subject" value="BCC Club Inquiry - Website Contact" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_next" value="https://bharatwarriors.com/thank-you" />
           
+          <!-- Honeypot field for spam prevention -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+          
           <h3 style="margin: 0 0 1rem; font-size: 1.1rem; color: #2c3e50; text-align: center;">💬 Send Message</h3>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
-            <input name="name" required class="form-input" placeholder="Full Name" style="padding: 8px 12px; font-size: 0.9rem;">
-            <input type="email" name="email" required class="form-input" placeholder="Email" style="padding: 8px 12px; font-size: 0.9rem;">
+            <label for="contact-name" class="visually-hidden">Full Name</label>
+            <input id="contact-name" name="name" type="text" required class="form-input" placeholder="Full Name" aria-required="true" aria-label="Full Name" style="padding: 8px 12px; font-size: 0.9rem;">
+            
+            <label for="contact-email" class="visually-hidden">Email Address</label>
+            <input id="contact-email" type="email" name="email" required class="form-input" placeholder="Email" aria-required="true" aria-label="Email Address" style="padding: 8px 12px; font-size: 0.9rem;">
           </div>
           
-          <select name="subject" class="form-input" style="padding: 8px 12px; font-size: 0.9rem; margin-bottom: 0.75rem; width: 100%;">
+          <label for="contact-subject" class="visually-hidden">Subject</label>
+          <select id="contact-subject" name="subject" class="form-input" aria-label="Subject" style="padding: 8px 12px; font-size: 0.9rem; margin-bottom: 0.75rem; width: 100%;">
             <option value="General Inquiry">General Inquiry</option>
             <option value="Join Team">Join the Team</option>
             <option value="Sponsorship">Sponsorship Opportunity</option>
             <option value="Media Request">Media Request</option>
           </select>
           
-          <textarea name="message" rows="3" required class="form-textarea" 
-                    placeholder="Your message..." style="padding: 8px 12px; font-size: 0.9rem; margin-bottom: 1rem; resize: vertical;"></textarea>
+          <label for="contact-message" class="visually-hidden">Message</label>
+          <textarea id="contact-message" name="message" rows="3" required class="form-textarea" 
+                    placeholder="Your message..." aria-required="true" aria-label="Message" style="padding: 8px 12px; font-size: 0.9rem; margin-bottom: 1rem; resize: vertical;"></textarea>
           
-          <button class="btn" type="submit" style="width: 100%; padding: 10px; font-size: 0.9rem; background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+          <button class="btn" type="submit" aria-label="Send message" style="width: 100%; padding: 10px; font-size: 0.9rem; background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
             📧 Send Message
           </button>
         </form>
@@ -907,7 +979,7 @@
         
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" 
-             target="_blank" rel="noopener" style="
+             target="_blank" rel="noopener noreferrer" style="
             background: linear-gradient(135deg, #E4405F 0%, #F56040 100%);
             color: white;
             padding: 10px 15px;
@@ -921,7 +993,7 @@
           </a>
           
           <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" 
-             target="_blank" rel="noopener" style="
+             target="_blank" rel="noopener noreferrer" style="
             background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
             color: white;
             padding: 10px 15px;
@@ -1019,11 +1091,12 @@
     </form>
   </div>
 </div>
+</main>
 
 <script src="script.js?v=2025092102"></script>
 
 <!-- IANT Style Footer with Cricket Club Content -->
-<footer class="iant-footer" style="display: block !important; background: linear-gradient(135deg, #1a237e 0%, #283593 100%) !important; color: white !important; padding: 60px 0 20px !important; margin-top: 50px !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 1 !important;">
+<footer class="iant-footer" role="contentinfo" aria-label="Footer" style="display: block !important; background: linear-gradient(135deg, #1a237e 0%, #283593 100%) !important; color: white !important; padding: 60px 0 20px !important; margin-top: 50px !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 1 !important;">
   <div class="container" style="max-width: 1200px !important; margin: 0 auto !important; padding: 0 20px !important;">
     <!-- Main Footer Grid - 4 Columns -->
     <div class="footer-grid" style="display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 40px !important; margin-bottom: 50px !important; color: white !important;">
@@ -1064,13 +1137,13 @@
     <div class="iant-association" style="text-align: center !important; padding: 40px 20px !important; border-top: 2px solid rgba(255,255,255,0.1) !important; margin-top: 20px !important;">
       <h2 style="color: white !important; font-size: 24px !important; font-weight: 600 !important; margin-bottom: 30px !important; text-transform: uppercase !important; letter-spacing: 1px !important;">Community Support</h2>
       <div class="iant-logo-container" style="margin-bottom: 25px !important;">
-        <img src="images/logos/UGNT- logo.png" alt="UGNT Association" class="iant-logo" style="height: 150px !important; width: auto !important; filter: brightness(1.1) !important;">
+        <img src="images/logos/UGNT- logo.png" alt="United Gujaratis of North Texas Logo" width="200" height="150" loading="lazy" class="iant-logo" style="height: 150px !important; width: auto !important; filter: brightness(1.1) !important;">
       </div>
       <h3 style="color: white !important; font-size: 28px !important; font-weight: 700 !important; margin-bottom: 30px !important; text-transform: uppercase !important; letter-spacing: 2px !important;">United Gujaratis of North Texas</h3>
       
       <!-- Social Media Icons -->
       <div class="iant-social" style="display: flex !important; justify-content: center !important; gap: 20px !important; margin-bottom: 20px !important;">
-        <a href="https://www.facebook.com/groups/dfwgujarati/?ref=share&mibextid=NSMWBT" target="_blank" rel="noopener" class="social-icon facebook" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 50px !important; height: 50px !important; background: rgba(255,255,255,0.1) !important; border-radius: 50% !important; color: white !important; font-size: 20px !important; text-decoration: none !important; transition: all 0.3s ease !important; border: 2px solid rgba(255,255,255,0.2) !important;">
+        <a href="https://www.facebook.com/groups/dfwgujarati/?ref=share&mibextid=NSMWBT" target="_blank" rel="noopener noreferrer" class="social-icon facebook" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 50px !important; height: 50px !important; background: rgba(255,255,255,0.1) !important; border-radius: 50% !important; color: white !important; font-size: 20px !important; text-decoration: none !important; transition: all 0.3s ease !important; border: 2px solid rgba(255,255,255,0.2) !important;">
           <svg viewBox="0 0 24 24" style="fill: currentColor !important; width: 24px !important; height: 24px !important;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
         <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" class="social-icon youtube" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 50px !important; height: 50px !important; background: rgba(255,255,255,0.1) !important; border-radius: 50% !important; color: white !important; font-size: 20px !important; text-decoration: none !important; transition: all 0.3s ease !important; border: 2px solid rgba(255,255,255,0.2) !important;">
@@ -1086,84 +1159,17 @@
     <div class="footer-bottom" style="text-align: center !important; padding-top: 20px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; margin-top: 20px !important;">
       <span style="color: rgba(255,255,255,0.7) !important; font-size: 14px !important;">&copy; 2025 Bharat Cricket Club . All rights reserved.</span>
       <div class="footer-right" style="margin-top: 10px !important;">
-        <span style="color: rgba(255,255,255,0.7) !important; font-size: 14px !important;">Designed by <a href="https://aksharnixglobal.com" target="_blank" style="color: white !important; text-decoration: none !important; font-weight: bold !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#64b5f6'" onmouseout="this.style.color='white'">AksharNix Global</a></span>
+        <span style="color: rgba(255,255,255,0.7) !important; font-size: 14px !important;">Designed by <a href="https://aksharnixglobal.com" target="_blank" rel="noopener noreferrer" style="color: white !important; text-decoration: none !important; font-weight: bold !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#64b5f6'" onmouseout="this.style.color='white'">AksharNix Global</a></span>
       </div>
     </div>
   </div>
 </footer>
 
+<!-- Scroll Navigation Buttons -->
+<div class="scroll-buttons" aria-label="Scroll Navigation">
+  <button id="scroll-to-top" aria-label="Scroll to top" title="Back to Top">⬆</button>
+  <button id="scroll-to-bottom" aria-label="Scroll to bottom" title="Scroll to Bottom">⬇</button>
+</div>
+
 </body>
-<script>
-// Enhanced Scroll Up/Down Button Functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const scrollTopBtn = document.getElementById('scroll-to-top');
-  const scrollBottomBtn = document.getElementById('scroll-to-bottom');
-
-  // Ensure buttons exist
-  if (!scrollTopBtn || !scrollBottomBtn) {
-    console.error('Scroll buttons not found in DOM');
-    return;
-  }
-
-  function toggleScrollButtons() {
-    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-    const maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    
-    // Show top button if scrolled down more than 200px
-    if (scrollY > 200) {
-      scrollTopBtn.style.display = 'flex';
-      scrollTopBtn.style.opacity = '1';
-    } else {
-      scrollTopBtn.style.opacity = '0';
-      setTimeout(() => {
-        if (scrollY <= 200) scrollTopBtn.style.display = 'none';
-      }, 200);
-    }
-    
-    // Show bottom button if not at bottom (more than 200px from bottom)
-    if ((maxScroll - scrollY) > 200) {
-      scrollBottomBtn.style.display = 'flex';
-      scrollBottomBtn.style.opacity = '1';
-    } else {
-      scrollBottomBtn.style.opacity = '0';
-      setTimeout(() => {
-        if ((maxScroll - scrollY) <= 200) scrollBottomBtn.style.display = 'none';
-      }, 200);
-    }
-  }
-
-  // Enhanced smooth scroll to top
-  scrollTopBtn.addEventListener('click', function() {
-    window.scrollTo({ 
-      top: 0, 
-      behavior: 'smooth' 
-    });
-  });
-
-  // Enhanced smooth scroll to bottom
-  scrollBottomBtn.addEventListener('click', function() {
-    window.scrollTo({ 
-      top: document.documentElement.scrollHeight, 
-      behavior: 'smooth' 
-    });
-  });
-
-  // Throttled scroll event for better performance
-  let ticking = false;
-  function requestTick() {
-    if (!ticking) {
-      requestAnimationFrame(toggleScrollButtons);
-      ticking = true;
-      setTimeout(() => { ticking = false; }, 16); // ~60fps
-    }
-  }
-
-  window.addEventListener('scroll', requestTick, { passive: true });
-  
-  // Initial state
-  setTimeout(toggleScrollButtons, 100);
-  
-  console.log('Scroll buttons initialized successfully');
-});
-</script>
 </html>
