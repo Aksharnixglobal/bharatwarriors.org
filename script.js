@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Debug log
   console.log('Scroll progress bar created:', progressBar);
   
+  // Initialize dynamic player showcase
+  initializePlayerShowcase();
+  
+  // Initialize match fixtures functionality
+  initializeMatchFixtures();
+  
   // Update progress on scroll with throttling
   let ticking = false;
   
@@ -1002,7 +1008,129 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   window.addEventListener('scroll', requestTick, { passive: true });
+
+// Dynamic Player Showcase Functions
+function initializePlayerShowcase() {
+  // Load and display players from JSON
+  fetch('data/players.json')
+    .then(response => response.json())
+    .then(data => {
+      displayPlayers(data.warriors, 'all');
+    })
+    .catch(error => {
+      console.error('Error loading players:', error);
+      // Fallback to static display if JSON fails
+      displayFallbackPlayers();
+    });
+}
+
+function displayPlayers(players, filter) {
+  const grid = document.getElementById('players-grid');
+  if (!grid) return;
   
+  let filteredPlayers = players;
+  if (filter !== 'all') {
+    filteredPlayers = players.filter(player => player.type === filter);
+  }
+  
+  grid.innerHTML = filteredPlayers.map(player => createPlayerCard(player)).join('');
+  
+  // Add animation to cards
+  setTimeout(() => {
+    const cards = grid.querySelectorAll('.player-card');
+    cards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, index * 100);
+    });
+  }, 50);
+}
+
+function createPlayerCard(player) {
+  const badges = player.badges ? player.badges.map(badge => 
+    `<span class="badge ${badge.toLowerCase()}">${badge}</span>`
+  ).join('') : '';
+  
+  const typeColor = {
+    'captain': '#2c5aa0',
+    'vice': '#dc3545', 
+    'bowler': '#28a745',
+    'allrounder': '#ffc107',
+    'fielder': '#17a2b8'
+  };
+  
+  return `
+    <div class="player-card" style="opacity: 0; transform: translateY(20px); transition: all 0.6s ease;">
+      <div class="player-initials" style="background: linear-gradient(135deg, ${typeColor[player.type] || '#2c5aa0'}, ${typeColor[player.type] || '#4472c4'});">
+        ${player.initials}
+      </div>
+      <div class="player-name">${player.name}</div>
+      <div class="player-role">${player.role}</div>
+      <div class="player-badges">${badges}</div>
+    </div>
+  `;
+}
+
+function displayFallbackPlayers() {
+  const grid = document.getElementById('players-grid');
+  if (!grid) return;
+  
+  const fallbackPlayers = [
+    { initials: "PP", name: "Pratik Patel", role: "Captain & Team Leader", badges: ["Leader"], type: "captain" },
+    { initials: "RL", name: "Raj Lakkad", role: "Vice Captain", badges: ["Batsman"], type: "vice" },
+    { initials: "DP", name: "Darshan Patel", role: "Fast Bowler", badges: ["Fast"], type: "bowler" },
+    { initials: "GP", name: "Gaurav Prabhukhot", role: "Top Order Batsman", badges: ["Batsman"], type: "bowler" }
+  ];
+  
+  displayPlayers(fallbackPlayers, 'all');
+}
+
+function filterPlayers(filter) {
+  // Update active button
+  document.querySelectorAll('.player-filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    btn.style.background = btn.getAttribute('data-original-bg') || 'rgba(44, 90, 160, 0.1)';
+    btn.style.color = btn.getAttribute('data-original-color') || '#2c5aa0';
+  });
+  
+  event.target.classList.add('active');
+  
+  // Reload players with filter
+  fetch('data/players.json')
+    .then(response => response.json())
+    .then(data => {
+      displayPlayers(data.warriors, filter);
+    })
+    .catch(error => {
+      console.error('Error filtering players:', error);
+    });
+}
+
+// Match Fixtures Functions
+function initializeMatchFixtures() {
+  // Set up match tab functionality
+  window.showMatches = function(type) {
+    // Update active tab
+    document.querySelectorAll('.match-tab').forEach(tab => {
+      tab.classList.remove('active');
+      tab.style.background = 'rgba(220, 53, 69, 0.1)';
+      tab.style.color = '#dc3545';
+    });
+    
+    event.target.classList.add('active');
+    event.target.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
+    event.target.style.color = 'white';
+    
+    // Show/hide content
+    document.getElementById('upcoming-matches').style.display = type === 'upcoming' ? 'block' : 'none';
+    document.getElementById('match-results').style.display = type === 'results' ? 'block' : 'none';
+  };
+}
+
+// Make functions globally available
+window.filterPlayers = filterPlayers;
+window.showMatches = showMatches;
   // Initial state
   setTimeout(toggleScrollButtons, 100);
   
