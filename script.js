@@ -937,3 +937,74 @@ document.addEventListener('DOMContentLoaded', function() {
     firstContent.classList.add('active');
   }
 });
+/* Enhanced Scroll Up/Down Button Functionality */
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollTopBtn = document.getElementById('scroll-to-top');
+  const scrollBottomBtn = document.getElementById('scroll-to-bottom');
+
+  // Ensure buttons exist
+  if (!scrollTopBtn || !scrollBottomBtn) {
+    console.error('Scroll buttons not found in DOM');
+    return;
+  }
+
+  function toggleScrollButtons() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const maxScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    
+    // Show top button if scrolled down more than 200px
+    if (scrollY > 200) {
+      scrollTopBtn.style.display = 'flex';
+      scrollTopBtn.style.opacity = '1';
+    } else {
+      scrollTopBtn.style.opacity = '0';
+      setTimeout(() => {
+        if (scrollY <= 200) scrollTopBtn.style.display = 'none';
+      }, 200);
+    }
+    
+    // Show bottom button if not at bottom (more than 200px from bottom)
+    if ((maxScroll - scrollY) > 200) {
+      scrollBottomBtn.style.display = 'flex';
+      scrollBottomBtn.style.opacity = '1';
+    } else {
+      scrollBottomBtn.style.opacity = '0';
+      setTimeout(() => {
+        if ((maxScroll - scrollY) <= 200) scrollBottomBtn.style.display = 'none';
+      }, 200);
+    }
+  }
+
+  // Enhanced smooth scroll to top
+  scrollTopBtn.addEventListener('click', function() {
+    window.scrollTo({ 
+      top: 0, 
+      behavior: 'smooth' 
+    });
+  });
+
+  // Enhanced smooth scroll to bottom
+  scrollBottomBtn.addEventListener('click', function() {
+    window.scrollTo({ 
+      top: document.documentElement.scrollHeight, 
+      behavior: 'smooth' 
+    });
+  });
+
+  // Throttled scroll event for better performance
+  let ticking = false;
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(toggleScrollButtons);
+      ticking = true;
+      setTimeout(() => { ticking = false; }, 16); // ~60fps
+    }
+  }
+
+  window.addEventListener('scroll', requestTick, { passive: true });
+  
+  // Initial state
+  setTimeout(toggleScrollButtons, 100);
+  
+  console.log('Scroll buttons initialized successfully');
+});
