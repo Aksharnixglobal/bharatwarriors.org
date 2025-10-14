@@ -10,18 +10,81 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
+
+<!-- Security -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none';" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta http-equiv="X-Frame-Options" content="DENY" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+
+<!-- Open Graph Meta Tags for Social Media -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Bharat Cricket Club By UGNT - Dallas-Fort Worth Cricket Team" />
+<meta property="og:description" content="Official site of Bharat Cricket Club By UGNT (DFW). Passion • Teamwork • Spirit. Competing in DFCL and LECA leagues. Join our cricket community!" />
+<meta property="og:url" content="https://bharatwarriors.org/" />
+<meta property="og:image" content="https://bharatwarriors.org/images/gallery/BCCNT.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Bharat Cricket Club Team Photo" />
+<meta property="og:site_name" content="Bharat Cricket Club" />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bharat Cricket Club By UGNT - Dallas-Fort Worth Cricket Team" />
+<meta name="twitter:description" content="Official site of Bharat Cricket Club By UGNT (DFW). Passion • Teamwork • Spirit. Competing in DFCL and LECA leagues." />
+<meta name="twitter:image" content="https://bharatwarriors.org/images/gallery/BCCNT.jpg" />
+<meta name="twitter:image:alt" content="Bharat Cricket Club Team Photo" />
+
 <link rel="icon" href="favicon.png" />
 <link rel="apple-touch-icon" href="images/gallery/BCCNT.jpg" />
+<link rel="canonical" href="https://bharatwarriors.org/" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=2025100104">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "Bharat Cricket Club By UGNT",
+  "alternateName": "Bharat Warriors",
+  "url": "https://bharatwarriors.org/",
+  "logo": "https://bharatwarriors.org/images/gallery/BCCNT.jpg",
+  "image": "https://bharatwarriors.org/images/gallery/BCCNT.jpg",
+  "description": "Official site of Bharat Cricket Club By UGNT (DFW) — fixtures, gallery, sponsors, donations, contact. Competing in DFCL and LECA leagues.",
+  "sport": "Cricket",
+  "email": "bharatwarriors2024@gmail.com",
+  "telephone": "+1-773-750-6813",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Dallas-Fort Worth",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.instagram.com/bharatwarriors2024",
+    "https://www.facebook.com/groups/dfwgujarati",
+    "https://youtube.com/@bharatwarriorsdallas"
+  ],
+  "memberOf": {
+    "@type": "Organization",
+    "name": "United Gujaratis of North Texas",
+    "url": "https://bharatwarriors.org/"
+  }
+}
+</script>
 </head>
 
 <body>
+<!-- Skip to Content Link for Accessibility -->
+<a href="#main-content" class="skip-to-content">Skip to main content</a>
+
 <!-- Scroll Progress Bar -->
 <div id="scroll-progress-backup" style="position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, #dc3545 0%, #007bff 50%, #28a745 100%); z-index: 999999; transition: width 0.1s ease;"></div>
 
 <!-- Header & Navigation - Live Website Style -->
-<header style="
+<header role="banner" aria-label="Site Header" style="
   position: fixed;
   top: 0;
   width: 100%;
@@ -33,7 +96,7 @@
   <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
     <!-- Top Section: Logo + Title -->
     <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-      <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo" style="
+      <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo" width="70" height="70" loading="eager" style="
         width: 70px;
         height: 70px;
         border-radius: 50%;
@@ -59,8 +122,8 @@
     </div>
     
     <!-- Navigation Menu -->
-    <nav style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-      <a href="#about" style="
+    <nav role="navigation" aria-label="Main Navigation" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+      <a href="#about" aria-label="Navigate to About section" style="
         background: rgba(255,255,255,0.15);
         color: white;
         padding: 0.5rem 1rem;
@@ -163,7 +226,8 @@
 </header>
 
 <!-- Hero Section - Live Website Style -->
-<section id="home" style="
+<main id="main-content">
+<section id="home" role="banner" aria-label="Hero Section" style="
   min-height: 100vh;
   background: linear-gradient(135deg, #2c5aa0 0%, #4472c4 50%, #007bff 100%);
   padding: 160px 0 60px;
@@ -681,7 +745,7 @@
     
     <div class="sponsor-grid">
       <div id="sponsor-infinity" class="sponsor">
-        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener">
+        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener noreferrer">
           <div class="logo-container" style="
             display: flex;
             align-items: center;
@@ -715,7 +779,7 @@
       </div>
       
       <div id="sponsor-aksharnix" class="sponsor">
-        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener">
+        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer">
           <div class="logo-container" style="
             display: flex;
             align-items: center;
@@ -907,7 +971,7 @@
         
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           <a href="https://www.instagram.com/bharatwarriors2024?igsh=MWl0MWU2c2lneHgyeA%3D%3D&utm_source=qr" 
-             target="_blank" rel="noopener" style="
+             target="_blank" rel="noopener noreferrer" style="
             background: linear-gradient(135deg, #E4405F 0%, #F56040 100%);
             color: white;
             padding: 10px 15px;
@@ -921,7 +985,7 @@
           </a>
           
           <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" 
-             target="_blank" rel="noopener" style="
+             target="_blank" rel="noopener noreferrer" style="
             background: linear-gradient(135deg, #FF0000 0%, #CC0000 100%);
             color: white;
             padding: 10px 15px;
@@ -1019,11 +1083,12 @@
     </form>
   </div>
 </div>
+</main>
 
 <script src="script.js?v=2025092102"></script>
 
 <!-- IANT Style Footer with Cricket Club Content -->
-<footer class="iant-footer" style="display: block !important; background: linear-gradient(135deg, #1a237e 0%, #283593 100%) !important; color: white !important; padding: 60px 0 20px !important; margin-top: 50px !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 1 !important;">
+<footer class="iant-footer" role="contentinfo" aria-label="Footer" style="display: block !important; background: linear-gradient(135deg, #1a237e 0%, #283593 100%) !important; color: white !important; padding: 60px 0 20px !important; margin-top: 50px !important; visibility: visible !important; opacity: 1 !important; position: relative !important; z-index: 1 !important;">
   <div class="container" style="max-width: 1200px !important; margin: 0 auto !important; padding: 0 20px !important;">
     <!-- Main Footer Grid - 4 Columns -->
     <div class="footer-grid" style="display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 40px !important; margin-bottom: 50px !important; color: white !important;">
@@ -1070,7 +1135,7 @@
       
       <!-- Social Media Icons -->
       <div class="iant-social" style="display: flex !important; justify-content: center !important; gap: 20px !important; margin-bottom: 20px !important;">
-        <a href="https://www.facebook.com/groups/dfwgujarati/?ref=share&mibextid=NSMWBT" target="_blank" rel="noopener" class="social-icon facebook" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 50px !important; height: 50px !important; background: rgba(255,255,255,0.1) !important; border-radius: 50% !important; color: white !important; font-size: 20px !important; text-decoration: none !important; transition: all 0.3s ease !important; border: 2px solid rgba(255,255,255,0.2) !important;">
+        <a href="https://www.facebook.com/groups/dfwgujarati/?ref=share&mibextid=NSMWBT" target="_blank" rel="noopener noreferrer" class="social-icon facebook" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 50px !important; height: 50px !important; background: rgba(255,255,255,0.1) !important; border-radius: 50% !important; color: white !important; font-size: 20px !important; text-decoration: none !important; transition: all 0.3s ease !important; border: 2px solid rgba(255,255,255,0.2) !important;">
           <svg viewBox="0 0 24 24" style="fill: currentColor !important; width: 24px !important; height: 24px !important;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
         <a href="https://youtube.com/@bharatwarriorsdallas?si=u6n9gneHkrNVwt6w" class="social-icon youtube" style="display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 50px !important; height: 50px !important; background: rgba(255,255,255,0.1) !important; border-radius: 50% !important; color: white !important; font-size: 20px !important; text-decoration: none !important; transition: all 0.3s ease !important; border: 2px solid rgba(255,255,255,0.2) !important;">
@@ -1086,7 +1151,7 @@
     <div class="footer-bottom" style="text-align: center !important; padding-top: 20px !important; border-top: 1px solid rgba(255,255,255,0.1) !important; margin-top: 20px !important;">
       <span style="color: rgba(255,255,255,0.7) !important; font-size: 14px !important;">&copy; 2025 Bharat Cricket Club . All rights reserved.</span>
       <div class="footer-right" style="margin-top: 10px !important;">
-        <span style="color: rgba(255,255,255,0.7) !important; font-size: 14px !important;">Designed by <a href="https://aksharnixglobal.com" target="_blank" style="color: white !important; text-decoration: none !important; font-weight: bold !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#64b5f6'" onmouseout="this.style.color='white'">AksharNix Global</a></span>
+        <span style="color: rgba(255,255,255,0.7) !important; font-size: 14px !important;">Designed by <a href="https://aksharnixglobal.com" target="_blank" rel="noopener noreferrer" style="color: white !important; text-decoration: none !important; font-weight: bold !important; transition: color 0.3s ease !important;" onmouseover="this.style.color='#64b5f6'" onmouseout="this.style.color='white'">AksharNix Global</a></span>
       </div>
     </div>
   </div>
