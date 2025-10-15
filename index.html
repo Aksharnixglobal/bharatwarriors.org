@@ -1596,10 +1596,12 @@ if ('serviceWorker' in navigator) {
     currentIndex = (currentIndex + 1) % backgroundImages.length;
     const nextImage = backgroundImages[currentIndex];
     
-    heroSection.style.background = `
+    heroSection.style.backgroundImage = `
       linear-gradient(135deg, rgba(20, 40, 80, 0.92) 0%, rgba(30, 60, 114, 0.88) 50%, rgba(42, 82, 152, 0.85) 100%),
       url('${nextImage}')
     `;
+    heroSection.style.backgroundSize = 'cover';
+    heroSection.style.backgroundPosition = 'center top';
   }
 
   // Rotate background every 5 seconds
