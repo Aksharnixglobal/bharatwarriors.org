@@ -280,7 +280,7 @@ if ('serviceWorker' in navigator) {
 
 <!-- Championship Hero Section -->
 <main id="main-content">
-<section id="home" role="banner" aria-label="Hero Section" style="
+<section id="home" role="banner" aria-label="Hero Section" class="hero-background" style="
   min-height: 100vh;
   background: 
     linear-gradient(135deg, rgba(20, 40, 80, 0.92) 0%, rgba(30, 60, 114, 0.88) 50%, rgba(42, 82, 152, 0.85) 100%),
@@ -293,6 +293,7 @@ if ('serviceWorker' in navigator) {
   overflow: hidden;
   display: flex;
   align-items: center;
+  transition: background-image 1s ease-in-out;
 ">
   
   <!-- Animated Background Elements -->
@@ -1580,6 +1581,31 @@ if ('serviceWorker' in navigator) {
   <button id="scroll-to-top" aria-label="Scroll to top" title="Back to Top">⬆</button>
   <button id="scroll-to-bottom" aria-label="Scroll to bottom" title="Scroll to Bottom">⬇</button>
 </div>
+
+<!-- Hero Background Rotation Script -->
+<script>
+(function() {
+  const heroSection = document.querySelector('.hero-background');
+  const backgroundImages = [
+    'images/hero/bw-team-photo.jpg',
+    'images/gallery/Pra.jpg'
+  ];
+  let currentIndex = 0;
+
+  function rotateBackground() {
+    currentIndex = (currentIndex + 1) % backgroundImages.length;
+    const nextImage = backgroundImages[currentIndex];
+    
+    heroSection.style.background = `
+      linear-gradient(135deg, rgba(20, 40, 80, 0.92) 0%, rgba(30, 60, 114, 0.88) 50%, rgba(42, 82, 152, 0.85) 100%),
+      url('${nextImage}')
+    `;
+  }
+
+  // Rotate background every 5 seconds
+  setInterval(rotateBackground, 5000);
+})();
+</script>
 
 </body>
 </html>
