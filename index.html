@@ -196,10 +196,25 @@ if ('serviceWorker' in navigator) {
           margin-top: 1px;
         ">DFCL • LECA</div>
       </div>
+      
+      <!-- Mobile Hamburger Menu Button -->
+      <button id="mobile-menu-toggle" style="
+        display: none;
+        background: rgba(255,255,255,0.15);
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 8px;
+        padding: 0.5rem;
+        cursor: pointer;
+        color: white;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+      " onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+        <span id="hamburger-icon">☰</span>
+      </button>
     </div>
     
     <!-- Premium Navigation Menu -->
-    <nav role="navigation" aria-label="Main Navigation" style="
+    <nav id="main-nav" role="navigation" aria-label="Main Navigation" style="
       margin-top: 1rem;
       display: flex; 
       justify-content: center; 
@@ -574,6 +589,161 @@ if ('serviceWorker' in navigator) {
 @keyframes scrollBounce {
   0%, 100% { transform: translateX(-50%) translateY(0px); }
   50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* Header adjustments */
+  header {
+    padding: 0.5rem 0 !important;
+  }
+  
+  header > div {
+    padding: 0 1rem !important;
+  }
+  
+  /* Logo size adjustment */
+  header img[alt="Bharat Cricket Club Logo"] {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  /* Header title smaller on mobile */
+  .header-title {
+    font-size: 1rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Tagline text smaller */
+  header div[style*="PASSION"] {
+    font-size: 0.65rem !important;
+  }
+  
+  /* Warriors badge adjustment */
+  header div[style*="WARRIORS"] {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Show hamburger menu button on mobile */
+  #mobile-menu-toggle {
+    display: block !important;
+  }
+  
+  /* Hide navigation by default on mobile */
+  #main-nav {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+    padding: 1rem !important;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3) !important;
+    border-top: 2px solid rgba(255,255,255,0.1) !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    z-index: 999 !important;
+  }
+  
+  /* Show navigation when active */
+  #main-nav.mobile-menu-active {
+    display: flex !important;
+  }
+  
+  /* Mobile navigation links */
+  #main-nav a {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0.8rem !important;
+    font-size: 0.9rem !important;
+    background: rgba(255,255,255,0.1) !important;
+    border-radius: 10px !important;
+  }
+  
+  /* Center Mahakaal logo in mobile menu */
+  #main-nav > div {
+    margin: 0.5rem auto !important;
+  }
+  
+  /* Hero section adjustments */
+  #home {
+    padding: 160px 0 60px !important;
+    min-height: 90vh !important;
+  }
+  
+  /* Hero title */
+  .hero-title {
+    font-size: clamp(1.8rem, 8vw, 3rem) !important;
+    margin: 0 0 1rem !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* Tagline */
+  #home div[style*="Passion"] {
+    font-size: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Har Har Mahadev text */
+  #home div[style*="Har Har Mahadev"] {
+    font-size: 0.9rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Buttons */
+  #home a[href="#team"],
+  #home a[href="#fixtures"] {
+    padding: 0.8rem 1.8rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Stats grid */
+  #home > div > div:last-child {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1rem !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* Stats numbers */
+  #home div[style*="font-size: 2.5rem"] {
+    font-size: 2rem !important;
+  }
+  
+  /* Stats labels */
+  #home div[style*="Elite Warriors"],
+  #home div[style*="Teams"],
+  #home div[style*="Leagues"] {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Mahakaal logo size on mobile */
+  img[alt="Har Har Mahadev"] {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small phones */
+  .hero-title {
+    font-size: clamp(1.5rem, 10vw, 2.5rem) !important;
+  }
+  
+  header img[alt="Bharat Cricket Club Logo"] {
+    width: 45px !important;
+    height: 45px !important;
+  }
+  
+  .header-title {
+    font-size: 0.9rem !important;
+  }
+  
+  nav a {
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.75rem !important;
+  }
 }
 </style>
 
@@ -1581,6 +1751,38 @@ if ('serviceWorker' in navigator) {
   <button id="scroll-to-top" aria-label="Scroll to top" title="Back to Top">⬆</button>
   <button id="scroll-to-bottom" aria-label="Scroll to bottom" title="Scroll to Bottom">⬇</button>
 </div>
+
+<!-- Mobile Menu Toggle Script -->
+<script>
+function toggleMobileMenu() {
+  const nav = document.getElementById('main-nav');
+  const icon = document.getElementById('hamburger-icon');
+  
+  nav.classList.toggle('mobile-menu-active');
+  
+  // Change icon between hamburger and X
+  if (nav.classList.contains('mobile-menu-active')) {
+    icon.textContent = '✕';
+  } else {
+    icon.textContent = '☰';
+  }
+}
+
+// Close mobile menu when clicking on a link
+document.addEventListener('DOMContentLoaded', function() {
+  const navLinks = document.querySelectorAll('#main-nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const nav = document.getElementById('main-nav');
+      const icon = document.getElementById('hamburger-icon');
+      if (nav.classList.contains('mobile-menu-active')) {
+        nav.classList.remove('mobile-menu-active');
+        icon.textContent = '☰';
+      }
+    });
+  });
+});
+</script>
 
 <!-- Hero Background Rotation Script -->
 <script>
