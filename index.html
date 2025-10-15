@@ -298,7 +298,7 @@ if ('serviceWorker' in navigator) {
 <section id="home" role="banner" aria-label="Hero Section" class="hero-background" style="
   min-height: 100vh;
   background: 
-    linear-gradient(135deg, rgba(20, 40, 80, 0.92) 0%, rgba(30, 60, 114, 0.88) 50%, rgba(42, 82, 152, 0.85) 100%),
+    linear-gradient(135deg, rgba(30, 60, 114, 0.75) 0%, rgba(42, 82, 152, 0.70) 50%, rgba(68, 114, 196, 0.65) 100%),
     url('images/hero/bw-team-photo.jpg');
   background-size: cover;
   background-position: center top;
@@ -390,9 +390,9 @@ if ('serviceWorker' in navigator) {
       text-shadow: 1px 2px 4px rgba(0,0,0,0.6);
       letter-spacing: 0.5px;
     ">
-      <span style="color: #ffd700;">Passion</span> • 
+      <span style="color: #FFE55C; text-shadow: 0 0 10px rgba(255, 229, 92, 0.4);">Passion</span> • 
       <span style="color: #ffffff;">Teamwork</span> • 
-      <span style="color: #ffd700;">Spirit</span>
+      <span style="color: #FFE55C; text-shadow: 0 0 10px rgba(255, 229, 92, 0.4);">Spirit</span>
     </div>
     
     <!-- Sacred Motto -->
@@ -519,11 +519,11 @@ if ('serviceWorker' in navigator) {
   font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
   font-weight: 900 !important;
   margin: 0 0 1.5rem !important;
-  color: #FFD700 !important;
+  color: #FFE55C !important;
   text-shadow: 
     2px 2px 4px rgba(0,0,0,0.95),
     -1px -1px 2px rgba(0,0,0,0.5),
-    0 0 20px rgba(255, 215, 0, 0.4) !important;
+    0 0 25px rgba(255, 229, 92, 0.5) !important;
   letter-spacing: 1px !important;
   line-height: 1.1 !important;
   position: relative !important;
@@ -535,13 +535,14 @@ if ('serviceWorker' in navigator) {
 }
 
 .header-title {
-  color: #FFD700 !important;
+  color: #FFE55C !important;
   font-size: 1.4rem !important;
   font-weight: 800 !important;
   margin: 0 !important;
   text-shadow: 
     2px 2px 3px rgba(0,0,0,0.9),
-    -1px -1px 1px rgba(0,0,0,0.5) !important;
+    -1px -1px 1px rgba(0,0,0,0.5),
+    0 0 15px rgba(255, 229, 92, 0.4) !important;
   letter-spacing: 0.5px !important;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
@@ -1799,7 +1800,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextImage = backgroundImages[currentIndex];
     
     heroSection.style.backgroundImage = `
-      linear-gradient(135deg, rgba(20, 40, 80, 0.92) 0%, rgba(30, 60, 114, 0.88) 50%, rgba(42, 82, 152, 0.85) 100%),
+      linear-gradient(135deg, rgba(30, 60, 114, 0.75) 0%, rgba(42, 82, 152, 0.70) 50%, rgba(68, 114, 196, 0.65) 100%),
       url('${nextImage}')
     `;
     heroSection.style.backgroundSize = 'cover';
