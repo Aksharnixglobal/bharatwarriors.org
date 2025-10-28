@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gallery - Bharat Cricket Club By UGNT</title>
+<meta name="description" content="Photo gallery of Bharat Cricket Club By UGNT - Awards, celebrations, practice sessions and team moments." />
+<meta name="keywords" content="cricket, dallas, dfw, bharat warriors, gallery, photos, cricket team" />
+<meta name="theme-color" content="#0c1e37" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Gallery - Bharat Cricket Club By UGNT" />
+<meta property="og:description" content="Photo gallery showcasing our journey, awards, and team spirit." />
+<meta property="og:url" content="https://bharatwarriors.org/gallery.html" />
+<meta property="og:image" content="https://bharatwarriors.org/images/gallery/BCC.jpg" />
+
+<link rel="icon" href="favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0c1e37 0%, #1a3a5c 100%);
+  color: white;
+}
+
+.main-content {
+  padding-top: 100px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 3rem;
+  color: #FFEB3B;
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 3rem;
+}
+
+.gallery-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.gallery-btn {
+  background: linear-gradient(135deg, #2a5298 0%, #4472c4 100%);
+  color: white;
+  border: 2px solid rgba(255,255,255,0.2);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.gallery-btn:hover,
+.gallery-btn.active {
+  background: linear-gradient(135deg, #4472c4 0%, #2a5298 100%);
+  border-color: #FFEB3B;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,235,59,0.3);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.ph {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+
+.cap {
+  display: block;
+  padding: 1rem;
+  background: rgba(0,0,0,0.7);
+  text-align: center;
+  font-weight: 600;
+}
+
+.footer {
+  background: rgba(0,0,0,0.5);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 2px solid rgba(255,255,255,0.1);
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+</style>
+</head>
+
+<body>
+<!-- Navigation -->
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo">
+      <div>
+        <h1>Bharat Cricket Club</h1>
+        <span class="subtitle">By UGNT</span>
+      </div>
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="warriors.html">Warriors</a></li>
+      <li><a href="fixtures.html">Fixtures</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content" id="main-content">
+  <h1 class="page-title">Moments of Glory 📸</h1>
+  <p class="page-subtitle">Every victory, every celebration, every warrior moment—captured forever</p>
+
+  <!-- Gallery Controls -->
+  <div class="gallery-controls">
+    <button class="gallery-btn active" onclick="showAlbum('awards')">
+      <span>🏆 Awards & Recognition</span>
+    </button>
+    <button class="gallery-btn" onclick="showAlbum('party')">
+      <span>🎉 Team Celebrations</span>
+    </button>
+    <button class="gallery-btn" onclick="showAlbum('practice')">
+      <span>🥅 Training Sessions</span>
+    </button>
+    <button class="gallery-btn" onclick="showAlbum('intro')">
+      <span>👥 Team Introductions</span>
+    </button>
+  </div>
+
+  <!-- Awards Album -->
+  <div id="album-awards" class="gallery-grid">
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Darshan MOM.jpg')"></span>
+      <span class="cap">Darshan — Man of the Match</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Gaurav MOM.jpg')"></span>
+      <span class="cap">Gaurav — Man of the Match</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Raj MOM.jpg')"></span>
+      <span class="cap">Raj — Man of the Match</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Bhavik Best Fielder DFCL.jpg')"></span>
+      <span class="cap">Bhavik — Best Fielder (DFCL)</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Darshan Best bowler DFCL.jpg')"></span>
+      <span class="cap">Darshan — Best Bowler (DFCL)</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Gaurav Best Bowler DFCL.jpg')"></span>
+      <span class="cap">Gaurav — Best Bowler (DFCL)</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Vadik Best fielder LECA.jpg')"></span>
+      <span class="cap">Vadik — Best Fielder (LECA)</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Patrick MOM.jpg')"></span>
+      <span class="cap">Patrick — Man of the Match</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/awards/Best Bowler 2024.jpg')"></span>
+      <span class="cap">Patrick — Best Bowler & Highest Wicket Taker</span>
+    </div>
+  </div>
+
+  <!-- Party Album -->
+  <div id="album-party" class="gallery-grid" style="display:none">
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 1.jpg')"></span>
+      <span class="cap">Team Celebration — Victory Party</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 2.jpg')"></span>
+      <span class="cap">Team Bonding — Off Field</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 3.jpg')"></span>
+      <span class="cap">Warriors Together — Team Unity</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 4.jpg')"></span>
+      <span class="cap">Celebration Time — Post Match</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 5.jpg')"></span>
+      <span class="cap">Team Fellowship — Building Bonds</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 6.jpg')"></span>
+      <span class="cap">Warriors United — Team Spirit</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 7.jpg')"></span>
+      <span class="cap">Victory Celebration — Champions</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 8.jpg')"></span>
+      <span class="cap">Team Gathering — Friendship</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/party/Party 9.jpg')"></span>
+      <span class="cap">Warriors Family — Together Strong</span>
+    </div>
+  </div>
+
+  <!-- Practice Album -->
+  <div id="album-practice" class="gallery-grid" style="display:none">
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/practice/BW-Prac.jpg')"></span>
+      <span class="cap">Indoor Practice Session</span>
+    </div>
+    <div class="gallery-item">
+      <span class="ph" style="background-image:url('images/practice/BW-Prac1.jpg')"></span>
+      <span class="cap">Team Practice Session</span>
+    </div>
+  </div>
+
+  <!-- Intro Album -->
+  <div id="album-intro" class="gallery-grid" style="display:none">
+    <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
+      <h2 style="font-size: 2rem; color: #FFEB3B; margin-bottom: 1rem;">📸 Coming Soon!</h2>
+      <p style="font-size: 1.2rem;">Team introduction photos and player profiles are being prepared.</p>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+  <p style="margin-top: 0.5rem; font-size: 0.9rem;">Designed by <a href="https://aksharnixglobal.com" style="color: #FFEB3B; text-decoration: none;">AksharNix Global</a></p>
+</footer>
+
+<!-- JavaScript -->
+<script>
+function showAlbum(albumName) {
+  // Hide all albums
+  const albums = document.querySelectorAll('.gallery-grid');
+  albums.forEach(album => album.style.display = 'none');
+  
+  // Remove active class from all buttons
+  const buttons = document.querySelectorAll('.gallery-btn');
+  buttons.forEach(btn => btn.classList.remove('active'));
+  
+  // Show selected album
+  document.getElementById('album-' + albumName).style.display = 'grid';
+  
+  // Add active class to clicked button
+  event.target.closest('.gallery-btn').classList.add('active');
+}
+</script>
+
+</body>
+</html>
