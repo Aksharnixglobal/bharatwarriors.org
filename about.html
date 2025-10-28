@@ -6,13 +6,8 @@
   <title>About Us - Bharat Cricket Club By UGNT</title>
   <meta name="description" content="Learn about Bharat Cricket Club By UGNT - Our history, mission, and values in the Dallas-Fort Worth cricket community.">
   
-  <!-- Favicon -->
   <link rel="icon" href="favicon.png" />
-  
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  
-  <!-- External Stylesheet -->
   <link rel="stylesheet" href="styles.css">
   
   <style>
@@ -21,254 +16,260 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      color: white;
+      color: #D4AF37;
       min-height: 100vh;
     }
     
-    .page-header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4472c4 100%);
-      backdrop-filter: blur(10px);
-      z-index: 1000;
-      padding: 0.75rem 0;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      border-bottom: 3px solid rgba(255,255,255,0.1);
+    main {
+      padding-top: 140px;
+      padding-bottom: 4rem;
     }
     
-    .header-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .logo-section {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    
-    .logo-section a {
-      text-decoration: none;
-      color: inherit;
-    }
-    
-    .logo-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(255,255,255,0.3);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-    }
-    
-    .header-title {
-      color: #FFEB3B;
-      font-size: 1.3rem;
-      font-weight: 800;
-      margin: 0;
-    }
-    
-    .main-nav {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      padding: 0.5rem;
-      background: rgba(255,255,255,0.08);
-      border-radius: 25px;
-    }
-    
-    .main-nav a {
-      padding: 0.5rem 1rem;
-      border-radius: 15px;
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.1);
-    }
-    
-    .main-nav a.active {
-      background: rgba(255,215,0,0.3);
-      transform: translateY(-2px);
-    }
-    
-    .main-nav a:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-    }
-    
-    .main-content {
-      padding: 120px 2rem 4rem;
+    .about-header {
+      text-align: center;
+      padding: 3rem 2rem;
       max-width: 1200px;
       margin: 0 auto;
     }
     
-    .page-title {
+    .about-header h1 {
       font-size: 3rem;
       font-weight: 900;
-      color: #FFEB3B;
-      text-align: center;
-      margin-bottom: 3rem;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      color: #D4AF37;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     
-    .about-section {
-      background: rgba(255,255,255,0.1);
-      padding: 2rem;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.2);
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .about-content p {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      color: #D4AF37;
+      text-align: center;
       margin-bottom: 2rem;
     }
     
-    .about-section h2 {
-      color: #FFEB3B;
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .about-content .highlight {
+      font-weight: 700;
+      color: #FFD700;
     }
     
-    .about-section p {
-      line-height: 1.8;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.9);
-      margin-bottom: 1rem;
-    }
-    
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .value-card {
-      background: rgba(255,255,255,0.08);
-      padding: 1.5rem;
+    .mission-statement {
+      background: rgba(212, 175, 55, 0.1);
+      border: 2px solid #D4AF37;
       border-radius: 15px;
+      padding: 2rem;
+      margin: 3rem auto;
+      max-width: 900px;
       text-align: center;
-      border: 2px solid rgba(255,215,0,0.3);
     }
     
-    .value-card h3 {
-      color: #FFEB3B;
-      font-size: 1.5rem;
+    .mission-statement p {
+      font-size: 1.4rem;
+      font-style: italic;
+      margin: 0;
+    }
+    
+    .leaders-section {
+      margin-top: 4rem;
+      padding: 3rem 2rem;
+    }
+    
+    .leaders-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #D4AF37;
+      margin-bottom: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .leaders-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .leader-card {
+      background: rgba(212, 175, 55, 0.05);
+      border: 2px solid #D4AF37;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .leader-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+    
+    .leader-card .photo {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      border: 4px solid #D4AF37;
+      overflow: hidden;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .leader-card .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .leader-card .photo-placeholder {
+      font-size: 4rem;
+      color: #D4AF37;
+    }
+    
+    .leader-card h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #D4AF37;
       margin-bottom: 0.5rem;
     }
     
-    .footer {
-      background: linear-gradient(135deg, #0f2027 0%, #203a43 100%);
-      padding: 2rem 1rem;
-      text-align: center;
-      border-top: 2px solid rgba(255,255,255,0.1);
-      margin-top: 4rem;
+    .leader-card .title {
+      font-size: 1.3rem;
+      color: #D4AF37;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .about-header h1 {
+        font-size: 2rem;
+      }
+      
+      .about-content p {
+        font-size: 1.1rem;
+      }
+      
+      .mission-statement p {
+        font-size: 1.2rem;
+      }
+      
+      .leaders-section h2 {
+        font-size: 2rem;
+      }
+      
+      .leaders-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- Shared Navigation -->
+<!-- Navigation -->
 <nav>
   <div class="container">
-    <div class="logo">
-      <a href="index.html" style="display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit">
-        <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo">
+    <a href="index.html" class="logo">
+      <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo">
+      <div>
         <h1>Bharat Cricket Club</h1>
-      </a>
-    </div>
+        <span class="subtitle">By UGNT</span>
+      </div>
+    </a>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="warriors.html">Warriors</a></li>
-      <li><a href="fixtures.html">Fixtures</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="warriors.html">Teams</a></li>
       <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="partners.html">Partners</a></li>
-      <li><a href="support.html">Support</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="partners.html">Sponsors</a></li>
+      <li><a href="support.html">Donations</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- Main Content -->
-<main class="main-content">
-  <h1 class="page-title">About Bharat Cricket Club By UGNT</h1>
-  
-  <div class="about-section">
-    <h2>🕉️ Har Har Mahadev</h2>
-    <p>
-      Welcome to Bharat Cricket Club By UGNT - a premier cricket organization based in the Dallas-Fort Worth metroplex. 
-      We are proud representatives of the vibrant Indian cricket community in North Texas, competing with passion, 
-      dedication, and the spirit of true warriors.
-    </p>
+<main>
+  <div class="about-header">
+    <h1>ABOUT BHARAT CRICKET CLUB</h1>
   </div>
   
-  <div class="about-section">
-    <h2>⚔️ Our Journey</h2>
+  <div class="about-content">
     <p>
-      Starting with the DFCL Fall Cup 2025, our club proudly fields two competitive teams:
+      Welcome to <span class="highlight">Bharat Cricket Club</span>, Dallas-Fort Worth's premier cricket team! Our mission is to foster a love for cricket and promote teamwork and excellence in the sport. We are proud to participate in three premier leagues: <span class="highlight">DFCL</span>, <span class="highlight">LECA</span>, and <span class="highlight">LECA FieldsManager</span>.
     </p>
-    <ul style="font-size: 1.1rem; line-height: 1.8;">
-      <li><strong>Bharat Warriors</strong> - Our flagship team competing in elite tournaments</li>
-      <li><strong>Bharat Yodhas</strong> - Our rising stars, building the future of the club</li>
-    </ul>
-    <p>
-      Together, we represent over 70 elite players competing in both DFCL (Dallas Fort Worth Cricket League) 
-      and LECA (League of Extraordinary Cricket Athletes).
-    </p>
-  </div>
-  
-  <div class="about-section">
-    <h2>🎯 Our Mission</h2>
-    <p>
-      To promote the spirit of cricket excellence, foster community bonds, and represent the Indian cricket heritage 
-      with honor and dignity. We believe in developing not just skilled cricketers, but well-rounded individuals who 
-      embody the values of sportsmanship, teamwork, and cultural pride.
-    </p>
-  </div>
-  
-  <div class="about-section">
-    <h2>💪 Our Values</h2>
-    <div class="values-grid">
-      <div class="value-card">
-        <h3>🔥 Passion</h3>
-        <p>Playing with heart and dedication in every match</p>
-      </div>
-      <div class="value-card">
-        <h3>🤝 Teamwork</h3>
-        <p>United as one, stronger together</p>
-      </div>
-      <div class="value-card">
-        <h3>⚡ Spirit</h3>
-        <p>The warrior mentality that drives us forward</p>
-      </div>
+    
+    <div class="mission-statement">
+      <p>
+        Since our establishment, we have been committed to building a strong cricketing community and achieving excellence both on and off the field.
+      </p>
     </div>
+    
+    <p>
+      With over 70 dedicated players across two championship teams - <span class="highlight">Bharat Warriors</span> and <span class="highlight">Bharat Yodhas</span> - we embody the spirit of teamwork, passion, and competitive excellence. Our community-driven approach ensures that every player, from beginners to seasoned professionals, finds a home where they can grow and excel.
+    </p>
   </div>
   
-  <div class="about-section">
-    <h2>🏏 Join Our Community</h2>
-    <p>
-      Whether you're an experienced cricketer or new to the game, Bharat Cricket Club By UGNT welcomes you. 
-      We provide opportunities for players of all skill levels to compete, improve, and be part of something special.
-    </p>
-    <p style="text-align: center; margin-top: 2rem;">
-      <a href="contact.html" style="display: inline-block; background: linear-gradient(45deg, #dc3545, #e85d6d); color: white; padding: 1rem 2rem; border-radius: 30px; text-decoration: none; font-weight: 700; box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);">
-        Get In Touch →
-      </a>
-    </p>
+  <div class="leaders-section">
+    <h2>MEET OUR LEADERS</h2>
+    
+    <div class="leaders-grid">
+      
+      <div class="leader-card">
+        <div class="photo">
+          <img src="images/leaders/pratik-patel.jpg" alt="Pratikkumar Patel">
+        </div>
+        <h3>Pratikkumar Patel</h3>
+        <div class="title">President</div>
+      </div>
+      
+      <div class="leader-card">
+        <div class="photo">
+          <img src="images/leaders/jugal-chokshi.jpg" alt="Jugal Chokshi">
+        </div>
+        <h3>Jugal Chokshi</h3>
+        <div class="title">Club Manager</div>
+      </div>
+      
+      <div class="leader-card">
+        <div class="photo">
+          <img src="images/leaders/raj-lakkad.jpg" alt="Raj Lakkad">
+        </div>
+        <h3>Raj Lakkad</h3>
+        <div class="title">Talent Scouting & Captain of Bharat Warriors</div>
+      </div>
+      
+      <div class="leader-card">
+        <div class="photo">
+          <div class="photo-placeholder">👤</div>
+        </div>
+        <h3>Bhavik Gandhi</h3>
+        <div class="title">Core Member & Captain of Bharat Yodhas</div>
+      </div>
+      
+    </div>
   </div>
 </main>
 
 <!-- Footer -->
-<footer class="footer">
-  <p>&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
-  <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.7);">Designed by <a href="https://aksharnixglobal.com" target="_blank" style="color: white; text-decoration: none; font-weight: bold;">AksharNix Global</a></p>
+<footer style="background: rgba(0,0,0,0.3); padding: 2rem; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.3);">
+  <p style="color: #D4AF37; margin: 0;">&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+  <p style="color: #D4AF37; margin-top: 0.5rem; font-size: 0.9rem;">
+    Designed by <a href="https://aksharnixglobal.com" style="color: #D4AF37; text-decoration: underline; font-weight: 600;">AksharNix Global</a>
+  </p>
 </footer>
 
 </body>
