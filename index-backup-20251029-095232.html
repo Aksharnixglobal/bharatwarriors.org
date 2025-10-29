@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,127 +8,283 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%);
-            min-height: 100vh;
+            box-sizing: border-box;
         }
-        .hero {
-            background: 
-                linear-gradient(rgba(30, 58, 74, 0.6), rgba(45, 79, 95, 0.75)), 
-                url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000') center/cover no-repeat;
-            background-attachment: fixed;
-            background-position: center center;
-            color: white;
-            text-align: center;
-            padding: 8rem 2rem;
-            min-height: 70vh;
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Premium Hero Section - Split Layout */
+        .premium-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Left Side - Hero with Action Image */
+        .hero-left {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('images/gallery/Bw TEam.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            padding: 4rem 3rem;
             position: relative;
+            overflow: hidden;
         }
-        .hero::before {
+        
+        .hero-left::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(30, 58, 74, 0.4) 100%);
+            background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.2) 0%, transparent 70%);
             pointer-events: none;
         }
-        .hero h2, .hero p, .hero-buttons {
-            position: relative;
-            z-index: 1;
+        
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
         }
-        .hero h2 {
-            font-size: 3rem;
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
             font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px #FFD700;
+            text-stroke: 2px #FFD700;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            text-shadow: 0 0 30px rgba(255,215,0,0.5);
+            line-height: 1.2;
         }
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
+        
+        .hero-content h1 span {
+            color: #FFD700;
+            -webkit-text-stroke: 0;
+            text-stroke: 0;
         }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
+        
         .btn {
-            padding: 1rem 2rem;
-            border-radius: 30px;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+        
         .btn-primary {
-            background: #dc3545;
-            color: white;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000000;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
         }
-        .btn-secondary {
-            background: #ffd700;
-            color: #1e3c72;
-        }
-        .btn:hover {
+        
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 12px 35px rgba(255,215,0,0.6);
         }
-        .leagues-section {
-            padding: 4rem 2rem;
+        
+        .btn-secondary {
             background: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+        }
+        
+        .btn-secondary:hover {
+            background: #FFD700;
+            color: #000000;
+            transform: translateY(-3px);
+        }
+        
+        /* Right Side - Leagues with Gold Decorations */
+        .hero-right {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-right::before {
+            content: '🏏';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.03;
+            top: 50%;
+            right: -5rem;
+            transform: translateY(-50%) rotate(-15deg);
+        }
+        
+        .leagues-content {
+            z-index: 2;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .leagues-header {
             text-align: center;
+            margin-bottom: 3rem;
         }
-        .leagues-section h2 {
-            font-size: 2.5rem;
+        
+        .leagues-header h2 {
+            font-size: 3rem;
             font-weight: 900;
-            color: #ffd700;
+            color: #FFD700;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
         }
-        .leagues-section > p {
+        
+        .leagues-header h2::before,
+        .leagues-header h2::after {
+            content: '✦';
+            position: absolute;
+            color: #FFD700;
+            font-size: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .leagues-header h2::before {
+            left: -3rem;
+        }
+        
+        .leagues-header h2::after {
+            right: -3rem;
+        }
+        
+        .leagues-header p {
             font-size: 1.1rem;
-            color: #e0e7ef;
-            max-width: 800px;
-            margin: 0 auto 3rem;
+            color: #cccccc;
+            line-height: 1.6;
         }
+        
+        .leagues-header p strong {
+            color: #FFD700;
+        }
+        
         .leagues-grid {
-            max-width: 1000px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
+        
         .league-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(255,165,0,0.05) 100%);
+            border: 2px solid rgba(255,215,0,0.3);
+            border-radius: 20px;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .league-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .league-card:hover::before {
+            transform: translateX(100%);
+        }
+        
         .league-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-8px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 40px rgba(255,215,0,0.3);
+        }
+        
+        .league-card h3 {
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        
+        .league-card p {
+            font-size: 1rem;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+        
+        /* Gold Decorative Elements */
+        .gold-decoration {
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .decoration-top-right {
+            top: 2rem;
+            right: 2rem;
+            width: 150px;
+            height: 150px;
+            border: 3px solid rgba(255,215,0,0.2);
+            border-radius: 50%;
+        }
+        
+        .decoration-bottom-left {
+            bottom: 2rem;
+            left: 2rem;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+            border-color: rgba(212, 175, 55, 0.6);
         }
         .league-card h3 {
             font-size: 1.8rem;
-            color: #ffd700;
+            color: #D4AF37;
             margin-bottom: 0.5rem;
         }
         .league-card p {
             font-size: 1rem;
-            color: #e0e7ef;
+            color: #ffffff;
         }
         footer {
-            background: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%);
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 100%);
             color: white;
             padding: 3rem 2rem 1rem;
         }
@@ -203,9 +359,20 @@
         <div class="container">
             <a href="index.html" class="logo">
                 <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo">
-                <h1>Bharat Cricket Club <span class="subtitle">By UGNT</span></h1>
+                <div>
+                    <h1>Bharat Cricket Club</h1>
+                    <span class="subtitle">By UGNT</span>
+                </div>
             </a>
-            <ul>
+            
+            <!-- Mobile Hamburger Menu Button -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="menu" id="main-menu">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="achievements.html">Achievements</a></li>

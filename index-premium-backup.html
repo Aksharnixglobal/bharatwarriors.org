@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Cricket Club By UGNT - Premium</title>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Premium Hero Section - Split Layout */
+        .premium-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Left Side - Hero with Action Image */
+        .hero-left {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('images/practice/BW-Prac1.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,215,0,0.15) 0%, transparent 50%);
+            pointer-events: none;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Cricket Stumps Decoration */
+        .hero-left::after {
+            content: '🏏';
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            font-size: 4rem;
+            opacity: 0.3;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px #FFD700;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(255,215,0,0.5);
+            line-height: 1.2;
+        }
+        
+        .hero-content h1 span {
+            color: #FFD700;
+            -webkit-text-stroke: 0;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #000000;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255,215,0,0.6);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+        }
+        
+        .btn-secondary:hover {
+            background: #FFD700;
+            color: #000000;
+            transform: translateY(-3px);
+        }
+        
+        /* Right Side - Leagues with Gold Decorations */
+        .hero-right {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Large Cricket Bat Watermark */
+        .hero-right::before {
+            content: '🏏';
+            position: absolute;
+            font-size: 30rem;
+            opacity: 0.02;
+            top: 50%;
+            right: -8rem;
+            transform: translateY(-50%) rotate(-20deg);
+        }
+        
+        /* Gold Decorative Swirls and Patterns */
+        .hero-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,215,0,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,165,0,0.08) 0%, transparent 40%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+        
+        .leagues-content {
+            z-index: 2;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .leagues-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .leagues-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #FFD700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .leagues-header h2::before,
+        .leagues-header h2::after {
+            content: '✦';
+            position: absolute;
+            color: #FFD700;
+            font-size: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .leagues-header h2::before {
+            left: -3rem;
+        }
+        
+        .leagues-header h2::after {
+            right: -3rem;
+        }
+        
+        .leagues-header p {
+            font-size: 1.1rem;
+            color: #cccccc;
+            line-height: 1.6;
+        }
+        
+        .leagues-header p strong {
+            color: #FFD700;
+        }
+        
+        .leagues-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .league-card {
+            background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, rgba(255,165,0,0.05) 100%);
+            border: 2px solid rgba(255,215,0,0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .league-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,215,0,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .league-card:hover::before {
+            transform: translateX(100%);
+        }
+        
+        .league-card:hover {
+            transform: translateY(-8px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 40px rgba(255,215,0,0.3);
+        }
+        
+        .league-card h3 {
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        
+        .league-card p {
+            font-size: 1rem;
+            color: #ffffff;
+            opacity: 0.9;
+        }
+        
+        /* Gold Decorative Elements */
+        .gold-decoration {
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        .decoration-top-right {
+            top: 2rem;
+            right: 2rem;
+            width: 200px;
+            height: 200px;
+            border: 3px solid rgba(255,215,0,0.3);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .decoration-top-right::before {
+            content: '⚡';
+            position: absolute;
+            top: -2rem;
+            right: 2rem;
+            font-size: 2rem;
+            color: #FFD700;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+        
+        .decoration-bottom-left {
+            bottom: 2rem;
+            left: 2rem;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        .decoration-bottom-left::after {
+            content: '🏏';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            opacity: 0.4;
+        }
+        
+        /* Sparkle Animations */
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.6; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Gold Lines and Ornaments */
+        .gold-lines {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            opacity: 0.4;
+        }
+        
+        .gold-lines::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            right: 0;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+        }
+        
+        .gold-lines::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+        }
+        
+        /* Cricket Ball Decoration */
+        .cricket-ball {
+            position: absolute;
+            top: 15%;
+            left: 10%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
+            border-radius: 50%;
+            opacity: 0.3;
+            box-shadow: 0 0 30px rgba(255,215,0,0.4);
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        /* Mobile Responsive for Premium Design */
+        @media (max-width: 968px) {
+            .premium-hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-left, .hero-right {
+                min-height: 60vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .leagues-header h2 {
+                font-size: 2rem;
+            }
+            
+            .leagues-header h2::before,
+            .leagues-header h2::after {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+                -webkit-text-stroke: 1px #FFD700;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            .leagues-header h2 {
+                font-size: 1.8rem;
+            }
+            .league-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index-premium.html" class="logo">
+                <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo">
+                <div>
+                    <h1>Bharat Cricket Club</h1>
+                    <span class="subtitle">By UGNT</span>
+                </div>
+            </a>
+            
+            <!-- Mobile Hamburger Menu Button -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="menu" id="main-menu">
+                <li><a href="index-premium.html" class="active">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="warriors.html">Teams</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="partners.html">Sponsors</a></li>
+                <li><a href="support.html">Donations</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Premium Split Hero Section -->
+    <div class="premium-hero">
+        <!-- Left Side - Hero with Action Image -->
+        <div class="hero-left">
+            <div class="hero-content">
+                <h1>Welcome to <span>Bharat Cricket Club</span></h1>
+                <p>Bharat Cricket Club, Dallas-Fort Worth's premier cricket club, fostering a love for cricket and excellence on and off the field. Join us to experience unity and unmatched teamwork!</p>
+                <div class="hero-buttons">
+                    <a href="warriors.html" class="btn btn-primary">Explore Teams</a>
+                    <a href="contact.html" class="btn btn-secondary">Join Us</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Leagues with Gold Theme -->
+        <div class="hero-right">
+            <div class="gold-decoration decoration-top-right"></div>
+            <div class="gold-decoration decoration-bottom-left"></div>
+            
+            <div class="leagues-content">
+                <div class="leagues-header">
+                    <h2>Our Leagues</h2>
+                    <p>Bharat Cricket Club proudly participates in <strong>three premier leather ball leagues</strong>, showcasing our commitment to excellence and love for cricket!</p>
+                </div>
+                
+                <div class="leagues-grid">
+                    <div class="league-card">
+                        <h3>🏆 DFCL</h3>
+                        <p>Dallas Friendly Cricket League</p>
+                    </div>
+                    <div class="league-card">
+                        <h3>🏆 LECA</h3>
+                        <p>Little Elm Cricket Association</p>
+                    </div>
+                    <div class="league-card">
+                        <h3>🏏 LECA FieldsManager</h3>
+                        <p>Leather Ball League</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>About</h3>
+                    <a href="about.html">Our Stories</a>
+                    <a href="warriors.html">Our Teams</a>
+                    <a href="gallery.html">Gallery</a>
+                </div>
+                <div>
+                    <h3>Events</h3>
+                    <a href="fixtures.html">Fixtures</a>
+                    <a href="gallery.html">Photos</a>
+                </div>
+                <div>
+                    <h3>Get Involved</h3>
+                    <a href="partners.html">Sponsors</a>
+                    <a href="support.html">Donations</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+                <div>
+                    <h3>Reach Us</h3>
+                    <p>📞 (773) 750-6813</p>
+                    <p>✉️ bharatwarriors2024@gmail.com</p>
+                    <p>📍 Dallas-Fort Worth, TX</p>
+                </div>
+            </div>
+            <div class="ugnt-support">
+                <img src="images/logos/UGNT- logo.png" alt="UGNT Logo">
+                <h3>COMMUNITY SUPPORT</h3>
+                <p style="font-weight: 700; font-size: 1.1rem;">UNITED GUJARATIS OF NORTH TEXAS</p>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+                <p style="margin-top: 0.5rem;">Designed by <a href="https://aksharnixglobal.com" target="_blank">AksharNix Global</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
