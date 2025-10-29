@@ -193,9 +193,9 @@ nav ul li a.active {
     display: flex;
   }
   nav ul {
-    position: fixed;
+    position: fixed !important;
     top: 0;
-    right: -100%;
+    right: -100% !important;
     width: 280px;
     height: 100vh;
     background: #1e3a4a;
@@ -206,9 +206,10 @@ nav ul li a.active {
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
     overflow-y: auto;
     z-index: 999;
+    display: flex !important;
   }
   nav ul.active {
-    right: 0;
+    right: 0 !important;
   }
   nav ul li {
     width: 100%;
