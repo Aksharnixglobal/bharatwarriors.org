@@ -78,12 +78,14 @@ nav .container {
   align-items: center;
   flex-wrap: nowrap;
   gap: 2rem;
+  position: relative;
 }
 nav .logo {
   display: flex;
   align-items: center;
   gap: 1rem;
   text-decoration: none;
+  z-index: 1001;
 }
 nav .logo img {
   width: 70px;
@@ -108,6 +110,38 @@ nav .logo .subtitle {
   font-weight: 500;
   font-style: normal;
 }
+
+/* Hamburger Menu Button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 1001;
+}
+.menu-toggle span {
+  width: 28px;
+  height: 3px;
+  background: #ffd700;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+.menu-toggle:hover span {
+  background: #fff;
+}
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
 nav ul {
   display: flex;
   list-style: none;
@@ -137,14 +171,82 @@ nav ul li a.active {
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-@media (max-width: 768px) {
-  nav .container { 
-    flex-direction: column; 
-    gap: 1rem; 
+/* Mobile Responsive Navigation */
+@media (max-width: 968px) {
+  nav {
+    padding: 1rem;
+  }
+  nav .container {
+    flex-wrap: wrap;
+  }
+  nav .logo img {
+    width: 50px;
+    height: 50px;
+  }
+  nav .logo h1 {
+    font-size: 1.1rem;
+  }
+  nav .logo .subtitle {
+    font-size: 0.75rem;
+  }
+  .menu-toggle {
+    display: flex;
   }
   nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #1e3a4a;
+    flex-direction: column;
+    gap: 0;
+    padding: 100px 2rem 2rem;
+    transition: right 0.3s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    z-index: 999;
+  }
+  nav ul.active {
+    right: 0;
+  }
+  nav ul li {
     width: 100%;
-    justify-content: center;
+  }
+  nav ul li a {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    text-align: left;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Mobile content improvements */
+  body {
+    font-size: 0.95rem;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.4rem !important;
+  }
+  
+  .container {
+    padding: 1rem;
+  }
+  
+  /* Mobile grid layouts */
+  div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
   }
 }
 

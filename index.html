@@ -205,6 +205,11 @@
                 <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo">
                 <h1>Bharat Cricket Club <span class="subtitle">By UGNT</span></h1>
             </a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
@@ -217,6 +222,32 @@
             </ul>
         </div>
     </nav>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
     <section class="hero">
         <h2>Welcome to Bharat Cricket Club By UGNT</h2>
         <p>Bharat Cricket Club, Dallas-Fort Worth's premier cricket club, fostering a love for cricket and excellence on and off the field. Join us to experience unity and unmatched teamwork!</p>

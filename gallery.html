@@ -155,11 +155,13 @@ body {
   <div class="container">
     <a href="index.html" class="logo">
       <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo">
-      <div>
-        <h1>Bharat Cricket Club</h1>
-        <span class="subtitle">By UGNT</span>
-      </div>
+      <h1>Bharat Cricket Club <span class="subtitle">By UGNT</span></h1>
     </a>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
@@ -172,6 +174,26 @@ body {
     </ul>
   </div>
 </nav>
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+  document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    });
+  });
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      menuToggle.classList.remove('active');
+      navMenu.classList.remove('active');
+    }
+  });
+</script>
 
 <!-- Main Content -->
 <main class="main-content" id="main-content">
