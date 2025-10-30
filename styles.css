@@ -44,6 +44,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 html.smooth-scroll {
@@ -59,6 +62,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Simple shared navigation (matches index.html and gallery screenshot) */
@@ -69,6 +74,8 @@ nav {
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 nav .container {
   max-width: 1400px;
@@ -119,8 +126,14 @@ nav .logo .subtitle {
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 10px;
   z-index: 1001;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  align-items: center;
 }
 .menu-toggle span {
   width: 28px;
@@ -128,8 +141,10 @@ nav .logo .subtitle {
   background: #ffd700;
   border-radius: 3px;
   transition: all 0.3s ease;
+  display: block;
 }
-.menu-toggle:hover span {
+.menu-toggle:hover span,
+.menu-toggle:active span {
   background: #fff;
 }
 .menu-toggle.active span:nth-child(1) {
@@ -198,6 +213,7 @@ nav ul li a.active {
     right: -100% !important;
     width: 280px;
     height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile browsers */
     background: #1e3a4a;
     flex-direction: column;
     gap: 0;
@@ -205,8 +221,11 @@ nav ul li a.active {
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     z-index: 999;
     display: flex !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
   nav ul.active {
     right: 0 !important;
@@ -222,6 +241,8 @@ nav ul li a.active {
     font-size: 1rem;
     border-radius: 8px;
     margin-bottom: 0.5rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   
   /* Mobile content improvements */
@@ -248,6 +269,17 @@ nav ul li a.active {
   /* Mobile grid layouts */
   div[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
+  }
+  
+  /* Better touch targets for all buttons */
+  button, .btn, a {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Fix viewport for consistent mobile display */
+  * {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
 }
 
