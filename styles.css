@@ -198,23 +198,34 @@ nav ul li a.active {
 /* Mobile Responsive Navigation */
 @media (max-width: 968px) {
   nav {
-    padding: 1rem;
+    padding: 0.75rem 0.5rem;
   }
   nav .container {
     flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  nav .logo {
+    gap: 0.5rem;
+    max-width: calc(100% - 60px);
   }
   nav .logo img {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
   }
   nav .logo h1 {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    white-space: normal;
+    word-break: keep-all;
   }
   nav .logo .subtitle {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
+    display: block;
   }
   .menu-toggle {
     display: flex;
+    flex-shrink: 0;
   }
   nav ul {
     position: fixed !important;
@@ -289,6 +300,23 @@ nav ul li a.active {
   /* Fix viewport for consistent mobile display */
   * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+  nav {
+    padding: 0.5rem 0.25rem;
+  }
+  nav .logo img {
+    width: 40px;
+    height: 40px;
+  }
+  nav .logo h1 {
+    font-size: 0.75rem;
+  }
+  nav .logo .subtitle {
+    font-size: 0.6rem;
   }
 }
 
