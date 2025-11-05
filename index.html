@@ -261,6 +261,24 @@
             <a href="contact.html" class="btn btn-secondary">Join Us</a>
         </div>
     </section>
+
+    <!-- Proudly Presented By UGNT Section -->
+    <section style="padding: 3rem 2rem; text-align: center; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); margin: 2rem auto; max-width: 1200px; border-radius: 20px; border: 2px solid rgba(255, 215, 0, 0.2);">
+        <p style="font-size: 1rem; color: #b8cce0; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Proudly Presented By</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+            <img src="images/logos/UGNT- logo.png" alt="UGNT - United Gujaratis of North Texas" style="height: 100px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));">
+            <div style="text-align: left; max-width: 500px;">
+                <h3 style="font-size: 1.8rem; color: #ffd700; margin: 0 0 0.5rem; font-weight: 900;">United Gujaratis of North Texas</h3>
+                <p style="color: #d0dce8; font-size: 1rem; margin: 0; line-height: 1.6;">
+                    UGNT is our founding community organization, empowering the Gujarati community through sports, culture, and unity in the Dallas-Fort Worth metroplex.
+                </p>
+            </div>
+        </div>
+        <a href="https://www.ugnt.org" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 1.5rem; padding: 0.75rem 2rem; background: linear-gradient(45deg, #ffd700, #ffed4e); color: #0c1e37; text-decoration: none; border-radius: 10px; font-weight: 700; font-size: 1rem; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 215, 0, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 215, 0, 0.3)'">
+            🌐 Visit UGNT Website
+        </a>
+    </section>
+
     <section class="leagues-section">
         <h2>Our Leagues</h2>
         <p>Bharat Cricket Club proudly participates in three premier leagues, showcasing our commitment to excellence and love for cricket!</p>
@@ -279,6 +297,66 @@
             </div>
         </div>
     </section>
+
+    <!-- Support Section -->
+    <section style="padding: 4rem 2rem; text-align: center; background: rgba(255, 255, 255, 0.05); margin: 2rem 0; border-radius: 20px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+        <h2 style="font-size: 2.5rem; color: #ffd700; margin-bottom: 1rem;">💪 Support Our Club</h2>
+        <p style="font-size: 1.2rem; color: #e0e7ef; max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;">
+            Help fuel our warriors and yodhas! Your contributions support equipment, ground fees, tournaments, and team development.
+        </p>
+        
+        <div style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 16px; max-width: 600px; margin: 0 auto 2rem; backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.2);">
+            <p style="color: #b8cce0; margin-bottom: 0.5rem; font-size: 1rem;">Donate via Zelle to:</p>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <span id="home-zelle-email" style="
+                    font-family: 'Courier New', monospace;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    color: #ffd700;
+                    background: rgba(0, 0, 0, 0.3);
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 8px;
+                    border: 2px solid rgba(255, 215, 0, 0.3);
+                ">patelpratik59@gmail.com</span>
+                <button onclick="copyHomeZelleEmail()" style="
+                    background: linear-gradient(45deg, #ffd700, #ffed4e);
+                    color: #0c1e37;
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 8px;
+                    font-weight: 700;
+                    font-size: 1rem;
+                    cursor: pointer;
+                    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+                    transition: all 0.3s ease;
+                " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 215, 0, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 215, 0, 0.3)'">
+                    📋 Copy Email
+                </button>
+            </div>
+            <p style="color: #d0dce8; font-size: 0.9rem; margin: 0;">Recipient: PRATIKKUMAR PATEL</p>
+        </div>
+        
+        <a href="support.html" class="btn btn-primary" style="display: inline-block; background: linear-gradient(45deg, #e74c3c, #c0392b); padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 12px; text-decoration: none; color: white; font-weight: 700; box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(231, 76, 60, 0.5)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 20px rgba(231, 76, 60, 0.4)'">
+            💰 View Full Donation Details & QR Code
+        </a>
+    </section>
+
+    <script>
+        function copyHomeZelleEmail() {
+            const email = 'patelpratik59@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const btn = event.target;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                btn.style.background = 'linear-gradient(45deg, #5ddb7d, #28a745)';
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = 'linear-gradient(45deg, #ffd700, #ffed4e)';
+                }, 2000);
+            });
+        }
+    </script>
+
     <footer>
         <div class="container">
             <div class="footer-grid">
