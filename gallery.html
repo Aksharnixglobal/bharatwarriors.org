@@ -562,8 +562,41 @@ document.addEventListener('keydown', function(event) {
   }
 });
 
+// Add click/touch event listeners to all gallery items
+function attachGalleryListeners() {
+  const allGalleryItems = document.querySelectorAll('.gallery-item[onclick]');
+  allGalleryItems.forEach(item => {
+    // Get the onclick attribute
+    const onclickAttr = item.getAttribute('onclick');
+    if (onclickAttr) {
+      const matches = onclickAttr.match(/openLightbox\('([^']+)',\s*'([^']+)'\)/);
+      if (matches) {
+        const imageSrc = matches[1];
+        const caption = matches[2];
+        
+        // Remove onclick attribute
+        item.removeAttribute('onclick');
+        
+        // Add both click and touchend listeners for better mobile support
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openLightbox(imageSrc, caption);
+        });
+        
+        item.addEventListener('touchend', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openLightbox(imageSrc, caption);
+        }, { passive: false });
+      }
+    }
+  });
+}
+
 // Initialize image list on page load
 updateImageList();
+attachGalleryListeners();
 </script>
 
 </body>
