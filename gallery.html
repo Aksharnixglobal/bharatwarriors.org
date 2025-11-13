@@ -99,10 +99,16 @@ body {
   background: rgba(255,255,255,0.05);
   cursor: pointer;
   transition: transform 0.3s ease;
+  -webkit-tap-highlight-color: rgba(255, 215, 0, 0.3);
+  touch-action: manipulation;
 }
 
 .gallery-item:hover {
   transform: scale(1.05);
+}
+
+.gallery-item:active {
+  transform: scale(0.98);
 }
 
 .gallery-item img {
@@ -110,6 +116,7 @@ body {
   height: 300px;
   object-fit: cover;
   display: block;
+  pointer-events: none;
 }
 
 .ph {
@@ -118,6 +125,7 @@ body {
   background-size: cover;
   background-position: center;
   display: block;
+  pointer-events: none;
 }
 
 .cap {
@@ -508,6 +516,10 @@ function openLightbox(imageSrc, caption) {
   
   // Prevent body scroll when lightbox is open
   document.body.style.overflow = 'hidden';
+  
+  // Prevent event bubbling
+  event.stopPropagation();
+  event.preventDefault();
 }
 
 function closeLightbox(event) {
