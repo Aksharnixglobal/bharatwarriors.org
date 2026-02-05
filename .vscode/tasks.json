@@ -14,7 +14,7 @@
     {
       "label": "Open in Browser",
       "type": "shell",
-      "command": "xdg-open index.html || open index.html || start index.html",
+      "command": "xdg-open ${workspaceFolder}/index.html || open ${workspaceFolder}/index.html || start ${workspaceFolder}/index.html",
       "problemMatcher": [],
       "presentation": {
         "reveal": "never"
@@ -33,7 +33,15 @@
     {
       "label": "Check for Large Files",
       "type": "shell",
-      "command": "find . -type f -size +1M -not -path './.git/*' -exec ls -lh {} \\;",
+      "windows": {
+        "command": "powershell -Command \"Get-ChildItem -Recurse -File | Where-Object {$_.Length -gt 1MB -and $_.FullName -notlike '*\\.git\\*'} | Select-Object FullName,@{Name='Size';Expression={'{0:N2} MB' -f ($_.Length / 1MB)}} | Format-Table -AutoSize\""
+      },
+      "linux": {
+        "command": "find . -type f -size +1M -not -path './.git/*' -exec ls -lh {} \\;"
+      },
+      "osx": {
+        "command": "find . -type f -size +1M -not -path './.git/*' -exec ls -lh {} \\;"
+      },
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
@@ -43,7 +51,15 @@
     {
       "label": "Show Project Structure",
       "type": "shell",
-      "command": "tree -L 3 -I 'node_modules|.git' || find . -not -path '*/\\.*' -not -path '*/node_modules/*' | head -50",
+      "windows": {
+        "command": "powershell -Command \"Get-ChildItem -Path . -Recurse -Depth 2 | Where-Object {$_.FullName -notlike '*\\.git\\*' -and $_.FullName -notlike '*\\node_modules\\*'} | Select-Object -First 50 | Format-Table -AutoSize\""
+      },
+      "linux": {
+        "command": "tree -L 3 -I 'node_modules|.git' || find . -not -path '*/\\.*' -not -path '*/node_modules/*' | head -50"
+      },
+      "osx": {
+        "command": "tree -L 3 -I 'node_modules|.git' || find . -not -path '*/\\.*' -not -path '*/node_modules/*' | head -50"
+      },
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",
