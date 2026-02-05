@@ -1,7 +1,6 @@
 # Bharat Warriors Cricket Club Website
 
 [![Website](https://img.shields.io/badge/Website-bharatwarriors.org-blue)](https://bharatwarriors.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 Official website for **Bharat Cricket Club By UGNT** - A premier cricket club based in the Dallas-Fort Worth area, fostering cricket excellence and community spirit.
 
