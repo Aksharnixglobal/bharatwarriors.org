@@ -1,0 +1,30 @@
+# Prettier ignore file
+# Files and directories to exclude from Prettier formatting
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Backup files
+*.backup
+*-backup.html
+index-original.html
+index-full-backup.html
+index-complex-backup.html
+index-1817-lines-backup.html
+index-backup-20251029-095232.html
+index-premium-backup.html
+
+# Archives
+archive/
+
+# Git
+.git/
+
+# Large files
+mahakaal.jpg

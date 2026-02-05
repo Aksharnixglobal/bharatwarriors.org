@@ -1,0 +1,54 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start Live Server",
+      "type": "shell",
+      "command": "echo 'Please install Live Server extension and use the Go Live button'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Open in Browser",
+      "type": "shell",
+      "command": "xdg-open index.html || open index.html || start index.html",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    },
+    {
+      "label": "Validate HTML Files",
+      "type": "shell",
+      "command": "echo 'HTML validation - install HTML linter for validation'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Check for Large Files",
+      "type": "shell",
+      "command": "find . -type f -size +1M -not -path './.git/*' -exec ls -lh {} \\;",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Show Project Structure",
+      "type": "shell",
+      "command": "tree -L 3 -I 'node_modules|.git' || find . -not -path '*/\\.*' -not -path '*/node_modules/*' | head -50",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
