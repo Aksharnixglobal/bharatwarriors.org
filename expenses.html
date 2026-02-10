@@ -34,7 +34,7 @@
 
         .header-content {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 0 auto;  
             padding: 0 2rem;
             display: flex;
             align-items: center;
@@ -98,31 +98,6 @@
             z-index: 1 !important;
         }
 
-        /* iOS Safari form overlay fix - inline for cache bypass */
-        #ios-menu-blocker {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            background: #1e3a4a !important;
-            z-index: 999999999 !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            transition: opacity 0.2s ease !important;
-            -webkit-transform: translateZ(0) !important;
-            transform: translateZ(0) !important;
-        }
-        
-        #ios-menu-blocker.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-        }
-
         .page-title {
             text-align: center;
             font-size: 2.5rem;
@@ -142,6 +117,8 @@
             border-radius: 20px;
             padding: 2.5rem;
             border: 2px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1 !important;
         }
 
         .form-group {
@@ -175,6 +152,7 @@
         .form-group select {
             background: #1e3a4a;
             color: white;
+            z-index: 1 !important;
         }
 
         .form-group select option {
@@ -246,6 +224,7 @@
             margin-bottom: 1.5rem;
             text-align: center;
             display: none;
+            font-weight: 600;
         }
 
         .success-message {
@@ -260,22 +239,48 @@
             color: #dc3545;
         }
 
-        .footer {
-            background: rgba(0,0,0,0.5);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-            border-top: 2px solid rgba(255,255,255,0.1);
+        /* iOS Safari Mobile Menu Blocker */
+        #mobile-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: #1e3a4a !important;
+            z-index: 999999998 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            transition: opacity 0.3s ease !important;
+            -webkit-transform: translateZ(0) !important;
+            transform: translateZ(0) !important;
+            backdrop-filter: none !important;
+            -webkit-backface-visibility: hidden !important;
+            backface-visibility: hidden !important;
+        }
+        
+        #mobile-overlay.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                gap: 1rem;
+                padding: 0 1rem;
+                flex-wrap: wrap;
             }
 
             nav ul {
-                justify-content: center;
+                display: none;
+            }
+
+            .main-content {
+                padding: 1rem;
+                margin-top: 100px;
             }
 
             .page-title {
@@ -288,26 +293,40 @@
 
             .form-row {
                 grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .expense-form {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Overlay (iOS Safari Form Fix) -->
+    <div id="mobile-overlay"></div>
+
     <!-- Header -->
     <header class="page-header">
         <div class="header-content">
             <a href="index.html" class="logo-section">
-                <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo" class="logo-img">
-                <h1 class="site-title">Bharat Cricket Club By UGNT</h1>
+                <img src="images/logos/logo.png" alt="Bharat Warriors Logo" class="logo-img">
+                <h1 class="site-title">Bharat Warriors</h1>
             </a>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="achievements.html">Achievements</a></li>
-                    <li><a href="warriors.html">Teams</a></li>
+                    <li><a href="warriors.html">Warriors</a></li>
+                    <li><a href="fixtures.html">Fixtures</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
-                    <li><a href="partners.html">Partners and Sponsors</a></li>
+                    <li><a href="partners.html">Partners</a></li>
                     <li><a href="expenses.html" class="active">Expenses</a></li>
                     <li><a href="support.html">Donations</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
@@ -352,7 +371,7 @@
                     <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number *</label>
+                    <label for="phone">Phone</label>
                     <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890">
                 </div>
             </div>
@@ -372,34 +391,37 @@
                 <label for="category">Expense Category *</label>
                 <select id="category" name="category" required>
                     <option value="">Select Category</option>
-                    <option value="Trophy">Trophy</option>
-                    <option value="Ball">Ball</option>
-                    <option value="Water and Banana">Water and Banana</option>
-                    <option value="Misc">Misc</option>
+                    <option value="Equipment">🏏 Equipment & Gear</option>
+                    <option value="Travel">🚗 Travel & Transportation</option>
+                    <option value="Accommodation">🏨 Accommodation</option>
+                    <option value="Meals">🍽️ Meals & Refreshments</option>
+                    <option value="Registration">📋 Tournament Registration</option>
+                    <option value="Ground Rental">🏟️ Ground Rental</option>
+                    <option value="Uniforms">👕 Team Uniforms</option>
+                    <option value="Medical">🩹 Medical & First Aid</option>
+                    <option value="Other">📝 Other (please specify)</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="description">Expense Description *</label>
-                <textarea id="description" name="description" required placeholder="e.g., Purchased bananas and water bottles for the team during practice session at Grand Prairie..."></textarea>
-                <small>Please provide detailed information about the expense</small>
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" required placeholder="Please provide details about the expense, including where it was incurred and why it was necessary for team activities..."></textarea>
             </div>
 
             <div class="form-group">
-                <label for="receipt">Receipt/Proof (Optional)</label>
-                <input type="file" id="receipt" name="receipt" accept="image/*,.pdf">
-                <small>Upload a photo or PDF of your receipt (recommended for faster processing)</small>
+                <label for="businessName">Business/Vendor Name</label>
+                <input type="text" id="businessName" name="businessName" placeholder="Name of the business or vendor">
             </div>
 
             <div class="form-group">
-                <label for="paymentMethod">Preferred Reimbursement Method *</label>
-                <select id="paymentMethod" name="paymentMethod" required>
-                    <option value="">Select Method</option>
-                    <option value="Zelle">Zelle</option>
-                    <option value="Venmo">Venmo</option>
-                    <option value="Cash">Cash</option>
-                    <option value="Check">Check</option>
-                </select>
+                <label for="receipt">Receipt Upload *</label>
+                <input type="file" id="receipt" name="receipt" accept="image/*,.pdf" required>
+                <small>Please upload a clear photo or PDF of your receipt. Max file size: 5MB</small>
+            </div>
+
+            <div class="form-group">
+                <label for="additionalInfo">Additional Information</label>
+                <textarea id="additionalInfo" name="additionalInfo" placeholder="Any additional information or special circumstances..."></textarea>
             </div>
 
             <button type="submit" class="submit-btn">Submit Expense Request</button>
@@ -407,147 +429,133 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2026 Bharat Cricket Club By UGNT. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-            Designed by <a href="https://aksharnixglobal.com" style="color: #FFEB3B; text-decoration: none;">AksharNix Global</a>
-        </p>
+    <footer style="background: #1a2f3a; padding: 3rem 0; margin-top: 4rem; border-top: 2px solid #FFEB3B;">
+        <div style="max-width: 1200px; margin: 0 auto; text-align: center; padding: 0 2rem;">
+            <p style="color: #FFEB3B; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem;">
+                🏏 Bharat Cricket Club By UGNT 🏏
+            </p>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem;">
+                Building champions, creating legends, fostering community spirit through cricket.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <a href="index.html" style="color: #FFEB3B; text-decoration: none;">Home</a>
+                <a href="about.html" style="color: #FFEB3B; text-decoration: none;">About</a>
+                <a href="contact.html" style="color: #FFEB3B; text-decoration: none;">Contact</a>
+                <a href="support.html" style="color: #FFEB3B; text-decoration: none;">Support</a>
+            </div>
+            <p style="color: rgba(255,255,255,0.6); margin-top: 2rem; font-size: 0.9rem;">
+                © 2025 Bharat Cricket Club. All rights reserved.
+            </p>
+        </div>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-        // ⚠️ SETUP REQUIRED: Get your Formspree endpoint from https://formspree.io/
-        // After signing up, create a form and paste your endpoint URL below
-        const FORMSPREE_ENDPOINT = 'YOUR_FORMSPREE_ENDPOINT_HERE'; // Example: 'https://formspree.io/f/xxxxxxxx'
-        
-        document.getElementById('expenseForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // Mobile overlay management for iOS Safari
+        function createMobileOverlay() {
+            const overlay = document.getElementById('mobile-overlay');
+            if (!overlay) return null;
             
-            const submitBtn = e.target.querySelector('.submit-btn');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Check if Formspree is configured
-            if (FORMSPREE_ENDPOINT === 'YOUR_FORMSPREE_ENDPOINT_HERE') {
-                errorMessage.textContent = '⚠️ Email service not configured yet. Please see EXPENSE_EMAIL_SETUP.md for setup instructions.';
-                errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return;
-            }
-            
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-            
-            // Get form data
-            const formData = new FormData(e.target);
-            
-            // Add notification email to form data
-            formData.append('_replyto', formData.get('email'));
-            formData.append('_subject', 'New Expense Reimbursement Request from ' + formData.get('name'));
-            formData.append('_template', 'table'); // Use table format for better readability
-            
-            // Send to Formspree
-            fetch(FORMSPREE_ENDPOINT, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Show success message
-                    successMessage.style.display = 'block';
-                    errorMessage.style.display = 'none';
-                    
-                    // Reset form
-                    e.target.reset();
-                    
-                    // Scroll to top to show success message
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 5000);
+            // Monitor mobile menu state
+            function updateOverlay() {
+                const menu = document.getElementById('main-menu');
+                if (menu && menu.classList.contains('mobile-open')) {
+                    overlay.classList.add('active');
                 } else {
-                    throw new Error('Form submission failed');
-                }
-            })
-            .catch(error => {
-                // Handle error
-                errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                console.error('Error:', error);
-            })
-            .finally(() => {
-                // Re-enable button
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Submit Expense Request';
-            });
-        });
-        
-        // Set max date to today
-        document.getElementById('expenseDate').max = new Date().toISOString().split('T')[0];
-    </script>
-    
-    <script>
-    // iOS Safari menu blocker - inline to bypass cache
-    document.addEventListener('DOMContentLoaded', function() {
-        // Create the blocker element
-        const blocker = document.createElement('div');
-        blocker.id = 'ios-menu-blocker';
-        document.body.appendChild(blocker);
-        
-        // Override the toggleMobileMenu function
-        const originalToggle = window.toggleMobileMenu;
-        window.toggleMobileMenu = function() {
-            if (originalToggle) originalToggle();
-            
-            const menu = document.getElementById('main-menu');
-            const blocker = document.getElementById('ios-menu-blocker');
-            
-            if (menu && blocker) {
-                if (menu.classList.contains('mobile-open')) {
-                    blocker.classList.add('active');
-                } else {
-                    blocker.classList.remove('active');
+                    overlay.classList.remove('active');
                 }
             }
-        };
-        
-        // Close blocker on click
-        blocker.addEventListener('click', function() {
-            const menu = document.getElementById('main-menu');
-            if (menu && menu.classList.contains('mobile-open')) {
-                window.toggleMobileMenu();
-            }
-        });
-        
-        // Monitor menu state changes
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-                    const menu = mutation.target;
-                    const blocker = document.getElementById('ios-menu-blocker');
-                    if (menu.id === 'main-menu' && blocker) {
-                        if (menu.classList.contains('mobile-open')) {
-                            blocker.classList.add('active');
-                        } else {
-                            blocker.classList.remove('active');
-                        }
+
+            // Close overlay on click
+            overlay.addEventListener('click', function() {
+                const menu = document.getElementById('main-menu');
+                if (menu && menu.classList.contains('mobile-open')) {
+                    if (window.toggleMobileMenu) {
+                        window.toggleMobileMenu();
                     }
                 }
             });
-        });
-        
-        const menu = document.getElementById('main-menu');
-        if (menu) {
-            observer.observe(menu, { attributes: true });
+
+            // Watch for menu changes
+            const observer = new MutationObserver(updateOverlay);
+            const menu = document.getElementById('main-menu');
+            if (menu) {
+                observer.observe(menu, { attributes: true, attributeFilter: ['class'] });
+            }
+
+            // Override global toggle function to sync overlay
+            const originalToggle = window.toggleMobileMenu;
+            window.toggleMobileMenu = function() {
+                if (originalToggle) originalToggle();
+                setTimeout(updateOverlay, 50);
+            };
+
+            return overlay;
         }
-    });
+
+        // Form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create mobile overlay
+            createMobileOverlay();
+
+            const form = document.getElementById('expenseForm');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Set max date to today
+            document.getElementById('expenseDate').max = new Date().toISOString().split('T')[0];
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitBtn = form.querySelector('.submit-btn');
+                const formData = new FormData(form);
+
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Submitting...';
+
+                // Hide previous messages
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                // Formspree endpoint
+                const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdkkgjov';
+
+                // Send to Formspree
+                fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        successMessage.style.display = 'block';
+                        errorMessage.style.display = 'none';
+                        form.reset();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 8000);
+                    } else {
+                        throw new Error('Submission failed');
+                    }
+                })
+                .catch(error => {
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Expense Request';
+                });
+            });
+        });
     </script>
 </body>
 </html>
