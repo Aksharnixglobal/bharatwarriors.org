@@ -74,20 +74,27 @@
             flex-wrap: wrap;
         }
 
+        /* Mobile Navigation - Complete Solution */
         .menu-toggle {
             display: none;
             flex-direction: column;
             gap: 4px;
-            background: none;
+            background: rgba(255,255,255,0.1);
             border: none;
             padding: 12px;
             cursor: pointer;
             position: relative;
-            z-index: 999999999 !important;
+            z-index: 2147483647 !important;
             min-width: 44px;
             min-height: 44px;
             justify-content: center;
             align-items: center;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            background: rgba(255,255,255,0.2);
         }
 
         .menu-toggle span {
@@ -108,6 +115,57 @@
 
         .menu-toggle.active span:nth-child(3) {
             transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: #1e3a4a !important;
+            z-index: 2147483645 !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transition: all 0.3s ease !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 2rem !important;
+            padding: 2rem !important;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .mobile-menu-overlay a {
+            color: white !important;
+            text-decoration: none !important;
+            font-size: 1.2rem !important;
+            padding: 1rem 2rem !important;
+            background: rgba(255,255,255,0.1) !important;
+            border: 2px solid rgba(255,255,255,0.2) !important;
+            border-radius: 10px !important;
+            width: 250px !important;
+            text-align: center !important;
+            transition: all 0.3s ease !important;
+            display: block !important;
+        }
+
+        .mobile-menu-overlay a:hover,
+        .mobile-menu-overlay a:active {
+            background: rgba(255,255,255,0.2) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .mobile-menu-overlay a.active {
+            background: rgba(255, 235, 59, 0.2) !important;
+            border-color: #FFEB3B !important;
+            color: #FFEB3B !important;
         }
 
         nav ul li a {
@@ -278,34 +336,6 @@
             color: #dc3545;
         }
 
-        /* iOS Safari Mobile Menu Blocker */
-        #mobile-overlay {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            background: #1e3a4a !important;
-            z-index: 999999996 !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            pointer-events: none !important;
-            transition: opacity 0.3s ease !important;
-            -webkit-transform: translateZ(0) !important;
-            transform: translateZ(0) !important;
-            backdrop-filter: none !important;
-            -webkit-backface-visibility: hidden !important;
-            backface-visibility: hidden !important;
-        }
-        
-        #mobile-overlay.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -329,52 +359,10 @@
 
             .menu-toggle {
                 display: flex !important;
-                z-index: 999999999;
             }
 
-            nav ul {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: #1e3a4a !important;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                z-index: 999999997 !important;
-                padding: 2rem;
-                margin: 0;
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-
-            nav ul.active {
-                display: flex !important;
-                opacity: 1 !important;
-                visibility: visible !important;
-            }
-
-            nav ul li a {
-                font-size: 1.2rem;
-                padding: 1rem 2rem;
-                width: 200px;
-                text-align: center;
-                background: rgba(255,255,255,0.1) !important;
-                border-radius: 10px;
-                color: white !important;
-                text-decoration: none !important;
-                display: block !important;
-                border: 2px solid rgba(255,255,255,0.2);
-            }
-
-            nav ul li a:hover,
-            nav ul li a:active {
-                background: rgba(255,255,255,0.2) !important;
-                transform: translateY(-2px);
+            nav {
+                display: none !important;
             }
 
             .main-content {
@@ -408,8 +396,18 @@
     </style>
 </head>
 <body>
-    <!-- Mobile Overlay (iOS Safari Form Fix) -->
-    <div id="mobile-overlay"></div>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="warriors.html">Warriors</a>
+        <a href="fixtures.html">Fixtures</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="partners.html">Partners</a>
+        <a href="expenses.html" class="active">Expenses</a>
+        <a href="support.html">Donations</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
 
     <!-- Header -->
     <header class="page-header">
@@ -418,7 +416,7 @@
                 <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo" class="logo-img">
                 <h1 class="site-title">Bharat Cricket Club <span style="font-size: 0.8em; color: rgba(255,255,255,0.8);">By UGNT</span></h1>
             </a>
-            <button class="menu-toggle" aria-label="Toggle menu">
+            <button class="menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -555,108 +553,48 @@
 
     <script src="script.js"></script>
     <script>
-        // Mobile menu toggle (same as main site)
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navMenu = document.querySelector('nav ul');
-        
-        console.log('Menu toggle element:', menuToggle);
-        console.log('Nav menu element:', navMenu);
-        
-        if (menuToggle && navMenu) {
-            // Add visual feedback to hamburger button
-            menuToggle.style.background = 'rgba(255,255,255,0.1)';
-            menuToggle.style.borderRadius = '4px';
-            
-            menuToggle.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                console.log('Menu toggle clicked!');
-                
-                const isActive = navMenu.classList.contains('active');
-                console.log('Menu is currently active:', isActive);
-                
-                menuToggle.classList.toggle('active');
-                navMenu.classList.toggle('active');
-                
-                // Debug: Check classes after toggle
-                console.log('Toggle has active class:', menuToggle.classList.contains('active'));
-                console.log('Nav has active class:', navMenu.classList.contains('active'));
-                console.log('Nav display style:', window.getComputedStyle(navMenu).display);
-                console.log('Nav opacity:', window.getComputedStyle(navMenu).opacity);
-            });
-            
-            menuToggle.addEventListener('touchstart', function(e) {
-                console.log('Menu toggle touched!');
-                // Let the click handler manage the toggle
-            }, { passive: true });
-            
-            // Close menu when clicking on a link
-            document.querySelectorAll('nav ul li a').forEach(link => {
-                link.addEventListener('click', () => {
-                    console.log('Menu link clicked, closing menu');
-                    menuToggle.classList.remove('active');
-                    navMenu.classList.remove('active');
-                });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!e.target.closest('nav') && !e.target.closest('#mobile-overlay')) {
-                    console.log('Clicked outside, closing menu');
-                    menuToggle.classList.remove('active');
-                    navMenu.classList.remove('active');
-                }
-            });
-        } else {
-            console.error('Menu elements not found!');
-        }
-
-        // Mobile overlay management for iOS Safari
-        function createMobileOverlay() {
-            const overlay = document.getElementById('mobile-overlay');
-            if (!overlay) return null;
-            
-            // Monitor mobile menu state
-            function updateOverlay() {
-                const menu = document.querySelector('nav ul');
-                console.log('Updating overlay, menu active:', menu && menu.classList.contains('active'));
-                if (menu && menu.classList.contains('active')) {
-                    overlay.classList.add('active');
-                } else {
-                    overlay.classList.remove('active');
-                }
-            }
-
-            // Close overlay on click
-            overlay.addEventListener('click', function() {
-                const menu = document.querySelector('nav ul');
-                const toggle = document.querySelector('.menu-toggle');
-                if (menu && menu.classList.contains('active')) {
-                    toggle.classList.remove('active');
-                    menu.classList.remove('active');
-                }
-            });
-
-            // Watch for menu changes
-            const observer = new MutationObserver(updateOverlay);
-            const menu = document.querySelector('nav ul');
-            if (menu) {
-                observer.observe(menu, { attributes: true, attributeFilter: ['class'] });
-            }
-
-            // Also watch the toggle button
-            const toggle = document.querySelector('.menu-toggle');
-            if (toggle) {
-                observer.observe(toggle, { attributes: true, attributeFilter: ['class'] });
-            }
-
-            return overlay;
-        }
-
-        // Form handling
+        // Simple Mobile Menu System
         document.addEventListener('DOMContentLoaded', function() {
-            // Create mobile overlay
-            createMobileOverlay();
+            const menuToggle = document.getElementById('mobileMenuToggle');
+            const mobileOverlay = document.getElementById('mobileMenuOverlay');
+            
+            if (menuToggle && mobileOverlay) {
+                // Toggle menu
+                menuToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    menuToggle.classList.toggle('active');
+                    mobileOverlay.classList.toggle('active');
+                    
+                    // Prevent body scrolling when menu is open
+                    if (mobileOverlay.classList.contains('active')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // Close menu when clicking on overlay or link
+                mobileOverlay.addEventListener('click', function(e) {
+                    if (e.target === mobileOverlay || e.target.tagName === 'A') {
+                        menuToggle.classList.remove('active');
+                        mobileOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+                
+                // Close on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        mobileOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Form handling
 
             const form = document.getElementById('expenseForm');
             const successMessage = document.getElementById('successMessage');
