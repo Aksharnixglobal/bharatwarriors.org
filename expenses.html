@@ -16,10 +16,10 @@
             margin: 0;
             padding: 0;
             background-color: #1e3a4a;
-            background-image: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%);
-            background-attachment: fixed;
+            background: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%);
             color: white;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .page-header {
@@ -29,7 +29,7 @@
             background: #1e3a4a;
             padding: 1rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 999999999 !important;
+            z-index: 100 !important;
         }
 
         .header-content {
@@ -84,7 +84,7 @@
             padding: 12px;
             cursor: pointer;
             position: relative;
-            z-index: 10000 !important;
+            z-index: 110 !important;
             min-width: 44px;
             min-height: 44px;
             justify-content: center;
@@ -124,8 +124,8 @@
             left: 0 !important;
             right: 0 !important;
             bottom: 0 !important;
-            background: rgba(30, 58, 74, 0.98) !important;
-            z-index: 9999 !important;
+            background: rgba(30, 58, 74, 0.95) !important;
+            z-index: 105 !important;
             opacity: 0 !important;
             visibility: hidden !important;
             transition: opacity 0.2s ease, visibility 0.2s ease !important;
@@ -135,8 +135,6 @@
             align-items: center !important;
             gap: 2rem !important;
             padding: 2rem !important;
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
         }
 
         .mobile-menu-overlay.active {
@@ -194,7 +192,6 @@
             margin-right: auto;
             margin-bottom: 3rem;
             position: relative;
-            z-index: 1 !important;
         }
 
         .page-title {
@@ -217,7 +214,6 @@
             padding: 2.5rem;
             border: 2px solid rgba(255,255,255,0.1);
             position: relative;
-            z-index: 1 !important;
         }
 
         .form-group {
@@ -245,7 +241,6 @@
             font-size: 1rem;
             box-sizing: border-box;
             position: relative;
-            z-index: 1 !important;
         }
 
         .form-group select {
@@ -560,38 +555,14 @@
             const menuToggle = document.getElementById('mobileMenuToggle');
             const mobileOverlay = document.getElementById('mobileMenuOverlay');
             
-            // Function to restore scrolling
-            function restoreScrolling() {
-                document.body.style.overflow = '';
-                document.body.style.position = '';
-                document.body.style.width = '';
-                document.documentElement.style.overflow = '';
-            }
-            
-            // Function to prevent scrolling
-            function preventScrolling() {
-                document.body.style.overflow = 'hidden';
-                document.body.style.position = 'fixed';
-                document.body.style.width = '100%';
-            }
-            
             if (menuToggle && mobileOverlay) {
-                // Toggle menu with improved scroll handling
+                // Simple menu toggle without scroll blocking
                 menuToggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    const isOpening = !mobileOverlay.classList.contains('active');
-                    
                     menuToggle.classList.toggle('active');
                     mobileOverlay.classList.toggle('active');
-                    
-                    // Handle scrolling
-                    if (isOpening) {
-                        preventScrolling();
-                    } else {
-                        setTimeout(restoreScrolling, 200); // Wait for animation
-                    }
                 });
                 
                 // Close menu when clicking on overlay or link
@@ -599,7 +570,6 @@
                     if (e.target === mobileOverlay || e.target.tagName === 'A') {
                         menuToggle.classList.remove('active');
                         mobileOverlay.classList.remove('active');
-                        setTimeout(restoreScrolling, 200);
                     }
                 });
                 
@@ -608,14 +578,6 @@
                     if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
                         menuToggle.classList.remove('active');
                         mobileOverlay.classList.remove('active');
-                        setTimeout(restoreScrolling, 200);
-                    }
-                });
-                
-                // Ensure scrolling is restored on page focus
-                window.addEventListener('focus', function() {
-                    if (!mobileOverlay.classList.contains('active')) {
-                        restoreScrolling();
                     }
                 });
             }
