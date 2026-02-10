@@ -383,6 +383,10 @@
     </footer>
 
     <script>
+        // ⚠️ SETUP REQUIRED: Get your Formspree endpoint from https://formspree.io/
+        // After signing up, create a form and paste your endpoint URL below
+        const FORMSPREE_ENDPOINT = 'YOUR_FORMSPREE_ENDPOINT_HERE'; // Example: 'https://formspree.io/f/xxxxxxxx'
+        
         document.getElementById('expenseForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -390,57 +394,67 @@
             const successMessage = document.getElementById('successMessage');
             const errorMessage = document.getElementById('errorMessage');
             
+            // Check if Formspree is configured
+            if (FORMSPREE_ENDPOINT === 'YOUR_FORMSPREE_ENDPOINT_HERE') {
+                errorMessage.textContent = '⚠️ Email service not configured yet. Please see EXPENSE_EMAIL_SETUP.md for setup instructions.';
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
+            
             // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
             
             // Get form data
             const formData = new FormData(e.target);
-            const data = {};
-            formData.forEach((value, key) => {
-                if (key !== 'receipt') {
-                    data[key] = value;
-                }
-            });
             
-            // Simulate form submission (in real implementation, this would send to a backend)
-            setTimeout(() => {
-                // Show success message
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-                
-                // Reset form
-                e.target.reset();
-                
+            // Add notification email to form data
+            formData.append('_replyto', formData.get('email'));
+            formData.append('_subject', 'New Expense Reimbursement Request from ' + formData.get('name'));
+            formData.append('_template', 'table'); // Use table format for better readability
+            
+            // Send to Formspree
+            fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    
+                    // Reset form
+                    e.target.reset();
+                    
+                    // Scroll to top to show success message
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                // Handle error
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                console.error('Error:', error);
+            })
+            .finally(() => {
                 // Re-enable button
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Expense Request';
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-                
-                // Scroll to top to show success message
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // In a real implementation, you would send the data to your backend:
-                // fetch('/api/expenses', {
-                //     method: 'POST',
-                //     body: formData
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //     // Handle success
-                // })
-                // .catch(error => {
-                //     // Handle error
-                //     errorMessage.style.display = 'block';
-                //     successMessage.style.display = 'none';
-                // });
-                
-                console.log('Expense submitted:', data);
-            }, 1500);
+            });
         });
         
         // Set max date to today
