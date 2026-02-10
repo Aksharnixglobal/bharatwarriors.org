@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        html, body {
+            overscroll-behavior-y: none;
+            scroll-behavior: auto;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -669,7 +673,6 @@
                         successMessage.style.display = 'block';
                         errorMessage.style.display = 'none';
                         form.reset();
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
                         setTimeout(() => { successMessage.style.display = 'none'; }, 8000);
                     } else {
                         const errorText = await response.text();
@@ -681,7 +684,6 @@
                     errorMessage.innerHTML = '❌ Unable to submit. Sheets error: ' + error.message;
                     errorMessage.style.display = 'block';
                     successMessage.style.display = 'none';
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
