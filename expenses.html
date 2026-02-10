@@ -26,7 +26,7 @@
             background: #1e3a4a;
             padding: 1rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 1000;
+            z-index: 10005;
         }
 
         .header-content {
@@ -112,6 +112,8 @@
             border-radius: 20px;
             padding: 2.5rem;
             border: 2px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .form-group {
@@ -143,12 +145,20 @@
         .form-group select {
             background: #1e3a4a;
             color: white;
+            position: relative;
+            z-index: 1;
         }
 
         .form-group select option {
             background: #1e3a4a;
             color: white;
             padding: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            position: relative;
+            z-index: 1;
         }
 
         .form-group input:focus,
