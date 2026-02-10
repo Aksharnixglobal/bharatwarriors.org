@@ -15,6 +15,7 @@
             overscroll-behavior-y: none;
             scroll-behavior: auto;
         }
+        html { background-color: #1e3a4a; }
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -34,8 +35,8 @@
             padding: 1rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 100 !important;
-            transform: translateZ(0);
-            will-change: transform;
+            contain: paint; /* isolate repaints to reduce flicker */
+            backface-visibility: hidden;
         }
 
         .header-content {
