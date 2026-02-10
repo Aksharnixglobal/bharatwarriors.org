@@ -502,26 +502,7 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="description">Description *</label>
-                <textarea id="description" name="description" required placeholder="Please provide details about the expense, including where it was incurred and why it was necessary for team activities..."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="businessName">Business/Vendor Name</label>
-                <input type="text" id="businessName" name="businessName" placeholder="Name of the business or vendor">
-            </div>
-
-            <div class="form-group">
-                <label for="receipt">Receipt Upload *</label>
-                <input type="file" id="receipt" name="receipt" accept="image/*,.pdf" required>
-                <small>Please upload a clear photo or PDF of your receipt. Max file size: 5MB</small>
-            </div>
-
-            <div class="form-group">
-                <label for="additionalInfo">Additional Information</label>
-                <textarea id="additionalInfo" name="additionalInfo" placeholder="Any additional information or special circumstances..."></textarea>
-            </div>
+            <!-- Removed optional fields per request: Description, Business/Vendor, Receipt, Additional Information -->
 
             <button type="submit" class="submit-btn">Submit Expense Request</button>
         </form>
@@ -605,9 +586,7 @@
                     { name: 'phone', label: 'Phone' },
                     { name: 'expenseDate', label: 'Expense Date' },
                     { name: 'amount', label: 'Amount' },
-                    { name: 'category', label: 'Expense Category' },
-                    { name: 'description', label: 'Description' },
-                    { name: 'receipt', label: 'Receipt' }
+                    { name: 'category', label: 'Expense Category' }
                 ];
 
                 const missingFields = [];
