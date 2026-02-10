@@ -29,7 +29,7 @@
             background: #1e3a4a;
             padding: 1rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            z-index: 999998 !important;
+            z-index: 999999999 !important;
         }
 
         .header-content {
@@ -80,8 +80,14 @@
             gap: 4px;
             background: none;
             border: none;
-            padding: 8px;
+            padding: 12px;
             cursor: pointer;
+            position: relative;
+            z-index: 999999999 !important;
+            min-width: 44px;
+            min-height: 44px;
+            justify-content: center;
+            align-items: center;
         }
 
         .menu-toggle span {
@@ -282,7 +288,7 @@
             width: 100vw !important;
             height: 100vh !important;
             background: #1e3a4a !important;
-            z-index: 999999998 !important;
+            z-index: 999999990 !important;
             opacity: 0 !important;
             visibility: hidden !important;
             pointer-events: none !important;
@@ -338,7 +344,7 @@
                 justify-content: center;
                 align-items: center;
                 gap: 2rem;
-                z-index: 999999998;
+                z-index: 999999995 !important;
                 padding: 2rem;
                 margin: 0;
             }
@@ -538,11 +544,24 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('nav ul');
         
+        console.log('Menu toggle element:', menuToggle);
+        console.log('Nav menu element:', navMenu);
+        
         if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Menu toggle clicked!');
                 menuToggle.classList.toggle('active');
                 navMenu.classList.toggle('active');
             });
+            
+            menuToggle.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                console.log('Menu toggle touched!');
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            }, { passive: false });
             
             // Close menu when clicking on a link
             document.querySelectorAll('nav ul li a').forEach(link => {
