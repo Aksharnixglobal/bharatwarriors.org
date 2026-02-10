@@ -53,6 +53,8 @@
             height: 60px;
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            object-fit: cover;
+            border: 2px solid rgba(255,215,0,0.3);
         }
 
         .site-title {
@@ -60,6 +62,7 @@
             font-size: 1.5rem;
             font-weight: 800;
             margin: 0;
+            line-height: 1.2;
         }
 
         nav ul {
@@ -305,6 +308,19 @@
                 justify-content: space-between;
             }
 
+            .logo-section {
+                gap: 0.5rem;
+            }
+
+            .logo-img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .site-title {
+                font-size: 1.2rem;
+            }
+
             .menu-toggle {
                 display: flex !important;
                 z-index: 999999999;
@@ -378,8 +394,8 @@
     <header class="page-header">
         <div class="header-content">
             <a href="index.html" class="logo-section">
-                <img src="images/logos/logo.png" alt="Bharat Warriors Logo" class="logo-img">
-                <h1 class="site-title">Bharat Warriors</h1>
+                <img src="images/gallery/BCC.jpg" alt="Bharat Cricket Club Logo" class="logo-img">
+                <h1 class="site-title">Bharat Cricket Club <span style="font-size: 0.8em; color: rgba(255,255,255,0.8);">By UGNT</span></h1>
             </a>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <span></span>
