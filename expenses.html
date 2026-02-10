@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -27,13 +27,15 @@
         }
 
         .page-header {
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
             background: #1e3a4a;
             padding: 1rem 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             z-index: 100 !important;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .header-content {
@@ -323,6 +325,7 @@
             text-align: center;
             display: none;
             font-weight: 600;
+            overflow-anchor: none; /* Prevent layout anchor jumps */
         }
 
         .success-message {
