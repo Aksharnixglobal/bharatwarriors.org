@@ -615,53 +615,54 @@
                     formDataObj[key] = value;
                 }
 
-                // Send to both endpoints simultaneously
-                Promise.all([
-                    // Send to Formspree (for email notifications)
-                    fetch(FORMSPREE_ENDPOINT, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }),
-                    // Send to Google Sheets (for automatic tracking)
-                    fetch(GOOGLE_SHEETS_ENDPOINT, {
-                        method: 'POST',
-                        body: JSON.stringify(formDataObj),
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                ])
-                .then(async ([formspreeResponse, sheetsResponse]) => {
-                    const formspreeOk = formspreeResponse.ok;
-                    const sheetsOk = sheetsResponse.ok;
-                    
-                    if (formspreeOk || sheetsOk) {
-                        successMessage.innerHTML = '✅ Expense request submitted successfully!<br>' + 
-                            (formspreeOk ? '📧 Email sent' : '') + 
-                            (formspreeOk && sheetsOk ? ' and ' : '') + 
-                            (sheetsOk ? '📊 Added to spreadsheet' : '') + 
-                            '<br>We\'ll review it soon.';
+                // First, try Formspree (primary submission)
+                fetch(FORMSPREE_ENDPOINT, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(async (formspreeResponse) => {
+                    if (formspreeResponse.ok) {
+                        // Primary submission successful
+                        successMessage.innerHTML = '✅ Expense request submitted successfully!<br>📧 Email sent - We\'ll review it soon.';
                         successMessage.style.display = 'block';
                         errorMessage.style.display = 'none';
                         form.reset();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
                         
+                        // Try Google Sheets as a bonus (don't fail if this doesn't work)
+                        try {
+                            const sheetsResponse = await fetch(GOOGLE_SHEETS_ENDPOINT, {
+                                method: 'POST',
+                                body: JSON.stringify(formDataObj),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            });
+                            
+                            if (sheetsResponse.ok) {
+                                successMessage.innerHTML = '✅ Expense request submitted successfully!<br>📧 Email sent and 📊 Added to spreadsheet<br>We\'ll review it soon.';
+                            }
+                        } catch (sheetsError) {
+                            console.log('Google Sheets failed (not critical):', sheetsError);
+                            // Don't show error to user as email worked
+                        }
+                        
                         setTimeout(() => {
                             successMessage.style.display = 'none';
                         }, 8000);
                     } else {
-                        throw new Error('Both submissions failed');
+                        throw new Error('Email submission failed');
                     }
                 })
                 .catch(error => {
-                    errorMessage.innerHTML = '❌ There was an error submitting your request.<br>Please try again or contact support.';
+                    console.error('Submission error:', error);
+                    errorMessage.innerHTML = '❌ Unable to submit expense request.<br>Please check your internet connection and try again.';
                     errorMessage.style.display = 'block';
                     successMessage.style.display = 'none';
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    console.error('Error:', error);
                 })
                 .finally(() => {
                     submitBtn.disabled = false;
