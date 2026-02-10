@@ -4645,3 +4645,17 @@ a[style*="background"] {
     will-change: transform, opacity !important;
   }
 }
+
+/* Hide page content when menu is open (prevents iOS form bleed-through) */
+body.menu-open main,
+body.menu-open .main-content,
+body.menu-open .page-content,
+body.menu-open .content-wrapper,
+body.menu-open .page-body,
+body.menu-open .page-section,
+body.menu-open .footer,
+body.menu-open footer {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

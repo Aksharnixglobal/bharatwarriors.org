@@ -120,10 +120,12 @@ function toggleMobileMenu() {
   if (menu.classList.contains('mobile-open')) {
     document.body.style.setProperty('overflow-x', 'hidden', 'important');
     document.body.style.setProperty('overflow-y', 'auto', 'important');
+    document.body.classList.add('menu-open');
   } else {
     document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
     document.body.style.setProperty('overflow-x', 'hidden', 'important');
     document.body.style.setProperty('overflow-y', 'auto', 'important');
+    document.body.classList.remove('menu-open');
     // Close any open dropdowns when closing mobile menu
     document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
   }
@@ -153,6 +155,7 @@ window.addEventListener('click', e => {
       document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
       document.body.style.setProperty('overflow-x', 'hidden', 'important');
       document.body.style.setProperty('overflow-y', 'auto', 'important');
+      document.body.classList.remove('menu-open');
     }
   }
 });
@@ -425,6 +428,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
         document.body.style.setProperty('overflow-x', 'hidden', 'important');
         document.body.style.setProperty('overflow-y', 'auto', 'important');
+        document.body.classList.remove('menu-open');
       }
     }
   });
@@ -895,6 +899,7 @@ function setupEnhancedNavigation() {
           document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
           document.body.style.setProperty('overflow-x', 'hidden', 'important');
           document.body.style.setProperty('overflow-y', 'auto', 'important');
+          document.body.classList.remove('menu-open');
         }
       }
     });
