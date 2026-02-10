@@ -672,6 +672,33 @@ nav ul li a.active {
     bottom: 20px;
     gap: 8px;
   }
+
+/* High-specificity override: ensure mobile menu fully opaque and above all elements */
+@media (max-width: 1024px) {
+  .menu,
+  .menu.mobile-open {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: #1e3a4a !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 2147483647 !important;
+    backdrop-filter: none !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+  }
+
+  /* Make sure translucent children or accidental rgba backgrounds don't let underlying content show through */
+  .menu, .menu * {
+    opacity: 1 !important;
+    background-color: transparent !important;
+  }
+}
   
   .scroll-buttons button {
     width: 44px;
