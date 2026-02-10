@@ -634,36 +634,38 @@
                 successMessage.style.display = 'none';
                 errorMessage.style.display = 'none';
 
-                // Send to Formspree (handles file uploads better)
-                const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdkkgjov';
+                // Submit ONLY to Google Sheets (as requested)
+                const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyYbX1n7vYRBjhYzOjKpH8hw4JK0QGDg_BRZoANXK654It_TffnmCiTNRLOMo9BiHmopw/exec';
 
-                fetch(FORMSPREE_ENDPOINT, {
-                    method: 'POST',
-                    body: formData, // FormData handles files automatically
-                    headers: {
-                        'Accept': 'application/json'
+                // Convert FormData to plain JSON (files are not sent)
+                const formDataObj = {};
+                for (let [key, value] of formData.entries()) {
+                    if (key !== 'receipt') {
+                        formDataObj[key] = value;
                     }
+                }
+
+                fetch(GOOGLE_SHEETS_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formDataObj)
                 })
                 .then(async (response) => {
                     if (response.ok) {
-                        successMessage.innerHTML = '✅ Expense request submitted successfully!<br>📧 Email sent with your receipt - We\'ll review it soon.';
+                        successMessage.innerHTML = '✅ Expense recorded in spreadsheet successfully!<br>We\'ll review it soon.';
                         successMessage.style.display = 'block';
                         errorMessage.style.display = 'none';
                         form.reset();
                         window.scrollTo({ top: 0, behavior: 'smooth' });
-                        
-                        setTimeout(() => {
-                            successMessage.style.display = 'none';
-                        }, 8000);
+                        setTimeout(() => { successMessage.style.display = 'none'; }, 8000);
                     } else {
-                        const errorData = await response.text();
-                        console.error('Formspree error:', errorData);
-                        throw new Error('Submission failed: ' + response.status);
+                        const errorText = await response.text();
+                        throw new Error('Sheets submission failed: ' + errorText);
                     }
                 })
                 .catch(error => {
                     console.error('Submission error:', error);
-                    errorMessage.innerHTML = '❌ Unable to submit expense request.<br>Error: ' + error.message + '<br>Please check all fields and try again.';
+                    errorMessage.innerHTML = '❌ Unable to submit. Sheets error: ' + error.message;
                     errorMessage.style.display = 'block';
                     successMessage.style.display = 'none';
                     window.scrollTo({ top: 0, behavior: 'smooth' });
