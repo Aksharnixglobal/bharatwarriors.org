@@ -109,9 +109,26 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /* Mobile menu toggle functionality */
+function ensureMenuOverlay() {
+  let overlay = document.getElementById('menu-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'menu-overlay';
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', () => {
+      const menu = document.getElementById('main-menu');
+      if (menu && menu.classList.contains('mobile-open')) {
+        toggleMobileMenu();
+      }
+    });
+  }
+  return overlay;
+}
+
 function toggleMobileMenu() {
   const menu = document.getElementById('main-menu');
   const toggle = document.querySelector('.mobile-menu-toggle');
+  const overlay = ensureMenuOverlay();
   
   menu.classList.toggle('mobile-open');
   toggle.classList.toggle('active');
@@ -121,11 +138,13 @@ function toggleMobileMenu() {
     document.body.style.setProperty('overflow-x', 'hidden', 'important');
     document.body.style.setProperty('overflow-y', 'auto', 'important');
     document.body.classList.add('menu-open');
+    overlay.classList.add('active');
   } else {
     document.body.style.setProperty('overflow-y', 'auto', 'important'); document.body.style.setProperty('overflow-x', 'hidden', 'important');
     document.body.style.setProperty('overflow-x', 'hidden', 'important');
     document.body.style.setProperty('overflow-y', 'auto', 'important');
     document.body.classList.remove('menu-open');
+    overlay.classList.remove('active');
     // Close any open dropdowns when closing mobile menu
     document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
   }
@@ -149,6 +168,7 @@ window.addEventListener('click', e => {
   if (!e.target.closest('.nav') && !e.target.closest('.mobile-menu-toggle')) {
     const menu = document.getElementById('main-menu');
     const toggle = document.querySelector('.mobile-menu-toggle');
+    const overlay = document.getElementById('menu-overlay');
     if (menu && menu.classList.contains('mobile-open')) {
       menu.classList.remove('mobile-open');
       toggle.classList.remove('active');
@@ -156,6 +176,7 @@ window.addEventListener('click', e => {
       document.body.style.setProperty('overflow-x', 'hidden', 'important');
       document.body.style.setProperty('overflow-y', 'auto', 'important');
       document.body.classList.remove('menu-open');
+      if (overlay) overlay.classList.remove('active');
     }
   }
 });
@@ -422,6 +443,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       // Close mobile menu on navigation
       const menu = document.getElementById('main-menu');
       const toggle = document.querySelector('.mobile-menu-toggle');
+      const overlay = document.getElementById('menu-overlay');
       if (menu && menu.classList.contains('mobile-open')) {
         menu.classList.remove('mobile-open');
         toggle.classList.remove('active');
@@ -429,6 +451,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         document.body.style.setProperty('overflow-x', 'hidden', 'important');
         document.body.style.setProperty('overflow-y', 'auto', 'important');
         document.body.classList.remove('menu-open');
+        if (overlay) overlay.classList.remove('active');
       }
     }
   });

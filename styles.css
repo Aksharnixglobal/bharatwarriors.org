@@ -4646,16 +4646,22 @@ a[style*="background"] {
   }
 }
 
-/* Hide page content when menu is open (prevents iOS form bleed-through) */
-body.menu-open main,
-body.menu-open .main-content,
-body.menu-open .page-content,
-body.menu-open .content-wrapper,
-body.menu-open .page-body,
-body.menu-open .page-section,
-body.menu-open .footer,
-body.menu-open footer {
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
+/* Fullscreen overlay behind mobile menu (covers native inputs on iOS) */
+#menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1e3a4a;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 2147483646;
+  pointer-events: none;
+}
+
+#menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
