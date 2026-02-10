@@ -288,7 +288,7 @@
             width: 100vw !important;
             height: 100vh !important;
             background: #1e3a4a !important;
-            z-index: 999999990 !important;
+            z-index: 999999996 !important;
             opacity: 0 !important;
             visibility: hidden !important;
             pointer-events: none !important;
@@ -339,18 +339,23 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: #1e3a4a;
+                background: #1e3a4a !important;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 gap: 2rem;
-                z-index: 999999995 !important;
+                z-index: 999999997 !important;
                 padding: 2rem;
                 margin: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
             }
 
             nav ul.active {
-                display: flex;
+                display: flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
             }
 
             nav ul li a {
@@ -358,8 +363,18 @@
                 padding: 1rem 2rem;
                 width: 200px;
                 text-align: center;
-                background: rgba(255,255,255,0.1);
+                background: rgba(255,255,255,0.1) !important;
                 border-radius: 10px;
+                color: white !important;
+                text-decoration: none !important;
+                display: block !important;
+                border: 2px solid rgba(255,255,255,0.2);
+            }
+
+            nav ul li a:hover,
+            nav ul li a:active {
+                background: rgba(255,255,255,0.2) !important;
+                transform: translateY(-2px);
             }
 
             .main-content {
@@ -548,24 +563,37 @@
         console.log('Nav menu element:', navMenu);
         
         if (menuToggle && navMenu) {
+            // Add visual feedback to hamburger button
+            menuToggle.style.background = 'rgba(255,255,255,0.1)';
+            menuToggle.style.borderRadius = '4px';
+            
             menuToggle.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 console.log('Menu toggle clicked!');
+                
+                const isActive = navMenu.classList.contains('active');
+                console.log('Menu is currently active:', isActive);
+                
                 menuToggle.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                
+                // Debug: Check classes after toggle
+                console.log('Toggle has active class:', menuToggle.classList.contains('active'));
+                console.log('Nav has active class:', navMenu.classList.contains('active'));
+                console.log('Nav display style:', window.getComputedStyle(navMenu).display);
+                console.log('Nav opacity:', window.getComputedStyle(navMenu).opacity);
             });
             
             menuToggle.addEventListener('touchstart', function(e) {
-                e.preventDefault();
                 console.log('Menu toggle touched!');
-                menuToggle.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            }, { passive: false });
+                // Let the click handler manage the toggle
+            }, { passive: true });
             
             // Close menu when clicking on a link
             document.querySelectorAll('nav ul li a').forEach(link => {
                 link.addEventListener('click', () => {
+                    console.log('Menu link clicked, closing menu');
                     menuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
                 });
@@ -573,11 +601,14 @@
             
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
-                if (!e.target.closest('nav')) {
+                if (!e.target.closest('nav') && !e.target.closest('#mobile-overlay')) {
+                    console.log('Clicked outside, closing menu');
                     menuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
                 }
             });
+        } else {
+            console.error('Menu elements not found!');
         }
 
         // Mobile overlay management for iOS Safari
@@ -588,6 +619,7 @@
             // Monitor mobile menu state
             function updateOverlay() {
                 const menu = document.querySelector('nav ul');
+                console.log('Updating overlay, menu active:', menu && menu.classList.contains('active'));
                 if (menu && menu.classList.contains('active')) {
                     overlay.classList.add('active');
                 } else {
