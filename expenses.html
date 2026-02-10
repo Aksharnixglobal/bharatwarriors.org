@@ -617,19 +617,45 @@
                 successMessage.style.display = 'none';
                 errorMessage.style.display = 'none';
 
-                // Formspree endpoint
+                // Endpoints
                 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xdkkgjov';
+                const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyYbX1n7vYRBjhYzOjKpH8hw4JK0QGDg_BRZoANXK654It_TffnmCiTNRLOMo9BiHmopw/exec';
 
-                // Send to Formspree
-                fetch(FORMSPREE_ENDPOINT, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    if (response.ok) {
+                // Prepare data for Google Sheets (JSON format)
+                const formDataObj = {};
+                for (let [key, value] of formData.entries()) {
+                    formDataObj[key] = value;
+                }
+
+                // Send to both endpoints simultaneously
+                Promise.all([
+                    // Send to Formspree (for email notifications)
+                    fetch(FORMSPREE_ENDPOINT, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }),
+                    // Send to Google Sheets (for automatic tracking)
+                    fetch(GOOGLE_SHEETS_ENDPOINT, {
+                        method: 'POST',
+                        body: JSON.stringify(formDataObj),
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                ])
+                .then(async ([formspreeResponse, sheetsResponse]) => {
+                    const formspreeOk = formspreeResponse.ok;
+                    const sheetsOk = sheetsResponse.ok;
+                    
+                    if (formspreeOk || sheetsOk) {
+                        successMessage.innerHTML = '✅ Expense request submitted successfully!<br>' + 
+                            (formspreeOk ? '📧 Email sent' : '') + 
+                            (formspreeOk && sheetsOk ? ' and ' : '') + 
+                            (sheetsOk ? '📊 Added to spreadsheet' : '') + 
+                            '<br>We\'ll review it soon.';
                         successMessage.style.display = 'block';
                         errorMessage.style.display = 'none';
                         form.reset();
@@ -639,10 +665,11 @@
                             successMessage.style.display = 'none';
                         }, 8000);
                     } else {
-                        throw new Error('Submission failed');
+                        throw new Error('Both submissions failed');
                     }
                 })
                 .catch(error => {
+                    errorMessage.innerHTML = '❌ There was an error submitting your request.<br>Please try again or contact support.';
                     errorMessage.style.display = 'block';
                     successMessage.style.display = 'none';
                     window.scrollTo({ top: 0, behavior: 'smooth' });
