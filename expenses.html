@@ -84,13 +84,13 @@
             padding: 12px;
             cursor: pointer;
             position: relative;
-            z-index: 2147483647 !important;
+            z-index: 10000 !important;
             min-width: 44px;
             min-height: 44px;
             justify-content: center;
             align-items: center;
             border-radius: 4px;
-            transition: all 0.3s ease;
+            transition: background 0.2s ease;
         }
 
         .menu-toggle:hover {
@@ -124,17 +124,19 @@
             left: 0 !important;
             right: 0 !important;
             bottom: 0 !important;
-            background: #1e3a4a !important;
-            z-index: 2147483645 !important;
+            background: rgba(30, 58, 74, 0.98) !important;
+            z-index: 9999 !important;
             opacity: 0 !important;
             visibility: hidden !important;
-            transition: all 0.3s ease !important;
+            transition: opacity 0.2s ease, visibility 0.2s ease !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
             align-items: center !important;
             gap: 2rem !important;
             padding: 2rem !important;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
 
         .mobile-menu-overlay.active {
@@ -558,20 +560,37 @@
             const menuToggle = document.getElementById('mobileMenuToggle');
             const mobileOverlay = document.getElementById('mobileMenuOverlay');
             
+            // Function to restore scrolling
+            function restoreScrolling() {
+                document.body.style.overflow = '';
+                document.body.style.position = '';
+                document.body.style.width = '';
+                document.documentElement.style.overflow = '';
+            }
+            
+            // Function to prevent scrolling
+            function preventScrolling() {
+                document.body.style.overflow = 'hidden';
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+            }
+            
             if (menuToggle && mobileOverlay) {
-                // Toggle menu
+                // Toggle menu with improved scroll handling
                 menuToggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
+                    const isOpening = !mobileOverlay.classList.contains('active');
+                    
                     menuToggle.classList.toggle('active');
                     mobileOverlay.classList.toggle('active');
                     
-                    // Prevent body scrolling when menu is open
-                    if (mobileOverlay.classList.contains('active')) {
-                        document.body.style.overflow = 'hidden';
+                    // Handle scrolling
+                    if (isOpening) {
+                        preventScrolling();
                     } else {
-                        document.body.style.overflow = '';
+                        setTimeout(restoreScrolling, 200); // Wait for animation
                     }
                 });
                 
@@ -580,7 +599,7 @@
                     if (e.target === mobileOverlay || e.target.tagName === 'A') {
                         menuToggle.classList.remove('active');
                         mobileOverlay.classList.remove('active');
-                        document.body.style.overflow = '';
+                        setTimeout(restoreScrolling, 200);
                     }
                 });
                 
@@ -589,7 +608,14 @@
                     if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
                         menuToggle.classList.remove('active');
                         mobileOverlay.classList.remove('active');
-                        document.body.style.overflow = '';
+                        setTimeout(restoreScrolling, 200);
+                    }
+                });
+                
+                // Ensure scrolling is restored on page focus
+                window.addEventListener('focus', function() {
+                    if (!mobileOverlay.classList.contains('active')) {
+                        restoreScrolling();
                     }
                 });
             }
