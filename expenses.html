@@ -71,6 +71,36 @@
             flex-wrap: wrap;
         }
 
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #FFEB3B;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
         nav ul li a {
             color: white;
             text-decoration: none;
@@ -271,11 +301,43 @@
         @media (max-width: 768px) {
             .header-content {
                 padding: 0 1rem;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;  
+                justify-content: space-between;
+            }
+
+            .menu-toggle {
+                display: flex !important;
+                z-index: 999999999;
             }
 
             nav ul {
                 display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #1e3a4a;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999999998;
+                padding: 2rem;
+                margin: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 1rem 2rem;
+                width: 200px;
+                text-align: center;
+                background: rgba(255,255,255,0.1);
+                border-radius: 10px;
             }
 
             .main-content {
@@ -319,6 +381,11 @@
                 <img src="images/logos/logo.png" alt="Bharat Warriors Logo" class="logo-img">
                 <h1 class="site-title">Bharat Warriors</h1>
             </a>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -451,6 +518,33 @@
 
     <script src="script.js"></script>
     <script>
+        // Mobile menu toggle (same as main site)
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('nav')) {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+
         // Mobile overlay management for iOS Safari
         function createMobileOverlay() {
             const overlay = document.getElementById('mobile-overlay');
@@ -458,8 +552,8 @@
             
             // Monitor mobile menu state
             function updateOverlay() {
-                const menu = document.getElementById('main-menu');
-                if (menu && menu.classList.contains('mobile-open')) {
+                const menu = document.querySelector('nav ul');
+                if (menu && menu.classList.contains('active')) {
                     overlay.classList.add('active');
                 } else {
                     overlay.classList.remove('active');
@@ -468,27 +562,26 @@
 
             // Close overlay on click
             overlay.addEventListener('click', function() {
-                const menu = document.getElementById('main-menu');
-                if (menu && menu.classList.contains('mobile-open')) {
-                    if (window.toggleMobileMenu) {
-                        window.toggleMobileMenu();
-                    }
+                const menu = document.querySelector('nav ul');
+                const toggle = document.querySelector('.menu-toggle');
+                if (menu && menu.classList.contains('active')) {
+                    toggle.classList.remove('active');
+                    menu.classList.remove('active');
                 }
             });
 
             // Watch for menu changes
             const observer = new MutationObserver(updateOverlay);
-            const menu = document.getElementById('main-menu');
+            const menu = document.querySelector('nav ul');
             if (menu) {
                 observer.observe(menu, { attributes: true, attributeFilter: ['class'] });
             }
 
-            // Override global toggle function to sync overlay
-            const originalToggle = window.toggleMobileMenu;
-            window.toggleMobileMenu = function() {
-                if (originalToggle) originalToggle();
-                setTimeout(updateOverlay, 50);
-            };
+            // Also watch the toggle button
+            const toggle = document.querySelector('.menu-toggle');
+            if (toggle) {
+                observer.observe(toggle, { attributes: true, attributeFilter: ['class'] });
+            }
 
             return overlay;
         }
