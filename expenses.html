@@ -490,16 +490,18 @@
                 <label for="category">Expense Category *</label>
                 <select id="category" name="category" required>
                     <option value="">Select Category</option>
-                    <option value="Equipment">🏏 Equipment & Gear</option>
-                    <option value="Travel">🚗 Travel & Transportation</option>
-                    <option value="Accommodation">🏨 Accommodation</option>
-                    <option value="Meals">🍽️ Meals & Refreshments</option>
-                    <option value="Registration">📋 Tournament Registration</option>
-                    <option value="Ground Rental">🏟️ Ground Rental</option>
-                    <option value="Uniforms">👕 Team Uniforms</option>
-                    <option value="Medical">🩹 Medical & First Aid</option>
-                    <option value="Other">📝 Other (please specify)</option>
+                    <option value="Equipment and gear">Equipment and gear</option>
+                    <option value="Refreshment">Refreshment</option>
+                    <option value="tournament Registri">tournament Registri</option>
+                    <option value="ground rentel">ground rentel</option>
+                    <option value="mefdical and first Aid">mefdical and first Aid</option>
+                    <option value="Other">Other</option>
                 </select>
+            </div>
+
+            <div class="form-group" id="otherCategoryGroup" style="display: none;">
+                <label for="otherCategory">Specify Other Category *</label>
+                <input type="text" id="otherCategory" name="otherCategory" placeholder="Enter category details">
             </div>
 
             <!-- Removed optional fields per request: Description, Business/Vendor, Receipt, Additional Information -->
@@ -535,6 +537,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             const menuToggle = document.getElementById('mobileMenuToggle');
             const mobileOverlay = document.getElementById('mobileMenuOverlay');
+            const categorySelect = document.getElementById('category');
+            const otherGroup = document.getElementById('otherCategoryGroup');
+            const otherInput = document.getElementById('otherCategory');
             
             if (menuToggle && mobileOverlay) {
                 // Simple menu toggle without scroll blocking
@@ -561,6 +566,22 @@
                         mobileOverlay.classList.remove('active');
                     }
                 });
+            }
+
+            // Toggle 'Other' input visibility
+            if (categorySelect && otherGroup && otherInput) {
+                const updateOtherVisibility = () => {
+                    if (categorySelect.value === 'Other') {
+                        otherGroup.style.display = 'block';
+                        otherInput.setAttribute('required', 'required');
+                    } else {
+                        otherGroup.style.display = 'none';
+                        otherInput.removeAttribute('required');
+                        otherInput.value = '';
+                    }
+                };
+                updateOtherVisibility();
+                categorySelect.addEventListener('change', updateOtherVisibility);
             }
 
             // Form handling
@@ -597,6 +618,13 @@
                     }
                 }
 
+                // If category is Other, require the text input
+                const selectedCategory = formData.get('category');
+                const otherText = formData.get('otherCategory');
+                if (selectedCategory === 'Other' && (!otherText || otherText.trim() === '')) {
+                    missingFields.push('Specify Other Category');
+                }
+
                 if (missingFields.length > 0) {
                     errorMessage.innerHTML = '❌ Please fill in the following required fields:<br><strong>' + missingFields.join(', ') + '</strong>';
                     errorMessage.style.display = 'block';
@@ -622,6 +650,11 @@
                     if (key !== 'receipt') {
                         formDataObj[key] = value;
                     }
+                }
+
+                // If user chose Other, send the custom text as category
+                if (selectedCategory === 'Other' && otherText && otherText.trim() !== '') {
+                    formDataObj.category = otherText.trim();
                 }
 
                 fetch(GOOGLE_SHEETS_ENDPOINT, {
