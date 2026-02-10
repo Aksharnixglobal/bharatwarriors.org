@@ -4621,3 +4621,22 @@ a[style*="background"] {
     scroll-behavior: auto !important;
   }
 }
+
+/* iOS Safari stacking/painting fixes */
+@supports (-webkit-overflow-scrolling: touch) {
+  .menu,
+  .menu.mobile-open {
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    -webkit-backface-visibility: hidden !important;
+    backface-visibility: hidden !important;
+    will-change: transform, opacity !important;
+  }
+
+  /* Ensure children don't create new opaque layers that leak underlying content */
+  .menu * {
+    -webkit-transform: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
