@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://bharatwarriors.org/gallery.html" />
 <meta property="og:image" content="https://bharatwarriors.org/images/gallery/BCC.jpg" />
 
-<link rel="icon" href="favicon.ico" />
+<link rel="icon" href="images/gallery/BCC.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
@@ -77,12 +77,14 @@ h1, h2 {
   background: transparent;
   border: none;
   color: rgba(255,255,255,0.5);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-weight: 600;
-  padding: 0.55rem 1.1rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   transition: background 0.2s ease, color 0.2s ease;
   white-space: nowrap;
   line-height: 1.4;
@@ -201,34 +203,44 @@ h1, h2 {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.95);
-  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.97);
+  overflow: hidden;
+  animation: fadeIn 0.2s ease;
 }
 
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 .lightbox-content {
-  position: relative;
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1200px;
+  position: absolute;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
+  width: 92%;
+  max-width: 1200px;
   text-align: center;
 }
 
 .lightbox-image {
   max-width: 100%;
-  max-height: 85vh;
+  max-height: 88vh;
   object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  transition: opacity 0.25s ease;
 }
 
 .lightbox-caption {
-  color: rgba(255,255,255,0.8);
-  font-size: 1rem;
-  margin-top: 0.75rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+  margin-top: 1rem;
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.lightbox-counter {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.75rem;
+  margin-top: 0.4rem;
   font-family: 'Montserrat', sans-serif;
   letter-spacing: 1px;
 }
@@ -363,23 +375,15 @@ h1, h2 {
 
 <!-- Main Content -->
 <main class="main-content" id="main-content">
-  <h1 class="page-title">Moments of Glory 📸</h1>
-  <p class="page-subtitle">Every victory, every celebration, every warrior moment—captured forever</p>
+  <h1 class="page-title">Gallery</h1>
+  <p class="page-subtitle">Every victory, every celebration, every warrior moment — captured forever</p>
 
   <!-- Gallery Controls -->
   <div class="gallery-controls">
-    <button class="gallery-btn active" onclick="showAlbum('awards')">
-      <span>🏆 Awards & Recognition</span>
-    </button>
-    <button class="gallery-btn" onclick="showAlbum('party')">
-      <span>🎉 Team Celebrations</span>
-    </button>
-    <button class="gallery-btn" onclick="showAlbum('practice')">
-      <span>🥅 Training Sessions</span>
-    </button>
-    <button class="gallery-btn" onclick="showAlbum('intro')">
-      <span>👥 Team Introductions</span>
-    </button>
+    <button class="gallery-btn active" onclick="showAlbum('awards')">Awards</button>
+    <button class="gallery-btn" onclick="showAlbum('party')">Celebrations</button>
+    <button class="gallery-btn" onclick="showAlbum('practice')">Training</button>
+    <button class="gallery-btn" onclick="showAlbum('intro')">Team Intros</button>
   </div>
 
   <!-- Awards Album -->
@@ -490,6 +494,7 @@ h1, h2 {
   <div class="lightbox-content">
     <img id="lightboxImage" class="lightbox-image" src="" alt="">
     <div id="lightboxCaption" class="lightbox-caption"></div>
+    <div id="lightboxCounter" class="lightbox-counter"></div>
   </div>
   <a class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</a>
 </div>
@@ -563,18 +568,20 @@ function updateImageList() {
 function openLightbox(imageSrc, caption) {
   updateImageList();
   currentImageIndex = imageList.findIndex(img => img.src === imageSrc);
-  
+
   const modal = document.getElementById('lightboxModal');
   const img = document.getElementById('lightboxImage');
   const captionText = document.getElementById('lightboxCaption');
-  
+  const counter = document.getElementById('lightboxCounter');
+
   modal.style.display = 'block';
   img.src = imageSrc;
   captionText.textContent = caption;
-  
+  counter.textContent = (currentImageIndex + 1) + ' / ' + imageList.length;
+
   // Prevent body scroll when lightbox is open
   document.body.style.overflow = 'hidden';
-  
+
   // Prevent event bubbling
   event.stopPropagation();
   event.preventDefault();
@@ -590,19 +597,26 @@ function closeLightbox(event) {
 
 function changeImage(direction) {
   currentImageIndex += direction;
-  
+
   // Loop around
   if (currentImageIndex >= imageList.length) {
     currentImageIndex = 0;
   } else if (currentImageIndex < 0) {
     currentImageIndex = imageList.length - 1;
   }
-  
+
   const img = document.getElementById('lightboxImage');
   const captionText = document.getElementById('lightboxCaption');
-  
-  img.src = imageList[currentImageIndex].src;
-  captionText.textContent = imageList[currentImageIndex].caption;
+  const counter = document.getElementById('lightboxCounter');
+
+  // Fade transition
+  img.style.opacity = '0';
+  setTimeout(function() {
+    img.src = imageList[currentImageIndex].src;
+    captionText.textContent = imageList[currentImageIndex].caption;
+    counter.textContent = (currentImageIndex + 1) + ' / ' + imageList.length;
+    img.style.opacity = '1';
+  }, 150);
 }
 
 // Keyboard navigation
@@ -651,6 +665,22 @@ function attachGalleryListeners() {
     }
   });
 }
+
+// Touch/swipe support for lightbox
+let touchStartX = 0;
+let touchEndX = 0;
+const lightboxEl = document.getElementById('lightboxModal');
+lightboxEl.addEventListener('touchstart', function(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+lightboxEl.addEventListener('touchend', function(e) {
+  touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) changeImage(1);  // swipe left = next
+    else changeImage(-1);          // swipe right = prev
+  }
+}, { passive: true });
 
 // Initialize image list on page load
 updateImageList();

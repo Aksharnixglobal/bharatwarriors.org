@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://bharatwarriors.org/partners.html" />
 <meta property="og:image" content="https://bharatwarriors.org/images/gallery/BCC.jpg" />
 
-<link rel="icon" href="favicon.ico" />
+<link rel="icon" href="images/gallery/BCC.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 
@@ -39,10 +39,18 @@
 
   .logo-container {
     display: flex; align-items: center; justify-content: center;
-    height: 100px; padding: 1rem; margin-bottom: 1rem;
-    background: white; border-radius: 6px;
+    width: 120px; height: 120px;
+    margin: 0 auto 1.25rem;
+    background: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.1);
   }
-  .logo-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .logo-container img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 
   .sponsor-info h3 {
     font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700;
@@ -88,7 +96,6 @@
     font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none; cursor: pointer; border-radius: 3px;
-    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
     background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
     color: #07111f; border: none; transition: opacity 0.2s ease;
   }
@@ -217,7 +224,7 @@
     <!-- Grain Market -->
     <div class="sponsor" id="sponsor-grain">
       <div class="logo-container">
-        <img src="images/logos/grain.jpeg" alt="Grain Market Logo" loading="lazy">
+        <img src="images/logos/grain.png" alt="Grain Market Logo" loading="lazy">
       </div>
       <div class="sponsor-info">
         <h3>Grain Market</h3>
@@ -230,7 +237,7 @@
     <!-- Rajula -->
     <div class="sponsor" id="sponsor-rajula">
       <div class="logo-container">
-        <img src="images/logos/rajula.jpeg" alt="Rajula Logo" loading="lazy">
+        <img src="images/logos/rajula.png" alt="Rajula Logo" loading="lazy">
       </div>
       <div class="sponsor-info">
         <h3>Rajula</h3>
