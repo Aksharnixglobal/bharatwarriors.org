@@ -47,7 +47,8 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  background: #1e3a4a !important;
+  background: #07111f !important;
+  background-image: none !important;
 }
 
 html.smooth-scroll {
@@ -58,15 +59,10 @@ body {
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: 1rem;
   line-height: 1.6;
-  color: #f8fafc !important;
-  background-color: #1e3a4a !important;
-  background-image: -webkit-linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-  background-image: -moz-linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-  background-image: -o-linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-  background-image: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  color: #ffffff;
+  background-color: #07111f !important;
+  background-image: none !important;
+  background-attachment: unset !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -321,60 +317,59 @@ nav ul li a.active {
 }
 
 :root {
-  /* Texas Pride - Dark Teal Theme */
-  --navy: #1e3a4a; /* Dark teal */
-  --navy-2: #2d4f5f; /* Slightly lighter teal */
-  --navy-light: rgba(30, 58, 74, 0.8);
-  --navy-dark: #16313f;
-  
-  /* Texas Colors */
-  --saffron: #dc3545; /* Texas red accent */
-  --saffron-light: #e85d6d;
-  --saffron-dark: #c82333;
-  --green: #28a745; /* Keep some green for success states */
-  --green-light: #4eca6a;
-  --green-dark: #20873a;
-  --blue: #007bff; /* Bright Texas blue */
-  --blue-light: #4da3ff;
-  --blue-dark: #0056cc;
-  
-  /* Extended Palette */
-  --orange: var(--saffron);
-  --primary-color: var(--blue);
-  --secondary-color: var(--saffron);
-  --chakra: #007bff;
+  /* BCC Brand — Navy + Gold */
+  --navy:        #0c3054;
+  --navy-2:      #0a1e40;
+  --navy-dark:   #07111f;
+  --navy-card:   #0c1e38;
+  --navy-light:  rgba(12, 48, 84, 0.8);
 
-  /* Enhanced Navigation */
-  --nav-hover: rgba(255, 255, 255, 0.25);
-  --nav-bg: rgba(255, 255, 255, 0.15);
-  
-  /* Typography Colors - Crisp */
-  --ink: #212529; /* Sharp dark gray */
-  --text-color: #212529;
-  --text-light: #6c757d;
-  --muted: #6c757d;
-  --text-accent: var(--blue);
-  
-  /* Surface Colors - Crisp Whites */
-  --line: #dee2e6;
-  --line-light: #f8f9fa;
-  --bg: #ffffff; /* Pure white background */
-  --bg-secondary: #f8f9fa;
-  --paper: #ffffff;
-  --surface-elevated: rgba(255, 255, 255, 0.98);
-  
-  /* Brand Gradients */
-  --accent-gradient: linear-gradient(135deg, var(--saffron) 0%, var(--green) 50%, var(--blue) 100%);
-  --hero-gradient: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 50%, var(--chakra) 100%);
-  --brand-gradient: linear-gradient(45deg, var(--saffron), var(--green), var(--blue));
-  --warm-gradient: linear-gradient(135deg, #fff5f0 0%, #fee2d3 100%);
-  
-  --shadow-sm: 0 2px 8px rgba(12, 30, 55, 0.08);
-  --shadow-md: 0 8px 20px rgba(12, 30, 55, 0.12);
-  --shadow-lg: 0 15px 35px rgba(12, 30, 55, 0.15);
-  --shadow-xl: 0 25px 50px rgba(12, 30, 55, 0.2);
+  /* Gold gradient — extracted from BCC logo */
+  --gold-dark:    #9A6010;
+  --gold-mid:     #D89018;
+  --gold-bright:  #F5C040;
+  --gold-gradient: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
 
-  /* Spacing Scale */
+  /* Indian flag accents */
+  --saffron:       #FF9933;
+  --green:         #138808;
+  --green-light:   #2ecc71;
+  --green-dark:    #27ae60;
+
+  /* Functional */
+  --blue:          #3b82f6;
+  --orange:        #FF9933;
+  --primary-color: #D89018;
+  --secondary-color: #9A6010;
+  --chakra:        #3b82f6;
+  --accent-gradient: var(--gold-gradient);
+
+  /* Typography */
+  --ink:           #ffffff;
+  --text-color:    #ffffff;
+  --text-light:    rgba(255,255,255,0.6);
+  --muted:         rgba(255,255,255,0.4);
+  --text-accent:   #D89018;
+
+  /* Surfaces */
+  --bg:              #07111f;
+  --bg-secondary:    #0a1e40;
+  --paper:           #0c1e38;
+  --surface-elevated: #0c3054;
+  --line:            rgba(255,255,255,0.08);
+  --line-light:      rgba(255,255,255,0.04);
+
+  /* Nav */
+  --nav-hover: rgba(216,144,24,0.15);
+  --nav-bg:    rgba(12,48,84,0.95);
+
+  /* Shadows — subtle on dark bg */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 20px rgba(0,0,0,0.4);
+  --shadow-lg: 0 15px 35px rgba(0,0,0,0.5);
+  --shadow-xl: 0 25px 50px rgba(0,0,0,0.6);
+
+  /* Spacing */
   --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
@@ -382,11 +377,11 @@ nav ul li a.active {
   --space-xl: 32px;
   --space-2xl: 48px;
 
-  /* Border Radius Scale */
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
   --radius-full: 50%;
 }
 
@@ -1021,8 +1016,8 @@ a{color:inherit;text-decoration:none}
 }
 
 /* Enhanced Navigation */
-.nav{position:sticky; top: 0; z-index:999998 !important; background:linear-gradient(180deg,var(--navy),var(--navy-2));
-     border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 8px 22px rgba(10,28,60,.22);
+.nav{position:sticky; top: 0; z-index:999998 !important; background:#0c3054;
+     border-bottom:1px solid rgba(216,144,24,0.18); box-shadow:0 8px 22px rgba(10,28,60,.22);
      backdrop-filter:blur(10px); transition:all 0.3s ease;}
 
 .nav.scrolled {
@@ -1035,7 +1030,7 @@ a{color:inherit;text-decoration:none}
 .brand{display:flex;align-items:center;gap:16px;transition:transform 0.3s ease}
 .brand:hover{transform:scale(1.02)}
 .brand img{width:80px;height:80px;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 4px 12px rgba(0,0,0,.3);transition:box-shadow 0.3s ease}
-.brand .t{font-family:"Montserrat",sans-serif;font-size:20px;font-weight:900;letter-spacing:.3px;background:var(--accent-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand .t{font-family:"Oswald","Montserrat",sans-serif;font-size:18px;font-weight:700;letter-spacing:2px;background:linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);-webkit-background-clip:text;background-clip:text;color:transparent}
 .brand .s{font-family:"Montserrat",sans-serif;font-size:13px;color:#e7f0ff;opacity:.95;font-weight:500}
 .menu{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}
 .mobile-menu-toggle{display:none}
@@ -1052,14 +1047,14 @@ a{color:inherit;text-decoration:none}
 
 .menu a::before,.dropdown>button::before{content:'';position:absolute;inset:0;background:var(--accent-gradient);opacity:0;transition:all 0.3s ease}
 
-.menu a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:3px;background:var(--accent-gradient);transform:translateX(-50%);transition:width 0.3s ease;border-radius:2px 2px 0 0}
+.menu a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:3px;background:linear-gradient(90deg, #D89018, #F5C040);transform:translateX(-50%);transition:width 0.3s ease;border-radius:2px 2px 0 0}
 
 .menu a:hover::before,.dropdown>button:hover::before{opacity:0.1}
 .menu a:hover,.dropdown>button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.25)}
 .menu a:hover::after{width:80%}
 
 .menu .active{background:rgba(255,255,255,.22);box-shadow:0 4px 12px rgba(0,0,0,.15);transform:translateY(-1px)}
-.menu .active::after{width:80%;background:linear-gradient(90deg, var(--primary-color), var(--secondary-color))}
+.menu .active::after{width:80%;background:linear-gradient(90deg, #D89018, #F5C040)}
 .dropdown{position:relative; z-index:1000001 !important;}
 .dropdown-menu{position:absolute; top:calc(100% + 8px); right:0; min-width:220px; background:#0f2548; color:#fff;
   border:1px solid rgba(255,255,255,.18); border-radius:12px; padding:6px; display:none; 
