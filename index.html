@@ -110,18 +110,18 @@
             gap: 2rem;
         }
         .league-card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255,255,255,0.07);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.14);
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         .league-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.11);
         }
         .league-card h3 {
             font-size: 1.8rem;
@@ -264,7 +264,7 @@
     </section>
 
     <!-- Proudly Presented By UGNT Section -->
-    <section style="padding: 3rem 2rem; text-align: center; background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05)); margin: 2rem auto; max-width: 1200px; border-radius: 20px; border: 2px solid rgba(255, 215, 0, 0.2);">
+    <section style="padding: 3rem 2rem; text-align: center; background: rgba(255,255,255,0.07); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); margin: 2rem auto; max-width: 1200px; border-radius: 20px; border: 1px solid rgba(255,215,0,0.2);">
         <p style="font-size: 1rem; color: #b8cce0; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600;">Proudly Presented By</p>
         <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
             <img src="images/logos/UGNT- logo.png" alt="UGNT - United Gujaratis of North Texas" style="height: 100px; width: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));">
@@ -318,7 +318,7 @@
             Help fuel our warriors and yodhas! Your contributions support equipment, ground fees, tournaments, and team development.
         </p>
         
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 16px; max-width: 600px; margin: 0 auto 2rem; backdrop-filter: blur(10px); border: 2px solid rgba(255, 255, 255, 0.2);">
+        <div style="background: rgba(255,255,255,0.07); padding: 2rem; border-radius: 16px; max-width: 600px; margin: 0 auto 2rem; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.14);">
             <p style="color: #b8cce0; margin-bottom: 0.5rem; font-size: 1rem;">Donate via Zelle to:</p>
             <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
                 <span id="home-zelle-email" style="
@@ -329,7 +329,7 @@
                     background: rgba(0, 0, 0, 0.3);
                     padding: 0.75rem 1.5rem;
                     border-radius: 8px;
-                    border: 2px solid rgba(255, 215, 0, 0.3);
+                    border: 1px solid rgba(255, 215, 0, 0.3);
                 ">patelpratik59@gmail.com</span>
                 <button onclick="copyHomeZelleEmail()" style="
                     background: linear-gradient(45deg, #ffd700, #ffed4e);

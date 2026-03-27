@@ -58,21 +58,23 @@
     }
     
     .achievement-card {
-      background: #000000;
-      border: 2px solid #D4AF37;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 20px;
       padding: 3rem 2rem;
       text-align: center;
     }
-    
+
     .achievement-card .logo {
       width: 150px;
       height: 150px;
       margin: 0 auto 2rem;
       border-radius: 50%;
-      border: 3px solid #D4AF37;
+      border: 1px solid rgba(255,255,255,0.2);
       padding: 1rem;
-      background: white;
+      background: rgba(255,255,255,0.95);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -88,16 +90,16 @@
     .achievement-card h3 {
       font-size: 2.5rem;
       font-weight: 900;
-      color: #D4AF37;
+      color: #FFEB3B;
       margin-bottom: 2rem;
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    
+
     .achievement-item {
       margin: 1.5rem 0;
       padding: 1rem 0;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       text-align: left;
       padding-left: 2rem;
     }
@@ -109,14 +111,14 @@
     .achievement-item .year {
       font-size: 1.3rem;
       font-weight: 700;
-      color: #D4AF37;
+      color: #FFEB3B;
       margin-bottom: 0.5rem;
       display: inline-block;
     }
-    
+
     .achievement-item .details {
       font-size: 1.2rem;
-      color: #D4AF37;
+      color: rgba(255,255,255,0.85);
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -249,10 +251,10 @@
 </main>
 
 <!-- Footer -->
-<footer style="background: #000000; padding: 2rem; text-align: center; border-top: 2px solid #D4AF37;">
-  <p style="color: #D4AF37; margin: 0; font-size: 1rem;">&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
-  <p style="color: #D4AF37; margin-top: 0.5rem; font-size: 0.9rem;">
-    Designed by <a href="https://aksharnixglobal.com" style="color: #D4AF37; text-decoration: underline; font-weight: 600;">AksharNix Global</a>
+<footer style="background: rgba(0,0,0,0.2); padding: 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4rem;">
+  <p style="color: rgba(255,255,255,0.7); margin: 0;">&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+  <p style="color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-size: 0.9rem;">
+    Designed by <a href="https://aksharnixglobal.com" style="color: white; text-decoration: none; font-weight: bold;">AksharNix Global</a>
   </p>
 </footer>
 

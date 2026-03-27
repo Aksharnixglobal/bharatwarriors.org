@@ -63,8 +63,10 @@
     }
     
     .mission-statement {
-      background: rgba(212, 175, 55, 0.1);
-      border: 2px solid #D4AF37;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 15px;
       padding: 2rem;
       margin: 3rem auto;
@@ -76,6 +78,7 @@
       font-size: 1.4rem;
       font-style: italic;
       margin: 0;
+      color: rgba(255,255,255,0.85);
     }
     
     .leaders-section {
@@ -102,17 +105,19 @@
     }
     
     .leader-card {
-      background: rgba(212, 175, 55, 0.05);
-      border: 2px solid #D4AF37;
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 20px;
       padding: 3rem 2rem;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
+
     .leader-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     
     .leader-card .photo {
@@ -120,9 +125,9 @@
       height: 180px;
       margin: 0 auto 1.5rem;
       border-radius: 50%;
-      border: 4px solid #D4AF37;
+      border: 2px solid rgba(255,255,255,0.2);
       overflow: hidden;
-      background: white;
+      background: rgba(255,255,255,0.95);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,13 +147,13 @@
     .leader-card h3 {
       font-size: 2rem;
       font-weight: 800;
-      color: #D4AF37;
+      color: #FFEB3B;
       margin-bottom: 0.5rem;
     }
-    
+
     .leader-card .title {
       font-size: 1.3rem;
-      color: #D4AF37;
+      color: rgba(255,255,255,0.8);
       font-weight: 600;
       margin-bottom: 1rem;
     }
@@ -290,10 +295,10 @@
 </main>
 
 <!-- Footer -->
-<footer style="background: rgba(0,0,0,0.2); padding: 2rem; text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.3);">
-  <p style="color: #D4AF37; margin: 0;">&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
-  <p style="color: #D4AF37; margin-top: 0.5rem; font-size: 0.9rem;">
-    Designed by <a href="https://aksharnixglobal.com" style="color: #D4AF37; text-decoration: underline; font-weight: 600;">AksharNix Global</a>
+<footer style="background: rgba(0,0,0,0.2); padding: 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+  <p style="color: rgba(255,255,255,0.7); margin: 0;">&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+  <p style="color: rgba(255,255,255,0.7); margin-top: 0.5rem; font-size: 0.9rem;">
+    Designed by <a href="https://aksharnixglobal.com" style="color: white; text-decoration: none; font-weight: bold;">AksharNix Global</a>
   </p>
 </footer>
 
