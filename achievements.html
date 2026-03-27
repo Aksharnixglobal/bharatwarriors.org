@@ -10,44 +10,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   
   <style>
-    html, body {
-      background-color: #1e3a4a !important;
-      background-image: -webkit-linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-      background-image: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-      background-attachment: fixed !important;
-      background-repeat: no-repeat !important;
-      background-size: cover !important;
-      color: rgba(255,255,255,0.75);
-      margin: 0;
-      padding: 0;
-      font-family: 'Montserrat', sans-serif;
-      min-height: 100vh;
-    }
-    
+    body { background: #07111f !important; color: rgba(255,255,255,0.75); margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; min-height: 100vh; }
+
     main {
       padding-top: 5rem;
       min-height: 100vh;
     }
-    
+
     .achievements-header {
       text-align: center;
       padding: 0 2rem 1rem;
     }
 
-    .achievements-header h1 {
-      font-size: 3rem;
-      color: #FFEB3B;
-      margin-bottom: 0.5rem;
-    }
-    
-    .achievements-header h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.75);
-      margin-top: 2rem;
-      text-transform: none;
-    }
-    
     .achievements-container {
       max-width: 1400px;
       margin: 0 auto;
@@ -56,16 +30,37 @@
       grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
       gap: 3rem;
     }
-    
+
+    h1, h2, h3.section-heading {
+      font-family: 'Oswald', sans-serif !important;
+      font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
     .achievement-card {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 20px;
+      background: #0c1e38 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      border-radius: 6px;
       padding: 3rem 2rem;
       text-align: center;
+      position: relative; overflow: hidden;
     }
+    .achievement-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    }
+    .achievement-card:hover {
+      border-color: rgba(216,144,24,0.3) !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .achievement-card h3, .achievement-card h4 { color: white !important; font-family: 'Oswald', sans-serif !important; }
+    .achievement-card p, .achievement-card span { color: rgba(255,255,255,0.55) !important; }
+    .trophy-icon, .achievement-icon { color: #D89018 !important; }
 
     .achievement-card .logo {
       width: 150px;
@@ -79,80 +74,61 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .achievement-card .logo img {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
       border-radius: 50%;
     }
-    
-    .achievement-card h3 {
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: #FFEB3B;
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
 
     .achievement-item {
       margin: 1.5rem 0;
       padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       text-align: left;
       padding-left: 2rem;
     }
-    
+
     .achievement-item:last-child {
       border-bottom: none;
     }
-    
+
     .achievement-item .year {
       font-size: 1.3rem;
       font-weight: 700;
-      color: #FFEB3B;
+      color: #D89018 !important;
       margin-bottom: 0.5rem;
       display: inline-block;
     }
 
     .achievement-item .details {
       font-size: 1.2rem;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.55) !important;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       margin-left: 0.5rem;
     }
-    
+
     .achievement-item .details .emoji {
       font-size: 1.5rem;
     }
-    
+
+    .footer, footer { background: #07111f !important; border-top: 1px solid rgba(216,144,24,0.15) !important; }
+    .footer p, footer p { color: rgba(255,255,255,0.35) !important; }
+
     @media (max-width: 768px) {
       .achievements-container {
         grid-template-columns: 1fr;
         padding: 2rem 1rem;
         gap: 2rem;
       }
-      
-      .achievements-header h1 {
-        font-size: 1.8rem;
-        letter-spacing: 1px;
-      }
-      
-      .achievements-header h2 {
-        font-size: 1.8rem;
-      }
-      
+
       .achievement-card {
         padding: 2rem 1rem;
       }
-      
-      .achievement-card h3 {
-        font-size: 2rem;
-      }
-      
+
       .achievement-item {
         padding-left: 0.5rem;
       }
