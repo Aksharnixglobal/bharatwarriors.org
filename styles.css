@@ -1678,12 +1678,13 @@ tr:hover{background:#f8fbff}
 .become-sponsor {
   text-align: center;
   padding: 50px 30px;
-  background: var(--accent-gradient);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: 20px;
-  color: #14223e;
+  color: rgba(255,255,255,0.85);
   margin-top: 40px;
-  display: block !important;
-  visibility: visible !important;
 }
 
 .become-sponsor h3 {
@@ -1691,31 +1692,32 @@ tr:hover{background:#f8fbff}
   margin-bottom: 15px;
   font-weight: 900;
   letter-spacing: 1px;
-  color: #14223e;
+  color: #FFEB3B;
 }
 
 .become-sponsor p {
   font-size: 1.2rem;
   margin-bottom: 25px;
-  opacity: 1;
-  color: #31476b;
+  color: rgba(255,255,255,0.8);
 }
 
 .become-sponsor .btn {
-  background: linear-gradient(90deg, var(--saffron), var(--green), var(--blue));
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #fff;
-  border: none;
+  border: 1px solid rgba(255,255,255,0.2);
   font-weight: 700;
   font-size: 1.1rem;
   padding: 14px 36px;
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(20,34,62,.10);
-  transition: background 0.3s, transform 0.2s;
+  border-radius: 30px;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .become-sponsor .btn:hover {
-  background: linear-gradient(90deg, var(--blue), var(--green), var(--saffron));
-  transform: translateY(-4px) scale(1.04);
+  background: rgba(255,235,59,0.15);
+  border-color: rgba(255,235,59,0.5);
+  color: #FFEB3B;
 }
 
 /* Responsive Sponsor Section */
