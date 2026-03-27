@@ -73,7 +73,7 @@ body {
 
 /* Simple shared navigation (matches index.html and gallery screenshot) */
 nav {
-  background: #1e3a4a;
+  background: #0c3054;
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -230,7 +230,7 @@ nav ul li a.active {
     width: 280px;
     height: 100vh;
     height: 100dvh; /* Dynamic viewport height for mobile browsers */
-    background: #1e3a4a;
+    background: #0c3054;
     flex-direction: column;
     gap: 0;
     padding: 100px 2rem 2rem;
@@ -392,7 +392,7 @@ nav ul li a.active {
   left: 0 !important;
   width: 0% !important;
   height: 5px !important;
-  background: linear-gradient(90deg, #dc3545 0%, #007bff 50%, #28a745 100%) !important;
+  background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010) !important;
   z-index: 9999 !important;
   transition: width 0.1s ease-out !important;
   border-radius: 0 3px 3px 0 !important;
@@ -888,7 +888,7 @@ a{color:inherit;text-decoration:none}
     bottom: 0;
     height: calc(100vh - 100%) !important;
     width: 100vw !important;
-    background: #1e3a4a !important;
+    background: #0c3054 !important;
     flex-direction: column;
     padding: 0;
     padding-top: 20px;
