@@ -11,14 +11,33 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   html, body {
-    background-color: #1e3a4a !important;
-    background-image: -webkit-linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-    background-image: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-    background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+    background: #07111f !important;
     min-height: 100vh !important;
   }
+
+  body { background: #07111f !important; }
+
+  h1, h2 {
+    font-family: 'Oswald', sans-serif !important;
+    font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .donation-card, .support-card, .card {
+    background: #0c1e38 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 6px;
+    position: relative; overflow: hidden;
+  }
+  .donation-card::before, .support-card::before, .card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+  }
+  .card h3 { color: white !important; font-family: 'Oswald', sans-serif !important; }
+  .card p { color: rgba(255,255,255,0.55) !important; }
 
   .main-content {
     padding: 5rem 2rem 2rem;
@@ -45,15 +64,21 @@
     line-height: 1.6;
   }
 
-  /* Glass card — matches expense/contact form style */
+  /* Glass card */
   .glass-card {
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 20px;
+    background: #0c1e38 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid rgba(255,255,255,0.06) !important;
+    border-radius: 6px;
     padding: 2.5rem;
     margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .glass-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
   }
 
   /* Donation card two-column layout */
@@ -66,13 +91,13 @@
 
   .donate-title {
     font-size: 1.6rem;
-    color: #FFEB3B;
+    color: #D89018;
     margin: 0 0 1.5rem;
   }
 
   .donate-label {
     font-size: 0.75rem;
-    color: #FFEB3B;
+    color: #D89018;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
@@ -102,7 +127,7 @@
     font-family: 'Courier New', monospace;
     font-size: 1rem;
     font-weight: 600;
-    color: #FFEB3B;
+    color: #D89018;
     flex: 1;
     min-width: 0;
     word-break: break-all;
@@ -123,18 +148,18 @@
   }
 
   .copy-btn:hover {
-    background: rgba(255,235,59,0.15);
-    border-color: rgba(255,235,59,0.4);
-    color: #FFEB3B;
+    background: rgba(216,144,24,0.15);
+    border-color: rgba(216,144,24,0.4);
+    color: #D89018;
   }
 
   .donate-note {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-left: 3px solid #FFEB3B;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid #D89018;
     padding: 1.1rem 1.25rem;
-    border-radius: 10px;
-    color: rgba(255,255,255,0.8);
+    border-radius: 6px;
+    color: rgba(255,255,255,0.55);
     font-size: 0.9rem;
     line-height: 1.7;
   }
@@ -150,7 +175,7 @@
 
   .qr-label {
     font-size: 0.75rem;
-    color: #FFEB3B;
+    color: #D89018;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
@@ -184,7 +209,7 @@
   /* Impact stats */
   .impact-title {
     font-size: 1.6rem;
-    color: #FFEB3B;
+    color: #D89018;
     text-align: center;
     margin: 0 0 0.75rem;
   }
@@ -236,7 +261,7 @@
   }
 
   .thankyou h3 {
-    color: #FFEB3B;
+    color: #D89018;
     font-size: 1.6rem;
     margin-bottom: 0.75rem;
   }
@@ -250,39 +275,19 @@
   }
 
   .support-cta {
-    display: inline-block;
-    padding: 0.85rem 2.25rem;
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 700;
-    font-size: 1rem;
-    border: 1px solid rgba(255,255,255,0.2);
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    display: inline-block; padding: 12px 30px; font-weight: 800 !important;
+    font-size: 10px !important; letter-spacing: 3px !important; text-transform: uppercase !important;
+    text-decoration: none !important;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010) !important;
+    color: #07111f !important; border: none !important; border-radius: 3px !important;
+    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+    transition: opacity 0.2s ease !important;
   }
-
-  .support-cta:hover {
-    background: rgba(255,235,59,0.15);
-    border-color: rgba(255,235,59,0.5);
-    color: #FFEB3B;
-  }
+  .support-cta:hover { opacity: 0.85 !important; }
 
   /* Footer */
-  .footer {
-    background: rgba(0,0,0,0.2);
-    padding: 2rem 1rem;
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    margin-top: 4rem;
-  }
-
-  .footer p {
-    color: rgba(255,255,255,0.7);
-    margin: 0;
-  }
+  .footer, footer { background: #07111f !important; border-top: 1px solid rgba(216,144,24,0.15) !important; padding: 2rem 1rem; text-align: center; margin-top: 4rem; }
+  .footer p, footer p { color: rgba(255,255,255,0.35) !important; margin: 0; }
 
   .footer a {
     color: white;
