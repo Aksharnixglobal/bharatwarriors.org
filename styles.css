@@ -1225,27 +1225,6 @@ img {
   }
 }
 
-/* Enhanced loading states */
-.loading {
-  position: relative;
-  overflow: hidden;
-}
-
-.loading::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  animation: loading-shimmer 1.5s infinite;
-}
-
-@keyframes loading-shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
 
 /* Enhanced Hero with Indian flag and animations */
 .hero{position:relative;border-bottom:1px solid var(--line);overflow:hidden;min-height:70vh;display:flex;align-items:center}
@@ -2800,9 +2779,6 @@ footer:not(.innovative-footer) {display: none;}
   .container{padding:0 8px}
 }
 
-/* Loading state */
-.loading{opacity:0;animation:fadeInSlow 0.8s ease forwards}
-@keyframes fadeInSlow{to{opacity:1}}
 
 /* Enhanced animations and micro-interactions */
 .i { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; }

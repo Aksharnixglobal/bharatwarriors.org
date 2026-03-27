@@ -652,8 +652,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-/* Add loading animation class to body when page loads */
-document.body.classList.add('loading');
 
 /* Hero Carousel Functionality */
 let currentSlide = 0;
