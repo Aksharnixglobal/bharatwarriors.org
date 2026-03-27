@@ -8,6 +8,39 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body { background: #07111f !important; font-family: 'Montserrat', sans-serif; color: rgba(255,255,255,0.75); }
+
+    h1, h2 {
+      font-family: 'Oswald', sans-serif !important;
+      font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .fixture-card, .match-card, .card {
+      background: #0c1e38 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      border-radius: 6px; position: relative; overflow: hidden;
+    }
+    .fixture-card::before, .match-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    }
+    .fixture-card:hover, .match-card:hover {
+      border-color: rgba(216,144,24,0.3) !important;
+      transform: none !important; box-shadow: none !important;
+    }
+
+    .fixture-card h3, .match-teams { color: white !important; font-family: 'Oswald', sans-serif !important; }
+    .fixture-date, .match-date { color: #D89018 !important; }
+    .fixture-venue, .match-venue { color: rgba(255,255,255,0.45) !important; }
+
+    .footer, footer { background: #07111f !important; border-top: 1px solid rgba(216,144,24,0.15) !important; }
+    .footer p, footer p { color: rgba(255,255,255,0.35) !important; }
+  </style>
 </head>
 <body>
 
@@ -34,14 +67,14 @@
 </nav>
 
 <!-- Main Content -->
-<main style="padding-top: 3rem; min-height: 100vh; background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);">
+<main style="padding-top: 3rem; min-height: 100vh;">
   <div style="max-width: 1400px; margin: 0 auto; padding: 3rem 1.5rem;">
-    <h1 style="text-align: center; color: #FFEB3B; font-size: 3rem; font-weight: 900; margin-bottom: 1rem;">Battle Schedule 🏆</h1>
-    <p style="text-align: center; color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 3rem;">DFCL & LECA Match Fixtures</p>
-    
-    <div style="background: rgba(255,255,255,0.05); padding: 3rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
-      <h2 style="color: #FFEB3B; font-size: 2rem; margin-bottom: 2rem; text-align: center;">Upcoming Matches</h2>
-      <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; text-align: center; line-height: 1.8;">
+    <h1 style="text-align: center; font-size: 3rem; font-weight: 900; margin-bottom: 1rem;">Battle Schedule</h1>
+    <p style="text-align: center; color: rgba(255,255,255,0.55); font-size: 1.2rem; margin-bottom: 3rem;">DFCL &amp; LECA Match Fixtures</p>
+
+    <div class="match-card" style="padding: 3rem;">
+      <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">Upcoming Matches</h2>
+      <p style="color: rgba(255,255,255,0.55); font-size: 1.1rem; text-align: center; line-height: 1.8;">
         Match schedule will be updated soon. Follow us on social media for latest updates!
       </p>
     </div>
@@ -49,10 +82,8 @@
 </main>
 
 <!-- Footer -->
-<footer style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 3rem 0; margin-top: 3rem;">
-  <div style="max-width: 1400px; margin: 0 auto; text-align: center;">
-    <p style="color: rgba(255,255,255,0.7);">&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
-  </div>
+<footer class="footer" style="padding: 2rem; text-align: center; margin-top: 3rem;">
+  <p>&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
 </footer>
 
 </body>
