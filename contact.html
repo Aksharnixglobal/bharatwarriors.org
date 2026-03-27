@@ -108,21 +108,24 @@
     .submit-btn {
       width: 100%;
       padding: 1rem;
-      background: linear-gradient(45deg, #dc3545, #e85d6d);
+      background: rgba(220,53,69,0.25);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       color: white;
-      border: none;
+      border: 1px solid rgba(220,53,69,0.45);
       border-radius: 12px;
       font-size: 1rem;
       font-weight: 800;
       letter-spacing: 0.5px;
       cursor: pointer;
       transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(220,53,69,0.35);
     }
 
     .submit-btn:hover {
+      background: rgba(220,53,69,0.4);
+      border-color: rgba(220,53,69,0.7);
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(220,53,69,0.5);
+      box-shadow: 0 10px 25px rgba(220,53,69,0.3);
     }
 
     .contact-info {

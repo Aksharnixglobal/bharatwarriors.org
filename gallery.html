@@ -66,12 +66,15 @@ body {
 }
 
 .gallery-btn {
-  background: linear-gradient(135deg, #2a5298 0%, #4472c4 100%);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: white;
-  border: 2px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.18);
   padding: 1rem 2rem;
   border-radius: 30px;
   cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -79,10 +82,11 @@ body {
 
 .gallery-btn:hover,
 .gallery-btn.active {
-  background: linear-gradient(135deg, #4472c4 0%, #2a5298 100%);
-  border-color: #FFEB3B;
+  background: rgba(255,235,59,0.15);
+  border-color: rgba(255,235,59,0.5);
+  color: #FFEB3B;
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(255,235,59,0.3);
+  box-shadow: 0 10px 30px rgba(255,235,59,0.2);
 }
 
 .gallery-grid {
@@ -137,11 +141,11 @@ body {
 }
 
 .footer {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.2);
   padding: 2rem;
   text-align: center;
   margin-top: 4rem;
-  border-top: 2px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 @media (max-width: 768px) {
