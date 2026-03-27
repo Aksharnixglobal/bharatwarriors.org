@@ -62,34 +62,41 @@ h1, h2 {
 .gallery-controls {
   display: flex;
   justify-content: center;
-  gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
+  gap: 0.4rem;
+  margin: 0 auto 2.5rem;
+  background: #0c1e38;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 0.4rem;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .gallery-btn {
-  background: #0c1e38 !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border: 1px solid rgba(255,255,255,0.08) !important;
-  color: rgba(255,255,255,0.6) !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-weight: 600 !important;
-  padding: 1rem 2rem;
-  border-radius: 30px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: border-color 0.2s ease, color 0.2s ease !important;
-  transform: none !important;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+  line-height: 1.4;
 }
 
-.gallery-btn:hover,
+.gallery-btn:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.05);
+}
+
 .gallery-btn.active {
-  border-color: rgba(216,144,24,0.5) !important;
-  color: #D89018 !important;
-  background: #0c1e38 !important;
-  transform: none !important;
-  box-shadow: none !important;
+  background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+  color: #07111f;
+  font-weight: 700;
 }
 
 .gallery-grid {
@@ -112,8 +119,25 @@ h1, h2 {
 }
 
 .gallery-item:hover {
-  border-color: rgba(216,144,24,0.3) !important;
+  border-color: rgba(216,144,24,0.4) !important;
   transform: none !important;
+}
+
+.gallery-item .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7,17,31,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.gallery-item:hover .overlay { opacity: 1; }
+.gallery-item .overlay-icon {
+  font-size: 2.5rem;
+  color: #D89018;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
 }
 
 .gallery-item:active {
@@ -204,51 +228,57 @@ h1, h2 {
 }
 
 .lightbox-caption {
-  color: #fff;
-  font-size: 1.2rem;
-  margin-top: 1rem;
+  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  margin-top: 0.75rem;
   text-align: center;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem;
-  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
 }
 
 .lightbox-close {
-  position: absolute;
+  position: fixed;
   top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 50px;
-  font-weight: bold;
+  right: 30px;
+  color: rgba(255,255,255,0.7);
+  font-size: 2.5rem;
+  line-height: 1;
+  font-weight: 300;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease;
   z-index: 10000;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .lightbox-close:hover,
 .lightbox-close:focus {
   color: #D89018;
-  opacity: 0.85;
 }
 
 .lightbox-nav {
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 40px;
-  transition: all 0.3s ease;
-  border-radius: 8px;
+  padding: 12px 16px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  font-size: 2rem;
+  transition: color 0.2s ease, background 0.2s ease;
+  border-radius: 6px;
   user-select: none;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(12,30,56,0.7);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
 .lightbox-nav:hover {
-  background: rgba(255, 215, 0, 0.8);
-  color: #0c1e37;
+  color: #D89018;
+  background: rgba(12,30,56,0.9);
+  border-color: rgba(216,144,24,0.4);
 }
 
 .lightbox-prev {
@@ -459,12 +489,12 @@ h1, h2 {
 <!-- Lightbox Modal -->
 <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)">
   <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-  <a class="lightbox-nav lightbox-prev" onclick="changeImage(-1); event.stopPropagation();">&#10094;</a>
+  <a class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</a>
   <div class="lightbox-content">
     <img id="lightboxImage" class="lightbox-image" src="" alt="">
     <div id="lightboxCaption" class="lightbox-caption"></div>
   </div>
-  <a class="lightbox-nav lightbox-next" onclick="changeImage(1); event.stopPropagation();">&#10095;</a>
+  <a class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</a>
 </div>
 
 <!-- Footer -->
@@ -475,6 +505,25 @@ h1, h2 {
 
 <!-- JavaScript -->
 <script>
+// Add hover overlay to all gallery items + wire up lightbox nav
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.gallery-item').forEach(function(item) {
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+    overlay.innerHTML = '<span class="overlay-icon">🔍</span>';
+    item.appendChild(overlay);
+  });
+
+  document.getElementById('lightboxPrev').addEventListener('click', function(e) {
+    e.stopPropagation();
+    changeImage(-1);
+  });
+  document.getElementById('lightboxNext').addEventListener('click', function(e) {
+    e.stopPropagation();
+    changeImage(1);
+  });
+});
+
 // Gallery album switching
 function showAlbum(albumName) {
   // Hide all albums
