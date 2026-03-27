@@ -1557,8 +1557,8 @@ tr:hover{background:#f8fbff}
   padding: 45px 35px;
   text-align: center;
   box-shadow: 0 12px 35px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
-  border: 1px solid rgba(255,255,255,0.6);
-  transition: all 0.4s cubic-bezier(0.4,0.0,0.2,1);
+  border: 1px solid rgba(255,255,255,0.14);
+  transition: border-color 0.2s ease;
   position: relative;
   overflow: hidden;
   height: auto;
@@ -1566,45 +1566,8 @@ tr:hover{background:#f8fbff}
   backdrop-filter: blur(10px);
 }
 
-.sponsor::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--orange));
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-}
-
-.sponsor::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: radial-gradient(circle, rgba(255,107,107,0.1) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: all 0.5s ease;
-  border-radius: 50%;
-}
-
-.sponsor:hover::before {
-  transform: translateX(0);
-}
-
-.sponsor:hover::after {
-  width: 300px;
-  height: 300px;
-}
-
 .sponsor:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.15), 0 8px 20px rgba(0,0,0,0.08);
-  border-color: rgba(255,107,107,0.3);
-  background: linear-gradient(135deg, #ffffff 0%, #fef7f0 100%);
+  border-color: rgba(255,235,59,0.4);
 }
 
 .logo-container {
@@ -1628,12 +1591,6 @@ tr:hover{background:#f8fbff}
   border: 2px solid rgba(255,255,255,0.9);
 }
 
-.sponsor:hover .logo-frame {
-  background: linear-gradient(135deg, rgba(255,107,107,0.15), rgba(78,84,200,0.15));
-  transform: scale(1.08) rotateY(5deg);
-  box-shadow: 0 15px 35px rgba(0,0,0,.15), inset 0 1px 0 rgba(255,255,255,0.9);
-  border-color: rgba(255,107,107,0.4);
-}
 
 .logo-frame img {
   max-width: 90%;
