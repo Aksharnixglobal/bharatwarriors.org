@@ -24,13 +24,15 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #1e3a4a !important;
-  background-image: -webkit-linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-  background-image: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background: #07111f !important;
   color: white;
+}
+
+h1, h2 {
+  font-family: 'Oswald', sans-serif !important;
+  font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
 .main-content {
@@ -66,25 +68,28 @@ body {
 }
 
 .gallery-btn {
-  background: rgba(255,255,255,0.07);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.18);
+  background: #0c1e38 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  color: rgba(255,255,255,0.6) !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
   padding: 1rem 2rem;
   border-radius: 30px;
   cursor: pointer;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, color 0.2s ease !important;
+  transform: none !important;
 }
 
 .gallery-btn:hover,
 .gallery-btn.active {
-  background: rgba(255,235,59,0.15);
-  border-color: rgba(255,235,59,0.5);
-  color: #FFEB3B;
+  border-color: rgba(216,144,24,0.5) !important;
+  color: #D89018 !important;
+  background: #0c1e38 !important;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .gallery-grid {
@@ -96,17 +101,19 @@ body {
 
 .gallery-item {
   position: relative;
-  border-radius: 15px;
+  border-radius: 6px;
   overflow: hidden;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
   cursor: pointer;
-  transition: transform 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  transition: border-color 0.2s ease !important;
   -webkit-tap-highlight-color: rgba(255, 215, 0, 0.3);
   touch-action: manipulation;
 }
 
 .gallery-item:hover {
-  border: 1px solid rgba(255,235,59,0.3);
+  border-color: rgba(216,144,24,0.3) !important;
+  transform: none !important;
 }
 
 .gallery-item:active {
@@ -139,12 +146,14 @@ body {
 }
 
 .footer {
-  background: rgba(0,0,0,0.2);
+  background: #07111f !important;
   padding: 2rem;
   text-align: center;
   margin-top: 4rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(216,144,24,0.15) !important;
 }
+
+.footer p { color: rgba(255,255,255,0.35) !important; }
 
 @media (max-width: 768px) {
   .nav-menu {
