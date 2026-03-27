@@ -15,21 +15,16 @@
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #1e3a4a !important;
-      background-image: -webkit-linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-      background-image: linear-gradient(135deg, #1e3a4a 0%, #2d4f5f 100%) !important;
-      background-attachment: fixed !important;
-      background-repeat: no-repeat !important;
-      background-size: cover !important;
+      background: #07111f !important;
       color: rgba(255,255,255,0.75);
       min-height: 100vh;
     }
-    
+
     main {
       padding-top: 5rem;
       padding-bottom: 4rem;
     }
-    
+
     .about-header {
       text-align: center;
       padding: 0 2rem 1rem;
@@ -37,65 +32,86 @@
       margin: 0 auto;
     }
 
-    .about-header h1 {
-      font-size: 3rem;
-      color: #FFEB3B;
-      margin-bottom: 1rem;
-    }
-    
     .about-content {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
     }
-    
+
     .about-content p {
       font-size: 1.3rem;
       line-height: 1.8;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255,255,255,0.55);
       text-align: center;
       margin-bottom: 2rem;
     }
-    
+
     .about-content .highlight {
       font-weight: 700;
-      color: #FFEB3B;
+      color: #D89018;
     }
-    
+
     .mission-statement {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 15px;
+      background: #0c1e38 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      border-radius: 6px;
       padding: 2rem;
       margin: 3rem auto;
       max-width: 900px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    
+
+    .mission-statement::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    }
+
     .mission-statement p {
       font-size: 1.4rem;
       font-style: italic;
       margin: 0;
-      color: rgba(255,255,255,0.85);
+      color: rgba(255,255,255,0.75);
     }
-    
+
+    h1, h2, .section-title {
+      font-family: 'Oswald', sans-serif !important;
+      font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    .leader-card, .about-card {
+      background: #0c1e38 !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      border-radius: 6px;
+      position: relative; overflow: hidden;
+    }
+    .leader-card::before, .about-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    }
+    .leader-card:hover, .about-card:hover {
+      border-color: rgba(216,144,24,0.3) !important;
+      background: #0c1e38 !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    .leader-name, .leader-card h3 { color: white !important; font-family: 'Oswald', sans-serif !important; letter-spacing: 1px; }
+    .leader-role { color: #D89018 !important; }
+    .leader-bio, .leader-card p { color: rgba(255,255,255,0.55) !important; }
+
     .leaders-section {
       margin-top: 4rem;
       padding: 3rem 2rem;
     }
-    
-    .leaders-section h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 900;
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    
+
     .leaders-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -103,23 +119,13 @@
       max-width: 1400px;
       margin: 0 auto;
     }
-    
+
     .leader-card {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 20px;
       padding: 3rem 2rem;
       text-align: center;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      transition: border-color 0.2s ease;
     }
 
-    .leader-card:hover {
-      border-color: rgba(255,235,59,0.4);
-      background: rgba(255,255,255,0.11);
-    }
-    
     .leader-card .photo {
       width: 180px;
       height: 180px;
@@ -132,49 +138,32 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .leader-card .photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    
-    .leader-card .photo-placeholder {
-      font-size: 4rem;
-      color: rgba(255,255,255,0.75);
-    }
-    
-    .leader-card h3 {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #FFEB3B;
-      margin-bottom: 0.5rem;
-    }
 
     .leader-card .title {
-      font-size: 1.3rem;
-      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      color: #D89018 !important;
       font-weight: 600;
       margin-bottom: 1rem;
     }
-    
+
+    .footer, footer { background: #07111f !important; border-top: 1px solid rgba(216,144,24,0.15) !important; }
+    .footer p, footer p { color: rgba(255,255,255,0.35) !important; }
+
     @media (max-width: 768px) {
-      .about-header h1 {
-        font-size: 2rem;
-      }
-      
       .about-content p {
         font-size: 1.1rem;
       }
-      
+
       .mission-statement p {
         font-size: 1.2rem;
       }
-      
-      .leaders-section h2 {
-        font-size: 2rem;
-      }
-      
+
       .leaders-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
