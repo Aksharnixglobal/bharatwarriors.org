@@ -2303,8 +2303,26 @@ tr:hover{background:#f8fbff}
   }
 }
 
-/* Hide old footer styles */
-footer:not(.innovative-footer) {display: none;}
+/* Simple footer for inner pages */
+.site-footer {
+  background: #07111f;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(216,144,24,0.15);
+  margin-top: 3rem;
+}
+.site-footer p {
+  color: rgba(255,255,255,0.35);
+  margin: 0;
+  font-size: 0.85rem;
+  font-family: 'Montserrat', sans-serif;
+}
+.site-footer p + p { margin-top: 0.5rem; }
+.site-footer a {
+  color: #D89018;
+  text-decoration: none;
+  font-weight: 600;
+}
 
 /* Final Animations */
 .footer-mega-row {

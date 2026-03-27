@@ -17,11 +17,11 @@ html, body {
 .hero {
   position: relative; overflow: hidden;
   background:
-    linear-gradient(168deg, rgba(7,17,31,0.94) 0%, rgba(12,30,56,0.87) 55%, rgba(7,17,31,0.96) 100%),
+    linear-gradient(168deg, rgba(7,17,31,0.96) 0%, rgba(12,30,56,0.91) 50%, rgba(7,17,31,0.97) 100%),
     url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000') center/cover no-repeat;
   background-attachment: fixed;
-  padding: 80px 2rem 70px;
-  min-height: 70vh;
+  padding: 100px 2rem 80px;
+  min-height: 75vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   text-align: center;
@@ -54,18 +54,12 @@ html, body {
 }
 .hero h2 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(52px, 8vw, 80px);
-  letter-spacing: 8px; line-height: 0.95;
+  font-size: clamp(38px, 7vw, 72px);
+  letter-spacing: 10px; line-height: 1;
   background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 6px;
-}
-.hero-club {
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(18px, 3vw, 26px);
-  font-weight: 600; letter-spacing: 10px;
-  color: rgba(255,255,255,0.8); text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  max-width: 800px;
 }
 .hero-rule {
   width: 72px; height: 2px;
@@ -185,8 +179,7 @@ footer .copyright a { display: inline; color: #D89018; }
 
 @media (max-width: 768px) {
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
-  .hero h2 { font-size: 48px; letter-spacing: 5px; }
-  .hero-club { letter-spacing: 5px; }
+  .hero h2 { font-size: 36px; letter-spacing: 5px; }
 }
     </style>
 </head>
@@ -251,13 +244,12 @@ footer .copyright a { display: inline; color: #D89018; }
                 <div class="hero-star-line r"></div>
             </div>
             <p class="hero-eyebrow">Welcome to</p>
-            <h2>Bharat</h2>
-            <p class="hero-club">Cricket Club</p>
+            <h2>Bharat Cricket Club</h2>
             <div class="hero-rule"></div>
-            <p class="hero-tagline">One Team &nbsp;·&nbsp; One Pride</p>
+            <p class="hero-tagline">One Team. &nbsp; One Pride.</p>
             <div class="hero-buttons">
-                <a href="warriors.html" class="btn btn-primary">Explore Teams</a>
-                <a href="contact.html" class="btn btn-secondary">Join Us</a>
+                <a href="contact.html" class="btn btn-primary">Join Us</a>
+                <a href="warriors.html" class="btn btn-secondary">Explore Teams</a>
             </div>
         </div>
     </section>
