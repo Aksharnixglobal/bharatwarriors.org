@@ -331,17 +331,17 @@ nav ul li a.active::after {
     padding: 0.5rem 0.25rem;
   }
   nav .logo img {
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
   }
   nav .logo h1 {
-    font-size: 1.1rem;
-    letter-spacing: 1.5px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
     white-space: nowrap;
   }
   nav .logo .subtitle {
-    font-size: 0.5rem;
-    letter-spacing: 2px;
+    font-size: 0.45rem;
+    letter-spacing: 1.5px;
   }
 }
 
