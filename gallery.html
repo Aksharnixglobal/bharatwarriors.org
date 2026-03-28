@@ -103,7 +103,7 @@ h1, h2 {
 
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -131,7 +131,7 @@ h1, h2 {
 
 .gallery-item img {
   width: 100%;
-  height: 300px;
+  aspect-ratio: 4/3;
   object-fit: cover;
   object-position: top;
   display: block;
@@ -140,7 +140,7 @@ h1, h2 {
 
 .ph {
   width: 100%;
-  height: 300px;
+  aspect-ratio: 4/3;
   background-size: cover;
   background-position: top;
   display: block;
@@ -172,14 +172,41 @@ h1, h2 {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .page-title {
     font-size: 2rem;
   }
-  
+
+  .main-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
     gap: 1rem;
+  }
+
+  .gallery-controls {
+    gap: 0.3rem;
+    padding: 0.3rem;
+  }
+
+  .gallery-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .cap {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.75rem;
   }
 }
 
@@ -348,10 +375,10 @@ h1, h2 {
 </main>
 
 <!-- Lightbox Modal -->
-<div id="lightboxModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.97)" onclick="closeLightbox()">
+<div id="lightboxModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.97);overflow:hidden" onclick="closeLightbox()">
   <div onclick="closeLightbox()" style="position:absolute;top:16px;right:20px;z-index:10001;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.2);border-radius:50%;border:1px solid rgba(255,255,255,0.3);color:white;font-size:1.5rem;cursor:pointer">&times;</div>
   <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:60px 1rem 1rem;box-sizing:border-box">
-    <img id="lightboxImage" style="max-width:90%;max-height:78vh;object-fit:contain;border-radius:6px" src="" alt="" onclick="event.stopPropagation()">
+    <img id="lightboxImage" style="max-width:95%;max-height:80vh;object-fit:contain;border-radius:6px" src="" alt="" onclick="event.stopPropagation()">
     <div id="lightboxCaption" style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-top:1rem;text-align:center;font-family:Montserrat,sans-serif"></div>
   </div>
 </div>
@@ -384,19 +411,25 @@ function showAlbum(albumName) {
 }
 
 // Lightbox functionality
+function preventScroll(e) { e.preventDefault(); }
+
 function openLightbox(imageSrc, caption) {
   var modal = document.getElementById('lightboxModal');
   var img = document.getElementById('lightboxImage');
   var cap = document.getElementById('lightboxCaption');
+
   modal.style.display = 'block';
   img.src = imageSrc;
   cap.textContent = caption;
-  document.body.style.overflow = 'hidden';
+
+  document.addEventListener('touchmove', preventScroll, { passive: false });
+  document.addEventListener('wheel', preventScroll, { passive: false });
 }
 
 function closeLightbox() {
   document.getElementById('lightboxModal').style.display = 'none';
-  document.body.style.overflow = 'auto';
+  document.removeEventListener('touchmove', preventScroll);
+  document.removeEventListener('wheel', preventScroll);
 }
 
 // Close on Escape key
