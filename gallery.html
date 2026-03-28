@@ -64,7 +64,7 @@ h1, h2 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 3rem;
   background: #0c1e38;
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 6px;
@@ -125,23 +125,6 @@ h1, h2 {
   transform: none !important;
 }
 
-.gallery-item .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(7,17,31,0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.gallery-item:hover .overlay { opacity: 1; }
-.gallery-item .overlay-icon {
-  font-size: 2.5rem;
-  color: #D89018;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
-}
-
 .gallery-item:active {
   opacity: 0.85;
 }
@@ -150,6 +133,7 @@ h1, h2 {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  object-position: top;
   display: block;
   pointer-events: none;
 }
@@ -158,17 +142,22 @@ h1, h2 {
   width: 100%;
   height: 300px;
   background-size: cover;
-  background-position: center;
+  background-position: top;
   display: block;
   pointer-events: none;
 }
 
 .cap {
   display: block;
-  padding: 1rem;
-  background: rgba(0,0,0,0.7);
+  padding: 0.75rem 1rem;
+  background: #0c1e38;
+  border-top: 1px solid rgba(216,144,24,0.15);
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.3px;
 }
 
 .site-footer {
@@ -194,135 +183,6 @@ h1, h2 {
   }
 }
 
-/* Lightbox Modal Styles */
-.lightbox-modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.97);
-  overflow: hidden;
-  animation: fadeIn 0.2s ease;
-}
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-.lightbox-content {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 92%;
-  max-width: 1200px;
-  text-align: center;
-}
-
-.lightbox-image {
-  max-width: 100%;
-  max-height: 88vh;
-  object-fit: contain;
-  border-radius: 6px;
-  transition: opacity 0.25s ease;
-}
-
-.lightbox-caption {
-  color: rgba(255,255,255,0.7);
-  font-size: 0.9rem;
-  margin-top: 1rem;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 0.5px;
-}
-
-.lightbox-counter {
-  color: rgba(255,255,255,0.35);
-  font-size: 0.75rem;
-  margin-top: 0.4rem;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 1px;
-}
-
-.lightbox-close {
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  color: rgba(255,255,255,0.7);
-  font-size: 2.5rem;
-  line-height: 1;
-  font-weight: 300;
-  cursor: pointer;
-  transition: color 0.2s ease;
-  z-index: 10000;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.lightbox-close:hover,
-.lightbox-close:focus {
-  color: #D89018;
-}
-
-.lightbox-nav {
-  cursor: pointer;
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  padding: 12px 16px;
-  color: rgba(255,255,255,0.7);
-  font-weight: 300;
-  font-size: 2rem;
-  transition: color 0.2s ease, background 0.2s ease;
-  border-radius: 6px;
-  user-select: none;
-  background: rgba(12,30,56,0.7);
-  border: 1px solid rgba(255,255,255,0.06);
-}
-
-.lightbox-nav:hover {
-  color: #D89018;
-  background: rgba(12,30,56,0.9);
-  border-color: rgba(216,144,24,0.4);
-}
-
-.lightbox-prev {
-  left: 20px;
-}
-
-.lightbox-next {
-  right: 20px;
-}
-
-@media (max-width: 768px) {
-  .lightbox-close {
-    font-size: 35px;
-    top: 10px;
-    right: 15px;
-  }
-  
-  .lightbox-nav {
-    font-size: 30px;
-    padding: 10px;
-  }
-  
-  .lightbox-prev {
-    left: 10px;
-  }
-  
-  .lightbox-next {
-    right: 10px;
-  }
-  
-  .lightbox-caption {
-    font-size: 1rem;
-    padding: 0.75rem;
-  }
-}
 </style>
 </head>
 
@@ -488,15 +348,12 @@ h1, h2 {
 </main>
 
 <!-- Lightbox Modal -->
-<div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)">
-  <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-  <a class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</a>
-  <div class="lightbox-content">
-    <img id="lightboxImage" class="lightbox-image" src="" alt="">
-    <div id="lightboxCaption" class="lightbox-caption"></div>
-    <div id="lightboxCounter" class="lightbox-counter"></div>
+<div id="lightboxModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.97)" onclick="closeLightbox()">
+  <div onclick="closeLightbox()" style="position:absolute;top:16px;right:20px;z-index:10001;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.2);border-radius:50%;border:1px solid rgba(255,255,255,0.3);color:white;font-size:1.5rem;cursor:pointer">&times;</div>
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:60px 1rem 1rem;box-sizing:border-box">
+    <img id="lightboxImage" style="max-width:90%;max-height:78vh;object-fit:contain;border-radius:6px" src="" alt="" onclick="event.stopPropagation()">
+    <div id="lightboxCaption" style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-top:1rem;text-align:center;font-family:Montserrat,sans-serif"></div>
   </div>
-  <a class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</a>
 </div>
 
 <!-- Footer -->
@@ -507,184 +364,45 @@ h1, h2 {
 
 <!-- JavaScript -->
 <script>
-// Add hover overlay to all gallery items + wire up lightbox nav
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.gallery-item').forEach(function(item) {
-    const overlay = document.createElement('div');
-    overlay.className = 'overlay';
-    overlay.innerHTML = '<span class="overlay-icon">🔍</span>';
-    item.appendChild(overlay);
-  });
-
-  document.getElementById('lightboxPrev').addEventListener('click', function(e) {
-    e.stopPropagation();
-    changeImage(-1);
-  });
-  document.getElementById('lightboxNext').addEventListener('click', function(e) {
-    e.stopPropagation();
-    changeImage(1);
-  });
-});
-
 // Gallery album switching
 function showAlbum(albumName) {
-  // Hide all albums
-  const albums = document.querySelectorAll('.gallery-grid');
-  albums.forEach(album => album.style.display = 'none');
-  
-  // Remove active class from all buttons
-  const buttons = document.querySelectorAll('.gallery-btn');
-  buttons.forEach(btn => btn.classList.remove('active'));
-  
-  // Show selected album
-  document.getElementById('album-' + albumName).style.display = 'grid';
-  
-  // Add active class to clicked button
+  var target = document.getElementById('album-' + albumName);
+
+  // Show new album first
+  target.style.display = 'grid';
+
+  // Then hide all others
+  var albums = document.querySelectorAll('.gallery-grid');
+  albums.forEach(function(album) {
+    if (album !== target) album.style.display = 'none';
+  });
+
+  // Update active button
+  var buttons = document.querySelectorAll('.gallery-btn');
+  buttons.forEach(function(btn) { btn.classList.remove('active'); });
   event.target.closest('.gallery-btn').classList.add('active');
-  
-  // Update current album for lightbox navigation
-  currentAlbum = albumName;
-  updateImageList();
 }
 
 // Lightbox functionality
-let currentImageIndex = 0;
-let currentAlbum = 'awards';
-let imageList = [];
-
-function updateImageList() {
-  const albumElement = document.getElementById('album-' + currentAlbum);
-  const items = albumElement.querySelectorAll('.gallery-item[onclick]');
-  imageList = Array.from(items).map(item => {
-    const onclickAttr = item.getAttribute('onclick');
-    const matches = onclickAttr.match(/openLightbox\('([^']+)',\s*'([^']+)'\)/);
-    return {
-      src: matches[1],
-      caption: matches[2]
-    };
-  });
-}
-
 function openLightbox(imageSrc, caption) {
-  updateImageList();
-  currentImageIndex = imageList.findIndex(img => img.src === imageSrc);
-
-  const modal = document.getElementById('lightboxModal');
-  const img = document.getElementById('lightboxImage');
-  const captionText = document.getElementById('lightboxCaption');
-  const counter = document.getElementById('lightboxCounter');
-
+  var modal = document.getElementById('lightboxModal');
+  var img = document.getElementById('lightboxImage');
+  var cap = document.getElementById('lightboxCaption');
   modal.style.display = 'block';
   img.src = imageSrc;
-  captionText.textContent = caption;
-  counter.textContent = (currentImageIndex + 1) + ' / ' + imageList.length;
-
-  // Prevent body scroll when lightbox is open
+  cap.textContent = caption;
   document.body.style.overflow = 'hidden';
-
-  // Prevent event bubbling
-  event.stopPropagation();
-  event.preventDefault();
 }
 
-function closeLightbox(event) {
-  if (event.target.id === 'lightboxModal' || event.target.className === 'lightbox-close') {
-    const modal = document.getElementById('lightboxModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
+function closeLightbox() {
+  document.getElementById('lightboxModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
 }
 
-function changeImage(direction) {
-  currentImageIndex += direction;
-
-  // Loop around
-  if (currentImageIndex >= imageList.length) {
-    currentImageIndex = 0;
-  } else if (currentImageIndex < 0) {
-    currentImageIndex = imageList.length - 1;
-  }
-
-  const img = document.getElementById('lightboxImage');
-  const captionText = document.getElementById('lightboxCaption');
-  const counter = document.getElementById('lightboxCounter');
-
-  // Fade transition
-  img.style.opacity = '0';
-  setTimeout(function() {
-    img.src = imageList[currentImageIndex].src;
-    captionText.textContent = imageList[currentImageIndex].caption;
-    counter.textContent = (currentImageIndex + 1) + ' / ' + imageList.length;
-    img.style.opacity = '1';
-  }, 150);
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', function(event) {
-  const modal = document.getElementById('lightboxModal');
-  if (modal.style.display === 'block') {
-    if (event.key === 'ArrowLeft') {
-      changeImage(-1);
-    } else if (event.key === 'ArrowRight') {
-      changeImage(1);
-    } else if (event.key === 'Escape') {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-  }
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
 });
-
-// Add click/touch event listeners to all gallery items
-function attachGalleryListeners() {
-  const allGalleryItems = document.querySelectorAll('.gallery-item[onclick]');
-  allGalleryItems.forEach(item => {
-    // Get the onclick attribute
-    const onclickAttr = item.getAttribute('onclick');
-    if (onclickAttr) {
-      const matches = onclickAttr.match(/openLightbox\('([^']+)',\s*'([^']+)'\)/);
-      if (matches) {
-        const imageSrc = matches[1];
-        const caption = matches[2];
-        
-        // Remove onclick attribute
-        item.removeAttribute('onclick');
-        
-        // Add both click and touchend listeners for better mobile support
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          openLightbox(imageSrc, caption);
-        });
-        
-        item.addEventListener('touchend', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          openLightbox(imageSrc, caption);
-        }, { passive: false });
-      }
-    }
-  });
-}
-
-// Touch/swipe support for lightbox
-let touchStartX = 0;
-let touchEndX = 0;
-const lightboxEl = document.getElementById('lightboxModal');
-lightboxEl.addEventListener('touchstart', function(e) {
-  touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-lightboxEl.addEventListener('touchend', function(e) {
-  touchEndX = e.changedTouches[0].screenX;
-  const diff = touchStartX - touchEndX;
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) changeImage(1);  // swipe left = next
-    else changeImage(-1);          // swipe right = prev
-  }
-}, { passive: true });
-
-// Initialize image list on page load
-updateImageList();
-attachGalleryListeners();
 </script>
 
 </body>

@@ -39,17 +39,15 @@
 
   .logo-container {
     display: flex; align-items: center; justify-content: center;
-    width: 120px; height: 120px;
-    margin: 0 auto 1.25rem;
+    width: 100%; height: 140px;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
     background: transparent;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
   }
   .logo-container img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
   }
 
   .sponsor-info h3 {
@@ -91,15 +89,6 @@
   }
   .become-sponsor p { color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; }
 
-  .btn {
-    display: inline-block; padding: 12px 30px; font-weight: 800;
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    font-family: 'Montserrat', sans-serif;
-    text-decoration: none; cursor: pointer; border-radius: 3px;
-    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
-    color: #07111f; border: none; transition: opacity 0.2s ease;
-  }
-  .btn:hover { opacity: 0.85; background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010); color: #07111f; }
 
   .site-footer { background: #07111f; border-top: 1px solid rgba(216,144,24,0.15); }
   .site-footer p { color: rgba(255,255,255,0.35); font-size: 0.85rem; }
@@ -223,41 +212,50 @@
 
     <!-- Grain Market -->
     <div class="sponsor" id="sponsor-grain">
-      <div class="logo-container">
-        <img src="images/logos/grain.png" alt="Grain Market Logo" loading="lazy">
-      </div>
-      <div class="sponsor-info">
-        <h3>Grain Market</h3>
-        <p class="sponsor-description">
-          Your trusted partner for quality grain products and agricultural supplies. Proud sponsor of Bharat Cricket Club.
-        </p>
-      </div>
+      <a href="https://www.instagram.com/grainmarket.usa/" target="_blank" rel="noopener noreferrer">
+        <div class="logo-container">
+          <img src="images/logos/grain.png" alt="Grain Market Logo" loading="lazy">
+        </div>
+        <div class="sponsor-info">
+          <h3>Grain Market</h3>
+          <p class="sponsor-description">
+            Based in Dallas, Texas, Grain Market LLC is a wholesale distributor of premium Indian spices and products across the U.S., delivering authentic flavors with quality and value.
+          </p>
+          <span class="sponsor-link">Visit Instagram →</span>
+        </div>
+      </a>
     </div>
 
-    <!-- Rajula -->
+    <!-- Rajula's Kitchen -->
     <div class="sponsor" id="sponsor-rajula">
-      <div class="logo-container">
-        <img src="images/logos/rajula.png" alt="Rajula Logo" loading="lazy">
-      </div>
-      <div class="sponsor-info">
-        <h3>Rajula</h3>
-        <p class="sponsor-description">
-          A proud community sponsor supporting the growth of cricket and the Bharat Cricket Club family.
-        </p>
-      </div>
+      <a href="https://www.instagram.com/rajulaskitchenusa/" target="_blank" rel="noopener noreferrer">
+        <div class="logo-container">
+          <img src="images/logos/rajula.png" alt="Rajula's Kitchen Logo" loading="lazy">
+        </div>
+        <div class="sponsor-info">
+          <h3>Rajula's Kitchen</h3>
+          <p class="sponsor-description">
+            A 100% vegetarian Indian eatery serving flavorful chaats, delicious thalis, and unlimited thali options. Experience authentic taste with every bite — also offering catering services. Find us in Dallas, Atlanta & Chicago.
+          </p>
+          <span class="sponsor-link">Visit Instagram →</span>
+        </div>
+      </a>
     </div>
 
     <!-- NLP -->
     <div class="sponsor" id="sponsor-nlp">
-      <div class="logo-container">
-        <img src="images/logos/nlp.jpeg" alt="NLP Logo" loading="lazy">
-      </div>
-      <div class="sponsor-info">
-        <h3>NLP</h3>
-        <p class="sponsor-description">
-          Dedicated to empowering individuals and communities through innovative solutions. Proud sponsor of Bharat Cricket Club.
-        </p>
-      </div>
+      <a href="https://nlp-financial.com/" target="_blank" rel="noopener noreferrer">
+        <div class="logo-container">
+          <img src="images/logos/nlp.jpeg" alt="NLP Financial Logo" loading="lazy">
+        </div>
+        <div class="sponsor-info">
+          <h3>NLP Financial</h3>
+          <p class="sponsor-description">
+            Personalized financial strategies to help you build wealth, protect your loved ones, and secure a lasting legacy — with integrity, transparency, and your family's trust at the center.
+          </p>
+          <span class="sponsor-link">Learn More →</span>
+        </div>
+      </a>
     </div>
 
     <!-- AksharNix Global -->
