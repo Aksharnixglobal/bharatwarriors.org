@@ -229,6 +229,7 @@ nav ul li a.active::after {
     font-size: 1.3rem;
     line-height: 1.15;
     letter-spacing: 2px;
+    white-space: nowrap;
   }
   nav .logo .subtitle {
     font-size: 0.55rem;
@@ -336,6 +337,7 @@ nav ul li a.active::after {
   nav .logo h1 {
     font-size: 1.1rem;
     letter-spacing: 1.5px;
+    white-space: nowrap;
   }
   nav .logo .subtitle {
     font-size: 0.5rem;
