@@ -166,55 +166,88 @@ h1, h2 {
 }
 .site-footer p { color: rgba(255,255,255,0.35) !important; }
 
-/* ── Lightbox ── */
-#lb {
-  display: none;
-  position: fixed; inset: 0; z-index: 1000010;
-  flex-direction: column;
+/* ── Photo Dialog (native lightbox) ── */
+#photo-dialog {
+  border: none;
+  padding: 0;
   background: #000;
+  width: 100vw;
+  max-width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-#lb.open { display: flex; }
-
-/* Image fills everything above the bottom bar */
-#lb-img {
+#photo-dialog::backdrop {
+  background: rgba(0,0,0,0.92);
+}
+#pd-img {
   flex: 1;
   min-height: 0;
   width: 100%;
   object-fit: contain;
   display: block;
-  animation: lbIn 0.2s ease;
+  animation: pdIn 0.2s ease;
 }
-@keyframes lbIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@keyframes pdIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
 }
-
-/* Bottom bar — always visible, always accessible */
-#lb-bar {
+#pd-bar {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 0.75rem;
   padding: 14px 20px;
   padding-bottom: max(14px, env(safe-area-inset-bottom, 14px));
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.9);
   border-top: 1px solid rgba(255,255,255,0.08);
-  box-sizing: border-box;
   min-height: 64px;
+  box-sizing: border-box;
 }
-#lb-caption {
+#pd-info {
   flex: 1;
+  overflow: hidden;
+}
+#pd-caption {
+  display: block;
   font-family: 'Montserrat', sans-serif;
   font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.65);
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
 }
-#lb-close {
+#pd-counter {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  color: #D89018;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+.pd-nav {
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+.pd-nav:hover, .pd-nav:active { background: rgba(255,255,255,0.2); }
+#pd-close {
   flex-shrink: 0;
   display: flex; align-items: center; justify-content: center; gap: 0.4rem;
   padding: 0 1.4rem;
@@ -231,7 +264,7 @@ h1, h2 {
   transition: background 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
-#lb-close:hover, #lb-close:active {
+#pd-close:hover, #pd-close:active {
   background: rgba(255,255,255,0.22);
   border-color: rgba(255,255,255,0.45);
 }
@@ -443,14 +476,19 @@ h1, h2 {
   </div>
 </main>
 
-<!-- Lightbox -->
-<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
-  <img id="lb-img" src="" alt="">
-  <div id="lb-bar">
-    <span id="lb-caption"></span>
-    <button id="lb-close" onclick="closeLightbox()" aria-label="Close photo">&#x2715; Close</button>
+<!-- Photo Dialog -->
+<dialog id="photo-dialog" aria-label="Photo viewer">
+  <img id="pd-img" src="" alt="">
+  <div id="pd-bar">
+    <button class="pd-nav" id="pd-prev" onclick="pdPrev()" aria-label="Previous photo">&#8249;</button>
+    <div id="pd-info">
+      <span id="pd-caption"></span>
+      <span id="pd-counter"></span>
+    </div>
+    <button class="pd-nav" id="pd-next" onclick="pdNext()" aria-label="Next photo">&#8250;</button>
+    <button id="pd-close" onclick="pdClose()" aria-label="Close photo">&#x2715; Close</button>
   </div>
-</div>
+</dialog>
 
 <!-- Footer -->
 <footer class="site-footer">
@@ -479,59 +517,92 @@ function showAlbum(albumName) {
   event.target.closest('.gallery-btn').classList.add('active');
 }
 
-// Fix iOS double-tap delay: convert gallery onclick to touchend
+// ── Photo Dialog (native <dialog> lightbox) ──
+var photoDialog = document.getElementById('photo-dialog');
+var pdImg       = document.getElementById('pd-img');
+var pdCaption   = document.getElementById('pd-caption');
+var pdCounter   = document.getElementById('pd-counter');
+
+var currentPhotos = [];
+var currentIndex  = 0;
+
+// Convert inline onclick handlers to data attributes (single-tap on iOS)
 document.querySelectorAll('.gallery-item[onclick]').forEach(function(item) {
-  var handler = item.getAttribute('onclick');
-  var match = handler.match(/openLightbox\('([^']+)',\s*'([^']+)'\)/);
+  var match = item.getAttribute('onclick').match(/openLightbox\('([^']+)',\s*'([^']+)'\)/);
   if (match) {
-    item.dataset.src = match[1];
+    item.dataset.src     = match[1];
     item.dataset.caption = match[2];
     item.removeAttribute('onclick');
   }
 });
 
+// Single handler for both click and touch (touchend prevents 300ms ghost click)
 function onGalleryTap(e) {
   var item = e.target.closest('.gallery-item[data-src]');
   if (!item) return;
-  if (e.type === 'touchend') e.preventDefault(); // prevent ghost click
-  openLightbox(item.dataset.src, item.dataset.caption);
+  if (e.type === 'touchend') e.preventDefault();
+
+  // Build photo list from the currently visible album
+  var album = item.closest('.gallery-grid');
+  currentPhotos = Array.from(album.querySelectorAll('.gallery-item[data-src]')).map(function(el) {
+    return { src: el.dataset.src, caption: el.dataset.caption };
+  });
+  currentIndex = currentPhotos.findIndex(function(p) { return p.src === item.dataset.src; });
+  if (currentIndex < 0) currentIndex = 0;
+
+  showPhoto(currentIndex);
+  photoDialog.showModal();
 }
-document.addEventListener('click', onGalleryTap);
+document.addEventListener('click',    onGalleryTap);
 document.addEventListener('touchend', onGalleryTap, { passive: false });
 
-// Lightbox
-var lb = document.getElementById('lb');
-var lbImg = document.getElementById('lb-img');
-var savedScroll = 0;
-
-function openLightbox(src, caption) {
-  // iOS-safe scroll lock: save position, pin body in place
-  savedScroll = window.scrollY || window.pageYOffset;
-  document.body.style.position = 'fixed';
-  document.body.style.top = '-' + savedScroll + 'px';
-  document.body.style.left = '0';
-  document.body.style.right = '0';
-
-  lbImg.src = src;
-  lbImg.alt = caption;
-  document.getElementById('lb-caption').textContent = caption;
-  lb.classList.add('open');
+function showPhoto(index) {
+  var photo = currentPhotos[index];
+  pdImg.src           = photo.src;
+  pdImg.alt           = photo.caption;
+  pdCaption.textContent = photo.caption;
+  pdCounter.textContent = (index + 1) + ' / ' + currentPhotos.length;
+  // Re-trigger fade-in animation on each photo change
+  pdImg.style.animation = 'none';
+  void pdImg.offsetWidth;
+  pdImg.style.animation = '';
 }
 
-function closeLightbox() {
-  lb.classList.remove('open');
-
-  // Restore scroll position
-  document.body.style.position = '';
-  document.body.style.top = '';
-  document.body.style.left = '';
-  document.body.style.right = '';
-  window.scrollTo(0, savedScroll);
+function pdPrev() {
+  currentIndex = (currentIndex - 1 + currentPhotos.length) % currentPhotos.length;
+  showPhoto(currentIndex);
 }
+function pdNext() {
+  currentIndex = (currentIndex + 1) % currentPhotos.length;
+  showPhoto(currentIndex);
+}
+function pdClose() { photoDialog.close(); }
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeLightbox();
+// Backdrop click to close (click lands directly on the <dialog> element)
+photoDialog.addEventListener('click', function(e) {
+  if (e.target === photoDialog) pdClose();
 });
+
+// Keyboard: ← → to navigate, Esc handled natively by <dialog>
+document.addEventListener('keydown', function(e) {
+  if (!photoDialog.open) return;
+  if (e.key === 'ArrowLeft')  pdPrev();
+  if (e.key === 'ArrowRight') pdNext();
+});
+
+// Swipe: 40px horizontal threshold
+var _swipeX = 0, _swipeY = 0;
+photoDialog.addEventListener('touchstart', function(e) {
+  _swipeX = e.touches[0].clientX;
+  _swipeY = e.touches[0].clientY;
+}, { passive: true });
+photoDialog.addEventListener('touchend', function(e) {
+  var dx = e.changedTouches[0].clientX - _swipeX;
+  var dy = e.changedTouches[0].clientY - _swipeY;
+  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+    if (dx < 0) pdNext(); else pdPrev();
+  }
+}, { passive: true });
 </script>
 
 </body>
