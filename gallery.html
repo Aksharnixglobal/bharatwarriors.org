@@ -178,9 +178,12 @@ h1, h2 {
   max-height: 100vh;
   max-height: 100dvh;
   margin: 0;
+  overflow: hidden;
+  /* flex applied only when open — avoids overriding browser's display:none on close */
+}
+#photo-dialog[open] {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 #photo-dialog::backdrop {
   background: rgba(0,0,0,0.92);
