@@ -22,47 +22,6 @@
 <style>
   body { background: #07111f !important; font-family: 'Montserrat', sans-serif; color: white; }
 
-  .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; padding: 2rem; }
-
-  .sponsor {
-    background: #0c1e38;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 6px; padding: 2rem; text-align: center;
-    position: relative; overflow: hidden;
-    transition: border-color 0.2s ease;
-  }
-  .sponsor::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
-  }
-  .sponsor:hover { border-color: rgba(216,144,24,0.4); }
-
-  .logo-container {
-    display: flex; align-items: center; justify-content: center;
-    width: 100%; height: 140px;
-    padding: 1rem;
-    margin-bottom: 1.25rem;
-    background: transparent;
-    border-radius: 6px;
-  }
-  .logo-container img {
-    max-width: 100%; max-height: 100%;
-    object-fit: contain;
-  }
-
-  .sponsor-info h3 {
-    font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase; color: white; margin-bottom: 0.5rem;
-  }
-  .sponsor-description { color: rgba(255,255,255,0.5); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem; }
-  .sponsor-link {
-    color: #D89018; font-weight: 600; font-size: 0.85rem;
-    text-decoration: none; letter-spacing: 1px;
-    border: 1px solid rgba(216,144,24,0.3); padding: 5px 12px; border-radius: 3px;
-    transition: border-color 0.2s ease;
-  }
-  .sponsor-link:hover { border-color: rgba(216,144,24,0.7); }
-
   h1, h2 {
     font-family: 'Oswald', sans-serif; font-weight: 700;
     letter-spacing: 4px; text-transform: uppercase;
@@ -70,15 +29,137 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
 
+  .main-content {
+    margin-top: 3rem; padding: 2rem;
+    max-width: 1400px; margin-left: auto; margin-right: auto;
+  }
+  .page-title { text-align: center; font-size: 3rem; margin-bottom: 1rem; }
+  .page-subtitle {
+    text-align: center; font-size: 1.1rem;
+    color: rgba(255,255,255,0.5); margin-bottom: 3.5rem;
+  }
+
+  /* ── Sponsor grid ── */
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    margin-bottom: 4rem;
+    max-width: 1200px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* ── Card shell ── */
+  .sponsor {
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
+    border: 1px solid rgba(216,144,24,0.18);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+    animation: cardIn 0.6s ease both;
+    display: flex; flex-direction: column;
+    text-decoration: none; color: inherit;
+  }
+  .sponsor:nth-child(2) { animation-delay: 0.08s; }
+  .sponsor:nth-child(3) { animation-delay: 0.16s; }
+  .sponsor:nth-child(4) { animation-delay: 0.24s; }
+  .sponsor:nth-child(5) { animation-delay: 0.32s; }
+  .sponsor:nth-child(6) { animation-delay: 0.40s; }
+  .sponsor:nth-child(7) { animation-delay: 0.48s; }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* animated gold top bar */
+  .sponsor::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+    background-size: 300% 100%;
+    animation: goldSlide 4s linear infinite;
+    z-index: 1;
+  }
+  @keyframes goldSlide {
+    0%   { background-position: 0% 0; }
+    100% { background-position: 300% 0; }
+  }
+
+  /* corner glow */
+  .sponsor::after {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .sponsor:hover {
+    border-color: rgba(216,144,24,0.45);
+    box-shadow: 0 0 50px rgba(216,144,24,0.1), 0 24px 64px rgba(0,0,0,0.5);
+    transform: translateY(-3px);
+  }
+
+  /* ── Logo area ── */
+  .sponsor-logo-area {
+    display: flex; align-items: center; justify-content: center;
+    height: 200px; padding: 1.75rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.1);
+    flex-shrink: 0;
+  }
+  .sponsor-logo-area img {
+    max-width: 100%; max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));
+  }
+
+  /* ── Body ── */
+  .sponsor-body {
+    padding: 1.5rem 1.75rem 1.75rem;
+    flex: 1; display: flex; flex-direction: column;
+  }
+  .sponsor-body h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin: 0 0 0.75rem;
+  }
+  .sponsor-description {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.83rem; line-height: 1.65;
+    margin: 0 0 1.25rem; flex: 1;
+  }
+  .sponsor-link {
+    display: inline-block; align-self: flex-start;
+    color: #D89018; font-weight: 700; font-size: 0.72rem;
+    text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase;
+    border: 1px solid rgba(216,144,24,0.35);
+    padding: 6px 14px; border-radius: 4px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .sponsor-link:hover {
+    border-color: rgba(216,144,24,0.7);
+    background: rgba(216,144,24,0.08);
+  }
+
+  /* ── Become a sponsor CTA ── */
   .become-sponsor {
-    text-align: center; padding: 3rem 2rem; margin: 2rem;
-    background: #0a1e40;
+    text-align: center; padding: 3rem 2rem;
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
     border: 1px solid rgba(216,144,24,0.2);
-    border-radius: 8px; position: relative; overflow: hidden;
+    border-radius: 14px; position: relative; overflow: hidden;
+    max-width: 1200px; margin-left: auto; margin-right: auto;
   }
   .become-sponsor::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+    background-size: 300% 100%;
+    animation: goldSlide 4s linear infinite;
   }
   .become-sponsor h3 {
     font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700;
@@ -87,52 +168,17 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     margin-bottom: 0.75rem;
   }
-  .become-sponsor p { color: rgba(255,255,255,0.55); margin-bottom: 1.75rem; }
-
+  .become-sponsor p { color: rgba(255,255,255,0.5); margin-bottom: 1.75rem; }
 
   .site-footer { background: #07111f; border-top: 1px solid rgba(216,144,24,0.15); }
   .site-footer p { color: rgba(255,255,255,0.35); font-size: 0.85rem; }
-
-  /* Keep existing sponsor-grid layout for the existing HTML */
-  .sponsor-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-bottom: 4rem;
-    padding: 0 2rem;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .main-content {
-    margin-top: 3rem;
-    padding: 2rem 2rem;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .page-title {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  .page-subtitle {
-    text-align: center;
-    font-size: 1.2rem;
-    color: rgba(255,255,255,0.55);
-    margin-bottom: 4rem;
-  }
-
-  .sponsor a { text-decoration: none; color: inherit; }
 
   @media (max-width: 900px) {
     .sponsor-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 600px) {
-    .sponsor-grid { grid-template-columns: 1fr; }
+    .sponsor-grid { grid-template-columns: 1fr; padding: 0; }
+    .main-content { padding: 1.5rem 1rem; }
   }
 </style>
 </head>
@@ -193,100 +239,90 @@
 
   <!-- Sponsors Grid -->
   <div class="sponsor-grid">
+
     <!-- Infinity Legacy Group -->
     <div class="sponsor" id="sponsor-infinity">
-      <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener noreferrer">
-        <div class="logo-container">
-          <img src="images/logos/infinity-legacy-logo.jpg" alt="Infinity Legacy Group Logo" loading="lazy">
-        </div>
-        <div class="sponsor-info">
-          <h3>Infinity Legacy Group</h3>
-          <p class="sponsor-description">
-            Leading real estate and investment company dedicated to building lasting legacies for families and communities.
-            Specializing in Auto, Life, Health, Home, and Business insurance across USA and Canada.
-          </p>
-          <span class="sponsor-link">Visit Instagram →</span>
-        </div>
-      </a>
+      <div class="sponsor-logo-area">
+        <img src="images/logos/infinity-legacy-logo.jpg" alt="Infinity Legacy Group Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>Infinity Legacy Group</h3>
+        <p class="sponsor-description">Leading real estate and investment company dedicated to building lasting legacies for families and communities. Specializing in Auto, Life, Health, Home, and Business insurance across USA and Canada.</p>
+        <a href="https://www.instagram.com/infinity_legacy_group?igsh=ZGl0cDZ5YXJtMGR6" target="_blank" rel="noopener noreferrer" class="sponsor-link">Visit Instagram →</a>
+      </div>
     </div>
 
     <!-- Grain Market -->
     <div class="sponsor" id="sponsor-grain">
-      <a href="https://www.instagram.com/grainmarket.usa/" target="_blank" rel="noopener noreferrer">
-        <div class="logo-container">
-          <img src="images/logos/grain.png" alt="Grain Market Logo" loading="lazy">
-        </div>
-        <div class="sponsor-info">
-          <h3>Grain Market</h3>
-          <p class="sponsor-description">
-            Based in Dallas, Texas, Grain Market LLC is a wholesale distributor of premium Indian spices and products across the U.S., delivering authentic flavors with quality and value.
-          </p>
-          <span class="sponsor-link">Visit Instagram →</span>
-        </div>
-      </a>
+      <div class="sponsor-logo-area">
+        <img src="images/logos/grain.png" alt="Grain Market Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>Grain Market</h3>
+        <p class="sponsor-description">Based in Dallas, Texas, Grain Market LLC is a wholesale distributor of premium Indian spices and products across the U.S., delivering authentic flavors with quality and value.</p>
+        <a href="https://www.instagram.com/grainmarket.usa/" target="_blank" rel="noopener noreferrer" class="sponsor-link">Visit Instagram →</a>
+      </div>
     </div>
 
     <!-- Rajula's Kitchen -->
     <div class="sponsor" id="sponsor-rajula">
-      <a href="https://www.instagram.com/rajulaskitchenusa/" target="_blank" rel="noopener noreferrer">
-        <div class="logo-container">
-          <img src="images/logos/rajula.png" alt="Rajula's Kitchen Logo" loading="lazy">
-        </div>
-        <div class="sponsor-info">
-          <h3>Rajula's Kitchen</h3>
-          <p class="sponsor-description">
-            A 100% vegetarian Indian eatery serving flavorful chaats, delicious thalis, and unlimited thali options. Experience authentic taste with every bite — also offering catering services. Find us in Dallas, Atlanta & Chicago.
-          </p>
-          <span class="sponsor-link">Visit Instagram →</span>
-        </div>
-      </a>
+      <div class="sponsor-logo-area">
+        <img src="images/logos/rajula.png" alt="Rajula's Kitchen Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>Rajula's Kitchen</h3>
+        <p class="sponsor-description">A 100% vegetarian Indian eatery serving flavorful chaats, delicious thalis, and unlimited thali options. Experience authentic taste with every bite — also offering catering services. Find us in Dallas, Atlanta & Chicago.</p>
+        <a href="https://www.instagram.com/rajulaskitchenusa/" target="_blank" rel="noopener noreferrer" class="sponsor-link">Visit Instagram →</a>
+      </div>
     </div>
 
-    <!-- NLP -->
+    <!-- NLP Financial -->
     <div class="sponsor" id="sponsor-nlp">
-      <a href="https://nlp-financial.com/" target="_blank" rel="noopener noreferrer">
-        <div class="logo-container">
-          <img src="images/logos/nlp.jpeg" alt="NLP Financial Logo" loading="lazy">
-        </div>
-        <div class="sponsor-info">
-          <h3>NLP Financial</h3>
-          <p class="sponsor-description">
-            Personalized financial strategies to help you build wealth, protect your loved ones, and secure a lasting legacy — with integrity, transparency, and your family's trust at the center.
-          </p>
-          <span class="sponsor-link">Learn More →</span>
-        </div>
-      </a>
+      <div class="sponsor-logo-area">
+        <img src="images/logos/nlp.jpeg" alt="NLP Financial Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>NLP Financial</h3>
+        <p class="sponsor-description">Personalized financial strategies to help you build wealth, protect your loved ones, and secure a lasting legacy — with integrity, transparency, and your family's trust at the center.</p>
+        <a href="https://nlp-financial.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">Learn More →</a>
+      </div>
     </div>
 
     <!-- AksharNix Global -->
     <div class="sponsor" id="sponsor-aksharnix">
-      <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer">
-        <div class="logo-container">
-          <img src="images/logos/aksharnix-global-logo.png" alt="AksharNix Global Logo" loading="lazy">
-        </div>
-        <div class="sponsor-info">
-          <h3>AksharNix Global</h3>
-          <p class="sponsor-description">
-            Innovative technology solutions provider specializing in digital transformation, software development services,
-            and cutting-edge web solutions for businesses worldwide.
-          </p>
-          <span class="sponsor-link">Learn More →</span>
-        </div>
-      </a>
+      <div class="sponsor-logo-area">
+        <img src="images/logos/aksharnix-global-logo.png" alt="AksharNix Global Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>AksharNix Global</h3>
+        <p class="sponsor-description">Innovative technology solutions provider specializing in digital transformation, software development services, and cutting-edge web solutions for businesses worldwide.</p>
+        <a href="https://aksharnixglobal.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">Learn More →</a>
+      </div>
     </div>
 
     <!-- TrophyHub -->
     <div class="sponsor" id="sponsor-trophyhub">
-      <div class="logo-container">
+      <div class="sponsor-logo-area">
         <img src="images/logos/trophyhub.jpeg" alt="TrophyHub Logo" loading="lazy">
       </div>
-      <div class="sponsor-info">
+      <div class="sponsor-body">
         <h3>TrophyHub</h3>
-        <p class="sponsor-description">
-          Your one-stop destination for trophies, awards, and recognition products. Celebrating champions on and off the field.
-        </p>
+        <p class="sponsor-description">Your one-stop destination for trophies, awards, and recognition products. Celebrating champions on and off the field.</p>
       </div>
     </div>
+
+    <!-- Battle of Bats -->
+    <div class="sponsor" id="sponsor-battleofbats">
+      <div class="sponsor-logo-area">
+        <img src="images/logos/battle of bats.png" alt="Battle of Bats Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>Battle of Bats</h3>
+        <p class="sponsor-description">Premium cricket equipment and gear for serious players. Equipping warriors on and off the field with the finest bats, gloves, and cricket essentials.</p>
+        <a href="https://www.battleofbats.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">Shop Now →</a>
+      </div>
+    </div>
+
   </div>
 
   <!-- Become a Sponsor Section -->

@@ -64,21 +64,44 @@
     line-height: 1.6;
   }
 
+  @keyframes goldSlide {
+    0%   { background-position: 0% 0; }
+    100% { background-position: 300% 0; }
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   /* Glass card */
   .glass-card {
-    background: #0c1e38 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: 1px solid rgba(255,255,255,0.06) !important;
-    border-radius: 6px;
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%) !important;
+    border: 1px solid rgba(216,144,24,0.18) !important;
+    border-radius: 14px;
     padding: 2.5rem;
     margin-bottom: 2rem;
     position: relative;
     overflow: hidden;
+    transition: border-color 0.35s, box-shadow 0.35s;
+    animation: cardIn 0.6s ease both;
   }
+  .glass-card:nth-of-type(2) { animation-delay: 0.1s; }
   .glass-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+    background-size: 300% 100%;
+    animation: goldSlide 4s linear infinite;
+  }
+  .glass-card::after {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .glass-card:hover {
+    border-color: rgba(216,144,24,0.4) !important;
+    box-shadow: 0 0 40px rgba(216,144,24,0.08), 0 16px 48px rgba(0,0,0,0.4) !important;
   }
 
   /* Donation card two-column layout */
@@ -232,9 +255,22 @@
   .stat-item {
     text-align: center;
     padding: 1.25rem 1rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 14px;
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
+    border: 1px solid rgba(216,144,24,0.18);
+    border-radius: 12px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+  }
+  .stat-item::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+    background-size: 300% 100%;
+    animation: goldSlide 4s linear infinite;
+  }
+  .stat-item:hover {
+    border-color: rgba(216,144,24,0.45);
+    box-shadow: 0 0 30px rgba(216,144,24,0.08), 0 12px 40px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
   }
 
   .stat-icon {

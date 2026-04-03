@@ -12,23 +12,11 @@
   <style>
     body { background: #07111f !important; color: rgba(255,255,255,0.75); margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; min-height: 100vh; }
 
-    main {
-      padding-top: 5rem;
-      min-height: 100vh;
-    }
+    main { padding-top: 5rem; min-height: 100vh; }
 
     .achievements-header {
       text-align: center;
-      padding: 0 2rem 1rem;
-    }
-
-    .achievements-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 3rem;
+      padding: 2.5rem 2rem 0.5rem;
     }
 
     h1, h2, h3.section-heading {
@@ -37,101 +25,191 @@
       background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
-    .achievements-header h1 { font-size: 3rem; }
+    .achievements-header h1 { font-size: 3rem; margin: 0; }
 
+    .achievements-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+    }
+
+    /* ── Card shell ── */
     .achievement-card {
-      background: #0c1e38 !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      border: 1px solid rgba(255,255,255,0.06) !important;
-      border-radius: 6px;
-      padding: 3rem 2rem;
-      text-align: center;
-      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, #0e2244 0%, #071428 100%) !important;
+      border: 1px solid rgba(216,144,24,0.18) !important;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+      animation: cardIn 0.6s ease both;
     }
-    .achievement-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    .achievement-card:nth-child(2) { animation-delay: 0.12s; }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
+
     .achievement-card:hover {
-      border-color: rgba(216,144,24,0.3) !important;
-      transform: none !important;
-      box-shadow: none !important;
+      border-color: rgba(216,144,24,0.45) !important;
+      box-shadow: 0 0 50px rgba(216,144,24,0.1), 0 24px 64px rgba(0,0,0,0.5) !important;
+      transform: translateY(-3px) !important;
     }
 
-    .achievement-card h3, .achievement-card h4 { color: white !important; font-family: 'Oswald', sans-serif !important; }
-    .achievement-card p, .achievement-card span { color: rgba(255,255,255,0.55) !important; }
-    .trophy-icon, .achievement-icon { color: #D89018 !important; }
+    /* animated gold top bar */
+    .achievement-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+      background-size: 300% 100%;
+      animation: goldSlide 4s linear infinite;
+    }
+    @keyframes goldSlide {
+      0%   { background-position: 0% 0; }
+      100% { background-position: 300% 0; }
+    }
 
-    .achievement-card .logo {
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 2rem;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 1rem;
-      background: rgba(255,255,255,0.95);
+    /* corner glow */
+    .achievement-card::after {
+      content: '';
+      position: absolute; bottom: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(216,144,24,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── Card header ── */
+    .card-header {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 1.4rem;
+      padding: 1.8rem 2rem 1.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0,0,0,0.15);
     }
 
-    .achievement-card .logo img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+    .card-logo-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .card-logo-wrap::before {
+      content: '';
+      position: absolute; inset: -3px;
       border-radius: 50%;
+      background: conic-gradient(from 0deg, #9A6010, #F5C040, #D89018, #9A6010);
+      animation: spin 10s linear infinite;
+      z-index: 0;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .card-logo {
+      position: relative; z-index: 1;
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.96);
+      display: flex; align-items: center; justify-content: center;
+      padding: 6px;
+    }
+    .card-logo img {
+      width: 100%; height: 100%;
+      object-fit: contain; border-radius: 50%;
     }
 
-    .achievement-item {
-      margin: 1.5rem 0;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      text-align: center;
+    .card-title-group { flex: 1; min-width: 0; }
+    .card-league-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem; font-weight: 700;
+      letter-spacing: 4px; text-transform: uppercase;
+      background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1; margin: 0 0 0.3rem;
+    }
+    .card-league-label {
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
     }
 
-    .achievement-item:last-child {
-      border-bottom: none;
-    }
+    /* ── Achievement rows ── */
+    .card-achievements { padding: 0.5rem 0 0.75rem; }
 
-    .achievement-item .year {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #D89018 !important;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-
-    .achievement-item .details {
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.55) !important;
-      display: inline-flex;
+    .achievement-row {
+      display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-left: 0.5rem;
+      gap: 1rem;
+      padding: 1.05rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      transition: background 0.2s;
+    }
+    .achievement-row:last-child { border-bottom: none; }
+    .achievement-row:hover { background: rgba(216,144,24,0.04); }
+
+    /* tier accent stripe */
+    .achievement-row::before {
+      content: '';
+      position: absolute; left: 0; top: 22%; bottom: 22%;
+      width: 3px; border-radius: 0 3px 3px 0;
+    }
+    .achievement-row[data-tier="QF"]::before { background: #cd7f32; box-shadow: 0 0 8px rgba(205,127,50,0.5); }
+    .achievement-row[data-tier="SF"]::before { background: #b0b8c8; box-shadow: 0 0 8px rgba(176,184,200,0.5); }
+    .achievement-row[data-tier="F"]::before  { background: #F5C040; box-shadow: 0 0 8px rgba(245,192,64,0.5); }
+
+    .row-season {
+      flex: 1;
+      display: flex; flex-direction: column; gap: 0.1rem;
+    }
+    .row-year {
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.3) !important;
+    }
+    .row-season-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.82) !important;
     }
 
-    .achievement-item .details .emoji {
-      font-size: 1.5rem;
+    .row-medal { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+
+    .row-result {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 0.05rem;
+      flex-shrink: 0;
+    }
+    .result-abbr {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem; font-weight: 700;
+      letter-spacing: 2px;
+      color: white !important;
+    }
+    .result-full {
+      font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: rgba(255,255,255,0.28) !important;
     }
 
+    /* tier-specific result color */
+    .achievement-row[data-tier="QF"] .result-abbr { color: #cd7f32 !important; }
+    .achievement-row[data-tier="SF"] .result-abbr { color: #b0b8c8 !important; }
+    .achievement-row[data-tier="F"]  .result-abbr { color: #F5C040 !important; }
+
+    /* ── Footer ── */
     .site-footer { background: #07111f !important; border-top: 1px solid rgba(216,144,24,0.15) !important; }
     .site-footer p { color: rgba(255,255,255,0.35) !important; }
 
     @media (max-width: 768px) {
       .achievements-container {
         grid-template-columns: 1fr;
-        padding: 2rem 1rem;
-        gap: 2rem;
+        padding: 2rem 1rem 3rem;
+        gap: 1.5rem;
       }
-
-      .achievement-card {
-        padding: 2rem 1rem;
-      }
-
-      .achievement-item {
-        padding-left: 0.5rem;
-      }
+      .card-header { padding: 1.5rem 1.5rem 1.3rem; }
+      .achievement-row { padding: 1rem 1.5rem; }
+      .achievements-header h1 { font-size: 2.2rem; }
     }
   </style>
 </head>
@@ -193,36 +271,71 @@
     
     <!-- DFCL Card -->
     <div class="achievement-card">
-      <div class="logo">
-        <img src="images/gallery/BCC.jpg" alt="DFCL Logo">
+      <div class="card-header">
+        <div class="card-logo-wrap">
+          <div class="card-logo">
+            <img src="images/gallery/BCC.jpg" alt="DFCL Logo">
+          </div>
+        </div>
+        <div class="card-title-group">
+          <div class="card-league-name">DFCL</div>
+          <div class="card-league-label">Dallas Friendly Cricket League</div>
+        </div>
       </div>
-      <h3>DFCL</h3>
-      <div class="achievement-item">
-        <span class="year">2025:</span>
-        <span class="details">
-          <span>Spring -</span>
-          <span class="emoji">🏅</span>
-          <span>QF</span>
-        </span>
+      <div class="card-achievements">
+        <div class="achievement-row" data-tier="QF">
+          <div class="row-season">
+            <span class="row-year">2025</span>
+            <span class="row-season-name">Spring</span>
+          </div>
+          <span class="row-medal">🏅</span>
+          <div class="row-result">
+            <span class="result-abbr">QF</span>
+            <span class="result-full">Quarter Final</span>
+          </div>
+        </div>
+        <div class="achievement-row" data-tier="SF">
+          <div class="row-season">
+            <span class="row-year">2025</span>
+            <span class="row-season-name">Fall</span>
+          </div>
+          <span class="row-medal">🏅</span>
+          <div class="row-result">
+            <span class="result-abbr">SF</span>
+            <span class="result-full">Semi Final</span>
+          </div>
+        </div>
       </div>
     </div>
-    
+
     <!-- LECA Card -->
     <div class="achievement-card">
-      <div class="logo">
-        <img src="images/gallery/BCC.jpg" alt="LECA Logo">
+      <div class="card-header">
+        <div class="card-logo-wrap">
+          <div class="card-logo">
+            <img src="images/gallery/BCC.jpg" alt="LECA Logo">
+          </div>
+        </div>
+        <div class="card-title-group">
+          <div class="card-league-name">LECA</div>
+          <div class="card-league-label">Little Elm Cricket Association</div>
+        </div>
       </div>
-      <h3>LECA</h3>
-      <div class="achievement-item">
-        <span class="year">2025:</span>
-        <span class="details">
-          <span>Spring -</span>
-          <span class="emoji">🏅</span>
-          <span>QF</span>
-        </span>
+      <div class="card-achievements">
+        <div class="achievement-row" data-tier="QF">
+          <div class="row-season">
+            <span class="row-year">2025</span>
+            <span class="row-season-name">Spring</span>
+          </div>
+          <span class="row-medal">🏅</span>
+          <div class="row-result">
+            <span class="result-abbr">QF</span>
+            <span class="result-full">Quarter Final</span>
+          </div>
+        </div>
       </div>
     </div>
-    
+
   </div>
 </main>
 

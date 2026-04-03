@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Our Warriors - Bharat Cricket Club By UGNT</title>
-<meta name="description" content="Meet our cricket warriors - Bharat Warriors and Bharat Yodhas teams competing in DFCL and LECA leagues." />
+<title>Our Teams - Bharat Cricket Club By UGNT</title>
+<meta name="description" content="Meet our teams - Bharat Warriors and Bharat Yodhas competing in DFCL and LECA leagues." />
 <meta name="theme-color" content="#0c1e37" />
 <link rel="icon" href="images/gallery/BCC.jpg" />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -24,37 +24,152 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
 
-  .team-card, .player-card, .warrior-card {
-    background: #0c1e38 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border: 1px solid rgba(255,255,255,0.06) !important;
-    border-radius: 6px;
+  @keyframes goldSlide {
+    0%   { background-position: 0% 0; }
+    100% { background-position: 300% 0; }
+  }
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Shared card shell ── */
+  .w-card {
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
+    border: 1px solid rgba(216,144,24,0.18);
+    border-radius: 14px;
     position: relative; overflow: hidden;
+    transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+    animation: cardIn 0.6s ease both;
   }
-  .team-card::before, .player-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+  .w-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+    background-size: 300% 100%;
+    animation: goldSlide 4s linear infinite;
   }
-  .team-card:hover, .player-card:hover {
-    border-color: rgba(216,144,24,0.3) !important;
-    transform: none !important;
-    box-shadow: none !important;
+  .w-card::after {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .w-card:hover {
+    border-color: rgba(216,144,24,0.45);
+    box-shadow: 0 0 50px rgba(216,144,24,0.1), 0 24px 64px rgba(0,0,0,0.5);
+    transform: translateY(-3px);
   }
 
-  .player-name, .team-name { color: white !important; font-family: 'Oswald', sans-serif !important; }
-  .player-role { color: #D89018 !important; }
-  .player-stat-value { font-family: 'Bebas Neue', sans-serif !important; font-size: 1.5rem !important; color: white !important; }
+  /* ── Page layout ── */
+  .warriors-main { padding: 5rem 2rem 4rem; }
+  .warriors-inner { max-width: 1200px; margin: 0 auto; }
+  .page-title { text-align: center; font-size: 3rem; margin-bottom: 0.75rem; }
+  .page-subtitle { text-align: center; font-size: 1.1rem; color: rgba(255,255,255,0.6); margin-bottom: 3.5rem; }
 
-  .join-cta, .cta-section {
-    background: #0a1e40 !important;
-    backdrop-filter: none !important;
-    border: 1px solid rgba(216,144,24,0.15) !important;
-    border-radius: 6px;
+  /* ── Team leadership cards ── */
+  .teams-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-bottom: 4rem;
   }
+  .team-card { padding: 2rem; }
+  .team-card:nth-child(2) { animation-delay: 0.1s; }
+  .team-header {
+    display: flex; align-items: center; justify-content: center;
+    gap: 0.75rem; margin-bottom: 0.4rem;
+  }
+  .team-header img {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .team-header h3 { font-size: 1.6rem; margin: 0; }
+  .team-league {
+    text-align: center; font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .roster-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .roster-row:last-child { border-bottom: none; }
+  .roster-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); font-family: 'Montserrat', sans-serif;
+  }
+  .roster-label.captain { color: #D89018; }
+  .roster-name {
+    font-family: 'Oswald', sans-serif; font-size: 1.05rem; font-weight: 700;
+    color: white; letter-spacing: 1px;
+    background: none; -webkit-text-fill-color: white;
+  }
+
+  /* ── Star performers ── */
+  .section-heading { text-align: center; margin: 1rem 0 2rem; font-size: 2rem; }
+  .performers-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem; margin-bottom: 4rem;
+  }
+  .performer-card { padding: 1.75rem; }
+  .performer-card:nth-child(2) { animation-delay: 0.08s; }
+  .performer-card:nth-child(3) { animation-delay: 0.16s; }
+  .performer-card:nth-child(4) { animation-delay: 0.24s; }
+  .performer-category {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.35); margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;
+  }
+  .performer-name {
+    font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  /* ── Team values ── */
+  .values-section { padding: 2.5rem; margin-bottom: 4rem; }
+  .values-section h3 { font-size: 1.8rem; margin: 0 0 1.5rem; }
+  .value-row {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .value-row:last-child { border-bottom: none; }
+  .value-row h4 { font-size: 1rem; margin: 0 0 0.4rem; }
+  .value-row p {
+    color: rgba(255,255,255,0.5); margin: 0; line-height: 1.6; font-size: 0.88rem;
+    font-family: 'Montserrat', sans-serif; -webkit-text-fill-color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Join CTA ── */
+  .join-cta { text-align: center; padding: 3rem 2rem; margin-bottom: 2rem; }
+  .join-cta h3 { font-size: 2rem; margin-bottom: 1rem; }
+  .join-cta p {
+    color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6;
+    font-family: 'Montserrat', sans-serif; -webkit-text-fill-color: rgba(255,255,255,0.7);
+  }
+
+  .btn {
+    display: inline-block; padding: 0.85rem 2.5rem;
+    font-family: 'Montserrat', sans-serif; font-weight: 800;
+    font-size: 0.8rem; letter-spacing: 2.5px; text-transform: uppercase;
+    text-decoration: none; border-radius: 3px;
+    transition: opacity 0.2s ease; cursor: pointer; border: none;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    color: #07111f;
+  }
+  .btn:hover { opacity: 0.85; }
 
   .site-footer { background: #07111f !important; border-top: 1px solid rgba(216,144,24,0.15) !important; }
   .site-footer p { color: rgba(255,255,255,0.35) !important; }
+
+  @media (max-width: 768px) {
+    .teams-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .page-title { font-size: 2rem; }
+    .warriors-main { padding: 5rem 1rem 3rem; }
+  }
 </style>
 </head>
 
@@ -111,142 +226,92 @@
 </script>
 
 <!-- Main Content -->
-<main id="main-content" style="padding: 5rem 2rem 2rem;">
-  <div style="max-width: 1400px; margin: 0 auto;">
-    <h1 style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">Our Cricket Warriors ⚔️</h1>
-    <p style="text-align: center; font-size: 1.2rem; color: rgba(255,255,255,0.75); margin-bottom: 4rem;">Meet the warriors who represent our club with pride and determination in DFCL & LECA leagues.</p>
-    
+<main id="main-content" class="warriors-main">
+  <div class="warriors-inner">
+    <h1 class="page-title">Our Teams</h1>
+    <p class="page-subtitle">Meet the warriors who represent our club with pride and determination in DFCL & LECA leagues.</p>
+
     <!-- Team Leadership -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem;">
-      
-      <!-- Bharat Warriors Team -->
-      <div style="background: #0c1e38; border: 1px solid rgba(255,255,255,0.06); border-top: 2px solid #D89018; border-radius: 6px; padding: 2rem; overflow: hidden;">
-        <h3 style="
-          color: #D89018;
-          font-size: 1.8rem;
-          font-weight: 700;
-          margin: 0 0 0.5rem;
-          text-align: center;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-        ">
-          <img src="images/gallery/BW.jpg" alt="Bharat Warriors" width="40" height="40" style="width: 40px; height: 40px; border-radius: 50%;">
-          Bharat Warriors
-        </h3>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); margin: 0 0 1.5rem; font-style: italic;">DFCL & LECA League Team</p>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div style="text-align: center; padding: 1.5rem; background: #0a1e40; border: 1px solid rgba(216,144,24,0.2); border-top: 2px solid #D89018; border-radius: 6px;">
-            <div style="font-size: 3rem; margin-bottom: 0.5rem;">👑</div>
-            <div style="font-weight: 600; color: #D89018; margin-bottom: 0.5rem; font-family: 'Oswald', sans-serif; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">Captain</div>
-            <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; font-family: 'Oswald', sans-serif;">Pratik Patel</div>
-          </div>
-          <div style="text-align: center; padding: 1.5rem; background: #0a1e40; border: 1px solid rgba(216,144,24,0.2); border-top: 2px solid rgba(216,144,24,0.4); border-radius: 6px;">
-            <div style="font-size: 3rem; margin-bottom: 0.5rem;">⚔️</div>
-            <div style="font-weight: 600; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; font-family: 'Oswald', sans-serif; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">Vice Captain</div>
-            <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; font-family: 'Oswald', sans-serif;">Raj Lakkad</div>
-          </div>
+    <div class="teams-grid">
+
+      <!-- Bharat Warriors -->
+      <div class="w-card team-card">
+        <div class="team-header">
+          <img src="images/gallery/BW.jpg" alt="Bharat Warriors">
+          <h3>Bharat Warriors</h3>
+        </div>
+        <p class="team-league">DFCL & LECA League Team</p>
+        <div class="roster-row">
+          <span class="roster-label captain">Captain</span>
+          <span class="roster-name">Pratik Patel</span>
+        </div>
+        <div class="roster-row">
+          <span class="roster-label">Vice Captain</span>
+          <span class="roster-name">Raj Lakkad</span>
         </div>
       </div>
-      
-      <!-- Bharat Yodhas Team -->
-      <div style="background: #0c1e38; border: 1px solid rgba(255,255,255,0.06); border-top: 2px solid #D89018; border-radius: 6px; padding: 2rem; overflow: hidden;">
-        <h3 style="
-          color: #D89018;
-          font-size: 1.8rem;
-          font-weight: 700;
-          margin: 0 0 0.5rem;
-          text-align: center;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-        ">
-          <img src="images/gallery/BY.jpg" alt="Bharat Yodhas" width="40" height="40" style="width: 40px; height: 40px; border-radius: 50%;">
-          Bharat Yodhas
-        </h3>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); margin: 0 0 1.5rem; font-style: italic;">DFCL League Team</p>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-          <div style="text-align: center; padding: 1.5rem; background: #0a1e40; border: 1px solid rgba(216,144,24,0.2); border-top: 2px solid #D89018; border-radius: 6px;">
-            <div style="font-size: 3rem; margin-bottom: 0.5rem;">👑</div>
-            <div style="font-weight: 600; color: #D89018; margin-bottom: 0.5rem; font-family: 'Oswald', sans-serif; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">Captain</div>
-            <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; font-family: 'Oswald', sans-serif;">Bhavik Gandhi</div>
-          </div>
-          <div style="text-align: center; padding: 1.5rem; background: #0a1e40; border: 1px solid rgba(216,144,24,0.2); border-top: 2px solid rgba(216,144,24,0.4); border-radius: 6px;">
-            <div style="font-size: 3rem; margin-bottom: 0.5rem;">⚔️</div>
-            <div style="font-weight: 600; color: rgba(255,255,255,0.55); margin-bottom: 0.5rem; font-family: 'Oswald', sans-serif; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem;">Vice Captain</div>
-            <div style="font-weight: 700; color: #ffffff; font-size: 1.1rem; font-family: 'Oswald', sans-serif;">Pratik Prabhu</div>
-          </div>
+
+      <!-- Bharat Yodhas -->
+      <div class="w-card team-card">
+        <div class="team-header">
+          <img src="images/gallery/BY.jpg" alt="Bharat Yodhas">
+          <h3>Bharat Yodhas</h3>
+        </div>
+        <p class="team-league">DFCL League Team</p>
+        <div class="roster-row">
+          <span class="roster-label captain">Captain</span>
+          <span class="roster-name">Bhavik Gandhi</span>
+        </div>
+        <div class="roster-row">
+          <span class="roster-label">Vice Captain</span>
+          <span class="roster-name">Pratik Prabhu</span>
         </div>
       </div>
     </div>
 
     <!-- Star Performers -->
-    <h2 style="text-align: center; margin: 4rem 0 2rem; font-size: 2rem;">🏆 Star Performers</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
-      <div style="text-align: center; padding: 2rem; background: #0c1e38; border: 1px solid rgba(255,255,255,0.06); border-top: 2px solid #D89018; border-radius: 6px;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">🥇</div>
-        <div style="font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Top Scorer</div>
-        <div style="font-family: 'Oswald', sans-serif; font-weight: 700; color: #D89018; font-size: 1.4rem; letter-spacing: 1px;">Gaurav P.</div>
+    <h2 class="section-heading">Star Performers</h2>
+    <div class="performers-grid">
+      <div class="w-card performer-card">
+        <div class="performer-category">Top Scorer</div>
+        <div class="performer-name">Gaurav P.</div>
       </div>
-      <div style="text-align: center; padding: 2rem; background: #0c1e38; border: 1px solid rgba(255,255,255,0.06); border-top: 2px solid #D89018; border-radius: 6px;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">🎯</div>
-        <div style="font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Bowler</div>
-        <div style="font-family: 'Oswald', sans-serif; font-weight: 700; color: #D89018; font-size: 1.4rem; letter-spacing: 1px;">Darshan P.</div>
+      <div class="w-card performer-card">
+        <div class="performer-category">Best Bowler</div>
+        <div class="performer-name">Darshan P.</div>
       </div>
-      <div style="text-align: center; padding: 2rem; background: #0c1e38; border: 1px solid rgba(255,255,255,0.06); border-top: 2px solid #D89018; border-radius: 6px;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">⚡</div>
-        <div style="font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">Best Fielder</div>
-        <div style="font-family: 'Oswald', sans-serif; font-weight: 700; color: #D89018; font-size: 1.4rem; letter-spacing: 1px;">Bhavik G.</div>
+      <div class="w-card performer-card">
+        <div class="performer-category">Best Fielder</div>
+        <div class="performer-name">Bhavik G.</div>
       </div>
-      <div style="text-align: center; padding: 2rem; background: #0c1e38; border: 1px solid rgba(255,255,255,0.06); border-top: 2px solid #D89018; border-radius: 6px;">
-        <div style="font-size: 4rem; margin-bottom: 1rem;">🏆</div>
-        <div style="font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem;">17 Wickets</div>
-        <div style="font-family: 'Oswald', sans-serif; font-weight: 700; color: #D89018; font-size: 1.4rem; letter-spacing: 1px;">Patrick P.</div>
+      <div class="w-card performer-card">
+        <div class="performer-category">17 Wickets</div>
+        <div class="performer-name">Patrick P.</div>
       </div>
     </div>
 
     <!-- Team Values -->
-    <div style="background: #0a1e40; border: 1px solid rgba(216,144,24,0.15); border-top: 2px solid #D89018; padding: 3rem; border-radius: 6px; margin: 4rem 0;">
-      <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">Our Team Values</h3>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-        <div style="padding: 2rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px;">
-          <h4 style="font-size: 1.2rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            🏆 Excellence
-          </h4>
-          <p style="color: rgba(255,255,255,0.75); margin: 0; line-height: 1.6;">
-            We strive for the highest standards in every match and practice session, pushing our limits to achieve greatness.
-          </p>
-        </div>
-        <div style="padding: 2rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px;">
-          <h4 style="font-size: 1.2rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            🤝 Teamwork
-          </h4>
-          <p style="color: rgba(255,255,255,0.75); margin: 0; line-height: 1.6;">
-            Individual brilliance shines brightest when supported by team unity. Together, we are unstoppable.
-          </p>
-        </div>
-        <div style="padding: 2rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); border-radius: 6px;">
-          <h4 style="font-size: 1.2rem; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem;">
-            💪 Respect
-          </h4>
-          <p style="color: rgba(255,255,255,0.75); margin: 0; line-height: 1.6;">
-            We respect our opponents, officials, and the spirit of cricket. Integrity is our foundation.
-          </p>
-        </div>
+    <div class="w-card values-section">
+      <h3>Our Team Values</h3>
+      <div class="value-row">
+        <h4>Excellence</h4>
+        <p>We strive for the highest standards in every match and practice session, pushing our limits to achieve greatness.</p>
+      </div>
+      <div class="value-row">
+        <h4>Teamwork</h4>
+        <p>Individual brilliance shines brightest when supported by team unity. Together, we are unstoppable.</p>
+      </div>
+      <div class="value-row">
+        <h4>Respect</h4>
+        <p>We respect our opponents, officials, and the spirit of cricket. Integrity is our foundation.</p>
       </div>
     </div>
 
     <!-- Join Us CTA -->
-    <div style="text-align: center; padding: 3rem; background: #0a1e40; border: 1px solid rgba(216,144,24,0.15); border-top: 2px solid #D89018; border-radius: 6px; margin: 4rem 0;">
-      <h3 style="font-size: 2rem; margin-bottom: 1rem;">Join Our Warriors Family</h3>
-      <p style="color: rgba(255,255,255,0.8); font-size: 1.2rem; margin-bottom: 2rem;">
-        Be part of the Bharat Cricket Club community. We're always looking for talented players!
-      </p>
-      <a href="contact.html" style="display: inline-block; padding: 0.85rem 2.5rem; background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010); color: #07111f; text-decoration: none; font-weight: 800; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; border-radius: 3px; transition: opacity 0.2s ease;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Contact Us to Join</a>
+    <div class="w-card join-cta">
+      <h3>Join Our Warriors Family</h3>
+      <p>Be part of the Bharat Cricket Club community. We're always looking for talented players!</p>
+      <a href="contact.html" class="btn btn-primary">Contact Us to Join</a>
     </div>
   </div>
 </main>
@@ -257,28 +322,6 @@
   <p>Designed by <a href="https://aksharnixglobal.com" target="_blank">AksharNix Global</a></p>
 </footer>
 
-<!-- Mobile Responsive CSS -->
-<style>
-@media (max-width: 768px) {
-  header nav {
-    display: none !important;
-  }
-  
-  main {
-    margin-top: 0 !important;
-    padding: 1rem !important;
-  }
-  
-  main h1 {
-    font-size: 2rem !important;
-  }
-  
-  main > div > div:first-of-type {
-    grid-template-columns: 1fr !important;
-    gap: 2rem !important;
-  }
-}
-</style>
 
 </body>
 </html>

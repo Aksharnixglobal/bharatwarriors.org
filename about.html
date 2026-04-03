@@ -51,23 +51,41 @@
       color: #D89018;
     }
 
+    @keyframes goldSlide {
+      0%   { background-position: 0% 0; }
+      100% { background-position: 300% 0; }
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     .mission-statement {
-      background: #0c1e38 !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      border: 1px solid rgba(255,255,255,0.06) !important;
-      border-radius: 6px;
-      padding: 2rem;
+      background: linear-gradient(160deg, #0e2244 0%, #071428 100%) !important;
+      border: 1px solid rgba(216,144,24,0.18) !important;
+      border-radius: 14px;
+      padding: 2.5rem;
       margin: 3rem auto;
       max-width: 900px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      animation: cardIn 0.6s ease both;
     }
 
     .mission-statement::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+      background-size: 300% 100%;
+      animation: goldSlide 4s linear infinite;
+    }
+
+    .mission-statement::after {
+      content: '';
+      position: absolute; bottom: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .mission-statement p {
@@ -86,22 +104,33 @@
     .about-header h1 { font-size: 3rem; }
 
     .leader-card, .about-card {
-      background: #0c1e38 !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      border: 1px solid rgba(255,255,255,0.06) !important;
-      border-radius: 6px;
+      background: linear-gradient(160deg, #0e2244 0%, #071428 100%) !important;
+      border: 1px solid rgba(216,144,24,0.18) !important;
+      border-radius: 14px;
       position: relative; overflow: hidden;
+      transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+      animation: cardIn 0.6s ease both;
     }
+    .leader-card:nth-child(2) { animation-delay: 0.08s; }
+    .leader-card:nth-child(3) { animation-delay: 0.16s; }
+    .leader-card:nth-child(4) { animation-delay: 0.24s; }
     .leader-card::before, .about-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+      background-size: 300% 100%;
+      animation: goldSlide 4s linear infinite;
+    }
+    .leader-card::after {
+      content: '';
+      position: absolute; bottom: -50px; right: -50px;
+      width: 150px; height: 150px;
+      background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%);
+      pointer-events: none;
     }
     .leader-card:hover, .about-card:hover {
-      border-color: rgba(216,144,24,0.3) !important;
-      background: #0c1e38 !important;
-      transform: none !important;
-      box-shadow: none !important;
+      border-color: rgba(216,144,24,0.45) !important;
+      box-shadow: 0 0 40px rgba(216,144,24,0.1), 0 20px 50px rgba(0,0,0,0.4) !important;
+      transform: translateY(-3px) !important;
     }
 
     .leader-name, .leader-card h3 { color: white !important; font-family: 'Oswald', sans-serif !important; letter-spacing: 1px; }
