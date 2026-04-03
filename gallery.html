@@ -480,20 +480,33 @@ function showAlbum(albumName) {
 }
 
 // Lightbox
-var lb  = document.getElementById('lb');
+var lb = document.getElementById('lb');
 var lbImg = document.getElementById('lb-img');
+var savedScroll = 0;
 
 function openLightbox(src, caption) {
+  // iOS-safe scroll lock: save position, pin body in place
+  savedScroll = window.scrollY || window.pageYOffset;
+  document.body.style.position = 'fixed';
+  document.body.style.top = '-' + savedScroll + 'px';
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+
   lbImg.src = src;
   lbImg.alt = caption;
   document.getElementById('lb-caption').textContent = caption;
   lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
   lb.classList.remove('open');
-  document.body.style.overflow = '';
+
+  // Restore scroll position
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  window.scrollTo(0, savedScroll);
 }
 
 document.addEventListener('keydown', function(e) {
