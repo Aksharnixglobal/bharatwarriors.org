@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCC Premium Redesign</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #07111f;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  padding: 32px 24px;
+}
+
+/* Page chrome */
+.pg-title { text-align: center; color: rgba(255,255,255,0.35); font-size: 11px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 6px; }
+.pg-sub { text-align: center; color: rgba(255,255,255,0.2); font-size: 11px; margin-bottom: 32px; }
+
+/* Mockup frame */
+.mockup {
+  max-width: 820px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+
+/* Gold gradient — matches logo BCC text */
+.gold {
+  background: linear-gradient(135deg, #C8922A 0%, #F5D060 35%, #E8B830 60%, #F0C040 80%, #B87A1A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gold-border {
+  border-image: linear-gradient(135deg, #C8922A, #F5D060, #B87A1A) 1;
+}
+
+/* ── NAVBAR ── */
+.nav {
+  background: #0b1730;
+  border-bottom: 1px solid rgba(200,146,42,0.15);
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.nav-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.nav-logo-text .club { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px; color: white; }
+.nav-logo-text .sub { font-size: 8px; letter-spacing: 3px; color: rgba(200,146,42,0.8); text-transform: uppercase; }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.nav-links a.active { color: white; }
+.nav-links .cta {
+  background: linear-gradient(135deg, #C8922A, #F5D060, #B87A1A);
+  color: #0b1730;
+  padding: 7px 16px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(170deg, rgba(7,17,31,0.93) 0%, rgba(11,23,48,0.88) 60%, rgba(7,17,31,0.95) 100%),
+    url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=820') center/cover no-repeat;
+  padding: 64px 28px 56px;
+  text-align: center;
+}
+
+/* Tricolor top strip — Indian flag accent */
+.hero-strip {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FF9933 33.3%, white 33.3%, white 66.6%, #138808 66.6%);
+}
+
+/* Crest watermark behind text */
+.hero-crest {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 260px;
+  opacity: 0.04;
+  background: url('/images/gallery/BCC.jpg') center/contain no-repeat;
+  pointer-events: none;
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.hero-star-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.hero-star-line { width: 48px; height: 1px; background: linear-gradient(90deg, transparent, rgba(200,146,42,0.5)); }
+.hero-star-line.r { background: linear-gradient(90deg, rgba(200,146,42,0.5), transparent); }
+.hero-star { font-size: 10px; color: rgba(200,146,42,0.6); }
+
+.hero-eyebrow {
+  font-size: 10px;
+  letter-spacing: 8px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 58px;
+  letter-spacing: 6px;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-club {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px;
+  letter-spacing: 12px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 18px;
+}
+.hero-tagline {
+  font-size: 9px;
+  letter-spacing: 10px;
+  color: rgba(255,255,255,0.28);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.hero-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C8922A, #F5D060, #C8922A, transparent);
+  margin: 0 auto 32px;
+}
+.hero-btns { display: flex; gap: 14px; justify-content: center; }
+.btn-join {
+  background: linear-gradient(135deg, #C8922A 0%, #F5D060 50%, #B87A1A 100%);
+  color: #0b1730;
+  padding: 12px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+.btn-explore {
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  padding: 12px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  border: 1px solid rgba(200,146,42,0.4);
+  cursor: pointer;
+  border-radius: 3px;
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+/* Stats bar */
+.stats-bar {
+  background: #0b1730;
+  border-top: 1px solid rgba(200,146,42,0.15);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.stat {
+  padding: 14px 16px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.05);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+.stat-label {
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Section */
+.section {
+  background: #091525;
+  padding: 28px 28px 24px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.section-bar {
+  width: 3px;
+  height: 20px;
+  background: linear-gradient(180deg, #F5D060, #C8922A);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 3px;
+  color: white;
+}
+.section-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: rgba(200,146,42,0.5);
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+/* Cards */
+.cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.card {
+  background: #0b1730;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #C8922A, #F5D060, #C8922A);
+}
+.card-tag {
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(200,146,42,0.6);
+  margin-bottom: 6px;
+}
+.card-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: white;
+  margin-bottom: 4px;
+}
+.card-meta {
+  font-size: 9px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Gold bottom bar */
+.bottom-bar {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #C8922A 20%, #F5D060 50%, #C8922A 80%, transparent);
+}
+
+/* Caption below mockup */
+.caption {
+  max-width: 820px;
+  margin: 20px auto 0;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.caption h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+.caption ul { padding-left: 16px; }
+.caption li { font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 3px; line-height: 1.5; }
+
+.approve-row { text-align: center; margin-top: 24px; }
+.approve-btn {
+  background: linear-gradient(135deg, #C8922A, #F5D060, #B87A1A);
+  color: #0b1730;
+  padding: 12px 36px;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<p class="pg-title">Option A — Refined</p>
+<p class="pg-sub">Based on BCC logo: deep navy · warm amber-gold gradient · Bebas Neue display font · angular buttons · crest accents</p>
+
+<div class="mockup">
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="nav-logo">
+      <img src="/images/gallery/BCC.jpg" alt="BCC Logo">
+      <div class="nav-logo-text">
+        <span class="club">Bharat Cricket Club</span>
+        <span class="sub">By UGNT · Dallas–Fort Worth</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="#">About</a>
+      <a href="#">Teams</a>
+      <a href="#">Gallery</a>
+      <a href="#">Partners</a>
+      <a href="#" class="cta">Join Us</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-strip"></div>
+    <div class="hero-crest"></div>
+    <div class="hero-content">
+      <div class="hero-star-row">
+        <div class="hero-star-line"></div>
+        <span class="hero-star">★ ★ ★</span>
+        <div class="hero-star-line r"></div>
+      </div>
+      <p class="hero-eyebrow">Welcome to</p>
+      <h1 class="hero-title gold">Bharat</h1>
+      <p class="hero-club">Cricket Club</p>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">One Team &nbsp;·&nbsp; One Pride</p>
+      <div class="hero-btns">
+        <button class="btn-join">Join Us</button>
+        <button class="btn-explore">Explore Teams</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num gold">3+</div>
+      <div class="stat-label">Seasons</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num gold">2</div>
+      <div class="stat-label">Active Teams</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num gold">40+</div>
+      <div class="stat-label">Players</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num gold">DFW</div>
+      <div class="stat-label">Dallas–Fort Worth</div>
+    </div>
+  </div>
+
+  <!-- Leagues Section -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-bar"></div>
+      <span class="section-title">Active Leagues</span>
+      <span class="section-label">Season 2025</span>
+    </div>
+    <div class="cards-row">
+      <div class="card">
+        <p class="card-tag">DFW Premier League</p>
+        <p class="card-name">Bharat Warriors</p>
+        <p class="card-meta">● &nbsp;Active · T20 Format</p>
+      </div>
+      <div class="card">
+        <p class="card-tag">Battle of Bats</p>
+        <p class="card-name">Bharat Yodhas</p>
+        <p class="card-meta">◌ &nbsp;Upcoming · T10 Format</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar"></div>
+</div>
+
+<!-- Design notes -->
+<div class="caption">
+  <h4 class="gold">What's reflected from your logo:</h4>
+  <ul>
+    <li><strong>Navy #0b1730</strong> — exact dark navy from the shield background</li>
+    <li><strong>Gold gradient #C8922A → #F5D060 → #B87A1A</strong> — matches the BCC lettermark sheen</li>
+    <li><strong>Tricolor strip</strong> — saffron / white / green top accent (Indian flag)</li>
+    <li><strong>Bebas Neue</strong> — bold sports display font for hero title</li>
+    <li><strong>Angular clip-path buttons</strong> — echoes the shield's angled corners</li>
+    <li><strong>Stars + gold rule lines</strong> — mirrors the star elements in the crest</li>
+    <li><strong>Stats bar</strong> — instant credibility, modern franchise feel</li>
+  </ul>
+</div>
+
+<div class="approve-row">
+  <button class="approve-btn" onclick="approve()">Looks Good — Use This Direction</button>
+</div>
+
+<script>
+function approve() {
+  // fire superpowers selection event
+  const el = document.createElement('div');
+  el.dataset.choice = 'approve';
+  if (window.__sp_toggleSelect) window.__sp_toggleSelect(el);
+  document.querySelector('.approve-btn').textContent = '✓ Approved';
+  document.querySelector('.approve-btn').style.background = '#2a5c2a';
+  document.querySelector('.approve-btn').style.color = 'white';
+}
+</script>
+</body>
+</html>

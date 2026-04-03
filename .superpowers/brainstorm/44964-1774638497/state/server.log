@@ -1,0 +1,6 @@
+{"type":"server-started","port":50604,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:50604","screen_dir":"/Users/charles/projects/bharatwarriors.org/.superpowers/brainstorm/44964-1774638497/content","state_dir":"/Users/charles/projects/bharatwarriors.org/.superpowers/brainstorm/44964-1774638497/state"}
+{"type":"screen-added","file":"/Users/charles/projects/bharatwarriors.org/.superpowers/brainstorm/44964-1774638497/content/design-options.html"}
+{"type":"screen-added","file":"/Users/charles/projects/bharatwarriors.org/.superpowers/brainstorm/44964-1774638497/content/design-v2.html"}
+{"type":"screen-added","file":"/Users/charles/projects/bharatwarriors.org/.superpowers/brainstorm/44964-1774638497/content/design-v3.html"}
+{"type":"screen-added","file":"/Users/charles/projects/bharatwarriors.org/.superpowers/brainstorm/44964-1774638497/content/colors-and-mockup.html"}
+{"type":"server-stopped","reason":"idle timeout"}

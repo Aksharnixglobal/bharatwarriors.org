@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCC Colors + Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #060e1a; font-family: 'Montserrat', sans-serif; color: white; padding: 28px 24px; }
+
+/* ── COLOR PALETTE SECTION ── */
+.palette-header { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: center; margin-bottom: 20px; }
+.palette-row { display: flex; gap: 10px; max-width: 860px; margin: 0 auto 36px; flex-wrap: wrap; }
+.swatch {
+  flex: 1; min-width: 100px;
+  border-radius: 8px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.swatch-color { height: 60px; }
+.swatch-info { padding: 8px 10px; background: #0b1525; }
+.swatch-hex { font-size: 12px; font-weight: 700; font-family: monospace; }
+.swatch-name { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+/* Gold gradient — extracted from logo */
+.g-gold { background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010); }
+.g-navy-deep { background: #0c3054; }
+.g-navy-mid  { background: #183054; }
+.g-navy-card { background: #0a1e40; }
+.g-white     { background: rgba(255,255,255,0.92); }
+.g-saffron   { background: #FF9933; }
+.g-green     { background: #138808; }
+
+/* ── FONT SPECIMENS ── */
+.fonts-header { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); text-align: center; margin-bottom: 16px; }
+.font-row { display: flex; gap: 12px; max-width: 860px; margin: 0 auto 36px; }
+.font-card {
+  flex: 1; background: #0b1525; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px; padding: 16px 14px; text-align: center;
+}
+.font-specimen { margin-bottom: 8px; }
+.font-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+.font-use { font-size: 9px; color: rgba(200,146,42,0.6); margin-top: 3px; }
+.gold-text {
+  background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* ── MOCKUP ── */
+.mockup {
+  max-width: 860px; margin: 0 auto;
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.7);
+}
+
+/* NAV */
+.nav {
+  background: #0c1e38;
+  border-bottom: 1px solid rgba(200,146,42,0.18);
+  padding: 0 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  height: 58px;
+}
+.nav-brand { display: flex; align-items: center; gap: 11px; }
+.nav-brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(216,144,24,0.4); }
+.nav-brand-text .club { font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 2px; color: white; }
+.nav-brand-text .sub { font-size: 7px; letter-spacing: 3px; color: rgba(216,144,24,0.7); text-transform: uppercase; }
+.nav-links { display: flex; gap: 24px; align-items: center; }
+.nav-links span { font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,0.4); text-transform: uppercase; font-weight: 600; }
+.nav-links span.active { color: white; }
+.nav-cta {
+  background: linear-gradient(135deg, #9A6010, #D89018, #F0A818);
+  color: #060e1a; padding: 7px 16px; border-radius: 2px;
+  font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+}
+
+/* HERO */
+.hero {
+  position: relative; overflow: hidden;
+  background:
+    linear-gradient(168deg, rgba(6,14,26,0.94) 0%, rgba(12,30,56,0.87) 55%, rgba(6,14,26,0.96) 100%),
+    url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=860') center/cover no-repeat;
+  padding: 60px 24px 52px; text-align: center;
+}
+.tricolor { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #FF9933 33.3%, white 33.3%, white 66.6%, #138808 66.6%); }
+.hero-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%); pointer-events: none; }
+
+.eyebrow { font-size: 9px; letter-spacing: 8px; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 12px; font-weight: 600; }
+.star-divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 12px; }
+.star-line { height: 1px; width: 50px; background: linear-gradient(90deg, transparent, rgba(216,144,24,0.45)); }
+.star-line.r { background: linear-gradient(90deg, rgba(216,144,24,0.45), transparent); }
+.star-dots { font-size: 8px; color: rgba(216,144,24,0.5); letter-spacing: 4px; }
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 64px; letter-spacing: 7px; line-height: 0.95;
+  margin-bottom: 4px;
+  background: linear-gradient(135deg, #9A6010 0%, #D89018 25%, #F5C040 50%, #D89018 75%, #9A6010 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-family: 'Oswald', sans-serif;
+  font-size: 22px; letter-spacing: 10px; color: rgba(255,255,255,0.75);
+  text-transform: uppercase; margin-bottom: 20px; font-weight: 600;
+}
+.hero-rule { width: 64px; height: 2px; background: linear-gradient(90deg, transparent, #D89018, #F5C040, #D89018, transparent); margin: 0 auto 18px; }
+.hero-tagline { font-size: 8px; letter-spacing: 10px; color: rgba(255,255,255,0.22); text-transform: uppercase; margin-bottom: 34px; }
+
+.hero-btns { display: flex; gap: 14px; justify-content: center; }
+.btn-join {
+  background: linear-gradient(135deg, #9A6010, #D89018, #F0A818, #D89018, #9A6010);
+  color: #060e1a; padding: 12px 30px;
+  font-weight: 800; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  border: none; cursor: pointer;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+.btn-explore {
+  background: transparent; color: rgba(255,255,255,0.75);
+  padding: 11px 30px; font-weight: 700; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  border: 1px solid rgba(216,144,24,0.4); cursor: pointer;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+}
+
+/* STATS */
+.stats {
+  background: #0a1e3c;
+  border-top: 1px solid rgba(216,144,24,0.14);
+  border-bottom: 1px solid rgba(216,144,24,0.14);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.stat { padding: 14px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.04); }
+.stat:last-child { border-right: none; }
+.stat-n {
+  font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px;
+  background: linear-gradient(135deg, #D89018, #F5C040, #D89018);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-l { font-size: 7px; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-top: 2px; }
+
+/* SECTION */
+.section { background: #07111f; padding: 22px 24px 20px; }
+.sec-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.sec-bar { width: 3px; height: 18px; background: linear-gradient(180deg, #F5C040, #9A6010); border-radius: 2px; }
+.sec-title { font-family: 'Oswald', sans-serif; font-size: 16px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+.sec-badge { margin-left: auto; font-size: 8px; letter-spacing: 2px; color: rgba(216,144,24,0.55); text-transform: uppercase; border: 1px solid rgba(216,144,24,0.25); padding: 3px 8px; border-radius: 2px; }
+
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card {
+  background: #0c1e38; border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 5px; padding: 15px; position: relative; overflow: hidden;
+}
+.card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010); }
+.card-tag { font-size: 8px; letter-spacing: 2px; color: rgba(216,144,24,0.6); text-transform: uppercase; margin-bottom: 5px; }
+.card-name { font-family: 'Oswald', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 1px; color: white; }
+.card-meta { font-size: 8px; color: rgba(255,255,255,0.28); letter-spacing: 1px; text-transform: uppercase; margin-top: 5px; }
+
+/* Bottom accent */
+.bottom-strip { height: 3px; background: linear-gradient(90deg, transparent, #9A6010 20%, #F5C040 50%, #9A6010 80%, transparent); }
+
+/* Caption */
+.caption { max-width: 860px; margin: 20px auto 0; background: #0b1525; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 16px 20px; }
+.caption h4 { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+.caption-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.caption-item { font-size: 10px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+.caption-item strong { color: rgba(255,255,255,0.7); }
+
+.approve-row { text-align: center; margin-top: 24px; padding-bottom: 8px; }
+.approve-btn {
+  background: linear-gradient(135deg, #9A6010, #D89018, #F0A818);
+  color: #060e1a; padding: 13px 40px; border: none; border-radius: 3px;
+  font-weight: 800; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- PALETTE -->
+<p class="palette-header">Extracted Colors from BCC.jpg</p>
+<div class="palette-row">
+  <div class="swatch">
+    <div class="swatch-color g-navy-deep"></div>
+    <div class="swatch-info">
+      <div class="swatch-hex">#0c3054</div>
+      <div class="swatch-name">Shield Navy (primary)</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color g-navy-mid"></div>
+    <div class="swatch-info">
+      <div class="swatch-hex">#183054</div>
+      <div class="swatch-name">Shield Navy (mid)</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color g-navy-card"></div>
+    <div class="swatch-info">
+      <div class="swatch-hex">#0a1e40</div>
+      <div class="swatch-name">Card Background</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color g-gold"></div>
+    <div class="swatch-info">
+      <div class="swatch-hex">#D89018 → #F5C040</div>
+      <div class="swatch-name">Gold Gradient (BCC text)</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color g-white"></div>
+    <div class="swatch-info">
+      <div class="swatch-hex">#FFFFFF</div>
+      <div class="swatch-name">Text / Banner</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color g-saffron"></div>
+    <div class="swatch-info">
+      <div class="swatch-hex">#FF9933</div>
+      <div class="swatch-name">Indian Flag Saffron</div>
+    </div>
+  </div>
+  <div class="swatch">
+    <div class="swatch-color g-green"></div>
+    <div class="swatch-info">
+      <div class="swatch-hex">#138808</div>
+      <div class="swatch-name">Indian Flag Green</div>
+    </div>
+  </div>
+</div>
+
+<!-- FONTS -->
+<p class="fonts-header">Recommended Fonts</p>
+<div class="font-row">
+  <div class="font-card">
+    <div class="font-specimen">
+      <div style="font-family:'Bebas Neue';font-size:36px;letter-spacing:4px;" class="gold-text">BHARAT</div>
+    </div>
+    <div class="font-label">Bebas Neue</div>
+    <div class="font-use">Hero titles · big numbers</div>
+  </div>
+  <div class="font-card">
+    <div class="font-specimen">
+      <div style="font-family:'Oswald';font-size:22px;font-weight:700;letter-spacing:3px;">CRICKET CLUB</div>
+    </div>
+    <div class="font-label">Oswald Bold</div>
+    <div class="font-use">Section headings · nav · cards</div>
+  </div>
+  <div class="font-card">
+    <div class="font-specimen">
+      <div style="font-family:'Montserrat';font-size:13px;font-weight:500;color:rgba(255,255,255,0.7);">Dallas–Fort Worth's premier<br>cricket club since 2022</div>
+    </div>
+    <div class="font-label">Montserrat</div>
+    <div class="font-use">Body text · labels · meta</div>
+  </div>
+</div>
+
+<!-- MOCKUP -->
+<div class="mockup">
+  <nav class="nav">
+    <div class="nav-brand">
+      <img src="/images/gallery/BCC.jpg" alt="BCC">
+      <div class="nav-brand-text">
+        <div class="club">Bharat Cricket Club</div>
+        <div class="sub">By UGNT · Dallas–Fort Worth</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <span class="active">Home</span>
+      <span>About</span>
+      <span>Teams</span>
+      <span>Gallery</span>
+      <span>Partners</span>
+      <span class="nav-cta">Join Us</span>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="tricolor"></div>
+    <div class="hero-glow"></div>
+    <p class="eyebrow">Welcome to</p>
+    <div class="star-divider">
+      <div class="star-line"></div>
+      <span class="star-dots">★ &nbsp; ★ &nbsp; ★</span>
+      <div class="star-line r"></div>
+    </div>
+    <h1 class="hero-title">Bharat</h1>
+    <p class="hero-sub">Cricket Club</p>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">One Team &nbsp;·&nbsp; One Pride</p>
+    <div class="hero-btns">
+      <button class="btn-join">Join Us</button>
+      <button class="btn-explore">Explore Teams</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Seasons</div></div>
+    <div class="stat"><div class="stat-n">2</div><div class="stat-l">Teams</div></div>
+    <div class="stat"><div class="stat-n">40+</div><div class="stat-l">Players</div></div>
+    <div class="stat"><div class="stat-n">DFW</div><div class="stat-l">Dallas TX</div></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-head">
+      <div class="sec-bar"></div>
+      <span class="sec-title">Active Leagues</span>
+      <span class="sec-badge">Season 2025</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tag">DFW Premier League</div>
+        <div class="card-name">Bharat Warriors</div>
+        <div class="card-meta">● Active · T20 Format</div>
+      </div>
+      <div class="card">
+        <div class="card-tag">Battle of Bats</div>
+        <div class="card-name">Bharat Yodhas</div>
+        <div class="card-meta">◌ Upcoming · T10 Format</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-strip"></div>
+</div>
+
+<div class="caption">
+  <h4>Design tokens from logo analysis</h4>
+  <div class="caption-grid">
+    <div class="caption-item"><strong>Navy primary:</strong> #0c3054 (shield BG, extracted)</div>
+    <div class="caption-item"><strong>Gold mid:</strong> #D89018 (most common gold pixel)</div>
+    <div class="caption-item"><strong>Gold highlight:</strong> #F5C040 (bright shimmer)</div>
+    <div class="caption-item"><strong>Gold dark:</strong> #9A6010 (shadow anchor)</div>
+    <div class="caption-item"><strong>Tricolor:</strong> #FF9933 / white / #138808</div>
+    <div class="caption-item"><strong>Display:</strong> Bebas Neue + Oswald Bold</div>
+  </div>
+</div>
+
+<div class="approve-row">
+  <button class="approve-btn" onclick="this.textContent='✓ Direction Approved'; this.style.background='#1a4a1a'; this.style.color='white';">
+    Approve This Direction
+  </button>
+</div>
+
+</body>
+</html>
