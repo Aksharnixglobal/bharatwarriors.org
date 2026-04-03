@@ -479,6 +479,26 @@ function showAlbum(albumName) {
   event.target.closest('.gallery-btn').classList.add('active');
 }
 
+// Fix iOS double-tap delay: convert gallery onclick to touchend
+document.querySelectorAll('.gallery-item[onclick]').forEach(function(item) {
+  var handler = item.getAttribute('onclick');
+  var match = handler.match(/openLightbox\('([^']+)',\s*'([^']+)'\)/);
+  if (match) {
+    item.dataset.src = match[1];
+    item.dataset.caption = match[2];
+    item.removeAttribute('onclick');
+  }
+});
+
+function onGalleryTap(e) {
+  var item = e.target.closest('.gallery-item[data-src]');
+  if (!item) return;
+  if (e.type === 'touchend') e.preventDefault(); // prevent ghost click
+  openLightbox(item.dataset.src, item.dataset.caption);
+}
+document.addEventListener('click', onGalleryTap);
+document.addEventListener('touchend', onGalleryTap, { passive: false });
+
 // Lightbox
 var lb = document.getElementById('lb');
 var lbImg = document.getElementById('lb-img');
