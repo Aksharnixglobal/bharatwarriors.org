@@ -539,11 +539,24 @@ document.querySelectorAll('.gallery-item[onclick]').forEach(function(item) {
   }
 });
 
+// Track touchstart position so we can ignore scroll gestures
+var _tapStartX = 0, _tapStartY = 0;
+document.addEventListener('touchstart', function(e) {
+  _tapStartX = e.touches[0].clientX;
+  _tapStartY = e.touches[0].clientY;
+}, { passive: true });
+
 // Single handler for both click and touch (touchend prevents 300ms ghost click)
 function onGalleryTap(e) {
   var item = e.target.closest('.gallery-item[data-src]');
   if (!item) return;
-  if (e.type === 'touchend') e.preventDefault();
+  if (e.type === 'touchend') {
+    // Ignore if finger moved more than 10px — user was scrolling, not tapping
+    var dx = Math.abs(e.changedTouches[0].clientX - _tapStartX);
+    var dy = Math.abs(e.changedTouches[0].clientY - _tapStartY);
+    if (dx > 10 || dy > 10) return;
+    e.preventDefault();
+  }
 
   // Build photo list from the currently visible album
   var album = item.closest('.gallery-grid');
