@@ -178,8 +178,11 @@
     .row-medal img { width: 2.25rem; height: 2.25rem; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(216,144,24,0.4)); }
 
     .row-result {
-      display: flex; flex-direction: column; align-items: flex-end; gap: 0.05rem;
+      display: flex; flex-direction: row; align-items: center; gap: 0.5rem;
       flex-shrink: 0;
+    }
+    .row-result-text {
+      display: flex; flex-direction: column; align-items: flex-end; gap: 0.05rem;
     }
     .result-abbr {
       font-family: 'Oswald', sans-serif;
@@ -290,10 +293,12 @@
             <span class="row-year">2025</span>
             <span class="row-season-name">Spring</span>
           </div>
-          <span class="row-medal"><img src="images/assets/medal.png" alt="Medal"></span>
           <div class="row-result">
-            <span class="result-abbr">QF</span>
-            <span class="result-full">Quarter Final</span>
+            <span class="row-medal"><img src="images/assets/medal.png" alt="Medal"></span>
+            <div class="row-result-text">
+              <span class="result-abbr">QF</span>
+              <span class="result-full">Quarter Final</span>
+            </div>
           </div>
         </div>
         <div class="achievement-row" data-tier="SF">
@@ -301,10 +306,12 @@
             <span class="row-year">2025</span>
             <span class="row-season-name">Fall</span>
           </div>
-          <span class="row-medal"><img src="images/assets/medal.png" alt="Medal"></span>
           <div class="row-result">
-            <span class="result-abbr">SF</span>
-            <span class="result-full">Semi Final</span>
+            <span class="row-medal"><img src="images/assets/medal.png" alt="Medal"></span>
+            <div class="row-result-text">
+              <span class="result-abbr">SF</span>
+              <span class="result-full">Semi Final</span>
+            </div>
           </div>
         </div>
       </div>
@@ -329,10 +336,12 @@
             <span class="row-year">2025</span>
             <span class="row-season-name">Spring</span>
           </div>
-          <span class="row-medal"><img src="images/assets/medal.png" alt="Medal"></span>
           <div class="row-result">
-            <span class="result-abbr">QF</span>
-            <span class="result-full">Quarter Final</span>
+            <span class="row-medal"><img src="images/assets/medal.png" alt="Medal"></span>
+            <div class="row-result-text">
+              <span class="result-abbr">QF</span>
+              <span class="result-full">Quarter Final</span>
+            </div>
           </div>
         </div>
       </div>
