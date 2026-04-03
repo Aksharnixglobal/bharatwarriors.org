@@ -10,147 +10,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  html, body {
-    background: #07111f !important;
-    min-height: 100vh !important;
-    color: rgba(255,255,255,0.75);
-    font-family: 'Montserrat', sans-serif;
-  }
+  body { background: #07111f !important; color: rgba(255,255,255,0.75); margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; min-height: 100vh; }
 
-  h1, h2, h3, h4 {
+  main { padding-top: 5rem; min-height: 100vh; }
+
+  h1, h2, h3.section-heading {
     font-family: 'Oswald', sans-serif !important;
     font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
     background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
 
-  @keyframes goldSlide {
-    0%   { background-position: 0% 0; }
-    100% { background-position: 300% 0; }
-  }
-  @keyframes cardIn {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .warriors-header { text-align: center; padding: 2.5rem 2rem 0.5rem; }
+  .warriors-header h1 { font-size: 3rem; margin: 0; }
+  .page-subtitle {
+    text-align: center; font-size: 1.1rem;
+    color: rgba(255,255,255,0.5); margin-bottom: 3.5rem; padding: 0 2rem;
   }
 
-  /* ── Shared card shell ── */
-  .w-card {
-    background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
-    border: 1px solid rgba(216,144,24,0.18);
-    border-radius: 14px;
-    position: relative; overflow: hidden;
+  .warriors-container {
+    max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 4rem;
+  }
+
+  .teams-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem; margin-bottom: 3rem;
+  }
+
+  /* ── Card shell (identical to achievements.html) ── */
+  .achievement-card {
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%) !important;
+    border: 1px solid rgba(216,144,24,0.18) !important;
+    border-radius: 14px; overflow: hidden; position: relative;
     transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
     animation: cardIn 0.6s ease both;
   }
-  .w-card::before {
+  .achievement-card:nth-child(2) { animation-delay: 0.12s; }
+  .achievement-card:nth-child(3) { animation-delay: 0.24s; }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .achievement-card:hover {
+    border-color: rgba(216,144,24,0.45) !important;
+    box-shadow: 0 0 50px rgba(216,144,24,0.1), 0 24px 64px rgba(0,0,0,0.5) !important;
+    transform: translateY(-3px) !important;
+  }
+  .achievement-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
-    background-size: 300% 100%;
-    animation: goldSlide 4s linear infinite;
+    background-size: 300% 100%; animation: goldSlide 4s linear infinite;
   }
-  .w-card::after {
-    content: '';
-    position: absolute; bottom: -60px; right: -60px;
+  @keyframes goldSlide { 0% { background-position: 0% 0; } 100% { background-position: 300% 0; } }
+  .achievement-card::after {
+    content: ''; position: absolute; bottom: -60px; right: -60px;
     width: 180px; height: 180px;
-    background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(216,144,24,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
-  .w-card:hover {
-    border-color: rgba(216,144,24,0.45);
-    box-shadow: 0 0 50px rgba(216,144,24,0.1), 0 24px 64px rgba(0,0,0,0.5);
-    transform: translateY(-3px);
-  }
 
-  /* ── Page layout ── */
-  .warriors-main { padding: 5rem 2rem 4rem; }
-  .warriors-inner { max-width: 1200px; margin: 0 auto; }
-  .page-title { text-align: center; font-size: 3rem; margin-bottom: 0.75rem; }
-  .page-subtitle { text-align: center; font-size: 1.1rem; color: rgba(255,255,255,0.6); margin-bottom: 3.5rem; }
-
-  /* ── Team leadership cards ── */
-  .teams-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2rem; margin-bottom: 4rem;
-  }
-  .team-card { padding: 2rem; }
-  .team-card:nth-child(2) { animation-delay: 0.1s; }
-  .team-header {
-    display: flex; align-items: center; justify-content: center;
-    gap: 0.75rem; margin-bottom: 0.4rem;
-  }
-  .team-header img {
-    width: 88px; height: 88px; border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #D89018;
-    box-shadow: 0 0 10px rgba(216,144,24,0.5), 0 0 22px rgba(216,144,24,0.25);
-  }
-  .team-header h3 { font-size: 1.6rem; margin: 0; }
-  .team-league {
-    text-align: center; font-size: 0.78rem; font-weight: 600;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.35); margin-bottom: 1.5rem;
-    font-family: 'Montserrat', sans-serif;
-  }
-  .roster-row {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.85rem 0;
+  /* ── Card header ── */
+  .card-header {
+    display: flex; align-items: center; gap: 1.4rem;
+    padding: 1.8rem 2rem 1.6rem;
     border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(0,0,0,0.15);
   }
-  .roster-row:last-child { border-bottom: none; }
-  .roster-label {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.35); font-family: 'Montserrat', sans-serif;
+  .card-logo-wrap { position: relative; flex-shrink: 0; }
+  .card-logo-wrap::before {
+    content: ''; position: absolute; inset: -3px; border-radius: 50%;
+    background: conic-gradient(from 0deg, #9A6010, #F5C040, #D89018, #9A6010);
+    animation: spin 10s linear infinite; z-index: 0;
   }
-  .roster-label.captain { color: #D89018; }
-  .roster-name {
-    font-family: 'Oswald', sans-serif; font-size: 1.05rem; font-weight: 700;
-    color: white; letter-spacing: 1px;
-    background: none; -webkit-text-fill-color: white;
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .card-logo {
+    position: relative; z-index: 1;
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(255,255,255,0.96);
+    display: flex; align-items: center; justify-content: center; padding: 6px;
   }
+  .card-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
 
-  /* ── Star performers ── */
-  .section-heading { text-align: center; margin: 1rem 0 2rem; font-size: 2rem; }
-  .performers-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1.5rem; margin-bottom: 4rem;
-  }
-  .performer-card { padding: 1.75rem; }
-  .performer-card:nth-child(2) { animation-delay: 0.08s; }
-  .performer-card:nth-child(3) { animation-delay: 0.16s; }
-  .performer-card:nth-child(4) { animation-delay: 0.24s; }
-  .performer-category {
-    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
-    color: rgba(255,255,255,0.35); margin-bottom: 0.5rem; font-family: 'Montserrat', sans-serif;
-  }
-  .performer-name {
-    font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 700;
-    letter-spacing: 1.5px;
-    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040);
+  .card-title-group { flex: 1; min-width: 0; }
+  .card-league-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    line-height: 1; margin: 0 0 0.3rem;
+  }
+  .card-league-label {
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+    color: rgba(255,255,255,0.28);
   }
 
-  /* ── Team values ── */
-  .values-section { padding: 2.5rem; margin-bottom: 4rem; }
-  .values-section h3 { font-size: 1.8rem; margin: 0 0 1.5rem; }
-  .value-row {
-    padding: 1rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+  /* ── Rows ── */
+  .card-achievements { padding: 0.5rem 0 0.75rem; }
+  .achievement-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.05rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    position: relative; transition: background 0.2s;
   }
-  .value-row:last-child { border-bottom: none; }
-  .value-row h4 { font-size: 1rem; margin: 0 0 0.4rem; }
-  .value-row p {
-    color: rgba(255,255,255,0.5); margin: 0; line-height: 1.6; font-size: 0.88rem;
-    font-family: 'Montserrat', sans-serif; -webkit-text-fill-color: rgba(255,255,255,0.5);
+  .achievement-row:last-child { border-bottom: none; }
+  .achievement-row:hover { background: rgba(216,144,24,0.04); }
+  .achievement-row::before {
+    content: ''; position: absolute; left: 0; top: 22%; bottom: 22%;
+    width: 3px; border-radius: 0 3px 3px 0;
   }
+  .achievement-row[data-tier="captain"]::before { background: #F5C040; box-shadow: 0 0 8px rgba(245,192,64,0.5); }
+  .achievement-row[data-tier="vice"]::before    { background: #b0b8c8; box-shadow: 0 0 8px rgba(176,184,200,0.5); }
+  .achievement-row[data-tier="star"]::before    { background: #D89018; box-shadow: 0 0 8px rgba(216,144,24,0.4); }
+
+  .row-season { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
+  .row-year {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(255,255,255,0.3) !important;
+  }
+  .row-season-name {
+    font-family: 'Oswald', sans-serif; font-size: 1rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.82) !important;
+  }
+  .row-medal { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+  .row-desc {
+    flex: 2; font-size: 0.8rem; line-height: 1.6;
+    color: rgba(255,255,255,0.42); margin: 0;
+    -webkit-text-fill-color: rgba(255,255,255,0.42);
+  }
+
+  /* ── Section heading ── */
+  .section-heading { text-align: center; font-size: 2rem; margin: 1rem 0 2rem; }
 
   /* ── Join CTA ── */
-  .join-cta { text-align: center; padding: 3rem 2rem; margin-bottom: 2rem; }
-  .join-cta h3 { font-size: 2rem; margin-bottom: 1rem; }
+  .join-cta { text-align: center; padding: 3rem 2rem; }
+  .join-cta .card-league-name { font-size: 1.8rem; display: block; margin-bottom: 0.75rem; }
   .join-cta p {
-    color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.6;
-    font-family: 'Montserrat', sans-serif; -webkit-text-fill-color: rgba(255,255,255,0.7);
+    color: rgba(255,255,255,0.55); font-size: 1rem; margin-bottom: 1.75rem;
+    -webkit-text-fill-color: rgba(255,255,255,0.55);
   }
-
   .btn {
     display: inline-block; padding: 0.85rem 2.5rem;
     font-family: 'Montserrat', sans-serif; font-weight: 800;
@@ -169,8 +167,11 @@
 
   @media (max-width: 768px) {
     .teams-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    .page-title { font-size: 2rem; }
-    .warriors-main { padding: 5rem 1rem 3rem; }
+    .warriors-header h1 { font-size: 2.2rem; }
+    .warriors-container { padding: 2rem 1rem 3rem; }
+    .card-header { padding: 1.5rem 1.5rem 1.3rem; }
+    .achievement-row { padding: 1rem 1.5rem; }
+    .card-league-name { font-size: 1.6rem; }
   }
 </style>
 </head>
@@ -228,93 +229,146 @@
 </script>
 
 <!-- Main Content -->
-<main id="main-content" class="warriors-main">
-  <div class="warriors-inner">
-    <h1 class="page-title">Our Teams</h1>
-    <p class="page-subtitle">Meet the warriors who represent our club with pride and determination in DFCL & LECA leagues.</p>
+<main id="main-content">
+  <div class="warriors-header">
+    <h1>Our Teams</h1>
+  </div>
+  <p class="page-subtitle">Meet the warriors who represent our club with pride and determination in DFCL & LECA leagues.</p>
 
-    <!-- Team Leadership -->
+  <div class="warriors-container">
+
+    <!-- Team Cards -->
     <div class="teams-grid">
 
       <!-- Bharat Warriors -->
-      <div class="w-card team-card">
-        <div class="team-header">
-          <img src="images/gallery/BW.jpg" alt="Bharat Warriors">
-          <h3>Bharat Warriors</h3>
+      <div class="achievement-card">
+        <div class="card-header">
+          <div class="card-logo-wrap">
+            <div class="card-logo">
+              <img src="images/gallery/BW.jpg" alt="Bharat Warriors">
+            </div>
+          </div>
+          <div class="card-title-group">
+            <div class="card-league-name">Bharat Warriors</div>
+            <div class="card-league-label">DFCL & LECA League</div>
+          </div>
         </div>
-        <p class="team-league">DFCL & LECA League Team</p>
-        <div class="roster-row">
-          <span class="roster-label captain">Captain</span>
-          <span class="roster-name">Pratik Patel</span>
-        </div>
-        <div class="roster-row">
-          <span class="roster-label">Vice Captain</span>
-          <span class="roster-name">Raj Lakkad</span>
+        <div class="card-achievements">
+          <div class="achievement-row" data-tier="captain">
+            <div class="row-season">
+              <span class="row-year">Captain</span>
+              <span class="row-season-name">Pratik Patel</span>
+            </div>
+          </div>
+          <div class="achievement-row" data-tier="vice">
+            <div class="row-season">
+              <span class="row-year">Vice Captain</span>
+              <span class="row-season-name">Raj Lakkad</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Bharat Yodhas -->
-      <div class="w-card team-card">
-        <div class="team-header">
-          <img src="images/gallery/BY.jpg" alt="Bharat Yodhas">
-          <h3>Bharat Yodhas</h3>
+      <div class="achievement-card">
+        <div class="card-header">
+          <div class="card-logo-wrap">
+            <div class="card-logo">
+              <img src="images/gallery/BY.jpg" alt="Bharat Yodhas">
+            </div>
+          </div>
+          <div class="card-title-group">
+            <div class="card-league-name">Bharat Yodhas</div>
+            <div class="card-league-label">DFCL League</div>
+          </div>
         </div>
-        <p class="team-league">DFCL League Team</p>
-        <div class="roster-row">
-          <span class="roster-label captain">Captain</span>
-          <span class="roster-name">Bhavik Gandhi</span>
-        </div>
-        <div class="roster-row">
-          <span class="roster-label">Vice Captain</span>
-          <span class="roster-name">Pratik Prabhu</span>
+        <div class="card-achievements">
+          <div class="achievement-row" data-tier="captain">
+            <div class="row-season">
+              <span class="row-year">Captain</span>
+              <span class="row-season-name">Bhavik Gandhi</span>
+            </div>
+          </div>
+          <div class="achievement-row" data-tier="vice">
+            <div class="row-season">
+              <span class="row-year">Vice Captain</span>
+              <span class="row-season-name">Pratik Prabhu</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Star Performers -->
     <h2 class="section-heading">Star Performers</h2>
-    <div class="performers-grid">
-      <div class="w-card performer-card">
-        <div class="performer-category">Top Scorer</div>
-        <div class="performer-name">Gaurav P.</div>
-      </div>
-      <div class="w-card performer-card">
-        <div class="performer-category">Best Bowler</div>
-        <div class="performer-name">Darshan P.</div>
-      </div>
-      <div class="w-card performer-card">
-        <div class="performer-category">Best Fielder</div>
-        <div class="performer-name">Bhavik G.</div>
-      </div>
-      <div class="w-card performer-card">
-        <div class="performer-category">17 Wickets</div>
-        <div class="performer-name">Patrick P.</div>
+    <div class="achievement-card" style="margin-bottom:3rem">
+      <div class="card-achievements">
+        <div class="achievement-row" data-tier="star">
+          <div class="row-season">
+            <span class="row-year">Top Scorer</span>
+            <span class="row-season-name">Gaurav P.</span>
+          </div>
+          <span class="row-medal">🏏</span>
+        </div>
+        <div class="achievement-row" data-tier="star">
+          <div class="row-season">
+            <span class="row-year">Best Bowler</span>
+            <span class="row-season-name">Darshan P.</span>
+          </div>
+          <span class="row-medal">🎯</span>
+        </div>
+        <div class="achievement-row" data-tier="star">
+          <div class="row-season">
+            <span class="row-year">Best Fielder</span>
+            <span class="row-season-name">Bhavik G.</span>
+          </div>
+          <span class="row-medal">⚡</span>
+        </div>
+        <div class="achievement-row" data-tier="star">
+          <div class="row-season">
+            <span class="row-year">17 Wickets</span>
+            <span class="row-season-name">Patrick P.</span>
+          </div>
+          <span class="row-medal">🏆</span>
+        </div>
       </div>
     </div>
 
     <!-- Team Values -->
-    <div class="w-card values-section">
-      <h3>Our Team Values</h3>
-      <div class="value-row">
-        <h4>Excellence</h4>
-        <p>We strive for the highest standards in every match and practice session, pushing our limits to achieve greatness.</p>
-      </div>
-      <div class="value-row">
-        <h4>Teamwork</h4>
-        <p>Individual brilliance shines brightest when supported by team unity. Together, we are unstoppable.</p>
-      </div>
-      <div class="value-row">
-        <h4>Respect</h4>
-        <p>We respect our opponents, officials, and the spirit of cricket. Integrity is our foundation.</p>
+    <h2 class="section-heading">Our Values</h2>
+    <div class="achievement-card" style="margin-bottom:3rem">
+      <div class="card-achievements">
+        <div class="achievement-row" data-tier="captain">
+          <div class="row-season">
+            <span class="row-year">01</span>
+            <span class="row-season-name">Excellence</span>
+          </div>
+          <p class="row-desc">We strive for the highest standards in every match and practice session, pushing our limits to achieve greatness.</p>
+        </div>
+        <div class="achievement-row" data-tier="captain">
+          <div class="row-season">
+            <span class="row-year">02</span>
+            <span class="row-season-name">Teamwork</span>
+          </div>
+          <p class="row-desc">Individual brilliance shines brightest when supported by team unity. Together, we are unstoppable.</p>
+        </div>
+        <div class="achievement-row" data-tier="captain">
+          <div class="row-season">
+            <span class="row-year">03</span>
+            <span class="row-season-name">Respect</span>
+          </div>
+          <p class="row-desc">We respect our opponents, officials, and the spirit of cricket. Integrity is our foundation.</p>
+        </div>
       </div>
     </div>
 
-    <!-- Join Us CTA -->
-    <div class="w-card join-cta">
-      <h3>Join Our Warriors Family</h3>
+    <!-- Join CTA -->
+    <div class="achievement-card join-cta">
+      <span class="card-league-name">Join Our Warriors Family</span>
       <p>Be part of the Bharat Cricket Club community. We're always looking for talented players!</p>
       <a href="contact.html" class="btn btn-primary">Contact Us to Join</a>
     </div>
+
   </div>
 </main>
 
