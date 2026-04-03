@@ -164,8 +164,77 @@ h1, h2 {
   background: #07111f !important;
   border-top: 1px solid rgba(216,144,24,0.15) !important;
 }
-
 .site-footer p { color: rgba(255,255,255,0.35) !important; }
+
+/* ── Lightbox ── */
+#lb {
+  display: none;
+  position: fixed; inset: 0; z-index: 9999;
+  flex-direction: column;
+  background: #000;
+}
+#lb.open { display: flex; }
+
+/* Image fills everything above the bottom bar */
+#lb-img {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  object-fit: contain;
+  display: block;
+  animation: lbIn 0.2s ease;
+}
+@keyframes lbIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Bottom bar — always visible, always accessible */
+#lb-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 14px 20px;
+  padding-bottom: max(14px, env(safe-area-inset-bottom, 14px));
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  box-sizing: border-box;
+  min-height: 64px;
+}
+#lb-caption {
+  flex: 1;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#lb-close {
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0 1.4rem;
+  height: 44px;
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 22px;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 1px;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+#lb-close:hover, #lb-close:active {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.45);
+}
 
 @media (max-width: 768px) {
   .nav-menu {
@@ -374,12 +443,12 @@ h1, h2 {
   </div>
 </main>
 
-<!-- Lightbox Modal -->
-<div id="lightboxModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.97);overflow:hidden" onclick="closeLightbox()">
-  <div onclick="closeLightbox()" style="position:absolute;top:16px;right:20px;z-index:10001;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.2);border-radius:50%;border:1px solid rgba(255,255,255,0.3);color:white;font-size:1.5rem;cursor:pointer">&times;</div>
-  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;padding:60px 1rem 1rem;box-sizing:border-box">
-    <img id="lightboxImage" style="max-width:95%;max-height:80vh;object-fit:contain;border-radius:6px" src="" alt="" onclick="event.stopPropagation()">
-    <div id="lightboxCaption" style="color:rgba(255,255,255,0.7);font-size:0.9rem;margin-top:1rem;text-align:center;font-family:Montserrat,sans-serif"></div>
+<!-- Lightbox -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img id="lb-img" src="" alt="">
+  <div id="lb-bar">
+    <span id="lb-caption"></span>
+    <button id="lb-close" onclick="closeLightbox()" aria-label="Close photo">&#x2715; Close</button>
   </div>
 </div>
 
@@ -410,29 +479,23 @@ function showAlbum(albumName) {
   event.target.closest('.gallery-btn').classList.add('active');
 }
 
-// Lightbox functionality
-function preventScroll(e) { e.preventDefault(); }
+// Lightbox
+var lb  = document.getElementById('lb');
+var lbImg = document.getElementById('lb-img');
 
-function openLightbox(imageSrc, caption) {
-  var modal = document.getElementById('lightboxModal');
-  var img = document.getElementById('lightboxImage');
-  var cap = document.getElementById('lightboxCaption');
-
-  modal.style.display = 'block';
-  img.src = imageSrc;
-  cap.textContent = caption;
-
-  document.addEventListener('touchmove', preventScroll, { passive: false });
-  document.addEventListener('wheel', preventScroll, { passive: false });
+function openLightbox(src, caption) {
+  lbImg.src = src;
+  lbImg.alt = caption;
+  document.getElementById('lb-caption').textContent = caption;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
-  document.getElementById('lightboxModal').style.display = 'none';
-  document.removeEventListener('touchmove', preventScroll);
-  document.removeEventListener('wheel', preventScroll);
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
-// Close on Escape key
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeLightbox();
 });
