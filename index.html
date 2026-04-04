@@ -20,7 +20,7 @@ html, body {
     linear-gradient(168deg, rgba(7,17,31,0.96) 0%, rgba(12,30,56,0.91) 50%, rgba(7,17,31,0.97) 100%),
     url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000') center/cover no-repeat;
   background-attachment: fixed;
-  padding: 100px 2rem 80px;
+  padding: 80px 2rem 60px;
   min-height: 75vh;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
@@ -70,8 +70,16 @@ html, body {
 .hero-tagline {
   font-family: 'Montserrat', sans-serif;
   font-size: 15px; letter-spacing: 10px; text-transform: uppercase;
-  color: #D89018; font-weight: 700; margin-bottom: 36px; white-space: nowrap;
+  color: #D89018; font-weight: 700; margin-bottom: 14px; white-space: nowrap;
 }
+.hero-mahadev {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: 'Montserrat', sans-serif; font-size: 12px;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); font-weight: 600;
+  margin-bottom: 36px;
+}
+.om-icon { width: 18px; height: 18px; object-fit: contain; opacity: 0.75; }
 .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
 .btn {
   padding: 12px 28px; font-family: 'Montserrat', sans-serif;
@@ -276,6 +284,11 @@ footer .copyright a { display: inline; color: #D89018; }
             <h2>Bharat Cricket Club</h2>
             <div class="hero-rule"></div>
             <p class="hero-tagline">One Club. One Pride.</p>
+            <p class="hero-mahadev">
+              <img src="images/assets/om.png" alt="Om" class="om-icon">
+              Har Har Mahadev
+              <img src="images/assets/om.png" alt="Om" class="om-icon">
+            </p>
             <div class="hero-buttons">
                 <a href="contact.html" class="btn btn-primary">Join Us</a>
                 <a href="warriors.html" class="btn btn-secondary">Explore Teams</a>
