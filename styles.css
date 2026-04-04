@@ -131,12 +131,15 @@ nav .logo .subtitle {
 .nav-overlay {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 80px; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.55);
   z-index: 998;
   -webkit-tap-highlight-color: transparent;
 }
 .nav-overlay.active { display: block; }
+@media (max-width: 480px) {
+  .nav-overlay { top: 62px; }
+}
 
 /* Hamburger Menu Button */
 .menu-toggle {
@@ -252,15 +255,14 @@ nav ul li a.active::after {
   }
   nav ul {
     position: fixed !important;
-    top: 0;
+    top: 80px;
     right: -100% !important;
     width: 280px;
-    height: 100vh;
-    height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    height: calc(100dvh - 80px);
     background: #0c3054;
     flex-direction: column;
     gap: 0;
-    padding: 100px 2rem 2rem;
+    padding: 1.5rem 2rem 2rem;
     transition: right 0.3s ease;
     box-shadow: -5px 0 15px rgba(0,0,0,0.3);
     overflow-y: auto;
@@ -353,6 +355,10 @@ nav ul li a.active::after {
   nav .logo .subtitle {
     font-size: 0.45rem;
     letter-spacing: 1.5px;
+  }
+  nav ul {
+    top: 62px;
+    height: calc(100dvh - 62px);
   }
 }
 
