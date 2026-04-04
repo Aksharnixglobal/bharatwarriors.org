@@ -73,12 +73,13 @@ body {
 
 /* Simple shared navigation (matches index.html and gallery screenshot) */
 nav {
-  background: #0c3054;
+  background:
+    linear-gradient(90deg, #FF9933 33.3%, #ffffff 33.3%, #ffffff 66.6%, #138808 66.6%) bottom / 100% 3px no-repeat,
+    #0c3054;
   padding: 0.85rem 2rem;
   position: sticky;
   top: 0;
   z-index: 999998 !important;
-  border-bottom: 1px solid rgba(216,144,24,0.12);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -131,7 +132,7 @@ nav .logo .subtitle {
 .nav-overlay {
   display: none;
   position: fixed;
-  top: 80px; left: 0; right: 0; bottom: 0;
+  top: 92px; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.55);
   z-index: 998;
   -webkit-tap-highlight-color: transparent;
@@ -224,7 +225,7 @@ nav ul li a.active::after {
 /* Mobile Responsive Navigation */
 @media (max-width: 1100px) {
   nav {
-    padding: 0.75rem 0.5rem;
+    padding: 1.1rem 1rem;
   }
   nav .container {
     flex-wrap: wrap;
@@ -235,12 +236,12 @@ nav ul li a.active::after {
     max-width: calc(100% - 60px);
   }
   nav .logo img {
-    width: 55px;
-    height: 55px;
+    width: 64px;
+    height: 64px;
     flex-shrink: 0;
   }
   nav .logo h1 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     line-height: 1.15;
     letter-spacing: 2px;
     white-space: nowrap;
@@ -255,10 +256,10 @@ nav ul li a.active::after {
   }
   nav ul {
     position: fixed !important;
-    top: 80px;
+    top: 92px;
     right: -100% !important;
     width: 280px;
-    height: calc(100dvh - 80px);
+    height: calc(100dvh - 92px);
     background: #0c3054;
     flex-direction: column;
     gap: 0;
@@ -341,25 +342,26 @@ nav ul li a.active::after {
 /* Extra small phones */
 @media (max-width: 480px) {
   nav {
-    padding: 0.5rem 0.25rem;
+    padding: 0.85rem 0.75rem;
   }
   nav .logo img {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
   }
   nav .logo h1 {
-    font-size: 0.85rem;
+    font-size: 1.1rem;
     letter-spacing: 1px;
     white-space: nowrap;
   }
   nav .logo .subtitle {
-    font-size: 0.45rem;
+    font-size: 0.5rem;
     letter-spacing: 1.5px;
   }
   nav ul {
-    top: 62px;
-    height: calc(100dvh - 62px);
+    top: 76px;
+    height: calc(100dvh - 76px);
   }
+  .nav-overlay { top: 76px; }
 }
 
 :root {
