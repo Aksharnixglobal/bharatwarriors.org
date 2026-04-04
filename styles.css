@@ -127,6 +127,17 @@ nav .logo .subtitle {
   -webkit-text-fill-color: #D89018 !important;
 }
 
+/* Mobile nav backdrop overlay */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 998;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-overlay.active { display: block; }
+
 /* Hamburger Menu Button */
 .menu-toggle {
   display: none;

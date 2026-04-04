@@ -264,30 +264,29 @@ footer .copyright a { display: inline; color: #D89018; }
         </div>
     </nav>
     <script>
-        // Mobile menu toggle
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('nav ul');
-        
+        const overlay = document.createElement('div');
+        overlay.className = 'nav-overlay';
+        document.body.appendChild(overlay);
+
+        function openMenu() {
+            menuToggle.classList.add('active');
+            navMenu.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            menuToggle.classList.contains('active') ? closeMenu() : openMenu();
         });
-        
-        // Close menu when clicking on a link
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-        
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav')) {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
+        document.querySelectorAll('nav ul li a').forEach(link => link.addEventListener('click', closeMenu));
+        overlay.addEventListener('click', closeMenu);
     </script>
     <section class="hero">
         <div class="hero-tricolor"></div>
