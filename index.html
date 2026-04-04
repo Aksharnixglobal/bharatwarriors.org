@@ -101,18 +101,34 @@ html, body {
 /* Stats bar */
 .hero-stats {
   display: grid; grid-template-columns: repeat(4, 1fr);
-  background: #0a1e40;
-  border-top: 1px solid rgba(216,144,24,0.15);
-  border-bottom: 1px solid rgba(216,144,24,0.15);
+  background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
+  border-top: 1px solid rgba(216,144,24,0.25);
+  border-bottom: 1px solid rgba(216,144,24,0.12);
+  position: relative; overflow: hidden;
 }
-.hero-stat { padding: 16px 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.04); }
+.hero-stats::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+  background-size: 300% 100%;
+  animation: goldSlide 4s linear infinite;
+}
+.hero-stat {
+  padding: 28px 16px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  position: relative; transition: background 0.25s;
+}
 .hero-stat:last-child { border-right: none; }
+.hero-stat:hover { background: rgba(216,144,24,0.04); }
 .hero-stat-num {
-  font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 2px;
-  background: linear-gradient(135deg, #D89018, #F5C040, #D89018);
+  font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 3px; line-height: 1;
+  background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.hero-stat-label { font-size: 8px; letter-spacing: 2px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-top: 2px; }
+.hero-stat-label {
+  font-size: 9px; letter-spacing: 3px; font-weight: 700;
+  color: rgba(255,255,255,0.35); text-transform: uppercase; margin-top: 6px;
+}
 
 /* Leagues section */
 .leagues-section { padding: 2rem 2rem 4rem; background: #07111f; text-align: center; }
@@ -216,6 +232,8 @@ footer .copyright a { display: inline; color: #D89018; }
 
 @media (max-width: 768px) {
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .hero-stat { padding: 20px 12px; }
+  .hero-stat-num { font-size: 34px; }
   .hero h2 { font-size: 36px; letter-spacing: 5px; }
 }
     </style>
