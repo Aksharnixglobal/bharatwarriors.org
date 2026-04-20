@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Message Sent - BCC</title>
+<meta name="theme-color" content="#0c1e37" />
+<link rel="icon" href="images/brand/bcc-logo.jpg" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  body { background: #07111f !important; font-family: 'Montserrat', sans-serif; color: white; }
+
+  .thank-you-wrapper {
+    min-height: 70vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 3rem 2rem;
+  }
+
+  .thank-you-icon {
+    font-size: 4rem; margin-bottom: 1.5rem;
+  }
+
+  .thank-you-wrapper h1 {
+    font-family: 'Oswald', sans-serif; font-weight: 700;
+    font-size: 3rem; letter-spacing: 4px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .thank-you-wrapper p {
+    color: rgba(255,255,255,0.55); font-size: 1.1rem;
+    max-width: 500px; line-height: 1.7; margin-bottom: 2.5rem;
+  }
+
+  .site-footer { background: #07111f; border-top: 1px solid rgba(216,144,24,0.15); }
+  .site-footer p { color: rgba(255,255,255,0.35); font-size: 0.85rem; }
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="images/brand/bcc-logo.jpg" alt="Bharat Cricket Club Logo">
+      <h1>Bharat Cricket Club <span class="subtitle">By UGNT</span></h1>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="warriors.html">Teams</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="sponsors.html">Sponsor</a></li>
+      <li><a href="community-partner.html">Community Partner</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
+  function openMenu() { menuToggle.classList.add('active'); navMenu.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { menuToggle.classList.remove('active'); navMenu.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+  menuToggle.addEventListener('click', () => { menuToggle.classList.contains('active') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('nav ul li a').forEach(link => link.addEventListener('click', closeMenu));
+  overlay.addEventListener('click', closeMenu);
+</script>
+
+<main>
+  <div class="thank-you-wrapper">
+    <div class="thank-you-icon">✅</div>
+    <h1>Message Sent!</h1>
+    <p>Thank you for reaching out to Bharat Cricket Club. We'll get back to you as soon as possible.</p>
+    <a href="index.html" class="btn">Back to Home</a>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+  <p>Designed by <a href="https://aksharnixglobal.com" target="_blank">AksharNix Global</a></p>
+</footer>
+
+</body>
+</html>

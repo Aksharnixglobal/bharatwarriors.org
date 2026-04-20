@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Community Partners - BCC</title>
+<meta name="description" content="Community partners of Bharat Cricket Club By UGNT — organizations and businesses who support our mission." />
+<meta name="keywords" content="community partners, bharat warriors, cricket community, UGNT" />
+<meta name="theme-color" content="#0c1e37" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Community Partners - Bharat Cricket Club By UGNT" />
+<meta property="og:description" content="Meet the community partners who stand behind Bharat Cricket Club By UGNT." />
+<meta property="og:url" content="https://bharatwarriors.org/community-partner.html" />
+<meta property="og:image" content="https://bharatwarriors.org/images/brand/bcc-logo.jpg" />
+
+<link rel="icon" href="images/brand/bcc-logo.jpg" />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+<style>
+  body { background: #07111f !important; font-family: 'Montserrat', sans-serif; color: white; }
+
+  h1, h2 {
+    font-family: 'Oswald', sans-serif; font-weight: 700;
+    letter-spacing: 4px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+
+  .main-content {
+    margin-top: 3rem; padding: 2rem;
+    max-width: 1400px; margin-left: auto; margin-right: auto;
+  }
+  .page-title { text-align: center; font-size: 3rem; margin-bottom: 1rem; }
+  .page-subtitle {
+    text-align: center; font-size: 1.1rem;
+    color: rgba(255,255,255,0.5); margin-bottom: 3.5rem;
+  }
+
+  /* ── Sponsor grid ── */
+  .sponsor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 1200px;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* ── Card shell ── */
+  .sponsor {
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
+    border: 1px solid rgba(216,144,24,0.18);
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+    transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+    animation: cardIn 0.6s ease both;
+    display: flex; flex-direction: column;
+    text-decoration: none; color: inherit;
+  }
+  .sponsor:nth-child(2) { animation-delay: 0.08s; }
+  .sponsor:nth-child(3) { animation-delay: 0.16s; }
+  .sponsor:nth-child(4) { animation-delay: 0.24s; }
+  .sponsor:nth-child(5) { animation-delay: 0.32s; }
+  .sponsor:nth-child(6) { animation-delay: 0.40s; }
+  .sponsor:nth-child(7) { animation-delay: 0.48s; }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .sponsor::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+    background-size: 300% 100%;
+    animation: goldSlide 4s linear infinite;
+    z-index: 1;
+  }
+  @keyframes goldSlide {
+    0%   { background-position: 0% 0; }
+    100% { background-position: 300% 0; }
+  }
+
+  .sponsor::after {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(216,144,24,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .sponsor:hover {
+    border-color: rgba(216,144,24,0.45);
+    box-shadow: 0 0 50px rgba(216,144,24,0.1), 0 24px 64px rgba(0,0,0,0.5);
+    transform: translateY(-3px);
+  }
+
+  .sponsor-logo-area {
+    display: flex; align-items: center; justify-content: center;
+    height: 180px; padding: 0.75rem 1rem;
+    flex-shrink: 0;
+  }
+  .sponsor-logo-area img {
+    max-width: 90%; max-height: 160px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,0.4));
+  }
+
+  .sponsor-body {
+    padding: 0.35rem 0.75rem 0.2rem;
+    flex: 1; display: flex; flex-direction: column;
+  }
+  .sponsor-body h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin: 0 0 0.3rem;
+  }
+  .sponsor-description {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.73rem; line-height: 1.5;
+    margin: 0 0 0.5rem;
+  }
+  .sponsor-link {
+    display: inline-block; align-self: flex-start; margin-top: auto;
+    color: #D89018; font-weight: 700; font-size: 0.65rem;
+    text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase;
+    border: 1px solid rgba(216,144,24,0.35);
+    padding: 3px 10px; border-radius: 4px; margin-bottom: 0;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .sponsor-link:hover {
+    border-color: rgba(216,144,24,0.7);
+    background: rgba(216,144,24,0.08);
+  }
+
+  /* ── CTA ── */
+  .become-sponsor {
+    text-align: center; padding: 3rem 2rem;
+    background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
+    border: 1px solid rgba(216,144,24,0.2);
+    border-radius: 14px; position: relative; overflow: hidden;
+    max-width: 1200px; margin-left: auto; margin-right: auto;
+  }
+  .become-sponsor::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+    background-size: 300% 100%;
+    animation: goldSlide 4s linear infinite;
+  }
+  .become-sponsor h3 {
+    font-family: 'Oswald', sans-serif; font-size: 1.8rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin-bottom: 0.75rem;
+  }
+  .become-sponsor p { color: rgba(255,255,255,0.5); margin-bottom: 1.75rem; }
+
+  .site-footer { background: #07111f; border-top: 1px solid rgba(216,144,24,0.15); }
+  .site-footer p { color: rgba(255,255,255,0.35); font-size: 0.85rem; }
+
+  @media (max-width: 900px) {
+    .sponsor-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .sponsor-grid { grid-template-columns: 1fr; padding: 0; }
+    .main-content { padding: 1.5rem 1rem; }
+  }
+</style>
+</head>
+
+<body>
+<!-- Shared Navigation -->
+<nav>
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="images/brand/bcc-logo.jpg" alt="Bharat Cricket Club Logo">
+      <h1>Bharat Cricket Club <span class="subtitle">By UGNT</span></h1>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="achievements.html">Achievements</a></li>
+      <li><a href="warriors.html">Teams</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="sponsors.html">Sponsor</a></li>
+      <li><a href="community-partner.html" class="active">Community Partner</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  const overlay = document.createElement('div');
+  overlay.className = 'nav-overlay';
+  document.body.appendChild(overlay);
+  function openMenu() { menuToggle.classList.add('active'); navMenu.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeMenu() { menuToggle.classList.remove('active'); navMenu.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+  menuToggle.addEventListener('click', () => { menuToggle.classList.contains('active') ? closeMenu() : openMenu(); });
+  document.querySelectorAll('nav ul li a').forEach(link => link.addEventListener('click', closeMenu));
+  overlay.addEventListener('click', closeMenu);
+</script>
+
+<!-- Main Content -->
+<main class="main-content" id="main-content">
+  <h1 class="page-title">Community Partners</h1>
+  <p class="page-subtitle">Proud to stand alongside the organizations and individuals who strengthen our community and share our values.</p>
+
+  <!-- Partner Grid -->
+  <div class="sponsor-grid">
+
+    <!-- UGNT -->
+    <div class="sponsor">
+      <div class="sponsor-logo-area">
+        <img src="images/brand/ugnt-logo.png" alt="UGNT Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>United Gujaratis of North Texas</h3>
+        <p class="sponsor-description">Our founding community organization — bringing together Gujarati families across the Dallas-Fort Worth metroplex through culture, sport, and service.</p>
+        <a href="contact.html" class="sponsor-link">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- Texas Super Kings -->
+    <div class="sponsor">
+      <div class="sponsor-logo-area">
+        <img src="images/logos/tsk.png" alt="Texas Super Kings Logo" loading="lazy" style="filter: drop-shadow(0 0 8px rgba(255,255,255,0.7)) drop-shadow(0 0 16px rgba(255,255,255,0.4))">
+      </div>
+      <div class="sponsor-body">
+        <h3>Texas Super Kings</h3>
+        <p class="sponsor-description">Texas's premier cricket franchise competing at the highest level. The Super Kings bring world-class cricket to the Lone Star State and inspire a new generation of fans.</p>
+        <a href="https://www.texassuperkings.com" target="_blank" rel="noopener noreferrer" class="sponsor-link">Visit Website →</a>
+      </div>
+    </div>
+
+    <!-- Battle of Bats -->
+    <div class="sponsor">
+      <div class="sponsor-logo-area">
+        <img src="images/logos/battle-of-bats.svg" alt="Battle of Bats Logo" loading="lazy">
+      </div>
+      <div class="sponsor-body">
+        <h3>Battle of Bats</h3>
+        <p class="sponsor-description">An exclusive cricket-meets-networking experience by VTEX. Elite cricket, premium hospitality, and high-level executive connections — where commerce meets culture.</p>
+        <a href="https://www.battleofbats.com/" target="_blank" rel="noopener noreferrer" class="sponsor-link">Learn More →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Join CTA -->
+  <div class="become-sponsor">
+    <h3>Become a Community Partner</h3>
+    <p>Is your organization aligned with our mission? Partner with Bharat Cricket Club to build stronger community ties and support the sport you love.</p>
+    <a href="contact.html" class="btn">Get In Touch</a>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+  <p>Designed by <a href="https://aksharnixglobal.com" target="_blank">AksharNix Global</a></p>
+</footer>
+
+</body>
+</html>
