@@ -7,6 +7,16 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #07111f !important;
+  -webkit-text-fill-color: #07111f !important;
+}
+*::-moz-selection {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: #07111f !important;
+}
+
 /* Accessibility - Skip to Content Link */
 .skip-to-content {
   position: absolute;
