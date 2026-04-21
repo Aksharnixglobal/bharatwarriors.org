@@ -132,6 +132,55 @@
     letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.82) !important;
   }
   .row-medal { font-size: 1.5rem; line-height: 1; flex-shrink: 0; }
+
+  .perf-year-heading {
+    font-family: 'Oswald', sans-serif; font-size: 1.2rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    margin: 0 0 0.75rem;
+  }
+  .perf-table {
+    display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    gap: 0;
+  }
+  .perf-col {
+    padding: 1.25rem 1.5rem;
+  }
+  .perf-divider {
+    background: rgba(255,255,255,0.07);
+  }
+  .perf-col-header {
+    font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: rgba(216,144,24,0.8);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(216,144,24,0.15);
+    margin-bottom: 0.5rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .perf-player {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(255,255,255,0.82);
+  }
+  .perf-player:last-child { border-bottom: none; }
+  .perf-player::before {
+    content: ''; width: 3px; height: 14px; border-radius: 2px; flex-shrink: 0;
+    background: #D89018; box-shadow: 0 0 6px rgba(216,144,24,0.4);
+  }
+  .perf-player.top::before {
+    background: #F5C040; box-shadow: 0 0 8px rgba(245,192,64,0.5);
+  }
+  @media (max-width: 768px) {
+    .perf-table { grid-template-columns: 1fr; }
+    .perf-divider { display: none; }
+    .perf-col { padding: 1rem; }
+    .perf-col + .perf-col { border-top: 1px solid rgba(255,255,255,0.07); }
+  }
   .row-desc {
     flex: 2; font-size: 0.82rem; line-height: 1.65;
     color: rgba(255,255,255,0.58); margin: 0;
@@ -287,35 +336,53 @@
 
     <!-- Star Performers -->
     <h2 class="section-heading">Star Performers</h2>
-    <div class="achievement-card" style="margin-bottom:3rem">
-      <div class="card-achievements">
-        <div class="achievement-row" data-tier="star">
-          <div class="row-season">
-            <span class="row-year">Top Scorer</span>
-            <span class="row-season-name">Gaurav P.</span>
-          </div>
-          <span class="row-medal">🏏</span>
+
+    <!-- 2025 -->
+    <p class="perf-year-heading">2025</p>
+    <div class="achievement-card" style="margin-bottom:2.5rem; overflow:hidden;">
+      <div class="perf-table">
+        <div class="perf-col">
+          <div class="perf-col-header">🏏 Best Batsman</div>
+          <div class="perf-player top">Raj Lakkad</div>
+          <div class="perf-player">Nilpesh Patel</div>
+          <div class="perf-player">Sanjeet Rath</div>
+          <div class="perf-player">Varun Patel</div>
         </div>
-        <div class="achievement-row" data-tier="star">
-          <div class="row-season">
-            <span class="row-year">Best Bowler</span>
-            <span class="row-season-name">Darshan P.</span>
-          </div>
-          <span class="row-medal">🎯</span>
+        <div class="perf-divider"></div>
+        <div class="perf-col">
+          <div class="perf-col-header">🎯 Best Bowler</div>
+          <div class="perf-player top">Raj Lakkad</div>
+          <div class="perf-player">Prabesh A</div>
+          <div class="perf-player">Venky Mudduluru</div>
+          <div class="perf-player">Abhijeet Vaidya</div>
+          <div class="perf-player">Neel Raval</div>
         </div>
-        <div class="achievement-row" data-tier="star">
-          <div class="row-season">
-            <span class="row-year">Best Fielder</span>
-            <span class="row-season-name">Bhavik G.</span>
-          </div>
-          <span class="row-medal">⚡</span>
+        <div class="perf-divider"></div>
+        <div class="perf-col">
+          <div class="perf-col-header">⚡ Best Fielder</div>
+          <div class="perf-player top">Vaidik M.</div>
         </div>
-        <div class="achievement-row" data-tier="star">
-          <div class="row-season">
-            <span class="row-year">17 Wickets</span>
-            <span class="row-season-name">Patrick P.</span>
-          </div>
-          <span class="row-medal">🏆</span>
+      </div>
+    </div>
+
+    <!-- 2024 -->
+    <p class="perf-year-heading">2024</p>
+    <div class="achievement-card" style="margin-bottom:3rem; overflow:hidden;">
+      <div class="perf-table">
+        <div class="perf-col">
+          <div class="perf-col-header">🏏 Best Batsman</div>
+          <div class="perf-player top">Gaurav P.</div>
+        </div>
+        <div class="perf-divider"></div>
+        <div class="perf-col">
+          <div class="perf-col-header">🎯 Best Bowler</div>
+          <div class="perf-player top">Darshan Patel</div>
+          <div class="perf-player">Pratik Patel</div>
+        </div>
+        <div class="perf-divider"></div>
+        <div class="perf-col">
+          <div class="perf-col-header">⚡ Best Fielder</div>
+          <div class="perf-player top">Bhavik Gandhi</div>
         </div>
       </div>
     </div>
