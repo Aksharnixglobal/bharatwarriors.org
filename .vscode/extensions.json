@@ -1,0 +1,36 @@
+{
+  "recommendations": [
+    // Essential web development extensions
+    "ritwickdey.liveserver",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    
+    // HTML/CSS development
+    "ecmel.vscode-html-css",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "zignd.html-css-class-completion",
+    
+    // CSS helpers
+    "bradlc.vscode-tailwindcss",
+    "pranaygp.vscode-css-peek",
+    
+    // JavaScript helpers
+    "xabikos.javascriptsnippets",
+    "christian-kohler.path-intellisense",
+    
+    // Code quality
+    "streetsidesoftware.code-spell-checker",
+    
+    // Git integration
+    "eamodio.gitlens",
+    
+    // Productivity
+    "wayou.vscode-todo-highlight",
+    "aaron-bond.better-comments",
+    
+    // Icons and themes
+    "pkief.material-icon-theme",
+    "github.github-vscode-theme"
+  ]
+}
