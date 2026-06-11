@@ -37,117 +37,102 @@
       margin-bottom: 1rem;
     }
 
-    .contact-form, .form-container, .contact-card {
-      background: #0c1e38 !important;
-      backdrop-filter: none !important;
-      -webkit-backdrop-filter: none !important;
-      border: 1px solid rgba(255,255,255,0.06) !important;
-      border-radius: 6px; position: relative; overflow: hidden;
-      padding: 2.5rem;
-    }
-    .contact-form::before, .form-container::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.25rem;
-    }
-
-    label, .form-label, .form-group label { color: rgba(255,255,255,0.6) !important; font-size: 0.85rem; display: block; margin-bottom: 0.4rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; }
-
-    .form-input, .form-textarea, input[type="text"], input[type="email"], textarea, .form-group input, .form-group textarea, .form-group select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 4px;
-      border: 1px solid rgba(255,255,255,0.1) !important;
-      background: #07111f !important;
-      color: white !important;
-      font-size: 0.95rem;
-      font-family: 'Montserrat', sans-serif;
-      box-sizing: border-box;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-group select {
-      background: #07111f !important;
-    }
-
-    .form-group select option {
-      background: #0c1e38;
-    }
-
-    .form-input:focus, .form-textarea:focus, input:focus, textarea:focus, .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-      border-color: rgba(216,144,24,0.5) !important; outline: none !important;
-    }
-
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.3);
-    }
-
-    .form-group textarea {
-      min-height: 130px;
-      resize: vertical;
-    }
-
-    .form-divider {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      margin: 1.5rem 0 1.25rem;
-    }
-
-    .submit-btn {
-      background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010) !important;
-      color: #07111f !important; font-weight: 800 !important;
-      font-family: 'Montserrat', sans-serif !important;
-      border: none !important; border-radius: 3px !important;
-      transition: opacity 0.2s ease !important;
-      width: 100%;
-      padding: 1rem;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      cursor: pointer;
-    }
-    .submit-btn:hover { opacity: 0.85 !important; }
-
-    .contact-info {
-      background: #0c1e38;
-      padding: 1.5rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.06);
-      margin-top: 2rem;
+    .page-subtitle {
       text-align: center;
+      color: rgba(255,255,255,0.55);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin: 0 auto 3rem;
+    }
+
+    @keyframes goldSlide {
+      0%   { background-position: 0% 0; }
+      100% { background-position: 300% 0; }
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-card, .follow-section, .join-section {
+      background: linear-gradient(160deg, #0e2244 0%, #071428 100%);
+      border: 1px solid rgba(216,144,24,0.18);
+      border-radius: 14px;
       position: relative;
       overflow: hidden;
+      transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+      animation: cardIn 0.6s ease both;
     }
-    .contact-info::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+    .contact-card { padding: 2.5rem 2rem; text-align: center; }
+    .contact-card:nth-child(2) { animation-delay: 0.08s; }
+    .contact-card::before, .follow-section::before, .join-section::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, #9A6010 0%, #F5C040 40%, #D89018 60%, #9A6010 100%);
+      background-size: 300% 100%;
+      animation: goldSlide 4s linear infinite;
     }
+    .contact-card:hover {
+      border-color: rgba(216,144,24,0.45);
+      box-shadow: 0 0 40px rgba(216,144,24,0.1), 0 20px 50px rgba(0,0,0,0.4);
+      transform: translateY(-3px);
+    }
+    .contact-card .card-icon { font-size: 1.9rem; margin-bottom: 0.9rem; }
+    .contact-card h3, .follow-section h3 {
+      color: #D89018;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+    .contact-card a, .contact-card p {
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-size: 1rem;
+      margin: 0;
+      transition: color 0.2s ease;
+    }
+    .contact-card a:hover { color: #F5C040; }
 
-    .contact-info h3 {
-      color: #D89018 !important;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-bottom: 1rem;
+    .follow-section {
+      text-align: center;
+      padding: 2rem;
+      animation-delay: 0.16s;
+    }
+    .follow-section h3 { margin-bottom: 1.2rem; }
+
+    .join-section {
+      text-align: center;
+      padding: 2.75rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .join-section h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      background: linear-gradient(135deg, #9A6010, #D89018, #F5C040, #D89018, #9A6010);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      margin-bottom: 0.9rem;
+    }
+    .join-section p {
+      color: rgba(255,255,255,0.6);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 0.75rem;
-      margin-top: 1rem;
+      gap: 1rem;
+      margin-top: 0.5rem;
     }
-
     .social-links a {
       display: inline-flex;
       align-items: center;
@@ -160,8 +145,7 @@
     .social-links a:hover { transform: translateY(-2px); opacity: 0.85; }
 
     @media (max-width: 600px) {
-      .contact-form { padding: 1.5rem; }
-      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .contact-grid { grid-template-columns: 1fr; }
     }
 
     .site-footer { background: #07111f !important; border-top: 1px solid rgba(216,144,24,0.15) !important; }
@@ -211,57 +195,28 @@
 <main class="main-content">
   <h1 class="page-title">Contact Us</h1>
   
-  <div class="contact-form">
-    <form action="https://formsubmit.co/info@bharatcricketclub.org" method="POST">
-      <input type="hidden" name="_subject" value="New Contact Form Submission from BharatWarriors.org">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://bharatcricketclub.org/thank-you.html">
-      
-      <div class="form-group">
-        <label for="name">Full Name *</label>
-        <input type="text" id="name" name="name" required placeholder="Enter your full name">
-      </div>
-      
-      <div class="form-row">
-        <div class="form-group">
-          <label for="email">Email Address *</label>
-          <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-        </div>
+  <p class="page-subtitle">Have a question, want to join a team, or explore a partnership? We'd love to hear from you — reach out anytime.</p>
 
-        <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="subject">Subject *</label>
-        <select id="subject" name="subject" required>
-          <option value="">Select a subject...</option>
-          <option value="General Inquiry">General Inquiry</option>
-          <option value="Join the Team">Join the Team</option>
-          <option value="Partnership Opportunity">Partnership Opportunity</option>
-          <option value="Match Schedule">Match Schedule</option>
-          <option value="Support/Donate">Support/Donate</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
-      
-      <div class="form-group">
-        <label for="message">Message *</label>
-        <textarea id="message" name="message" required placeholder="Tell us more about your inquiry..."></textarea>
-      </div>
-      
-      <hr class="form-divider">
-      <button type="submit" class="submit-btn">Send Message →</button>
-    </form>
+  <div class="join-section">
+    <h3>Join BCC</h3>
+    <p>Looking for a competitive and community-driven cricket club? Contact us to learn about player registrations, tournaments, and sponsorship opportunities.</p>
   </div>
-  
-  <div class="contact-info">
-    <h3>📧 Email Us</h3>
-    <p><a href="mailto:info@bharatcricketclub.org" style="color: #D89018; text-decoration: none;">info@bharatcricketclub.org</a></p>
-    
-    <h3 style="margin-top: 2rem;">Follow Us</h3>
+
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="card-icon">📧</div>
+      <h3>Email Us</h3>
+      <p><a href="mailto:info@bharatcricketclub.org">info@bharatcricketclub.org</a></p>
+    </div>
+    <div class="contact-card">
+      <div class="card-icon">📍</div>
+      <h3>Find Us</h3>
+      <p>Dallas–Fort Worth, Texas</p>
+    </div>
+  </div>
+
+  <div class="follow-section">
+    <h3>Follow Us</h3>
     <div class="social-links">
       <a href="https://www.youtube.com/@bharatwarriorsdallas" target="_blank" aria-label="YouTube">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
@@ -289,7 +244,7 @@
 
 <!-- Footer -->
 <footer class="site-footer">
-  <p>&copy; 2025 Bharat Cricket Club By UGNT. All rights reserved.</p>
+  <p>&copy; 2026 Bharat Cricket Club By UGNT. All rights reserved.</p>
   <p>Designed by <a href="https://aksharnixglobal.com" target="_blank">AksharNix Global</a></p>
 </footer>
 
